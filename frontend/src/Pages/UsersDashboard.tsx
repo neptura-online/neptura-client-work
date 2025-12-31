@@ -4,7 +4,6 @@ import { FaEye } from "react-icons/fa6";
 import { FiEyeOff } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 
-// type
 type User = {
   _id: string;
   name: string;

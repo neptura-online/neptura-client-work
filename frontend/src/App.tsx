@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage";
 import LeadDetails from "./Pages/LeadDetails";
 import { useEffect, useState } from "react";
@@ -35,6 +35,7 @@ const App = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const combinedArray = [...leads, ...partialLeads];
+  const location = useLocation();
 
   const fetchUserData = async () => {
     try {
@@ -192,25 +193,20 @@ const App = () => {
     if (foundUser) {
       setUser(foundUser);
     }
-    if (foundUser?.role === "admin" || "owner") {
+
+    if (foundUser?.role === "admin" || foundUser?.role === "owner") {
       setIsAdmin(true);
     }
-    console.log(isAdmin);
   }, [users]);
 
   useEffect(() => {
-    if (window.location.href === `${import.meta.env.VITE_FRONTEND_URL}`) return;
-    if (
-      window.location.href ===
-      `${import.meta.env.VITE_FRONTEND_URL}/admin/login`
-    )
+    if (location.pathname === "/" || location.pathname === "/admin/login")
       return;
+
     fetchData();
     fetchUserData();
     fetchPartialData();
-  }, []);
-
-  useEffect(() => {}, []);
+  }, [location.pathname]);
 
   return (
     <div className=" bg-zinc-950 max-w-screen overflow-hidden">

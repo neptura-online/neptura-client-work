@@ -199,8 +199,12 @@ const App = () => {
   }, [users]);
 
   useEffect(() => {
-    if (window.location.href === "http://192.168.1.5:5173/") return;
-    if (window.location.href === "http://192.168.1.5:5173/admin/login") return;
+    if (window.location.href === `${import.meta.env.VITE_FRONTEND_URL}`) return;
+    if (
+      window.location.href ===
+      `${import.meta.env.VITE_FRONTEND_URL}/admin/login`
+    )
+      return;
     fetchData();
     fetchUserData();
     fetchPartialData();

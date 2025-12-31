@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Merriweather";
+  src: url("/fonts/merriweather/Merriweather-LightIt.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/fonts/figtree/Figtree.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  --font-sans: "Figtree", sans-serif;
+  --font-serif: "Merriweather", serif;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

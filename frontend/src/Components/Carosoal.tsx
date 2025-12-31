@@ -65,7 +65,7 @@ const CarouselCard = memo(
                 {service.icon}
               </div>
               <h3
-                className={`text-2xl md:text-3xl font-bold mb-4 tracking-tight leading-tight ${
+                className={`text-2xl md:text-3xl font-serif font-medium mb-4 tracking-tight leading-tight ${
                   isActive ? "text-white" : "text-gray-500"
                 }`}
               >

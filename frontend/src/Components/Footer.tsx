@@ -192,11 +192,11 @@ const Footer = () => {
       <div className="relative mx-auto max-w-6xl px-6">
         <div className="mb-20 grid gap-16 lg:grid-cols-2">
           <div className="text-left">
-            <span className="mb-4 inline-block text-xs font-medium uppercase tracking-[0.4em] text-yellow-400">
+            <span className="mb-4 inline-block text-sm font-medium uppercase tracking-[0.4em] text-yellow-400">
               Let’s Talk
             </span>
 
-            <h2 className="mb-6 text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-white leading-[1.5em] font-serif">
+            <h2 className="mb-6 text-3xl  md:text-5xl font-medium uppercase tracking-tight text-white leading-[1.5em] font-serif">
               Let's work together.
               <br />
               <span className="bg-linear-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
@@ -207,11 +207,11 @@ const Footer = () => {
             <div className="flex flex-col gap-4 mt-4 justify-start items-start">
               <div className="flex items-center justify-center gap-4 lg:justify-start">
                 <div className="rounded-full border border-white/20 bg-black/40 p-3 backdrop-blur">
-                  <CiLocationOn size={22} className="text-yellow-400" />
+                  <CiLocationOn size={18} className="text-yellow-400" />
                 </div>
                 <a
                   href="mailto:hello@uxmotionz.studio"
-                  className="text-lg font-semibold text-white transition hover:text-yellow-400"
+                  className="text-base font-semibold text-white transition hover:text-yellow-400"
                 >
                   8/10, Shaheed Amit Bhardwaj Marg, Sector 8, Malviya Nagar,
                   Jaipur - 302017 (Raj)
@@ -219,22 +219,22 @@ const Footer = () => {
               </div>
               <div className=" flex items-center justify-center gap-4 lg:justify-start">
                 <div className="rounded-full border border-white/20 bg-black/40 p-3 backdrop-blur">
-                  <FiMail size={22} className="text-yellow-400" />
+                  <FiMail size={18} className="text-yellow-400" />
                 </div>
                 <a
                   href="mailto:hello@uxmotionz.studio"
-                  className="text-lg font-semibold text-white transition hover:text-yellow-400"
+                  className="text-base font-semibold text-white transition hover:text-yellow-400"
                 >
                   cagarwal389@gmail.com
                 </a>
               </div>
               <div className=" flex items-center justify-center gap-4 lg:justify-start">
                 <div className="rounded-full border border-white/20 bg-black/40 p-3 backdrop-blur">
-                  <FiPhoneCall size={22} className="text-yellow-400" />
+                  <FiPhoneCall size={18} className="text-yellow-400" />
                 </div>
                 <a
                   href="mailto:hello@uxmotionz.studio"
-                  className="text-lg font-semibold text-white transition hover:text-yellow-400"
+                  className="text-base font-semibold text-white transition hover:text-yellow-400"
                 >
                   +91-8239999732
                 </a>

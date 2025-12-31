@@ -38,7 +38,7 @@ const CaseStudyCard = ({ data }: any) => {
 
       <div className="relative z-10 flex h-full flex-col justify-between">
         <div>
-          <h3 className="text-lg md:text-xl font-bold text-white">
+          <h3 className="text-lg font-bold font-serif text-white">
             {data.title}
           </h3>
 
@@ -48,7 +48,7 @@ const CaseStudyCard = ({ data }: any) => {
               hover: { opacity: 1 },
             }}
             transition={{ duration: 0.3 }}
-            className="mt-2 text-sm md:text-md leading-relaxed text-stone-200"
+            className="mt-2 text-sm leading-relaxed text-stone-200"
           >
             {data.description}
           </motion.p>
@@ -66,7 +66,7 @@ const CaseStudyCard = ({ data }: any) => {
             {data.metric}
           </motion.div>
 
-          <span className="text-xs font-semibold uppercase tracking-widest text-stone-500 bg-stone-700 px-2 py-2 rounded-sm group-hover:scale-105 group-hover:bg-white group-hover:text-black group-hover:font-black">
+          <span className="text-xs font-medium uppercase tracking-widest text-stone-500 bg-stone-700 px-2 py-2 rounded-sm group-hover:scale-105 group-hover:bg-white group-hover:text-black group-hover:font-black">
             {data.metricLabel}
           </span>
         </div>
@@ -112,7 +112,7 @@ export default function CaseStudiesSection({
       <div className="mt-10 md:mt-20 flex justify-center">
         <button
           onClick={triggerButton}
-          className="rounded-xl bg-yellow-500 px-14 py-4 font-semibold uppercase tracking-widest text-black transition hover:scale-105 hover:shadow-[0_0_80px_rgba(255,204,0,0.45)]"
+          className="rounded-2xl bg-yellow-500 px-6 py-2 text-sm font-semibold uppercase tracking-widest text-black transition"
         >
           Book Your Free Audit
         </button>

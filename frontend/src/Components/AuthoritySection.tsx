@@ -21,7 +21,7 @@ export function AuthoritySection({ setOpenForm, setId }: OpenFormProps) {
               Founder • Strategist • CEO
             </span>
 
-            <h2 className="font-serif text-3xl md:text-5xl font-black leading-[1.5em] tracking-tight">
+            <h2 className="font-serif text-3xl md:text-5xl font-medium leading-[1.5em] tracking-tight">
               Meet the Mind Behind
               <br />
               <span className="text-yellow-500">7X Growth Strategies</span>

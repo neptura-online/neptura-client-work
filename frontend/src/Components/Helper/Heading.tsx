@@ -12,7 +12,7 @@ const Heading = ({ white, yellow }: text) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="font-serif text-3xl md:text-5xl font-black text-white leading-[1.2em]"
+        className="font-serif text-3xl md:text-5xl font-medium text-white leading-[1.2em] capitalize"
       >
         {white} <span className="text-yellow-500">{yellow}</span>
       </motion.h2>

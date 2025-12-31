@@ -300,15 +300,15 @@ function DesktopServices() {
             <button
               key={item.title}
               onClick={() => setActiveIndex(index)}
-              className={`flex items-center gap-4 rounded-xl px-6 py-4 text-left transition
+              className={`flex items-center gap-4 rounded-2xl px-6 py-3 text-left transition
                     ${
                       isActive
                         ? "bg-yellow-400 text-black shadow-lg"
                         : "bg-zinc-900 text-white hover:bg-zinc-800"
                     }`}
             >
-              <span className="text-lg">{item.icon}</span>
-              <span className="font-medium lg:text-sm">{item.title}</span>
+              <span className="text-base">{item.icon}</span>
+              <span className="font-medium text-base">{item.title}</span>
             </button>
           );
         })}
@@ -330,7 +330,7 @@ function DesktopServices() {
       </div>
 
       <div>
-        <h3 className="mb-6 text-xl font-semibold text-yellow-400">
+        <h3 className="mb-6 text-2xl font-semibold text-yellow-400">
           {active.title}
         </h3>
 
@@ -343,8 +343,8 @@ function DesktopServices() {
               transition={{ duration: 0.3 }}
               className="flex items-start gap-3 text-zinc-300"
             >
-              <FiCheckCircle className="mt-1 text-yellow-400" />
-              <span>{point}</span>
+              <FiCheckCircle className="mt-1 text-base text-yellow-400" />
+              <span className="text-base">{point}</span>
             </motion.li>
           ))}
         </ul>

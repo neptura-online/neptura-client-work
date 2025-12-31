@@ -39,7 +39,7 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
             className="space-y-8 mt-8 lg:mt-0"
           >
             <div className="space-y-4">
-              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white">
+              <h2 className="text-3xl sm:text-4xl font-serif font-medium text-white leading-[1.5 em] capitalize">
                 A poorly designed Landing Page can{" "}
                 <span className="text-yellow-500">kill your revenue! </span>
                 But how?
@@ -64,7 +64,7 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
               ))}
             </div>
 
-            <p className="text-lg font-semibold text-white">
+            <p className="text-base font-semibold text-white">
               But here’s the good news —{" "}
               <span className="text-yellow-500">we can fix that.</span>
             </p>
@@ -73,7 +73,7 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
               onClick={triggerButton}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex w-fit rounded-xl bg-yellow-500 px-6 py-3 font-semibold text-black shadow-[0_0_25px_rgba(255,204,0,0.45)]"
+              className="inline-flex w-fit rounded-2xl bg-yellow-500 px-6 py-3 font-semibold text-sm text-black"
             >
               Start With Free Audit
             </motion.button>

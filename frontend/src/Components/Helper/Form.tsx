@@ -218,19 +218,19 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.95 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed left-1/2 top-1/2 z-60 w-[92%] max-w-md max-h-[90vh] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-3xl bg-white p-4 sm:p-8 shadow-2xl"
+            className="fixed left-1/2 top-1/2 z-60 w-[92%] max-w-md max-h-[90vh] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-3xl bg-white p-6 sm:p-8 shadow-2xl"
           >
             <button
               onClick={closeSubmit}
-              className="absolute right-4 top-4 text-zinc-500 hover:text-black"
+              className="absolute right-3 top-3 text-zinc-500 hover:text-black"
             >
               ✕
             </button>
 
-            <h3 className="text-2xl font-extrabold font-serif leading-[1.5em]">
-              Create Lead{" "}
-              <span className="text-yellow-500">Capturing Landing</span> Pages
-              With Us!
+            <h3 className="text-2xl font-extrabold font-serif leading-[1.5em] text-center">
+              Create <span className="text-yellow-500">Lead Capturing </span>
+              <br />
+              Landing Pages With Us!
             </h3>
 
             <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
@@ -243,7 +243,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="rounded-xl border border-zinc-300 px-4 py-3 text-sm sm:text-base outline-none focus:border-yellow-500"
+                className="rounded-2xl border border-zinc-300 px-4 py-3 text-sm sm:text-base outline-none focus:border-yellow-500"
                 required
                 minLength={3}
               />
@@ -256,7 +256,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
                   setFormData({ ...formData, email: e.target.value })
                 }
                 placeholder="Email*"
-                className="rounded-xl border border-zinc-300 px-4 py-3 text-sm sm:text-base outline-none focus:border-yellow-500"
+                className="rounded-2xl border border-zinc-300 px-4 py-3 text-sm sm:text-base outline-none focus:border-yellow-500"
                 required
               />
 
@@ -292,7 +292,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
                   setFormData({ ...formData, industry: e.target.value })
                 }
                 placeholder="Industry*"
-                className="rounded-xl border border-zinc-300 px-4 py-3 text-sm sm:text-base outline-none focus:border-yellow-500"
+                className="rounded-2xl border border-zinc-300 px-4 py-3 text-sm sm:text-base outline-none focus:border-yellow-500"
                 required
                 minLength={5}
               />
@@ -303,7 +303,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
-                className="rounded-xl border border-zinc-300 px-4 py-3 outline-none text-sm sm:text-base focus:border-yellow-500"
+                className="rounded-2xl border border-zinc-300 px-4 py-3 outline-none text-sm sm:text-base focus:border-yellow-500"
                 placeholder="Message*"
                 minLength={10}
               />
@@ -311,7 +311,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
               <button
                 type="submit"
                 disabled={loading}
-                className="mt-4 rounded-xl bg-black py-3.5 sm:py-4 text-base sm:text-lg font-semibold text-white transition hover:bg-yellow-500 hover:text-black disabled:cursor-not-allowed disabled:bg-gray-600"
+                className="mt-4 rounded-2xl bg-black py-3 text-base font-semibold text-white transition hover:bg-yellow-500 hover:text-black disabled:cursor-not-allowed disabled:bg-gray-600"
               >
                 {loading ? "Loading..." : "Book A Free Consultation"}
               </button>

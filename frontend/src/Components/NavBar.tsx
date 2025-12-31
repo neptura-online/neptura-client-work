@@ -21,12 +21,12 @@ const NavBar = () => {
         <div className="flex items-center space-x-4">
           <a
             href="tel:910-###-####"
-            className="flex items-center md:px-12 md:py-2.5 px-4 py-3 text-black font-semibold md:font-bold text-sm md:text-base bg-yellow-500 hover:bg-yellow-400 transition-all duration-300 rounded-xl "
+            className="flex items-center md:px-12 md:py-2.5 px-4 py-3 text-black font-semibold md:font-bold text-sm md:text-base bg-yellow-500 hover:bg-yellow-400 transition-all duration-300 rounded-2xl "
           >
             <span className="pr-2">
               <FaPhone className="rotate-80 " />
             </span>{" "}
-            <span className="hidden md:block">Call Us </span>: 9602694444
+            <span className="hidden md:block">Call Us : </span> 9602694444
           </a>
         </div>
       </div>

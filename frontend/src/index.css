@@ -10,6 +10,7 @@
 @font-face {
   font-family: "Figtree";
   src: url("/fonts/figtree/Figtree.ttf") format("truetype");
+  font-size: 500;
   font-display: swap;
 }
 

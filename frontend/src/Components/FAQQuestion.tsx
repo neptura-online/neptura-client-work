@@ -42,7 +42,7 @@ const FAQSection = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -6 }}
                     transition={{ duration: 0.25, ease: "easeInOut" }}
-                    className="border-t border-stone-800 px-5 py-4 text-sm leading-relaxed text-start md:text-base whitespace-pre-line text-stone-300"
+                    className="border-t border-stone-800 px-5 py-4 text-xs lg:text-base leading-relaxed text-start whitespace-pre-line text-stone-300"
                   >
                     {" "}
                     {item.n}

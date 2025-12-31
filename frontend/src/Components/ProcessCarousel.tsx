@@ -131,10 +131,10 @@ const ProcessCarousel = () => {
                 />
 
                 <div className="p-6 text-center">
-                  <h3 className="text-md font-semibold text-yellow-500">
+                  <h3 className="text-md font-semibold font-serif text-yellow-500">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-xs text-gray-300">{step.desc}</p>
+                  <p className="mt-2 text-sm text-gray-300">{step.desc}</p>
                 </div>
               </div>
             ))}

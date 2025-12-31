@@ -61,24 +61,24 @@ const CounterItem = ({ value, text, isLast }: any) => {
   return (
     <div
       ref={ref}
-      className={`relative flex flex-col items-center gap-2 px-6 py-4 text-center ${
-        !isLast ? "border-b md:border-b-0 md:border-r border-black/20" : ""
+      className={`relative flex flex-col items-center gap-2 px-6 py-4 text-center rounded-xl shadow-md bg-yellow-400 md:min-w-56 ${
+        !isLast ? "border-r border-black-200" : ""
       }`}
     >
-      <h2 className="text-4xl font-extrabold tracking-tight">
+      <h2 className="text-2xl md:text-5xl font-medium text-black">
         {count}
         <span className="text-black">{suffix || "+"}</span>
       </h2>
-
-      <p className="text-sm font-medium opacity-90">{text}</p>
+      <p className="text-zinx-900 font-bold font-serif">{text}</p>
     </div>
   );
 };
 
 const Counter = () => {
   return (
-    <section className="bg-zinc-950 w-full relative lg:py-16 flex justify-center ">
-      <div className="mx-4 lg:flex w-full sm:hidden lg:max-w-6xl flex-col items-center gap-8 rounded-3xl bg-yellow-500 px-6 py-8 text-black shadow-[0_20px_60px_rgba(0,0,0,0.25)] md:flex-row md:justify-between md:px-12">
+    <section className="relative bg-stone-950 w-full py-10 md:py-16 flex justify-center">
+      <div className="pointer-events-none absolute inset-0 z-50 bg-[url('assets/noise.svg')] opacity-10 rounded-3xl" />
+      <div className="mx-4 md:flex grid grid-cols-2 md:flex-row gap-2 md:gap-0 md:justify-between w-full max-w-6xl">
         {counterData.map((data, index) => (
           <CounterItem
             key={data.id}

@@ -24,11 +24,11 @@ export default function ConversionPhilosophy({
         >
           <Heading white="We don't create" yellow="pretty pages." />
 
-          <p className="mt-6 text-lg text-zinc-300">
+          <p className="mt-6 text-base text-zinc-300">
             Our landing pages are engineered with one goal in mind —
-            <span className="text-white font-medium capitalize">
+            <span className="text-white font-medium uppercase">
               {" "}
-              conversion!
+              conversion!{" "}
             </span>
             Every page we design includes:
           </p>
@@ -45,11 +45,11 @@ export default function ConversionPhilosophy({
               className="group rounded-2xl border border-white/10 bg-zinc-900 p-6 transition hover:border-yellow-400/40"
             >
               <div className="flex items-center justify-start gap-4">
-                <div className="flex min-h-11 min-w-11 items-center justify-center rounded-xl bg-yellow-400 text-black">
-                  <item.icon className="text-lg" />
+                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-yellow-400 text-black">
+                  <item.icon className="text-sm" />
                 </div>
 
-                <h3 className="mb-2 text-lg font-semibold">{item.title}</h3>
+                <h3 className="mb-2 text-base font-semibold">{item.title}</h3>
               </div>
             </motion.div>
           ))}
@@ -64,7 +64,7 @@ export default function ConversionPhilosophy({
         >
           <button
             onClick={triggerButton}
-            className="md:mt-8 rounded-xl bg-yellow-400 px-8 py-4 font-semibold text-black transition hover:scale-[1.03]"
+            className="md:mt-8 rounded-2xl bg-yellow-400 px-6 py-3 font-semibold text-black transition hover:scale-[1.03] text-sm"
           >
             Build Pages That Are Lead Magnets
           </button>

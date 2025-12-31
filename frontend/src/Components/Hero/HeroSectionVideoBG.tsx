@@ -199,7 +199,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ease: "easeIn", duration: 0.5 }}
-              className="font-serif text-4xl font-extrabold md:-mt-14 md:text-6xl"
+              className="font-serif text-3xl font-semibold md:-mt-14 md:text-5xl"
             >
               <span className="bg-linear-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent leading-[1.5em]">
                 Spending Money On Ads And Still Losing Leads?
@@ -210,7 +210,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ease: "easeInOut", duration: 0.7 }}
-              className="max-w-xl text-lg text-zinc-300 md:text-xl"
+              className="max-w-xl text-sm text-zinc-300 md:text-lg"
             >
               Your Landing Page Might Not Be Built For Conversion! Don’t Worry!
               We will help you identify the mistakes.
@@ -221,17 +221,14 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ease: "easeInOut", duration: 0.8 }}
-              className="group mt-4 flex w-fit  items-center gap-4 rounded-2xl bg-yellow-500 px-4 py-3 transition-all hover:scale-105 hover:bg-yellow-400  hover:cursor-pointer"
+              className="group mt-4 flex w-fit  items-center gap-4 rounded-2xl bg-yellow-500 px-6 py-3 transition-all hover:scale-105 hover:bg-yellow-400  hover:cursor-pointer"
             >
               {" "}
-              <span className="hidden lg:flex h-10 w-10 items-center justify-center rounded-full bg-black">
-                <FaArrowUpLong className="rotate-45 text-xl text-yellow-400 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+              <span className="hidden lg:flex h-7 w-7 items-center justify-center rounded-full bg-black">
+                <FaArrowUpLong className="rotate-45 text-md text-yellow-400 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
               </span>
-              <span className="text-left text-sm font-semibold text-black md:text-xl">
+              <span className="text-left font-medium text-black text-md">
                 Get Free Landing Page
-              </span>
-              <span className="lg:hidden flex h-10 w-10 items-center justify-center rounded-full bg-black">
-                <FaArrowUpLong className="rotate-45 text-lg lg:text-xl text-yellow-400 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
               </span>
             </motion.button>
           </div>
@@ -266,12 +263,12 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ ease: "easeInOut", duration: 0.8 }}
-              className="w-full max-w-105 rounded-3xl bg-white p-6 pb-12 text-black shadow-2xl"
+              className="w-full max-w-105 rounded-3xl bg-white p-6 pb-12 text-black shadow-2xl text-center"
             >
               <h3 className="text-2xl font-extrabold font-serif leading-[1.5em]">
-                Create Lead{" "}
-                <span className="text-yellow-500">Capturing Landing</span> Pages
-                With Us!
+                Create <span className="text-yellow-500">Lead Capturing</span>{" "}
+                <br />
+                Landing Pages With Us!
               </h3>
 
               <form
@@ -286,7 +283,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   placeholder="Name*"
-                  className="rounded-xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500"
+                  className="rounded-2xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500"
                   required
                   minLength={3}
                 />
@@ -299,7 +296,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
                     setFormData({ ...formData, email: e.target.value })
                   }
                   placeholder="Email*"
-                  className="rounded-xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500"
+                  className="rounded-2xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500"
                   required
                   minLength={13}
                 />
@@ -333,16 +330,16 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
-                  className="rounded-xl border border-zinc-300 px-4 py-3 outline-none text-sm sm:text-base focus:border-yellow-500"
+                  className="rounded-2xl border border-zinc-300 px-4 py-3 outline-none text-sm sm:text-base focus:border-yellow-500"
                   placeholder="Message*"
                   minLength={10}
                 />
                 <button
                   type="submit"
                   disabled={loading}
-                  className="mt-4 rounded-xl bg-black disabled:cursor-not-allowed disabled:bg-gray-600 py-4 text-lg font-semibold text-white hover:text-black transition hover:bg-yellow-500"
+                  className="mt-4 rounded-2xl hover:bg-black py-3 text-base font-semibold hover:text-white transition bg-yellow-500 text-black disabled:cursor-not-allowed disabled:bg-gray-600 cursor-pointer"
                 >
-                  Book A Free Consultation
+                  {loading ? "Loading..." : "Book A Free Consultation"}
                 </button>
               </form>
             </motion.div>

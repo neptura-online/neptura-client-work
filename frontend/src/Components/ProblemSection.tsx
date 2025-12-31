@@ -40,14 +40,14 @@ const ProblemSection = ({
               key={id}
               className="group flex flex-col gap-4 rounded-2xl border border-stone-800 bg-stone-900 p-6 font-bold text-stone-300 transition hover:border-yellow-600 hover:bg-yellow-500 hover:text-black"
             >
-              <Icon className="text-3xl text-yellow-500 transition group-hover:text-black" />
-              <p className="text-base md:text-lg">{text}</p>
+              <Icon className="text-2xl text-yellow-500 transition group-hover:text-black" />
+              <p className="text-base">{text}</p>
             </div>
           ))}
         </motion.div>
 
         <div className="mx-auto mt-16 max-w-3xl text-center">
-          <p className="text-lg text-stone-300 md:text-xl">
+          <p className="text-base text-stone-300 ">
             But here’s the good news. We can fix that.
           </p>
         </div>
@@ -55,7 +55,7 @@ const ProblemSection = ({
         <div className="mt-12 flex justify-center">
           <button
             onClick={triggerButton}
-            className="rounded-2xl bg-yellow-500 px-10 py-4 text-sm font-semibold text-black transition hover:scale-105 hover:bg-yellow-400 lg:text-lg"
+            className="rounded-2xl bg-yellow-500 px-6 py-3 text-sm font-semibold text-black transition hover:scale-105 hover:bg-yellow-400 lg:text-md"
           >
             Talk To Our Marketing Experts
           </button>

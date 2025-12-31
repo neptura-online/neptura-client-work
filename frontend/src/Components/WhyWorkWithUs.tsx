@@ -17,13 +17,12 @@ export default function WhyWorkWithUs({ setId, setOpenForm }: OpenFormProps) {
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-20 lg:grid-cols-2">
           <div className="max-w-xl">
-            <h2 className="text-4xl font-serif font-semibold leading-[1.5em] md:text-6xl">
-              Why Your Business Should Work
-              <br />
+            <h2 className="text-3xl font-serif font-medium leading-[1.5em] md:text-5xl">
+              Why Your Business Should Work{" "}
               <span className="text-yellow-400">With Us?</span>
             </h2>
 
-            <p className="mt-8 text-lg text-stone-300">
+            <p className="mt-8 text-base text-stone-300">
               You don’t need another vendor.
               <br />
               You deserve a partner who understands your challenges and is
@@ -40,7 +39,7 @@ export default function WhyWorkWithUs({ setId, setOpenForm }: OpenFormProps) {
 
             <div
               className="
-                flex max-h-105 flex-col gap-5 overflow-y-auto pr-5 pl-5
+                flex max-h-95 flex-col gap-5 overflow-y-auto pr-5 pl-5
                 scrollbar-hide
               "
             >
@@ -56,20 +55,22 @@ export default function WhyWorkWithUs({ setId, setOpenForm }: OpenFormProps) {
                       scale: isActive ? 1.02 : 0.98,
                     }}
                     transition={{ duration: 0.35, ease: "easeOut" }}
-                    className={`rounded-3xl p-7 backdrop-blur
+                    className={`rounded-3xl p-4 backdrop-blur
                       ${
                         isActive
                           ? "bg-stone-900/80 shadow-2xl"
                           : "bg-stone-900/40"
                       }`}
                   >
-                    <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-stone-800 text-yellow-400">
-                      <item.icon className="text-xl" />
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-stone-800 text-yellow-400">
+                      <item.icon className="text-lg" />
                     </div>
 
-                    <h3 className="mb-2 text-xl font-medium">{item.title}</h3>
+                    <h3 className="mb-2 text-base font-medium">{item.title}</h3>
 
-                    <p className="max-w-md text-stone-400">{item.desc}</p>
+                    <p className="max-w-md text-sm text-stone-400">
+                      {item.desc}
+                    </p>
                   </motion.div>
                 );
               })}
@@ -103,15 +104,15 @@ export default function WhyWorkWithUs({ setId, setOpenForm }: OpenFormProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-8 lg:mt-15 text-center"
+          className="mt-8 text-center"
         >
-          <p className="mb-6 text-lg text-stone-300">
+          <p className="mb-4 text-base text-stone-300">
             If you’re serious about growth, we should talk.
           </p>
 
           <button
             onClick={triggerButton}
-            className="rounded-xl bg-yellow-400 px-10 py-4 font-semibold text-black transition hover:scale-[1.05]"
+            className="rounded-2xl bg-yellow-400 px-6 py-3 text-sm font-semibold text-black transition hover:scale-[1.05]"
           >
             Connect With Us
           </button>

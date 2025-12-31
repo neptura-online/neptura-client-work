@@ -197,7 +197,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ease: "easeIn", duration: 0.5 }}
-              className="font-serif mt-12 text-4xl font-extrabold leading-tight md:-mt-14 md:text-6xl"
+              className="font-serif mt-12 text-3xl font-extrabold leading-tight md:-mt-14 md:text-6xl"
             >
               <span className="bg-linear-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent leading-[1.5em]">
                 Spending Money On Ads And Still Losing Leads?
@@ -265,12 +265,12 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ ease: "easeInOut", duration: 0.8 }}
-            className="w-full max-w-md rounded-3xl bg-white p-8 pb-15 text-black shadow-2xl"
+            className="w-full max-w-md rounded-3xl bg-white p-8 text-black shadow-2xl"
           >
-            <h3 className="text-2xl font-extrabold font-serif leading-[1.5em]">
-              Create Lead{" "}
-              <span className="text-yellow-500">Capturing Landing</span> Pages
-              With Us!
+            <h3 className="text-2xl font-extrabold font-serif leading-[1.5em] text-center">
+              Create <span className="text-yellow-500">Lead Capturing</span>
+              <br />
+              Landing Pages With Us!
             </h3>
 
             <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
@@ -282,7 +282,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
                   setFormData({ ...formData, name: e.target.value })
                 }
                 placeholder="Name*"
-                className="rounded-xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500"
+                className="rounded-2xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500"
                 required
                 minLength={3}
               />
@@ -295,7 +295,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
                 }
                 type="email"
                 placeholder="Email*"
-                className="rounded-xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500"
+                className="rounded-2xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500"
                 required
                 minLength={13}
               />
@@ -329,14 +329,14 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
-                className="rounded-xl border border-zinc-300 px-4 py-3 outline-none text-sm sm:text-base focus:border-yellow-500"
+                className="rounded-2xl border border-zinc-300 px-4 py-3 outline-none text-sm sm:text-base focus:border-yellow-500"
                 placeholder="Message*"
                 minLength={10}
               />
               <button
                 type="submit"
                 disabled={loading}
-                className="mt-4 rounded-xl bg-black disabled:cursor-not-allowed disabled:bg-gray-600 py-4 text-lg font-semibold text-white hover:text-black transition hover:bg-yellow-500"
+                className="mt-4 rounded-2xl bg-black disabled:cursor-not-allowed disabled:bg-gray-600 py-3 text-base font-semibold text-white hover:text-black transition hover:bg-yellow-500"
               >
                 Book A Free Consultation
               </button>

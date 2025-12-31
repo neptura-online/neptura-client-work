@@ -16,9 +16,6 @@ const AdminProfileDropdown = ({ currentUser }: Props) => {
     localStorage.removeItem("token");
     navigate("/admin/login");
   };
-  const handleUser = () => {
-    navigate("/admin/profile");
-  };
   return (
     <div className="relative">
       <button

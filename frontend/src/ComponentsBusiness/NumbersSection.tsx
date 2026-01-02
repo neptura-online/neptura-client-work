@@ -25,7 +25,7 @@ export default function NumbersSection() {
         }}
       />
 
-      <div className="relative mx-auto w-full max-w-350 px-2">
+      <div className="relative mx-auto w-full max-w-350 px-3">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

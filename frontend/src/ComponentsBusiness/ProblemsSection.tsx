@@ -84,7 +84,7 @@ export default function ProblemsSection() {
             <div key={p.id} className="flex flex-col items-center text-center">
               <div className="relative flex h-25 w-25 items-center justify-center rounded-full bg-yellow-emarketing text-black">
                 {p.icon}
-                <span className="absolute -top-2 -right-2 flex h-9 w-9 items-center justify-center rounded-full bg-white text-md font-bold shadow italic">
+                <span className="absolute -top-2 -right-2 flex h-9 w-9 items-center justify-center rounded-full bg-white text-md font-bold shadow italic text-[#071E31]">
                   {p.id}.
                 </span>
               </div>
@@ -120,8 +120,8 @@ export default function ProblemsSection() {
             >
               <div className="relative flex h-18 w-18 items-center justify-center rounded-full bg-yellow-emarketing text-black">
                 {p.icon}
-                <span className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-xs font-semibold shadow">
-                  {p.id}
+                <span className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-xs font-semibold shadow italic text-[#071E31]">
+                  {p.id}.
                 </span>
               </div>
               <p className="mt-4 text-sm text-zinc-700">{p.text}</p>

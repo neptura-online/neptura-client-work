@@ -1,6 +1,10 @@
+import FinalCTASection from "../ComponentsBusiness/FinalCTASection";
 import HeroSection from "../ComponentsBusiness/HeroSection";
+import IndustriesHeroSection from "../ComponentsBusiness/IndustriesHeroSection";
 import NumbersSection from "../ComponentsBusiness/NumbersSection";
 import ProblemsSection from "../ComponentsBusiness/ProblemsSection";
+import ResultsSection from "../ComponentsBusiness/ResultsSection";
+import WhyWorkWithUs from "../ComponentsBusiness/WhyWorkWithUs";
 
 const BusinessLead = () => {
   return (
@@ -8,6 +12,10 @@ const BusinessLead = () => {
       <HeroSection />
       <ProblemsSection />
       <NumbersSection />
+      <WhyWorkWithUs />
+      <ResultsSection />
+      <IndustriesHeroSection />
+      <FinalCTASection />
     </div>
   );
 };

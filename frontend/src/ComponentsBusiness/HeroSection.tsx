@@ -10,7 +10,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-linear-to-r from-zinc-900 via-zinc-900 to-yellow-600/90" />
 
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-50"
         style={{
           backgroundImage: "url('/business/banner.png')",
           backgroundSize: "cover",

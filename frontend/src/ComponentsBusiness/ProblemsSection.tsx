@@ -45,7 +45,7 @@ const problems: Problem[] = [
 
 export default function ProblemsSection() {
   return (
-    <section className="bg-zinc-100 py-20">
+    <section className="bg-zinc-100 py-14  lg:py-20">
       <div className="mx-auto max-w-350 px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -54,7 +54,7 @@ export default function ProblemsSection() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-3xl font-serif font-medium md:text-5xl">
+          <h2 className="text-4xl font-serif font-medium md:text-5xl">
             The Real Problem Nobody Talks About
           </h2>
           <p className="mt-4 text-zinc-600 text-base">
@@ -84,8 +84,8 @@ export default function ProblemsSection() {
             <div key={p.id} className="flex flex-col items-center text-center">
               <div className="relative flex h-25 w-25 items-center justify-center rounded-full bg-yellow-emarketing text-black">
                 {p.icon}
-                <span className="absolute -top-2 -right-2 flex h-9 w-9 items-center justify-center rounded-full bg-white text-xs font-semibold shadow">
-                  {p.id}
+                <span className="absolute -top-2 -right-2 flex h-9 w-9 items-center justify-center rounded-full bg-white text-md font-bold shadow italic">
+                  {p.id}.
                 </span>
               </div>
               <p className="mt-6 text-base text-zinc-700">{p.text}</p>
@@ -93,7 +93,7 @@ export default function ProblemsSection() {
           ))}
         </div>
 
-        <div className="relative mt-16 grid grid-cols-2 gap-x-6 gap-y-16 md:hidden">
+        <div className="relative mt-16 grid grid-cols-2 gap-x-6 gap-y-6 md:hidden">
           <svg
             className="absolute left-1/2 top-0 h-full -translate-x-1/2"
             width="2"

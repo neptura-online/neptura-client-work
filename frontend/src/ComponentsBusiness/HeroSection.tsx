@@ -28,11 +28,11 @@ const HeroSection = () => {
         </div>
 
         <div className="items-center gap-4 flex">
-          <div className="hidden md:flex items-center gap-2 rounded-xl border border-white/30 px-4 py-2 text-base">
+          <div className="hidden md:flex items-center gap-2 rounded-xl border border-white/30 px-4 py-3 text-base">
             <FaEnvelope />
             Email ID@e-marketing.io
           </div>
-          <div className="flex items-center gap-2 rounded-xl bg-yellow-emarketing px-4 py-2 text-sm lg:text-base text-black">
+          <div className="flex items-center gap-2 rounded-xl bg-yellow-emarketing px-4 py-3 text-sm lg:text-base text-black">
             <FiPhone />
             +91-9602694444
           </div>

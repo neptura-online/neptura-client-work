@@ -22,7 +22,7 @@ export default function WhyWorkWithUsExact() {
       <div className="mx-auto max-w-360 px-3 lg:px-6">
         <div className="flex flex-col-reverse items-start gap-14 lg:flex-row">
           <div className="relative">
-            <div className="bg-[url('./business/bg.png')] pt-4 pl-1 relative overflow-hidden rounded-[28px]">
+            <div className="bg-[url('/business/bg.png')] pt-4 pl-1 relative overflow-hidden rounded-[28px]">
               <img
                 src="/business/about.png"
                 alt="Client reaction"

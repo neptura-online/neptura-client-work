@@ -13,6 +13,7 @@ import axios from "axios";
 import UsersDashboard from "./Pages/UsersDashboard";
 import ProfilePage from "./Pages/ProfilePage";
 import PartialLeadDashboard from "./Pages/PartialLeadDashBoard";
+import BusinessLead from "./Pages/BusinessLead";
 
 type CreateUserPayload = {
   name: string;
@@ -217,6 +218,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" index element={<LandingPage />} />
+          <Route path="/business-lead" index element={<BusinessLead />} />
           <Route
             path="/admin"
             element={

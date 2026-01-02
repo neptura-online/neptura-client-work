@@ -25,3 +25,7 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+@theme {
+  --color-yellow-emarketing: #ffaa17;
+}

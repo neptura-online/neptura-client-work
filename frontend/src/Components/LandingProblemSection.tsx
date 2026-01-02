@@ -39,7 +39,7 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
             className="space-y-8 mt-8 lg:mt-0"
           >
             <div className="space-y-4">
-              <h2 className="text-3xl sm:text-4xl font-serif font-medium text-white leading-[1.5 em] capitalize">
+              <h2 className="text-3xl sm:text-4xl font-serif font-medium text-white leading-[1.5em] capitalize">
                 A poorly designed Landing Page can{" "}
                 <span className="text-yellow-500">kill your revenue! </span>
                 But how?

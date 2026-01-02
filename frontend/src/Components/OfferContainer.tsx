@@ -37,7 +37,7 @@ const OfferContainer = ({ setOpenForm, setId }: OpenFormProps) => {
               Limited Time Offer
             </span>
 
-            <h2 className="mt-6 font-serif text-3xl md:text-5xl font-medium leading-[1.5em]">
+            <h2 className="mt-6 font-serif text-3xl md:text-4xl font-medium leading-[1.5em]">
               Get Premium Tools Worth{" "}
               <span className="text-yellow-400">₹19,589 Absolutely FREE</span>
             </h2>

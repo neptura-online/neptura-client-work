@@ -104,12 +104,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
             </button>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="flex justify-center lg:justify-end px-2"
-          >
+          <div className="flex justify-center lg:justify-end px-2">
             <div className="w-full lg:max-w-md rounded-3xl bg-white p-6 text-black shadow-2xl h-fit">
               <h3 className="text-[22px] lg:text-[27px] font-semibold font-serif">
                 Let’s Get Started With a{" "}
@@ -147,7 +142,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
                 </button>
               </form>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

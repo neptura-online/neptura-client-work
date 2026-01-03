@@ -39,12 +39,20 @@ export default function WhyWorkWithUsExact({
             </div>
 
             <motion.img
-              initial={{ x: -10 }}
-              animate={{ x: 60 }}
-              transition={{ duration: 2, ease: "backIn", repeat: Infinity }}
               src="/business/review.png"
               alt="Client reaction"
               className="h-30 absolute -bottom-15 object-cover rounded-[28px] z-20"
+              animate={{
+                x: [-10, 60],
+                y: [0, -6],
+                scale: [1, 1.02],
+              }}
+              transition={{
+                duration: 3,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
             />
           </div>
 

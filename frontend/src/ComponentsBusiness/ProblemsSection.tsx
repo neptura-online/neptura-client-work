@@ -50,7 +50,15 @@ export default function ProblemsSection({ setId, setOpenForm }: OpenFormProps) {
     setId("hero lets work together");
   };
   return (
-    <section className="bg-zinc-100 py-14  lg:py-20">
+    <section className="relative bg-zinc-100 py-14  lg:py-20">
+      <div
+        className="absolute inset-0 opacity-80"
+        style={{
+          backgroundImage: "url('/business/pattern.svg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
       <div className="mx-auto max-w-350 px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -146,7 +154,7 @@ export default function ProblemsSection({ setId, setOpenForm }: OpenFormProps) {
           </p>
           <button
             onClick={handleClick}
-            className="inline-flex items-center gap-2 rounded-xl bg-black px-4 py-3 text-white transition hover:bg-zinc-900"
+            className="relative inline-flex items-center gap-2 rounded-xl bg-black px-4 py-3 text-white transition hover:bg-zinc-900"
           >
             Consult Our Marketing Experts
             <FiArrowRight />

@@ -21,14 +21,14 @@ export default function MarketingServicesShowcase() {
   }, []);
 
   const increase = () => {
-    if (active >= 5) {
-      setActive(0);
+    if (active > 3) {
+      return setActive(0);
     }
     setActive((active) => active + 1);
   };
   const decrease = () => {
-    if (active <= 0) {
-      setActive(0);
+    if (active < 1) {
+      return setActive(0);
     }
     setActive((active) => active - 1);
   };

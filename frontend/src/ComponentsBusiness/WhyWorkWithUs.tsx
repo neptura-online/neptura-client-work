@@ -7,6 +7,7 @@ import {
   FiArrowRight,
 } from "react-icons/fi";
 import { motion } from "framer-motion";
+import type { OpenFormProps } from "../types/type";
 
 const items = [
   { icon: <FiUser size={32} />, label: "Business-Owner Mindset" },
@@ -16,7 +17,14 @@ const items = [
   { icon: <FiTrendingUp size={32} />, label: "ROI-Driven Approach" },
 ];
 
-export default function WhyWorkWithUsExact() {
+export default function WhyWorkWithUsExact({
+  setOpenForm,
+  setId,
+}: OpenFormProps) {
+  const handleClick = () => {
+    setOpenForm(true);
+    setId("hero lets work together");
+  };
   return (
     <section className="bg-white py-6">
       <div className="mx-auto max-w-360 px-3 lg:px-6">
@@ -66,7 +74,10 @@ export default function WhyWorkWithUsExact() {
               ))}
             </div>
 
-            <button className="mt-14 inline-flex items-center gap-2 rounded-lg bg-black px-8 py-3 text-white transition hover:bg-zinc-900">
+            <button
+              onClick={handleClick}
+              className="mt-14 inline-flex items-center gap-2 rounded-lg bg-black px-8 py-3 text-white transition hover:bg-zinc-900"
+            >
               Connect With Us
               <FiArrowRight />
             </button>

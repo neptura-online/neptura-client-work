@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
+import type { OpenFormProps } from "../types/type";
 
-export default function ResultsSection() {
+export default function ResultsSection({ setOpenForm, setId }: OpenFormProps) {
+  const handleClick = () => {
+    setOpenForm(true);
+    setId("hero lets work together");
+  };
   return (
     <section className="relative bg-zinc-100 py-10 lg:py-20">
       <div className="mx-auto max-w-350 px-3 lg:px-6">
@@ -94,7 +99,10 @@ export default function ResultsSection() {
               className="w-full max-w-2xl"
             />
 
-            <button className="group mt-10 inline-flex items-center gap-2 rounded-lg bg-black px-8 py-3 text-white transition hover:bg-zinc-900">
+            <button
+              onClick={handleClick}
+              className="group mt-10 inline-flex items-center gap-2 rounded-lg bg-black px-8 py-3 text-white transition hover:bg-zinc-900"
+            >
               Optimize My Marketing
               <FiArrowRight className="transition group-hover:translate-x-1" />
             </button>

@@ -218,7 +218,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 30, scale: 0.96 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="fixed left-1/2 top-1/2 z-60 w-[94%] max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-white px-6 py-8 sm:px-10 shadow-2xl"
+            className="fixed left-1/2 top-1/2 z-60 w-[94%] max-w-xl -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white px-4 py-6 shadow-2xl"
           >
             <button
               onClick={closeSubmit}
@@ -227,12 +227,11 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
               ✕
             </button>
 
-            <h3 className="text-2xl sm:text-3xl font-serif font-semibold text-center">
-              Let’s Get Started With a <br />
-              <span className="font-bold">FREE Business Audit</span>
+            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-center">
+              Let’s Get Started With a FREE Business
             </h3>
 
-            <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4">
+            <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-4">
               <input
                 name="name"
                 ref={firstInputRef}

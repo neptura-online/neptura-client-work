@@ -1,7 +1,15 @@
 import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
+import type { OpenFormProps } from "../types/type";
 
-export default function IndustriesHeroSection() {
+export default function IndustriesHeroSection({
+  setOpenForm,
+  setId,
+}: OpenFormProps) {
+  const handleClick = () => {
+    setOpenForm(true);
+    setId("hero lets work together");
+  };
   return (
     <section className="relative overflow-hidden bg-linear-to-br from-[#1A1421] via-[#12051a] to-[#2a0f30] pt-10 lg:pt-20 text-white">
       <div
@@ -45,7 +53,10 @@ export default function IndustriesHeroSection() {
               marketing strategies.
             </p>
 
-            <button className="group mt-10 inline-flex items-center gap-2 rounded-xl border border-white/70 px-8 py-3 text-sm transition hover:bg-white hover:text-black">
+            <button
+              onClick={handleClick}
+              className="group mt-10 z-10 inline-flex items-center gap-2 rounded-xl border border-white/70 px-8 py-3 text-sm transition hover:bg-white hover:text-black"
+            >
               Let’s Grow Together
               <FiArrowRight className="transition group-hover:translate-x-1" />
             </button>

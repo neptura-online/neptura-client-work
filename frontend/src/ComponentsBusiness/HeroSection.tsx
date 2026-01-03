@@ -2,8 +2,13 @@ import { motion } from "framer-motion";
 import { FaEnvelope } from "react-icons/fa";
 import { FiArrowRight, FiPhone } from "react-icons/fi";
 import { useTypewriter } from "../hooks/useTypewriter";
+import type { OpenFormProps } from "../types/type";
 
-const HeroSection = () => {
+const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
+  const handleClick = () => {
+    setOpenForm(true);
+    setId("hero lets work together");
+  };
   const typedText = useTypewriter();
   return (
     <section className="relative w-full overflow-hidden bg-zinc-950 text-white flex justify-center">
@@ -89,7 +94,10 @@ const HeroSection = () => {
               />
             </div>
 
-            <button className="group mt-8 inline-flex w-fit items-center gap-2 rounded-xl border border-white/30 px-6 py-3 text-sm transition hover:bg-white hover:text-black">
+            <button
+              onClick={handleClick}
+              className="group mt-8 inline-flex w-fit items-center gap-2 rounded-xl border border-white/30 px-6 py-3 text-sm transition hover:bg-white hover:text-black"
+            >
               Let’s Grow Together
               <FiArrowRight className="transition group-hover:translate-x-1" />
             </button>

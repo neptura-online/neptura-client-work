@@ -8,6 +8,7 @@ import {
   FiVolume2,
   FiArrowRight,
 } from "react-icons/fi";
+import type { OpenFormProps } from "../types/type";
 
 type Problem = {
   id: number;
@@ -43,7 +44,11 @@ const problems: Problem[] = [
   },
 ];
 
-export default function ProblemsSection() {
+export default function ProblemsSection({ setId, setOpenForm }: OpenFormProps) {
+  const handleClick = () => {
+    setOpenForm(true);
+    setId("hero lets work together");
+  };
   return (
     <section className="bg-zinc-100 py-14  lg:py-20">
       <div className="mx-auto max-w-350 px-6">
@@ -139,7 +144,10 @@ export default function ProblemsSection() {
           <p className="mb-6 text-lg text-zinc-700">
             But here’s the good news. We can fix that.
           </p>
-          <button className="inline-flex items-center gap-2 rounded-xl bg-black px-4 py-3 text-white transition hover:bg-zinc-900">
+          <button
+            onClick={handleClick}
+            className="inline-flex items-center gap-2 rounded-xl bg-black px-4 py-3 text-white transition hover:bg-zinc-900"
+          >
             Consult Our Marketing Experts
             <FiArrowRight />
           </button>

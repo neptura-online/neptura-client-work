@@ -27,7 +27,12 @@ const BusinessLead = () => {
         save={save}
       />
       <HeroSection setOpenForm={setOpenForm} setId={setId} />
-      <ProblemsSection setOpenForm={setOpenForm} setId={setId} />
+      <ProblemsSection
+        setOpenForm={setOpenForm}
+        setId={setId}
+        setSave={setSave}
+        setTriggerUrl={setTriggerUrl}
+      />
       <NumbersSection />
       <WhyWorkWithUs setOpenForm={setOpenForm} setId={setId} />
       <CaseStudies />

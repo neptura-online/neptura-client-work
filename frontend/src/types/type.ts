@@ -23,7 +23,7 @@ export type InfiniteColumnProps = {
 export type OpenFormProps = {
   setId: React.Dispatch<React.SetStateAction<string>>;
   setSave?: React.Dispatch<React.SetStateAction<string>>;
-  settriggerUrl?: React.Dispatch<React.SetStateAction<string>>;
+  setTriggerUrl?: React.Dispatch<React.SetStateAction<string>>;
   setOpenForm: React.Dispatch<React.SetStateAction<boolean>>;
 };
 

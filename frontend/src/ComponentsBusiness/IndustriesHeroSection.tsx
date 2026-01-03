@@ -5,11 +5,20 @@ export default function IndustriesHeroSection() {
   return (
     <section className="relative overflow-hidden bg-linear-to-br from-[#1A1421] via-[#12051a] to-[#2a0f30] pt-10 lg:pt-20 text-white">
       <div
-        className="absolute inset-0 opacity-50"
+        className="absolute inset-0 opacity-80"
         style={{
           backgroundImage: "url('/business/pattern.svg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
+        }}
+      />
+      <div
+        className="absolute inset-0 opacity-70 -bottom-60"
+        style={{
+          backgroundImage: "url('/business/Shape2.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "contain",
         }}
       />
       <div className="mx-auto max-w-350 px-3 lg:px-6 ">

@@ -25,7 +25,7 @@ export default function ConversionPhilosophy({
           <Heading white="We don't create" yellow="pretty pages." />
 
           <p className="mt-6 text-base text-zinc-300">
-            Our landing pages are engineered with one goal in mind —
+            Our Landing Pages are built with one goal in mind:
             <span className="text-white font-medium uppercase">
               {" "}
               conversion!{" "}
@@ -54,17 +54,23 @@ export default function ConversionPhilosophy({
             </motion.div>
           ))}
         </div>
+        <div className="mx-auto mt-10 max-w-2xl text-center">
+          <p className="text-sm text-stone-300 ">
+            We combine design psychology + persuasive copywriting + performance
+            marketing to build pages that convert like crazy.
+          </p>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mx-auto mt-8 max-w-3xl text-center"
+          className="mx-auto max-w-3xl text-center"
         >
           <button
             onClick={triggerButton}
-            className="md:mt-8 rounded-2xl bg-yellow-400 px-6 py-3 font-semibold text-black transition hover:scale-[1.03] text-sm"
+            className="mt-8 rounded-2xl bg-yellow-400 px-6 py-3 font-semibold text-black transition hover:scale-[1.03] text-sm"
           >
             Build Pages That Are Lead Magnets
           </button>

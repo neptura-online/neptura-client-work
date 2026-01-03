@@ -25,13 +25,15 @@ const SERVICES: ServiceItem[] = [
     image: "/assets/one.webp",
     icon: <FiSettings />,
     points: [
-      "Paid Gravity Forms addon",
-      "Advanced fields & multi-step logic",
+      "Paid Gravity Forms addon integration",
+      "Advanced fields and multi-step logic",
       "Multiple enquiry forms setup",
-      "Individual email alerts",
+      "Individual email alerts for each form",
       "Full form validation",
       "Google Sheet lead sync",
-      "Popup & exit-intent forms",
+      "Instant email notifications",
+      "Button-triggered popup forms",
+      "Page-load & exit-intent popup forms",
       "Thank You Pages (Static + Dynamic)",
     ],
   },
@@ -41,10 +43,9 @@ const SERVICES: ServiceItem[] = [
     icon: <FiTrendingUp />,
     points: [
       "Live Chat Bot setup",
-      "WhatsApp Click-to-Chat",
+      "WhatsApp Click-to-Chat integration",
       "Sticky CTAs",
-      "Multiple CTA placements",
-      "Scroll-depth optimization",
+      "Multiple CTA placements optimized by scroll-depth",
     ],
   },
   {
@@ -53,9 +54,9 @@ const SERVICES: ServiceItem[] = [
     icon: <FiZap />,
     points: [
       "Fully mobile responsive",
-      "Minified CSS & JS",
-      "Lazy loading strategy",
-      "High PageSpeed score",
+      "Minified CSS/JS",
+      "Lazy loading",
+      "High page speed score",
     ],
   },
   {
@@ -64,10 +65,12 @@ const SERVICES: ServiceItem[] = [
     icon: <FiActivity />,
     points: [
       "Full UTM tracking",
-      "Campaign & URL tracking",
-      "Button & form tracking",
+      "Page URL & Campaign Name Tracking",
+      "CRM data mapping",
+      "Button click tracking",
+      "Form submission tracking",
       "WhatsApp click tracking",
-      "GA4, GTM, FB Pixel, CAPI",
+      "GA4, GTM, FB Pixel, CAPI setup",
     ],
   },
   {
@@ -79,7 +82,7 @@ const SERVICES: ServiceItem[] = [
       "HubSpot",
       "LeadSquared",
       "Pabbly Connect",
-      "Webhooks & automation",
+      "Webhooks & automation setup",
     ],
   },
   {
@@ -89,9 +92,9 @@ const SERVICES: ServiceItem[] = [
     points: [
       "SEO-friendly structure",
       "Custom meta tags",
-      "OG tags",
+      "OG tags for social sharing",
       "Schema Markup",
-      "Image alt optimization",
+      "Alt tags for all images",
     ],
   },
   {
@@ -101,7 +104,7 @@ const SERVICES: ServiceItem[] = [
     points: [
       "Google reCAPTCHA v2/v3",
       "Advanced spam filtering",
-      "Form security rules",
+      "Form security settings",
     ],
   },
   {
@@ -110,8 +113,11 @@ const SERVICES: ServiceItem[] = [
     icon: <FiUploadCloud />,
     points: [
       "Domain & hosting access",
-      "DNS & SSL setup",
-      "Email SMTP configuration",
+      "Subdomain creation",
+      "DNS configuration",
+      "SSL installation",
+      "Email SMTP setup",
+      "Google reCAPTCHA API setup",
       "Pre-launch backups",
       "Final deployment & testing",
     ],

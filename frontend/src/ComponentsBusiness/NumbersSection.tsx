@@ -16,12 +16,21 @@ export default function NumbersSection() {
   return (
     <section className="relative overflow-hidden bg-[#1A1421] py-14 lg:py-24 text-white">
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-90  rotate-2"
+        style={{
+          backgroundImage: "url('/business/dotted-map.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "contain",
+        }}
+      />
+      <div
+        className="absolute inset-0 opacity-40 -bottom-60"
         style={{
           backgroundImage: "url('/business/Shape2.png')",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
-          backgroundSize: "cover",
+          backgroundSize: "contain",
         }}
       />
 

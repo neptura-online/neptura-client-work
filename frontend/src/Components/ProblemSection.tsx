@@ -46,13 +46,18 @@ const ProblemSection = ({
           ))}
         </motion.div>
 
-        <div className="mx-auto mt-16 max-w-3xl text-center">
-          <p className="text-base text-stone-300 ">
+        <div className="mx-auto mt-10 max-w-3xl text-center">
+          <p className="text-sm text-stone-300 ">
+            As a result, the visitor leaves within seconds without submitting
+            enquiry!
+          </p>
+
+          <p className="mt-3 text-base text-stone-300 ">
             But here’s the good news. We can fix that.
           </p>
         </div>
 
-        <div className="mt-12 flex justify-center">
+        <div className="mt-8 flex justify-center">
           <button
             onClick={triggerButton}
             className="rounded-2xl bg-yellow-500 px-6 py-3 text-sm font-semibold text-black transition hover:scale-105 hover:bg-yellow-400 lg:text-md"

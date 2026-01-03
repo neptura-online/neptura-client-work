@@ -35,39 +35,43 @@ export const navLinks = [
 export const steps = [
   {
     title: "Understanding Business & Offer",
-    desc: "We dig into product USPs, audience pain points, and objections to define what the landing page must solve.",
+    desc: "We dig into product USPs, audience pain points, and objections to build core elements that a landing page must solve.",
   },
   {
     title: "Preparing Winning Narrative",
-    desc: "Messaging that is emotional, logical, and structured like a funnel to move users from awareness to action.",
+    desc: "Messaging that is emotional, logical, and structured like a funnel to guide visitors from awareness to action in seconds.",
   },
   {
     title: "High-Converting Design",
-    desc: "UI/UX that reduces friction, improves clarity, and builds trust — especially for paid traffic.",
+    desc: "UI/UX that reduces friction, boosts clarity, and enhances trust especially for paid traffic.",
   },
   {
     title: "Advanced Form Engineering",
-    desc: "Conditional logic, hidden fields, tracking, popups, and multi-form flows optimized for lead generation.",
+    desc: "Conditional logic, hidden fields, tracking, multiple forms, popups, everything optimized for quick lead generations.",
   },
   {
     title: "Full Technical Setup",
-    desc: "UTM tracking, GA4, GTM, Pixel, CAPI, CRM integration, schema, security, and performance optimization.",
+    desc: "UTM tracking, GA4, GTM, FB Pixel, CAPI, CRM integration, schema, security, faster load, everything your conversions depend on.",
   },
   {
     title: "Continuous Optimization",
-    desc: "Post-launch tracking, behavior analysis, and refinements to maximize conversion rates.",
+    desc: "After launch, we track behaviour and refine the page for max conversions.",
   },
 ];
 
 export const problems = [
-  { id: 1, text: "Confusing layouts", icon: FiLayout },
+  { id: 1, text: "Confusing or cluttered layouts.", icon: FiLayout },
   { id: 2, text: "Slow loading time", icon: FiClock },
   { id: 3, text: "No clear Call To Action", icon: FiTarget },
-  { id: 4, text: "Weak messaging", icon: FiMessageSquare },
+  {
+    id: 4,
+    text: "Weak messaging that doesn’t connect.",
+    icon: FiMessageSquare,
+  },
   { id: 5, text: "Information overload", icon: FiLayers },
   { id: 6, text: "Poor mobile experience", icon: FiSmartphone },
-  { id: 7, text: "No trust-building", icon: FiShield },
-  { id: 8, text: "No way to capture data", icon: FiBarChart2 },
+  { id: 7, text: "No trust-building elements", icon: FiShield },
+  { id: 8, text: "Not able to capture analizable data", icon: FiBarChart2 },
 ];
 
 export const ITEMS = [
@@ -108,10 +112,6 @@ export const pillars = [
     icon: FiTrendingUp,
   },
   {
-    title: "Fast-Loading, Mobile-Optimized Pages",
-    icon: FiZap,
-  },
-  {
     title: "Behavioural UX + UI Design",
     icon: FiShield,
   },
@@ -124,13 +124,18 @@ export const pillars = [
     icon: FiRepeat,
   },
   {
-    title: "Ad-to-Landing Page Relevance Matching",
-    icon: FiRepeat,
-  },
-  {
     title: "Tracking, Analytics & Pixel Setup",
     icon: FiRepeat,
   },
+  {
+    title: "Fast-Loading, Mobile-Optimized Pages",
+    icon: FiZap,
+  },
+  {
+    title: "Ad-to-Landing Page Relevance Matching",
+    icon: FiRepeat,
+  },
+
   {
     title: "A/B Testing for Continuous Improvement",
     icon: FiRepeat,
@@ -147,16 +152,16 @@ export const landingProblems = [
     text: "Your ad budget burns with no ROI",
   },
   {
-    icon: HiOutlineTrendingDown,
-    text: "Competitors capture the same leads",
+    icon: HiOutlineChartBar,
+    text: "You lose revenue opportunities that should have been yours",
   },
   {
     icon: HiOutlineUsers,
     text: "Your sales team remains under-utilized",
   },
   {
-    icon: HiOutlineChartBar,
-    text: "Revenue opportunities slip away",
+    icon: HiOutlineTrendingDown,
+    text: "Competitors grab the same leads because their pages convert better",
   },
 ];
 
@@ -222,27 +227,27 @@ export const counterData = [
 
 export const services = [
   {
-    title: "Google Ads",
+    title: "Google Ads (Lead Gen + E-com)",
     desc: "Precision-targeted campaigns for Lead Gen & E-com growth.",
     icon: "📈",
   },
   {
-    title: "Meta Ads",
+    title: "Meta Ads (Lead Gen + E-com)",
     desc: "Scaling brands via high-converting social media strategies.",
     icon: "👥",
   },
   {
-    title: "SEO",
+    title: "Search Engine Optimization (SEO)",
     desc: "Organic search dominance to drive sustainable traffic.",
     icon: "🔍",
   },
   {
-    title: "Web Design",
+    title: "Website Design & Development ",
     desc: "High-converting UI/UX built to turn visitors into leads.",
     icon: "💻",
   },
   {
-    title: "AI WhatsApp",
+    title: "Generative AI Powered WhatsApp Marketing ",
     desc: "Automated generative AI for 24/7 customer engagement.",
     icon: "💬",
   },
@@ -252,7 +257,7 @@ export const services = [
     icon: "⚙️",
   },
   {
-    title: "LinkedIn Mgmt",
+    title: "LinkedIn Management & Lead Generation",
     desc: "B2B authority building and executive lead generation.",
     icon: "🔗",
   },
@@ -262,7 +267,7 @@ export const services = [
     icon: "📧",
   },
   {
-    title: "Automation",
+    title: "Business Automation",
     desc: "Streamline workflows and eliminate manual tasks.",
     icon: "⚡",
   },
@@ -274,7 +279,7 @@ export const caseStudies = [
     metric: "30%",
     metricLabel: "Qualified Lead",
     description:
-      "Scaled Meta Ads for a real estate client from ₹30K/month with 26% qualification to ₹4L/month with 30% qualified leads through strategic targeting and optimization.",
+      "Scaled Ads for a real estate client from ₹30K/month with 13% qualification to ₹4L/month with 30% qualified leads through strategic targeting and optimization.",
     highlight: true,
   },
   {
@@ -289,14 +294,14 @@ export const caseStudies = [
     metric: "54%",
     metricLabel: "Quality Rate",
     description:
-      "Improved 20k+ qualified leads/month at 54% quality rate with approximate revenue of ₹1.5Cr/month over 2+ years.",
+      "Optimized Google & Meta for a laminates brand, improving 20k+ qualified leads/month at 54% quality rate and approximate revenue of 1.5Cr/Month over 2+ years.",
   },
   {
     title: "Interior Surface Solutions",
     metric: "20+",
     metricLabel: "ROAS",
     description:
-      "Scaled ads from ₹5K to ₹3L/month generating 20+ ROAS in 18 months using Meta & Google Ads.",
+      "Launched and scaled a new wall panel & interior brand's Ads spend from 5k to ₹3L/month while generating 20+ ROAS in 18 months using Meta and Google Ads.",
     darkPreview: true,
   },
   {
@@ -304,35 +309,35 @@ export const caseStudies = [
     metric: "2K+",
     metricLabel: "Organic Clicks",
     description:
-      "Ranked top SERP for Silver Wedding Gift & Furniture with 2K+ monthly organic clicks in 9 months.",
+      "Ranked silver gifting brand on top SERP for “Silver Wedding Gift” & “Silver Furniture” with 2K+ highly relevant monthly organic clicks and improved page quality metrics in 9 months.",
   },
   {
     title: "Pipe Manufacturer",
     metric: "30%",
     metricLabel: "Conversion",
     description:
-      "Scaled international leads from 1 to 36 at ₹33K spend with 30% quality conversion & ₹30L+ closures.",
+      "For a hardware brand targeting international markets, we scaled leads from 1 to 36 at ₹33K spend via Meta Ads, achieving 30% quality conversion and ₹30L+ in closures.",
   },
   {
     title: "USA Based D2C Apparel Brand",
     metric: "USA",
     metricLabel: "Brand",
     description:
-      "Scaled Meta Ads from $2K & 1.9 ROAS to $5K spend & 4.0 ROAS in the USA market.",
+      "Scaled the clothing brand’s Meta Ads in USA Market from $2K Monthly spend & 1.9 ROAS to $5K ",
   },
   {
     title: "Real Estate Delhi NCR",
     metric: "1K+",
     metricLabel: "Leads",
     description:
-      "Generated 1000+ leads/month at ₹250 CPL with 30% qualification using Meta & Google Ads.",
+      "Generated 1000+ monthly leads at ₹250 CPL for a Delhi NCR real estate client through Meta & Google.",
   },
   {
     title: "Copperware Manufacturer",
     metric: "ROAS",
     metricLabel: "BOOST",
     description:
-      "Scaled ad spend from ₹30K to ₹6.5L/month while boosting ROAS from 3.2 to 7.3.",
+      "Scaled a copperware manufacturer’s ad spend from ₹30K to ₹6.5L per month while boosting ",
   },
 ];
 

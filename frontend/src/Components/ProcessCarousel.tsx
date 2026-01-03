@@ -130,7 +130,7 @@ const ProcessCarousel = () => {
                   className="h-38 w-full rounded-t-2xl object-cover"
                 />
 
-                <div className="p-6 text-center">
+                <div className="p-4 text-center">
                   <h3 className="text-md font-semibold font-serif text-yellow-500">
                     {step.title}
                   </h3>

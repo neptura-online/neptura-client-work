@@ -55,11 +55,7 @@ export const Testimonials = () => {
   return (
     <section className="relative overflow-hidden bg-zinc-950 py-10 my-10">
       <div className="relative text-center max-w-7xl mx-auto px-6 z-20">
-        <Heading
-          white="Client"
-          yellow="Testimonials
-"
-        />
+        <Heading white="Client Success " yellow="Stories & Testimonials" />
       </div>
 
       <div className="relative mx-5 sm:mx-auto max-w-6xl px-6">

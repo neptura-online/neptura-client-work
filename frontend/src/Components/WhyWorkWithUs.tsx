@@ -18,20 +18,15 @@ export default function WhyWorkWithUs({ setId, setOpenForm }: OpenFormProps) {
         <div className="grid gap-20 lg:grid-cols-2">
           <div className="max-w-xl">
             <h2 className="text-3xl font-serif font-medium leading-[1.5em] md:text-5xl">
-              Why Your Business Should Work{" "}
-              <span className="text-yellow-400">With Us?</span>
+              Why Work <span className="text-yellow-400">With Us?</span>
             </h2>
 
             <p className="mt-8 text-base text-stone-300">
-              You don’t need another vendor.
-              <br />
               You deserve a partner who understands your challenges and is
-              committed to your success. Here's what sets us apart:
+              committed to your success.
             </p>
 
-            <p className="mt-6 text-stone-400">
-              That’s how we work. Quietly. Precisely. Effectively.
-            </p>
+            <p className="mt-6 text-stone-400">Here's what sets us apart:</p>
           </div>
 
           <div className="relative hidden lg:block">
@@ -39,7 +34,7 @@ export default function WhyWorkWithUs({ setId, setOpenForm }: OpenFormProps) {
 
             <div
               className="
-                flex max-h-95 flex-col gap-5 overflow-y-auto pr-5 pl-5
+                flex max-h-70 flex-col gap-5 overflow-y-auto pr-5 pl-5
                 scrollbar-hide
               "
             >
@@ -55,22 +50,18 @@ export default function WhyWorkWithUs({ setId, setOpenForm }: OpenFormProps) {
                       scale: isActive ? 1.02 : 0.98,
                     }}
                     transition={{ duration: 0.35, ease: "easeOut" }}
-                    className={`rounded-3xl p-4 backdrop-blur
+                    className={`rounded-3xl p-4 backdrop-blur flex items-center gap-4
                       ${
                         isActive
                           ? "bg-stone-900/80 shadow-2xl"
                           : "bg-stone-900/40"
                       }`}
                   >
-                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-stone-800 text-yellow-400">
+                    <div className=" flex h-10 w-10 items-center justify-center rounded-xl bg-stone-800 text-yellow-400">
                       <item.icon className="text-lg" />
                     </div>
 
-                    <h3 className="mb-2 text-base font-medium">{item.title}</h3>
-
-                    <p className="max-w-md text-sm text-stone-400">
-                      {item.desc}
-                    </p>
+                    <h2 className=" text-xl font-medium">{item.title}</h2>
                   </motion.div>
                 );
               })}
@@ -86,15 +77,13 @@ export default function WhyWorkWithUs({ setId, setOpenForm }: OpenFormProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="rounded-3xl bg-stone-900/60 p-7"
+              className="rounded-3xl bg-stone-900/60 p-4 flex gap-4 items-center"
             >
-              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-stone-800 text-yellow-400">
+              <div className=" flex h-11 w-11 items-center justify-center rounded-xl bg-stone-800 text-yellow-400">
                 <item.icon />
               </div>
 
               <h3 className="mb-2 text-lg font-medium">{item.title}</h3>
-
-              <p className="text-stone-400">{item.desc}</p>
             </motion.div>
           ))}
         </div>

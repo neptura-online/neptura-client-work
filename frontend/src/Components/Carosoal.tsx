@@ -71,13 +71,6 @@ const CarouselCard = memo(
               >
                 {service.title}
               </h3>
-              <p
-                className={`text-sm md:text-base font-medium leading-relaxed ${
-                  isActive ? "text-gray-400" : "text-gray-700"
-                }`}
-              >
-                {service.desc}
-              </p>
             </div>
 
             <div className="relative z-10 w-full flex justify-between items-center group">

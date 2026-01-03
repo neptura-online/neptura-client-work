@@ -31,7 +31,7 @@ const BusinessLead = () => {
         setOpenForm={setOpenForm}
         setId={setId}
         setSave={setSave}
-        setTriggerUrl={setTriggerUrl}
+        settriggerUrl={setTriggerUrl}
       />
       <NumbersSection />
       <WhyWorkWithUs setOpenForm={setOpenForm} setId={setId} />

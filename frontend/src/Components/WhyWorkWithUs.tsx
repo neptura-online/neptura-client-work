@@ -12,16 +12,16 @@ export default function WhyWorkWithUs({ setId, setOpenForm }: OpenFormProps) {
   };
 
   return (
-    <section className="relative bg-stone-950 py-10 md:py-20 text-white">
+    <section className="relative bg-stone-950 py-10 text-white">
       <div className="pointer-events-none absolute inset-0 z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-8 " />
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-20 lg:grid-cols-2">
           <div className="max-w-xl">
-            <h2 className="text-3xl font-serif font-medium leading-[1.5em] md:text-5xl">
+            <h2 className="text-3xl font-serif font-medium leading-[1.5em] md:text-6xl">
               Why Work <span className="text-yellow-400">With Us?</span>
             </h2>
 
-            <p className="mt-8 text-base text-stone-300">
+            <p className="mt-8 text-lg text-stone-300">
               You deserve a partner who understands your challenges and is
               committed to your success.
             </p>

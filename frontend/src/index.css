@@ -10,7 +10,7 @@
 @font-face {
   font-family: "Figtree";
   src: url("/fonts/figtree/Figtree.ttf") format("truetype");
-  font-size: 500;
+  font-weight: 500;
   font-display: swap;
 }
 
@@ -24,8 +24,4 @@
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
-}
-
-@theme {
-  --color-yellow-emarketing: #ffaa17;
 }

@@ -17,6 +17,7 @@
 :root {
   --font-sans: "Figtree", sans-serif;
   --font-serif: "Merriweather", serif;
+  --yellow-emarketing: #ffaa17;
 }
 
 .scrollbar-hide {

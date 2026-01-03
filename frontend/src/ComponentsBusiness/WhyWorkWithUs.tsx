@@ -27,8 +27,8 @@ export default function WhyWorkWithUsExact({
   };
   return (
     <section className="bg-white py-6">
-      <div className="mx-auto max-w-360 px-3 lg:px-6">
-        <div className="flex flex-col-reverse items-start gap-14 lg:flex-row">
+      <div className="mx-auto max-w-360 px-3 md:px-6">
+        <div className="flex flex-col-reverse items-center lg:items-start gap-14 lg:flex-row">
           <div className="relative">
             <div className="pt-4 pl-1 relative overflow-hidden rounded-[28px]">
               <img
@@ -63,8 +63,8 @@ export default function WhyWorkWithUsExact({
             />
           </div>
 
-          <div className="mt-4 flex flex-col items-center sm:items-start">
-            <h2 className="font-serif font-semibold text-3xl md:text-5xl">
+          <div className="mt-4 flex flex-col items-center lg:items-start">
+            <h2 className="font-serif font-semibold text-3xl md:text-[45px]">
               Why Work With Us?
             </h2>
 
@@ -81,7 +81,7 @@ export default function WhyWorkWithUsExact({
 
               {items.map((item, i) => (
                 <div key={i} className="text-center">
-                  <div className="mx-auto relative flex h-25 w-25 items-center justify-center rounded-full bg-zinc-900 text-yellow-emarketing z-20">
+                  <div className="mx-auto relative flex h-25 w-25 items-center justify-center rounded-full bg-zinc-900 text-(--yellow-emarketing) z-20">
                     {item.icon}
                   </div>
                   <p className="mt-4 font-medium text-zinc-900">{item.label}</p>

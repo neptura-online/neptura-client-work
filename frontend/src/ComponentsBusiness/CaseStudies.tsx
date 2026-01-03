@@ -80,7 +80,7 @@ export default function CaseStudies() {
     <section className="relative bg-[#160a1f] py-24">
       <div className="mx-auto max-w-360 px-6">
         <div className="text-center">
-          <h2 className="font-serif text-3xl md:text-5xl text-white">
+          <h2 className="font-serif text-3xl md:text-[45px] text-white">
             Real Case Studies,{" "}
             <span className="text-yellow-400">Real ROAS</span>
           </h2>

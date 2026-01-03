@@ -22,7 +22,7 @@ export default function ResultsSection({ setOpenForm, setId }: OpenFormProps) {
             Achieve Real Results
           </span>
 
-          <h2 className="mt-6 font-serif text-3xl md:text-5xl">
+          <h2 className="mt-6 font-serif text-4xl md:text-[45px]">
             We Can Achieve Real Results For Your Business!
           </h2>
 

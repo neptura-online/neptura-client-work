@@ -10,9 +10,9 @@ export default function FinalCTASection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:w-[60%]"
+            className="lg:w-[55%] flex items-center lg:items-start flex-col"
           >
-            <h2 className="font-serif text-4xl font-semibold md:text-5xl">
+            <h2 className="font-serif text-3xl font-medium md:text-4xl text-center lg:text-start px-6 lg:px-0">
               Time to Stop Losing Business to Competitors!
             </h2>
 
@@ -22,12 +22,12 @@ export default function FinalCTASection() {
               Start with our <span className="font-semibold">FREE Audit</span>
             </p>
 
-            <span className="mt-6 inline-flex items-center gap-2 rounded-xl bg-yellow-50 px-4 py-2 text-sm text-yellow-700">
+            <span className="mt-6 inline-flex items-center gap-2 rounded-xl bg-yellow-50 px-4 py-2 text-sm text-yellow-700 w-fit">
               <span className="h-2 w-2 rounded-full bg-yellow-500" />
               We guarantee a
             </span>
 
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2 min-w-80 sm:min-w-170 lg:min-w-200">
               <div className="overflow-hidden rounded-3xl bg-linear-to-br p-8 text-black bg-[url('/business/donut.webp')] h-fit ">
                 <div className="text-6xl font-extrabold">15%</div>
                 <div className="mt-2 text-xl font-semibold">ROAS</div>
@@ -50,9 +50,9 @@ export default function FinalCTASection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-3xl bg-white p-8 shadow-xl lg:w-[35%]"
+            className="rounded-3xl bg-white p-8 shadow-xl lg:w-[40%]"
           >
-            <h3 className="font-serif text-3xl lg:text-4xl font-semibold">
+            <h3 className="font-serif text-2xl lg:text-[34px] font-semibold">
               Fill The Form, Let’s Talk Growth.
             </h3>
 
@@ -92,7 +92,7 @@ export default function FinalCTASection() {
       </div>
 
       <div className=" bg-[#1A1421] py-4 flex justify-center w-screen ">
-        <div className="w-full max-w-340 flex flex-col items-center justify-between gap-4 md:flex-row">
+        <div className="w-full max-w-340 flex flex-col items-center justify-between gap-4 lg:flex-row">
           <p className="text-xs text-white/90">
             © {new Date().getFullYear()} e-Marketing. All rights reserved.
           </p>

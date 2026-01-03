@@ -44,8 +44,8 @@ export default function MarketingServicesShowcase() {
         }}
       />
       <div className="text-center mb-6 lg:mb-14">
-        <h2 className="font-serif text-3xl md:text-5xl text-black">
-          Our 360° Digital Marketing Services
+        <h2 className="font-serif text-3xl md:text-[45px] text-black">
+          Our 360° <strong> Digital Marketing Services</strong>
         </h2>
         <div className="mx-auto mt-4 h-0.5 w-24 bg-black/80" />
       </div>

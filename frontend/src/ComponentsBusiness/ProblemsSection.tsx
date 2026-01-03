@@ -67,7 +67,7 @@ export default function ProblemsSection({ setId, setOpenForm }: OpenFormProps) {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-4xl font-serif font-medium md:text-5xl">
+          <h2 className="text-[35px] font-serif font-medium md:text-[45px]">
             The Real Problem Nobody Talks About
           </h2>
           <p className="mt-4 text-zinc-600 text-base">
@@ -77,7 +77,7 @@ export default function ProblemsSection({ setId, setOpenForm }: OpenFormProps) {
           <div className="mx-auto mt-6 h-0.5 w-20 bg-black" />
         </motion.div>
 
-        <div className="relative mt-10 hidden md:grid grid-cols-5 gap-10">
+        <div className="relative mt-10 hidden lg:grid grid-cols-5 gap-10">
           <svg
             className="absolute left-0 right-0 top-10 mx-auto w-full"
             height="40"
@@ -95,7 +95,7 @@ export default function ProblemsSection({ setId, setOpenForm }: OpenFormProps) {
 
           {problems.map((p) => (
             <div key={p.id} className="flex flex-col items-center text-center">
-              <div className="relative flex h-25 w-25 items-center justify-center rounded-full bg-yellow-emarketing text-black">
+              <div className="relative flex h-25 w-25 items-center justify-center rounded-full bg-(--yellow-emarketing) text-black">
                 {p.icon}
                 <span className="absolute -top-2 -right-2 flex h-9 w-9 items-center justify-center rounded-full bg-white text-md font-bold shadow italic text-[#071E31]">
                   {p.id}.
@@ -106,7 +106,7 @@ export default function ProblemsSection({ setId, setOpenForm }: OpenFormProps) {
           ))}
         </div>
 
-        <div className="relative mt-16 grid grid-cols-2 gap-x-6 gap-y-6 md:hidden">
+        <div className="relative mt-16 grid grid-cols-2 gap-x-6 gap-y-6 lg:hidden">
           <svg
             className="absolute left-1/2 top-0 h-full -translate-x-1/2"
             width="2"
@@ -131,7 +131,7 @@ export default function ProblemsSection({ setId, setOpenForm }: OpenFormProps) {
                 i === problems.length - 1 ? "col-span-2" : ""
               }`}
             >
-              <div className="relative flex h-18 w-18 items-center justify-center rounded-full bg-yellow-emarketing text-black">
+              <div className="relative flex h-18 w-18 items-center justify-center rounded-full bg-(--yellow-emarketing) text-black">
                 {p.icon}
                 <span className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-xs font-semibold shadow italic text-[#071E31]">
                   {p.id}.

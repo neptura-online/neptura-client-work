@@ -47,7 +47,7 @@ export default function NumbersSection() {
             Promises Mean Nothing!
           </span>
 
-          <h2 className="mt-6 font-serif text-4xl md:text-5xl">
+          <h2 className="mt-6 font-serif text-4xl md:text-[45px]">
             So Here Are The Numbers You Can Trust.
           </h2>
 
@@ -64,7 +64,7 @@ export default function NumbersSection() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="rounded-2xl bg-white px-2 lg:px-8 py-4 lg:py-7 text-center shadow-xl"
             >
-              <div className="text-5xl font-bold text-yellow-emarketing md:text-6xl">
+              <div className="text-5xl font-bold text-(--yellow-emarketing) md:text-6xl">
                 {stat.value}
               </div>
               <p className="mt-3 text-base font-serif lg:text-lg font-semibold text-zinc-900 leading-[1.1em]">

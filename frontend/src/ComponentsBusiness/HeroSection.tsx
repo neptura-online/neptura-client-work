@@ -39,29 +39,29 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
               <FaEnvelope />
               Email ID@e-marketing.io
             </div>
-            <div className="flex items-center gap-2 rounded-xl bg-yellow-emarketing px-4 py-3 text-sm lg:text-base text-black">
+            <div className="flex items-center gap-2 rounded-xl bg-(--yellow-emarketing) px-4 py-3 text-sm lg:text-base text-black">
               <FiPhone />
               +91-9602694444
             </div>
           </div>
         </div>
 
-        <div className="relative z-10 mx-auto md:mx-4 flex gap-12 py-6 flex-col md:flex-row justify-between lg:px-16 lg:py-10">
+        <div className="relative z-10 mx-auto md:mx-4 flex gap-12 py-6 flex-col lg:flex-row justify-between lg:px-16 lg:py-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
             className="flex flex-col justify-start lg:w-[80%] px-6"
           >
-            <h1 className="text-4xl font-serif font-medium leading-tight md:text-[50px] ">
+            <h1 className="text-[35px] font-serif font-medium leading-tight md:text-[45px] ">
               Get More Leads. Close More Sales.
             </h1>
 
             <div className="mt-8 h-0.5 w-16 bg-white" />
 
-            <h2 className="mt-8 text-2xl font-serif font-semibold md:text-[42px]">
+            <h2 className="mt-8 text-2xl font-serif font-semibold md:text-[35px]">
               Grow Your{" "}
-              <span className="text-yellow-emarketing ">{typedText}</span>
+              <span className="text-(--yellow-emarketing)">{typedText}</span>
             </h2>
 
             <p className="my-8 text-xl  md:text-2xl text-zinc-300">
@@ -110,8 +110,8 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="flex justify-center lg:justify-end px-2"
           >
-            <div className="w-full lg:max-w-md rounded-3xl bg-white p-6 text-black shadow-2xl">
-              <h3 className="text-2xl lg:text-3xl font-bold leading-9 font-serif">
+            <div className="w-full lg:max-w-md rounded-3xl bg-white p-6 text-black shadow-2xl h-fit">
+              <h3 className="text-[22px] lg:text-[27px] font-semibold font-serif">
                 Let’s Get Started With a{" "}
                 <span className="font-extrabold">FREE</span> Business Audit
                 Worth <span className="font-extrabold">15,000</span> Today!

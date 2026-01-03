@@ -200,15 +200,11 @@ const App = () => {
   }, [users]);
 
   useEffect(() => {
-    if (window.location.href === `${import.meta.env.VITE_FRONTEND_URL}`) return;
-    if (
-      window.location.href ===
-      `${import.meta.env.VITE_FRONTEND_URL}/admin/login`
-    )
-      return;
-    fetchData();
-    fetchUserData();
-    fetchPartialData();
+    if (window.location.href === `${import.meta.env.VITE_FRONTEND_URL}/admin`) {
+      fetchData();
+      fetchUserData();
+      fetchPartialData();
+    }
   }, []);
 
   useEffect(() => {}, []);

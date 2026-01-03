@@ -17,7 +17,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
       <div
         className="absolute inset-0 opacity-80"
         style={{
-          backgroundImage: "url('/business/banner.png')",
+          backgroundImage: "url('/business/banner.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -30,6 +30,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
               src="/assets/logowhite.webp"
               alt="Logo"
               className="h-15 md:h-20 w-auto"
+              loading="lazy"
             />
           </div>
 
@@ -78,17 +79,17 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
 
             <div className="mt-8 flex flex-wrap items-center gap-2 md:gap-4">
               <img
-                src="/business/meta.png"
+                src="/business/meta.webp"
                 alt="Meta"
                 className="h-8 lg:h-16 rounded-sm"
               />
               <img
-                src="/business/google.png"
+                src="/business/google.webp"
                 alt="Google"
                 className="h-8 lg:h-16 rounded-sm"
               />
               <img
-                src="/business/whatsapp.png"
+                src="/business/whatsapp.webp"
                 alt="WhatsApp"
                 className="h-8 lg:h-16 rounded-sm"
               />

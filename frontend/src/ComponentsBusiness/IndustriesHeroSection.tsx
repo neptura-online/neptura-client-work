@@ -23,7 +23,7 @@ export default function IndustriesHeroSection({
       <div
         className="absolute inset-0 opacity-70 -bottom-60"
         style={{
-          backgroundImage: "url('/business/Shape2.png')",
+          backgroundImage: "url('/business/shape2.webp')",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "contain",
@@ -71,7 +71,7 @@ export default function IndustriesHeroSection({
           >
             <div className="relative">
               <img
-                src="/business/scale.png"
+                src="/business/scale.webp"
                 alt="Mobile marketing preview"
                 className="relative z-10 w-80 md:w-[320px] lg:w-270"
               />

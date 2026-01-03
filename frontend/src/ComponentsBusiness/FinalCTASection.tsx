@@ -28,13 +28,13 @@ export default function FinalCTASection() {
             </span>
 
             <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div className="overflow-hidden rounded-3xl bg-linear-to-br p-8 text-black bg-[url('/business/donut.png')] h-fit ">
+              <div className="overflow-hidden rounded-3xl bg-linear-to-br p-8 text-black bg-[url('/business/donut.webp')] h-fit ">
                 <div className="text-6xl font-extrabold">15%</div>
                 <div className="mt-2 text-xl font-semibold">ROAS</div>
                 <p className="mt-1 text-sm opacity-80">improvement</p>
               </div>
 
-              <div className="overflow-hidden rounded-3xl bg-linear-to-br from-pink-200 via-pink-300 to-rose-300 p-8 text-black bg-[url('/business/graphu.png')]">
+              <div className="overflow-hidden rounded-3xl bg-linear-to-br from-pink-200 via-pink-300 to-rose-300 p-8 text-black bg-[url('/business/graph.webp')]">
                 <h3 className="text-3xl font-bold leading-tight">
                   Custom <br /> Strategy
                 </h3>

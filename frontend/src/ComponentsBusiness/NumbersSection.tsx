@@ -18,7 +18,7 @@ export default function NumbersSection() {
       <div
         className="absolute inset-0 opacity-90  rotate-2"
         style={{
-          backgroundImage: "url('/business/dotted-map.png')",
+          backgroundImage: "url('/business/dotted-map.webp')",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "contain",
@@ -27,7 +27,7 @@ export default function NumbersSection() {
       <div
         className="absolute inset-0 opacity-40 -bottom-60"
         style={{
-          backgroundImage: "url('/business/Shape2.png')",
+          backgroundImage: "url('/business/shape2.webp')",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "contain",

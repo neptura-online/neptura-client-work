@@ -4,10 +4,10 @@ import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 
 const services = [
   "/business/google-ads.webp",
-  "/business/meta.webp",
+  "/business/meta-ads.webp",
   "/business/search-engine.webp",
   "/business/website.webp",
-  "/business/whatsapp.webp",
+  "/business/whatsapp-marketing.webp",
 ];
 
 export default function MarketingServicesShowcase() {
@@ -82,7 +82,7 @@ export default function MarketingServicesShowcase() {
         })}
 
         <motion.img
-          src="/business/iframe.png"
+          src="/business/iframe.webp"
           alt="Phone"
           className="relative z-30 h-110 w-60 md:h-130 md:w-70 drop-shadow-[0_40px_80px_rgba(0,0,0,0.25)] pointer-events-none"
         />

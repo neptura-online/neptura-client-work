@@ -23,7 +23,6 @@ const cases: CaseStudy[] = [
     description:
       "Increased sales by scaling from 3K AED spend & 1.7 ROAS to 12K AED spend & 4 ROAS using Meta & Google Ads.",
     highlight: true,
-    images: ["/case/report-1.png", "/case/report-2.png"],
   },
   {
     title: "Laminate Manufacturer",

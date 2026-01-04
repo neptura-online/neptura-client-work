@@ -47,7 +47,7 @@ const InfiniteColumn = ({ items, duration = 20 }: InfiniteColumnProps) => {
   );
 };
 
-export const Testimonials = () => {
+const Testimonials = () => {
   const firstColumn = testimonials.slice(0, 3);
   const secondColumn = testimonials.slice(3, 6);
   const thirdColumn = testimonials.slice(6, 9);
@@ -73,3 +73,5 @@ export const Testimonials = () => {
     </section>
   );
 };
+
+export default Testimonials;

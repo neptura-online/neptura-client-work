@@ -1,33 +1,48 @@
-import { AuthoritySection } from "../Components/AuthoritySection";
-import ThreeDCarousel from "../Components/Carosoal";
-import CaseStudiesSection from "../Components/CaseStudySection";
-import Counter from "../Components/Counter";
-import FAQSection from "../Components/FAQQuestion";
-import Footer from "../Components/Footer";
-import OfferContainer from "../Components/OfferContainer";
-import ProblemSection from "../Components/ProblemSection";
-import { Testimonials } from "../Components/Testimonial";
-import ExitIntentWrapper from "../Components/Helper/ExitIntentWrapper";
-import { useState } from "react";
-import Form from "../Components/Helper/Form";
-import LandingProblemSection from "../Components/LandingProblemSection";
-import AdvancedServices from "../Components/AdvancedServices";
-import ConversionPhilosophy from "../Components/ConversionPhilosophy";
-import WhyWorkWithUs from "../Components/WhyWorkWithUs";
+import { useState, lazy, Suspense } from "react";
 import NavBar from "../Components/NavBar";
-import ProcessCarousel from "../Components/ProcessCarousel";
 import HeroSectionVideoBG from "../Components/Hero/HeroSectionVideoBG";
+import Form from "../Components/Helper/Form";
+
+/* Lazy imports */
+const ExitIntentWrapper = lazy(
+  () => import("../Components/Helper/ExitIntentWrapper")
+);
+
+const Counter = lazy(() => import("../Components/Counter"));
+const OfferContainer = lazy(() => import("../Components/OfferContainer"));
+const ProblemSection = lazy(() => import("../Components/ProblemSection"));
+const LandingProblemSection = lazy(
+  () => import("../Components/LandingProblemSection")
+);
+const ConversionPhilosophy = lazy(
+  () => import("../Components/ConversionPhilosophy")
+);
+const WhyWorkWithUs = lazy(() => import("../Components/WhyWorkWithUs"));
+const ProcessCarousel = lazy(() => import("../Components/ProcessCarousel"));
+const AdvancedServices = lazy(() => import("../Components/AdvancedServices"));
+const CaseStudiesSection = lazy(() => import("../Components/CaseStudySection"));
+const ThreeDCarousel = lazy(() => import("../Components/Carosoal"));
+const AuthoritySection = lazy(() => import("../Components/AuthoritySection"));
+const Testimonials = lazy(() => import("../Components/Testimonial"));
+const FAQSection = lazy(() => import("../Components/FAQQuestion"));
+const Footer = lazy(() => import("../Components/Footer"));
 
 const LandingPage = () => {
   const [openForm, setOpenForm] = useState(false);
-  const [id, setId] = useState<string>("");
-  const [triggerUrl, setTriggerUrl] = useState<string>(
+  const [id, setId] = useState("");
+  const [triggerUrl, setTriggerUrl] = useState(
     "https://digital.e-marketing.io/thank-you/"
   );
-  const [save, setSave] = useState<string>("");
+  const [save, setSave] = useState("");
+
   return (
     <>
-      <ExitIntentWrapper />
+      {/* Exit intent is non-critical */}
+      <Suspense fallback={null}>
+        <ExitIntentWrapper />
+      </Suspense>
+
+      {/* Form stays mounted */}
       <Form
         isOpen={openForm}
         onClose={() => setOpenForm(false)}
@@ -35,28 +50,38 @@ const LandingPage = () => {
         triggered={triggerUrl}
         save={save}
       />
+
+      {/* Critical UI */}
       <NavBar />
       <HeroSectionVideoBG setOpenForm={setOpenForm} setId={setId} />
-      <Counter />
-      <OfferContainer setOpenForm={setOpenForm} setId={setId} />
 
-      <ProblemSection
-        setOpenForm={setOpenForm}
-        setId={setId}
-        settriggerUrl={setTriggerUrl}
-        setSave={setSave}
-      />
-      <LandingProblemSection setOpenForm={setOpenForm} setId={setId} />
-      <ConversionPhilosophy setOpenForm={setOpenForm} setId={setId} />
-      <WhyWorkWithUs setOpenForm={setOpenForm} setId={setId} />
-      <ProcessCarousel />
-      <AdvancedServices />
-      <CaseStudiesSection setOpenForm={setOpenForm} setId={setId} />
-      <ThreeDCarousel setOpenForm={setOpenForm} setId={setId} />
-      <AuthoritySection setOpenForm={setOpenForm} setId={setId} />
-      <Testimonials />
-      <FAQSection />
-      <Footer />
+      {/* Everything below-the-fold */}
+      <Suspense fallback={null}>
+        <Counter />
+        <OfferContainer setOpenForm={setOpenForm} setId={setId} />
+
+        <ProblemSection
+          setOpenForm={setOpenForm}
+          setId={setId}
+          settriggerUrl={setTriggerUrl}
+          setSave={setSave}
+        />
+
+        <LandingProblemSection setOpenForm={setOpenForm} setId={setId} />
+        <ConversionPhilosophy setOpenForm={setOpenForm} setId={setId} />
+        <WhyWorkWithUs setOpenForm={setOpenForm} setId={setId} />
+
+        <ProcessCarousel />
+        <AdvancedServices />
+
+        <CaseStudiesSection setOpenForm={setOpenForm} setId={setId} />
+        <ThreeDCarousel setOpenForm={setOpenForm} setId={setId} />
+        <AuthoritySection setOpenForm={setOpenForm} setId={setId} />
+
+        <Testimonials />
+        <FAQSection />
+        <Footer />
+      </Suspense>
     </>
   );
 };

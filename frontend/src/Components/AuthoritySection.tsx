@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import type { OpenFormProps } from "../types/type";
 
-export function AuthoritySection({ setOpenForm, setId }: OpenFormProps) {
+export default function AuthoritySection({
+  setOpenForm,
+  setId,
+}: OpenFormProps) {
   const triggerButton = () => {
     setOpenForm(true);
     setId("book a call ceo");

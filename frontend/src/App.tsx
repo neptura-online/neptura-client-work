@@ -1,19 +1,22 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import LandingPage from "./Pages/LandingPage";
-import LeadDetails from "./Pages/LeadDetails";
-import { useEffect, useState } from "react";
-import type { Lead, User } from "./types/type";
-import AdminProtectedRoute from "./Components/Helper/AdminProtectedRoute";
-import AdminLogin from "./Pages/AdminLogin";
-import LeadDashboard from "./Pages/LeadDashBoard";
-import AdminDasBoard from "./Pages/AdminDasBoard";
-import AdminLayout from "./Layouts/AdminLayout";
-import ExportLeads from "./Pages/ExportLeads";
+import { lazy, Suspense, useEffect, useState } from "react";
 import axios from "axios";
-import UsersDashboard from "./Pages/UsersDashboard";
-import ProfilePage from "./Pages/ProfilePage";
-import PartialLeadDashboard from "./Pages/PartialLeadDashBoard";
-import BusinessLead from "./Pages/BusinessLead";
+
+import AdminProtectedRoute from "./Components/Helper/AdminProtectedRoute";
+import AdminLayout from "./Layouts/AdminLayout";
+import type { Lead, User } from "./types/type";
+
+const LandingPage = lazy(() => import("./Pages/LandingPage"));
+const BusinessLead = lazy(() => import("./Pages/BusinessLead"));
+
+const AdminLogin = lazy(() => import("./Pages/AdminLogin"));
+const AdminDasBoard = lazy(() => import("./Pages/AdminDasBoard"));
+const LeadDashboard = lazy(() => import("./Pages/LeadDashBoard"));
+const PartialLeadDashboard = lazy(() => import("./Pages/PartialLeadDashBoard"));
+const UsersDashboard = lazy(() => import("./Pages/UsersDashboard"));
+const ExportLeads = lazy(() => import("./Pages/ExportLeads"));
+const LeadDetails = lazy(() => import("./Pages/LeadDetails"));
+const ProfilePage = lazy(() => import("./Pages/ProfilePage"));
 
 type CreateUserPayload = {
   name: string;
@@ -210,78 +213,90 @@ const App = () => {
   useEffect(() => {}, []);
 
   return (
-    <div className=" bg-zinc-950 max-w-screen overflow-hidden">
+    <div className="bg-zinc-950 max-w-screen overflow-hidden">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" index element={<LandingPage />} />
-          <Route path="/business-lead" index element={<BusinessLead />} />
-          <Route
-            path="/admin"
-            element={
-              <AdminProtectedRoute>
-                <AdminLayout isAdmin={isAdmin} />
-              </AdminProtectedRoute>
-            }
-          >
-            <Route
-              index
-              element={
-                <AdminDasBoard users={users} loading={loading} leads={leads} />
-              }
-            />
-            <Route
-              path="leads"
-              element={
-                <LeadDashboard
-                  isAdmin={isAdmin}
-                  loading={loading}
-                  leads={leads}
-                  handleDelete={handleDelete}
-                />
-              }
-            />
-            <Route
-              path="partialleads"
-              element={
-                <PartialLeadDashboard
-                  isAdmin={isAdmin}
-                  loading={loading}
-                  leads={partialLeads}
-                  handleDelete={handleDeletePartial}
-                />
-              }
-            />
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/business-lead" element={<BusinessLead />} />
 
             <Route
-              path="export"
-              element={<ExportLeads leads={combinedArray} />}
-            />
-            {isAdmin && (
+              path="/admin"
+              element={
+                <AdminProtectedRoute>
+                  <AdminLayout isAdmin={isAdmin} />
+                </AdminProtectedRoute>
+              }
+            >
               <Route
-                path="users"
+                index
                 element={
-                  <UsersDashboard
+                  <AdminDasBoard
                     users={users}
                     loading={loading}
-                    handleDelete={userDelete}
-                    handleCreate={handleCreate}
-                    handleRoleChange={handleRoleChange}
+                    leads={leads}
                   />
                 }
               />
-            )}
 
-            <Route
-              path="lead/:id"
-              element={<LeadDetails leads={combinedArray} />}
-            />
-            <Route
-              path="profile"
-              element={user && <ProfilePage user={user} />}
-            />
-          </Route>
-          <Route path="/admin/login" element={<AdminLogin />} />
-        </Routes>
+              <Route
+                path="leads"
+                element={
+                  <LeadDashboard
+                    isAdmin={isAdmin}
+                    loading={loading}
+                    leads={leads}
+                    handleDelete={handleDelete}
+                  />
+                }
+              />
+
+              <Route
+                path="partialleads"
+                element={
+                  <PartialLeadDashboard
+                    isAdmin={isAdmin}
+                    loading={loading}
+                    leads={partialLeads}
+                    handleDelete={handleDeletePartial}
+                  />
+                }
+              />
+
+              <Route
+                path="export"
+                element={<ExportLeads leads={combinedArray} />}
+              />
+
+              {isAdmin && (
+                <Route
+                  path="users"
+                  element={
+                    <UsersDashboard
+                      users={users}
+                      loading={loading}
+                      handleDelete={userDelete}
+                      handleCreate={handleCreate}
+                      handleRoleChange={handleRoleChange}
+                    />
+                  }
+                />
+              )}
+
+              <Route
+                path="lead/:id"
+                element={<LeadDetails leads={combinedArray} />}
+              />
+
+              <Route
+                path="profile"
+                element={user && <ProfilePage user={user} />}
+              />
+            </Route>
+
+            <Route path="/admin/login" element={<AdminLogin />} />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </div>
   );

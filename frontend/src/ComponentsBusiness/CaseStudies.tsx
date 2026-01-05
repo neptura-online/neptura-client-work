@@ -98,7 +98,7 @@ export default function CaseStudies() {
               transition={{ duration: 0.35, ease: "easeOut" }}
               src="/business/real-case-studies.webp"
               alt=""
-              className="pointer-events-none absolute z-20 right-0 opacity-0 transition-opacity duration-300 h-100 -top-12 group-hover:opacity-100"
+              className="img-position"
             />
 
             <motion.div
@@ -193,7 +193,7 @@ export default function CaseStudies() {
               transition={{ duration: 0.35, ease: "easeOut" }}
               src="/business/performance-img.webp"
               alt=""
-              className="pointer-events-none absolute z-20 right-0 opacity-0 transition-opacity duration-300 h-100 -top-12 group-hover:opacity-100"
+              className="img-position"
             />
             <motion.div
               variants={cardVariants}
@@ -366,7 +366,7 @@ export default function CaseStudies() {
               transition={{ duration: 0.35, ease: "easeOut" }}
               src="/business/graph-img.webp"
               alt=""
-              className="pointer-events-none absolute z-20 right-0 opacity-0 transition-opacity duration-300 h-100 -top-12 group-hover:opacity-100"
+              className="img-position"
             />
             <motion.div
               variants={cardVariants}

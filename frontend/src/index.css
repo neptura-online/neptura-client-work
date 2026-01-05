@@ -28,6 +28,9 @@
   .metric-lead {
     @apply text-sm -mt-2 lg:mt-0 uppercase tracking-wide font-bold text-black group-hover:text-white transition;
   }
+  .img-position {
+    @apply pointer-events-none absolute z-20 -right-10 opacity-0 transition-opacity duration-300 h-100 -top-12 group-hover:opacity-100;
+  }
 }
 
 @font-face {

@@ -203,7 +203,7 @@ const App = () => {
   }, [users]);
 
   useEffect(() => {
-    if (window.location.href === `${import.meta.env.VITE_FRONTEND_URL}/admin`) {
+    if (window.location.pathname.startsWith("/admin")) {
       fetchData();
       fetchUserData();
       fetchPartialData();

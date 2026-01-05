@@ -273,7 +273,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
               onClick={handleClick}
               className="group mt-8 inline-flex w-fit items-center gap-2 rounded-xl border border-white/30 px-6 py-3 text-sm transition hover:bg-white hover:text-black"
             >
-              {loading ? "Loading..." : "Let’s Grow Together"}
+              Let’s Grow Together
               <FiArrowRight className="transition group-hover:translate-x-1" />
             </button>
           </motion.div>
@@ -370,7 +370,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
                   type="submit"
                   className="w-full rounded-lg bg-black py-3 text-lg font-semibold text-white transition hover:bg-zinc-900"
                 >
-                  Get Your FREE Audit
+                  {loading ? "Loading..." : "Get Your FREE Audit"}
                 </button>
               </form>
             </div>

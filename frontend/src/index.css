@@ -59,25 +59,3 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
-
-@media (max-width: 767px) {
-  .cardboxdb {
-    position: sticky;
-    background: #fff;
-  }
-  .cardsticky1 {
-    top: 0px;
-  }
-  .cardsticky2 {
-    top: 20px;
-  }
-  .cardsticky3 {
-    top: 30px;
-  }
-  .cardsticky4 {
-    top: 40px;
-  }
-  .cardsticky5 {
-    top: 50px;
-  }
-}

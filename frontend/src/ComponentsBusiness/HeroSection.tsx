@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { FaEnvelope } from "react-icons/fa";
 import { FiArrowRight, FiPhone } from "react-icons/fi";
-import { useTypewriter } from "../hooks/useTypewriter";
 import type { OpenFormProps } from "../types/type";
 import { AnimatePresence } from "framer-motion";
 import axios from "axios";
@@ -184,7 +183,6 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
     setOpenForm(true);
     setId("hero lets work together");
   };
-  const typedText = useTypewriter();
   return (
     <section className="relative w-full overflow-hidden bg-zinc-950 text-white flex justify-center">
       <div className="absolute inset-0 bg-linear-to-br lg:bg-linear-to-r from-zinc-800 via-zinc-900 to-yellow-600/90" />

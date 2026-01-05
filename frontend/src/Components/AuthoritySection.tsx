@@ -24,16 +24,22 @@ export default function AuthoritySection({
               Founder • Strategist • CEO
             </span>
 
-            <h2 className="font-serif text-3xl md:text-5xl font-medium leading-[1.5em] tracking-tight">
+            <h2 className="font-serif text-3xl md:text-4xl font-medium leading-[1.5em] tracking-tight">
               Meet the Mind Behind
               <br />
               <span className="text-yellow-500">7X Growth Strategies</span>
             </h2>
 
             <p className="mt-6 text-md text-gray-300 max-w-xl leading-relaxed">
-              <strong className="text-white">Abhishek Jain</strong> helps
-              ambitious brands scale faster using performance marketing,
-              conversion psychology, and automation-led growth frameworks.
+              <strong className="text-white">Abhishek Jain</strong> is a leader
+              in digital marketing strategy and sales growth. For 10+ years
+              Abhishek has helped businesses across India scale their revenue,
+              dominate their niche, and multiply profits up to 7X through a
+              proven mix of performance marketing, sales funnels, and automation
+              frameworks.
+              <br />
+              If you want to understand what actually drives conversions, and
+              how fast-growing companies scale using data-backed systems. .
             </p>
 
             <div className="mt-4 flex flex-wrap gap-2 text-xs">
@@ -75,7 +81,7 @@ export default function AuthoritySection({
               <div className="absolute bottom-6 left-6 rounded-2xl bg-black/70 backdrop-blur-md px-6 py-4 border border-white/10">
                 <p className="text-sm font-bold text-white">Abhishek Jain</p>
                 <p className="text-xs text-yellow-500 uppercase tracking-widest">
-                  CEO • Growth Strategist
+                  Founder & CEO
                 </p>
               </div>
             </div>

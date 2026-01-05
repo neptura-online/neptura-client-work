@@ -4,13 +4,13 @@ export default function FinalCTASection() {
   return (
     <section className="bg-zinc-100 pt-10 lg:pt-20">
       <div className="mx-auto max-w-350 px-3 lg:px-6 pb-10">
-        <div className="flex justify-between flex-col lg:flex-row w-full gap-20">
+        <div className="flex justify-between flex-col xl:flex-row w-full gap-20">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:w-[55%] flex items-center lg:items-start flex-col"
+            className="xl:w-[55%] flex items-center xl:items-start flex-col"
           >
             <h2 className="font-serif text-3xl font-medium md:text-4xl text-center lg:text-start px-6 lg:px-0">
               Time to Stop Losing Business to Competitors!
@@ -50,7 +50,7 @@ export default function FinalCTASection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-3xl bg-white p-8 shadow-xl lg:w-[40%]"
+            className="rounded-3xl bg-white p-8 shadow-xl xl:w-[40%]"
           >
             <h3 className="font-serif text-2xl lg:text-[34px] font-semibold">
               Fill The Form, Let’s Talk Growth.
@@ -92,7 +92,7 @@ export default function FinalCTASection() {
       </div>
 
       <div className=" bg-[#1A1421] py-4 flex justify-center w-screen ">
-        <div className="w-full max-w-340 flex flex-col items-center justify-between gap-4 lg:flex-row">
+        <div className="w-full max-w-340 flex flex-col items-center justify-between gap-4 xl:flex-row">
           <p className="text-xs text-white/90">
             © {new Date().getFullYear()} e-Marketing. All rights reserved.
           </p>

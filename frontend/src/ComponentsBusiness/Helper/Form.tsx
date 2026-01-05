@@ -227,7 +227,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
               ✕
             </button>
 
-            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-center">
+            <h3 className="text-xl sm:text-[25px] font-serif font-bold text-center">
               Let’s Get Started With a FREE Business
             </h3>
 

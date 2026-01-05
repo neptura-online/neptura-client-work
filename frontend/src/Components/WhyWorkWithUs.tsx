@@ -18,7 +18,7 @@ export default function WhyWorkWithUs({ setId, setOpenForm }: OpenFormProps) {
         <div className="grid gap-20 lg:grid-cols-2">
           <div className="max-w-xl">
             <h2 className="text-3xl font-serif font-medium leading-[1.5em] md:text-6xl">
-              Why Work <span className="text-yellow-400">With Us?</span>
+              Why Work <br /> <span className="text-yellow-400">With Us?</span>
             </h2>
 
             <p className="mt-8 text-lg text-stone-300">

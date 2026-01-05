@@ -41,7 +41,14 @@ const LandingPage = () => {
       <HeroSectionVideoBG setOpenForm={setOpenForm} setId={setId} />
       <Counter />
       <OfferContainer setOpenForm={setOpenForm} setId={setId} />
-
+      <Suspense fallback={null}>
+        <ProblemSection
+          setOpenForm={setOpenForm}
+          setId={setId}
+          settriggerUrl={setTriggerUrl}
+          setSave={setSave}
+        />
+      </Suspense>
       <Suspense fallback={null}>
         <ExitIntentWrapper />
         <Form
@@ -50,13 +57,6 @@ const LandingPage = () => {
           id={id}
           triggered={triggerUrl}
           save={save}
-        />
-
-        <ProblemSection
-          setOpenForm={setOpenForm}
-          setId={setId}
-          settriggerUrl={setTriggerUrl}
-          setSave={setSave}
         />
 
         <LandingProblemSection setOpenForm={setOpenForm} setId={setId} />

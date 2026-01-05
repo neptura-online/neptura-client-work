@@ -21,7 +21,7 @@ const ProblemSection = ({
   };
   return (
     <section className="relative w-full bg-stone-950 py-10 lg:mt-10 lg:pt-10 text-white">
-      <div className="pointer-events-none absolute inset-0 z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10" />
+      <div className="pointer-events-none absolute inset-0 z-50 bg-[url('assets/noise.svg')] opacity-10" />
       <div className="mx-auto px-4 lg:max-w-6xl">
         <div className="mx-auto max-w-3xl text-center">
           <Heading white="Why Your Landing Page Not" yellow="Convert ?" />

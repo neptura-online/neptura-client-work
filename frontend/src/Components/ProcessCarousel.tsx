@@ -91,7 +91,7 @@ const ProcessCarousel = () => {
 
   return (
     <section className="relative overflow-hidden bg-zinc-950 py-10 lg:py-20">
-      <div className="pointer-events-none absolute inset-0 z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10" />
+      <div className="pointer-events-none absolute inset-0 z-50 bg-[url('assets/noise.svg')] opacity-10" />
       <div className="mx-2 px-4 lg:mx-auto lg:max-w-6xl">
         <div className="mb-12 text-center">
           <Heading white="Our Highly" yellow="Converting Approach" />

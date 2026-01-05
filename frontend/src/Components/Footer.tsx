@@ -187,7 +187,7 @@ const Footer = () => {
       id="contact"
       className="relative overflow-hidden border-t border-black/10 bg-stone-950 pt-10 lg:pt-24 pb-10"
     >
-      <div className="pointer-events-none absolute inset-0 z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10" />
+      <div className="pointer-events-none absolute inset-0 z-50 bg-[url('assets/noise.svg')] opacity-10" />
 
       <div className="relative mx-auto max-w-6xl px-6">
         <div className="mb-20 grid gap-16 lg:grid-cols-2">

@@ -12,7 +12,7 @@ export default function AuthoritySection({
   return (
     <section className="relative text-white overflow-hidden">
       <div className="relative z-10 lg:max-w-6xl mx-auto px-10 py-10 rounded-3xl overflow-hidden bg-stone-950">
-        <div className="pointer-events-none absolute inset-0 z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10" />
+        <div className="pointer-events-none absolute inset-0 z-50 bg-[url('assets/noise.svg')] opacity-10" />
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, y: 40 }}

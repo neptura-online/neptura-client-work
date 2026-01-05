@@ -10,7 +10,7 @@
     @apply font-serif text-[22px] lg:text-2xl font-bold text-black transition-colors duration-300 group-hover:text-white;
   }
   .case-card {
-    @apply relative overflow-hidden rounded-2xl p-4 lg:p-8 shadow-xl;
+    @apply lg:relative sticky overflow-hidden rounded-2xl p-4 lg:p-8 shadow-xl;
   }
 
   .case-highlight {
@@ -58,4 +58,26 @@
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+@media (max-width: 767px) {
+  .cardboxdb {
+    position: sticky;
+    background: #fff;
+  }
+  .cardsticky1 {
+    top: 0px;
+  }
+  .cardsticky2 {
+    top: 20px;
+  }
+  .cardsticky3 {
+    top: 30px;
+  }
+  .cardsticky4 {
+    top: 40px;
+  }
+  .cardsticky5 {
+    top: 50px;
+  }
 }

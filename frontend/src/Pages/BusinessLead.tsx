@@ -1,6 +1,7 @@
 import { useState, lazy, Suspense } from "react";
 import HeroSection from "../ComponentsBusiness/HeroSection";
 import ProblemsSection from "../ComponentsBusiness/ProblemsSection";
+import Buttons from "../ComponentsBusiness/Helper/whatsapp";
 
 const Form = lazy(() => import("../ComponentsBusiness/Helper/Form"));
 
@@ -32,22 +33,23 @@ const BusinessLead = () => {
 
   return (
     <div className="bg-gray-300 max-w-screen overflow-hidden">
-      <Form
-        isOpen={openForm}
-        onClose={() => setOpenForm(false)}
-        id={id}
-        triggered={triggerUrl}
-        save={save}
-      />
+      <Buttons />
 
       <HeroSection setOpenForm={setOpenForm} setId={setId} />
+      <ProblemsSection
+        setOpenForm={setOpenForm}
+        setId={setId}
+        setSave={setSave}
+        settriggerUrl={setTriggerUrl}
+      />
 
       <Suspense fallback={null}>
-        <ProblemsSection
-          setOpenForm={setOpenForm}
-          setId={setId}
-          setSave={setSave}
-          settriggerUrl={setTriggerUrl}
+        <Form
+          isOpen={openForm}
+          onClose={() => setOpenForm(false)}
+          id={id}
+          triggered={triggerUrl}
+          save={save}
         />
 
         <NumbersSection />

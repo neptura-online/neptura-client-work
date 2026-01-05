@@ -45,14 +45,14 @@ export default function CaseStudies() {
           <div className="mx-auto mt-4 h-0.5 w-20 bg-white" />
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 sticky">
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <motion.div
             variants={cardVariants}
             initial="rest"
             whileHover="hover"
             animate="rest"
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="case-card group"
+            className="case-card group cardboxdb cardsticky1"
           >
             <motion.div
               variants={metricVariants}
@@ -91,7 +91,7 @@ export default function CaseStudies() {
             whileHover="hover"
             animate="rest"
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="relative w-full h-full group rounded-2xl"
+            className="lg:relative w-full h-full group rounded-2xl cardboxdb cardsticky2 "
           >
             <motion.img
               variants={metricVariants}

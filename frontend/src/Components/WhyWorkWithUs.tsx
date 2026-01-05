@@ -13,7 +13,7 @@ export default function WhyWorkWithUs({ setId, setOpenForm }: OpenFormProps) {
 
   return (
     <section className="relative bg-stone-950 py-10 text-white">
-      <div className="pointer-events-none absolute inset-0 z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-8 " />
+      <div className="pointer-events-none absolute inset-0 z-50 bg-[url('assets/noise.svg')] opacity-8 " />
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-20 lg:grid-cols-2">
           <div className="max-w-xl">

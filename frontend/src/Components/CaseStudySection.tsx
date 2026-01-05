@@ -96,7 +96,7 @@ export default function CaseStudiesSection({
   };
   return (
     <section className="relative bg-linear-to-b from-stone-950 via-stone-900 to-black py-10 ;lg:py-20">
-      <div className="pointer-events-none absolute inset-0 z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10" />
+      <div className="pointer-events-none absolute inset-0 z-50 bg-[url('assets/noise.svg')] opacity-10" />
       <div className="mb-8 lg:mb-12 text-center">
         <Heading white="Real Case Studies," yellow="Real ROAS" />
       </div>

@@ -1,10 +1,9 @@
 import { useState, lazy, Suspense } from "react";
 import HeroSection from "../ComponentsBusiness/HeroSection";
-import Form from "../ComponentsBusiness/Helper/Form";
+import ProblemsSection from "../ComponentsBusiness/ProblemsSection";
 
-const ProblemsSection = lazy(
-  () => import("../ComponentsBusiness/ProblemsSection")
-);
+const Form = lazy(() => import("../ComponentsBusiness/Helper/Form"));
+
 const NumbersSection = lazy(
   () => import("../ComponentsBusiness/NumbersSection")
 );

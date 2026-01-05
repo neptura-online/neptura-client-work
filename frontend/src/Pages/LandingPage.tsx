@@ -1,13 +1,14 @@
 import { useState, lazy, Suspense } from "react";
 import NavBar from "../Components/NavBar";
 import HeroSectionVideoBG from "../Components/Hero/HeroSectionVideoBG";
-import Form from "../Components/Helper/Form";
+import Counter from "../Components/Counter";
 
 const ExitIntentWrapper = lazy(
   () => import("../Components/Helper/ExitIntentWrapper")
 );
 
-const Counter = lazy(() => import("../Components/Counter"));
+const Form = lazy(() => import("../Components/Helper/Form"));
+
 const OfferContainer = lazy(() => import("../Components/OfferContainer"));
 const ProblemSection = lazy(() => import("../Components/ProblemSection"));
 const LandingProblemSection = lazy(
@@ -38,9 +39,16 @@ const LandingPage = () => {
     <>
       <NavBar />
       <HeroSectionVideoBG setOpenForm={setOpenForm} setId={setId} />
+      <Counter />
 
       <Suspense fallback={null}>
-        <Counter />
+        <Form
+          isOpen={openForm}
+          onClose={() => setOpenForm(false)}
+          id={id}
+          triggered={triggerUrl}
+          save={save}
+        />
         <OfferContainer setOpenForm={setOpenForm} setId={setId} />
 
         <ProblemSection
@@ -68,14 +76,6 @@ const LandingPage = () => {
       <Suspense fallback={null}>
         <ExitIntentWrapper />
       </Suspense>
-
-      <Form
-        isOpen={openForm}
-        onClose={() => setOpenForm(false)}
-        id={id}
-        triggered={triggerUrl}
-        save={save}
-      />
     </>
   );
 };

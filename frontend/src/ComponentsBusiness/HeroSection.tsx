@@ -3,8 +3,182 @@ import { FaEnvelope } from "react-icons/fa";
 import { FiArrowRight, FiPhone } from "react-icons/fi";
 import { useTypewriter } from "../hooks/useTypewriter";
 import type { OpenFormProps } from "../types/type";
+import { AnimatePresence } from "framer-motion";
+import axios from "axios";
+import { useEffect, useRef, useState } from "react";
+import PhoneInput from "react-phone-input-2";
 
 const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    industry: "",
+    message: "",
+  });
+  const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+
+  const [loading, setLoading] = useState(false);
+  const errorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [error, setError] = useState("");
+  const site = window.location.href;
+  const url = new URL(site);
+  const params = new URLSearchParams(url.search);
+  const utm_source = params.get("utm_source") || "direct";
+  const utm_medium = params.get("utm_medium");
+  const utm_term = params.get("utm_term");
+  const utm_campaign = params.get("utm_campaign");
+  const utm_content = params.get("utm_content");
+  const utm_adgroup = params.get("adgroupid");
+  const gclid = params.get("gclid");
+
+  const showError = (message: string) => {
+    setError(message);
+
+    if (errorTimeoutRef.current) {
+      clearTimeout(errorTimeoutRef.current);
+    }
+
+    errorTimeoutRef.current = setTimeout(() => {
+      setError("");
+    }, 3000);
+  };
+
+  function validateEmail(email: string) {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email);
+  }
+
+  const handlePhoneChange = (value: string) => {
+    setPhone(value);
+    const digits = value.replace(/\D/g, "").replace(/^91/, "");
+
+    if (digits.startsWith("0")) {
+      setPhoneError("Mobile number cannot start with 0");
+      return;
+    }
+
+    setPhoneError("");
+  };
+
+  const partialSubmit = async () => {
+    if (formData.name.length < 3) return;
+    if (phone.length !== 12) return;
+
+    const email = validateEmail(formData.email);
+    formData.email = email ? formData.email : "";
+
+    const rawPhone = phone.replace(/\D/g, "").slice(-10);
+
+    if (rawPhone.length !== 10 || rawPhone.startsWith("0")) {
+      return;
+    }
+    console.log(rawPhone);
+
+    const body = {
+      ...formData,
+      phone: rawPhone,
+      utm_source,
+      utm_medium,
+      utm_term,
+      utm_campaign,
+      utm_content,
+      adgroupid: utm_adgroup,
+      gclid,
+      lpurl: site,
+      formID: "hero",
+    };
+
+    try {
+      await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/partiallead`,
+        body,
+        { headers: { "Content-Type": "application/json" } }
+      );
+    } catch (err) {}
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    if (!formData.name || !formData.industry || !formData.email) {
+      showError("Please Fill up All Fields");
+      return;
+    }
+    if (!validateEmail(formData.email)) {
+      showError("Enter a valid email address");
+      return;
+    }
+
+    const rawPhone = phone.replace(/\D/g, "").slice(-10);
+
+    if (rawPhone.length !== 10 || rawPhone.startsWith("0")) {
+      showError("Enter a valid 10-digit mobile number without 0");
+      return;
+    }
+
+    const body = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      phone: rawPhone,
+      industry: e.target.industry.value,
+      message: " ",
+      utm_source,
+      utm_medium,
+      utm_term,
+      utm_campaign,
+      utm_content,
+      adgroupid: utm_adgroup,
+      gclid,
+      lpurl: site,
+      formID: "hero",
+    };
+
+    try {
+      setLoading(true);
+
+      const res = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/lead`,
+        body
+      );
+
+      if (res.status === 200 || res.status === 201) {
+        window.location.href = "https://digital.e-marketing.io/thank-you/";
+      }
+    } catch (err: any) {
+      showError(err?.response?.data || "Something went wrong");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (errorTimeoutRef.current) {
+        clearTimeout(errorTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      partialSubmit();
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        partialSubmit();
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [formData.name, phone]);
   const handleClick = () => {
     setOpenForm(true);
     setId("hero lets work together");
@@ -99,12 +273,38 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
               onClick={handleClick}
               className="group mt-8 inline-flex w-fit items-center gap-2 rounded-xl border border-white/30 px-6 py-3 text-sm transition hover:bg-white hover:text-black"
             >
-              Let’s Grow Together
+              {loading ? "Loading..." : "Let’s Grow Together"}
               <FiArrowRight className="transition group-hover:translate-x-1" />
             </button>
           </motion.div>
 
           <div className="flex justify-center lg:justify-end px-2">
+            <AnimatePresence>
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                  transition={{ duration: 0.25 }}
+                  className="
+                  fixed z-70
+                  top-4 sm:top-10 left-1/2 -translate-x-1/2
+                  sm:left-1/2
+                  w-[90%] sm:w-auto
+                  max-w-sm
+                  rounded-xl
+                  bg-red-50
+                  border border-red-200
+                  px-4 py-3
+                  shadow-lg
+                "
+                >
+                  <p className="text-sm sm:text-base font-medium text-red-600 text-center sm:text-left">
+                    {error}
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
             <div className="w-full lg:max-w-md rounded-3xl bg-white p-6 text-black shadow-2xl h-fit">
               <h3 className="text-[22px] lg:text-[27px] font-semibold font-serif">
                 Let’s Get Started With a{" "}
@@ -112,24 +312,56 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
                 Worth <span className="font-extrabold">15,000</span> Today!
               </h3>
 
-              <form className="mt-6 space-y-4">
+              <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                 <input
+                  name="name"
                   type="text"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                   placeholder="Name*"
                   className="w-full rounded-lg border border-gray-400 placeholder:text-gray-400 px-4 py-3 outline-none"
                 />
                 <input
+                  name="email"
                   type="email"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   placeholder="Email*"
                   className="w-full rounded-lg border border-gray-400 placeholder:text-gray-400 px-4 py-3 outline-none"
                 />
-                <input
-                  type="tel"
-                  placeholder="Phone*"
-                  className="w-full rounded-lg border border-gray-400 placeholder:text-gray-400 px-4 py-3 outline-none"
+                <PhoneInput
+                  country="in"
+                  value={phone}
+                  onChange={handlePhoneChange}
+                  countryCodeEditable={false}
+                  autoFormat={false}
+                  enableSearch
+                  inputProps={{
+                    required: true,
+                    maxLength: 13,
+                    minLength: 13,
+                    title: "Please enter a valid 10-digit mobile number",
+                  }}
+                  inputStyle={{
+                    width: "100%",
+                    height: "52px",
+                    borderRadius: "12px",
+                  }}
                 />
+
+                {phoneError && (
+                  <p className="text-sm text-red-500 -mt-2">{phoneError}</p>
+                )}
                 <input
-                  type="text"
+                  name="industry"
+                  value={formData.industry}
+                  onChange={(e) =>
+                    setFormData({ ...formData, industry: e.target.value })
+                  }
                   placeholder="Industry*"
                   className="w-full rounded-lg border border-gray-400 placeholder:text-gray-400 px-4 py-3 outline-none"
                 />

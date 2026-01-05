@@ -155,11 +155,6 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
     };
   }, []);
 
-  const triggerButton = () => {
-    setOpenForm(true);
-    setId("book free landing page audit");
-  };
-
   useEffect(() => {
     const handleBeforeUnload = () => {
       partialSubmit();
@@ -179,6 +174,11 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [formData.name, phone]);
+
+  const triggerButton = () => {
+    setOpenForm(true);
+    setId("book free landing page audit");
+  };
 
   return (
     <>

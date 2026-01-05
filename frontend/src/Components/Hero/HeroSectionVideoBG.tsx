@@ -6,6 +6,8 @@ import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import video from "../../../public/videos/bg.mp4";
+import cover from "../../../public/assets/cover.webp";
 
 const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
   const [formData, setFormData] = useState({
@@ -184,6 +186,15 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
     <>
       <section className="hidden relative lg:flex w-full min-h-screen justify-center overflow-hidden bg-zinc-950 pt-12 text-white">
         <video
+          src={video}
+          className="h-full w-full object-cover"
+          muted
+          autoPlay
+          loop
+          playsInline
+          poster={cover}
+        ></video>
+        {/* <video
           autoPlay
           muted
           loop
@@ -191,7 +202,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
           className="absolute inset-0 h-full w-full object-cover"
           src="/videos/bg.mp4"
           poster="/assets/cover.webp"
-        />
+        /> */}
 
         <div className="absolute inset-0 bg-black/75" />
         <div className="container mx-auto flex max-w-6xl flex-row items-center gap-12 ">

@@ -6,7 +6,7 @@ import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import video from "../../../public/videos/bg.mp4";
+import video from "/videos/bg.mp4";
 
 const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
   const [formData, setFormData] = useState({

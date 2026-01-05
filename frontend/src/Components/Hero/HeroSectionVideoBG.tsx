@@ -190,6 +190,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
           playsInline
           className="absolute inset-0 h-full w-full object-cover"
           src="/videos/bg.mp4"
+          poster="/assets/cover.webp"
         />
 
         <div className="absolute inset-0 bg-black/75" />

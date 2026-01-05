@@ -179,6 +179,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [formData.name, phone]);
+
   const handleClick = () => {
     setOpenForm(true);
     setId("hero lets work together");
@@ -198,6 +199,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
       />
 
       <div className="max-w-390">
+        {/* right part */}
         <div className="relative z-10 flex  items-center justify-between px-3 py-2 lg:px-16">
           <div className="flex items-center gap-2">
             <img
@@ -277,7 +279,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
               <FiArrowRight className="transition group-hover:translate-x-1" />
             </button>
           </motion.div>
-
+          {/* form part */}
           <div className="flex justify-center lg:justify-end px-2">
             <AnimatePresence>
               {error && (
@@ -357,6 +359,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
                   <p className="text-sm text-red-500 -mt-2">{phoneError}</p>
                 )}
                 <input
+                  type="text"
                   name="industry"
                   value={formData.industry}
                   onChange={(e) =>

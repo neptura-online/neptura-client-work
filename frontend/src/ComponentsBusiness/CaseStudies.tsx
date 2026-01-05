@@ -45,7 +45,7 @@ export default function CaseStudies() {
           <div className="mx-auto mt-4 h-0.5 w-20 bg-white" />
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 sticky">
           <motion.div
             variants={cardVariants}
             initial="rest"
@@ -91,35 +91,53 @@ export default function CaseStudies() {
             whileHover="hover"
             animate="rest"
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="case-card group"
+            className="relative w-full h-full group rounded-2xl"
           >
-            <motion.div
+            <motion.img
               variants={metricVariants}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="metric-div"
-            >
-              <p className="metric-pera">4</p>
-              <p className="metric-lead ">ROAS</p>
-            </motion.div>
+              src="/business/real-case-studies.webp"
+              alt=""
+              className="pointer-events-none absolute z-20 right-0 opacity-0 transition-opacity duration-300 h-100 -top-12 group-hover:opacity-100"
+            />
 
             <motion.div
-              variants={contentVariants}
+              variants={cardVariants}
+              initial="rest"
+              whileHover="hover"
+              animate="rest"
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="relative z-10"
+              className="case-card group w-full h-full"
             >
-              <h3 className="case-heading">
-                Dubai-based <br /> Copperware <br className="lg:hidden" /> Brand
-              </h3>
+              <motion.div
+                variants={metricVariants}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="metric-div"
+              >
+                <p className="metric-pera">4</p>
+                <p className="metric-lead ">ROAS</p>
+              </motion.div>
 
-              <p className="case-desc">
-                Increased sales by scaling from{" "}
-                <span className="case-highlight">3K AED</span> spend &
-                <br className="hidden lg:block" />
-                <span className="case-highlight">1.7 ROAS</span> to{" "}
-                <span className="case-highlight">12K AED</span> spend &{" "}
-                <span className="case-highlight">4 ROAS</span> using Meta &
-                Google Ads.
-              </p>
+              <motion.div
+                variants={contentVariants}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="relative z-10"
+              >
+                <h3 className="case-heading">
+                  Dubai-based <br /> Copperware <br className="lg:hidden" />{" "}
+                  Brand
+                </h3>
+
+                <p className="case-desc">
+                  Increased sales by scaling from{" "}
+                  <span className="case-highlight">3K AED</span> spend &
+                  <br className="hidden lg:block" />
+                  <span className="case-highlight">1.7 ROAS</span> to{" "}
+                  <span className="case-highlight">12K AED</span> spend &{" "}
+                  <span className="case-highlight">4 ROAS</span> using Meta &
+                  Google Ads.
+                </p>
+              </motion.div>
             </motion.div>
           </motion.div>
           <motion.div
@@ -168,38 +186,54 @@ export default function CaseStudies() {
             whileHover="hover"
             animate="rest"
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="case-card group"
+            className="relative w-full h-full group rounded-2xl"
           >
-            <motion.div
+            <motion.img
               variants={metricVariants}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="metric-div"
-            >
-              <p className="metric-pera">
-                20<span className="mertic-span">+</span>
-              </p>
-              <p className="metric-lead ">ROAS</p>
-            </motion.div>
-
+              src="/business/performance-img.webp"
+              alt=""
+              className="pointer-events-none absolute z-20 right-0 opacity-0 transition-opacity duration-300 h-100 -top-12 group-hover:opacity-100"
+            />
             <motion.div
-              variants={contentVariants}
+              variants={cardVariants}
+              initial="rest"
+              whileHover="hover"
+              animate="rest"
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="relative z-10"
+              className="case-card group"
             >
-              <h3 className="case-heading">
-                Interior Surface <br /> Solutions
-              </h3>
+              <motion.div
+                variants={metricVariants}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="metric-div"
+              >
+                <p className="metric-pera">
+                  20<span className="mertic-span">+</span>
+                </p>
+                <p className="metric-lead ">ROAS</p>
+              </motion.div>
 
-              <p className="case-desc">
-                Launched and scaled a new wall panel & interior{" "}
-                <br className="hidden lg:block" /> brand's Ads spend from{" "}
-                <span className="case-highlight">5k to ₹3L/month</span> while
-                generating <span className="case-highlight">20+ ROAS</span> in{" "}
-                <span className="case-highlight">18 months</span> using meta and
-                Google Ads.
-              </p>
-            </motion.div>
-          </motion.div>{" "}
+              <motion.div
+                variants={contentVariants}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="relative z-10"
+              >
+                <h3 className="case-heading">
+                  Interior Surface <br /> Solutions
+                </h3>
+
+                <p className="case-desc">
+                  Launched and scaled a new wall panel & interior{" "}
+                  <br className="hidden lg:block" /> brand's Ads spend from{" "}
+                  <span className="case-highlight">5k to ₹3L/month</span> while
+                  generating <span className="case-highlight">20+ ROAS</span> in{" "}
+                  <span className="case-highlight">18 months</span> using meta
+                  and Google Ads.
+                </p>
+              </motion.div>
+            </motion.div>{" "}
+          </motion.div>
           <motion.div
             variants={cardVariants}
             initial="rest"
@@ -325,37 +359,54 @@ export default function CaseStudies() {
             whileHover="hover"
             animate="rest"
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="case-card group"
+            className="relative w-full h-full group rounded-2xl"
           >
-            <motion.div
+            <motion.img
               variants={metricVariants}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="metric-div"
-            >
-              <p className="metric-pera">
-                1K<span className="mertic-span">+</span>
-              </p>
-              <p className="metric-lead ">Leads</p>
-            </motion.div>
-
+              src="/business/graph-img.webp"
+              alt=""
+              className="pointer-events-none absolute z-20 right-0 opacity-0 transition-opacity duration-300 h-100 -top-12 group-hover:opacity-100"
+            />
             <motion.div
-              variants={contentVariants}
+              variants={cardVariants}
+              initial="rest"
+              whileHover="hover"
+              animate="rest"
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="relative z-10"
+              className="case-card group"
             >
-              <h3 className="case-heading">
-                Real Estate Delhi <br /> NCR
-              </h3>
+              <motion.div
+                variants={metricVariants}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="metric-div"
+              >
+                <p className="metric-pera">
+                  1K<span className="mertic-span">+</span>
+                </p>
+                <p className="metric-lead ">Leads</p>
+              </motion.div>
 
-              <p className="case-desc">
-                Generated <span className="case-highlight">1000+</span> monthly
-                leads to at <span className="case-highlight">₹250 CPL</span> for
-                a Delhi NCR real estate client through Meta & Google Ads, while
-                maintaining a <span className="case-highlight">30%</span>{" "}
-                qualification rate
-              </p>
-            </motion.div>
-          </motion.div>{" "}
+              <motion.div
+                variants={contentVariants}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="relative z-10"
+              >
+                <h3 className="case-heading">
+                  Real Estate Delhi <br /> NCR
+                </h3>
+
+                <p className="case-desc">
+                  Generated <span className="case-highlight">1000+</span>{" "}
+                  monthly leads to at{" "}
+                  <span className="case-highlight">₹250 CPL</span> for a Delhi
+                  NCR real estate client through Meta & Google Ads, while
+                  maintaining a <span className="case-highlight">30%</span>{" "}
+                  qualification rate
+                </p>
+              </motion.div>
+            </motion.div>{" "}
+          </motion.div>
           <motion.div
             variants={cardVariants}
             initial="rest"

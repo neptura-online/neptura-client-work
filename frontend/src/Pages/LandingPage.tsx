@@ -3,7 +3,6 @@ import NavBar from "../Components/NavBar";
 import HeroSectionVideoBG from "../Components/Hero/HeroSectionVideoBG";
 import Form from "../Components/Helper/Form";
 
-/* Lazy imports */
 const ExitIntentWrapper = lazy(
   () => import("../Components/Helper/ExitIntentWrapper")
 );
@@ -37,25 +36,9 @@ const LandingPage = () => {
 
   return (
     <>
-      {/* Exit intent is non-critical */}
-      <Suspense fallback={null}>
-        <ExitIntentWrapper />
-      </Suspense>
-
-      {/* Form stays mounted */}
-      <Form
-        isOpen={openForm}
-        onClose={() => setOpenForm(false)}
-        id={id}
-        triggered={triggerUrl}
-        save={save}
-      />
-
-      {/* Critical UI */}
       <NavBar />
       <HeroSectionVideoBG setOpenForm={setOpenForm} setId={setId} />
 
-      {/* Everything below-the-fold */}
       <Suspense fallback={null}>
         <Counter />
         <OfferContainer setOpenForm={setOpenForm} setId={setId} />
@@ -82,6 +65,17 @@ const LandingPage = () => {
         <FAQSection />
         <Footer />
       </Suspense>
+      <Suspense fallback={null}>
+        <ExitIntentWrapper />
+      </Suspense>
+
+      <Form
+        isOpen={openForm}
+        onClose={() => setOpenForm(false)}
+        id={id}
+        triggered={triggerUrl}
+        save={save}
+      />
     </>
   );
 };

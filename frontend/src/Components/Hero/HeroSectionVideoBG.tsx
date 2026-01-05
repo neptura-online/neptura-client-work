@@ -187,7 +187,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
       <section className="hidden relative lg:flex w-full min-h-screen justify-center overflow-hidden bg-zinc-950 pt-12 text-white">
         <video
           src={video}
-          className="h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover"
           muted
           autoPlay
           loop

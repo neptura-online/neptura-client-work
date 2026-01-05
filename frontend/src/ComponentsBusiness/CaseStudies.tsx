@@ -1,148 +1,400 @@
 import { motion } from "framer-motion";
 
-type CaseStudy = {
-  title: string;
-  metric: string;
-  metricLabel: string;
-  description: string;
-  highlight?: boolean;
-  images?: string[];
+const cardVariants = {
+  rest: {
+    backgroundColor: "#ffffff",
+  },
+  hover: {
+    backgroundColor: "#18181b", // zinc-900
+  },
 };
 
-const cases: CaseStudy[] = [
-  {
-    title: "Real Estate Kolkata",
-    metric: "30%",
-    metricLabel: "Qualified Lead",
-    description: `Scaled Meta Ads for a real estate client from ₹30K/month with 26% qualification to ₹4L/month with 30% qualified leads through strategic targeting and optimization.`,
+const contentVariants = {
+  rest: {
+    scale: 1,
   },
-  {
-    title: "Dubai-based Copperware Brand",
-    metric: "4",
-    metricLabel: "ROAS",
-    description:
-      "Increased sales by scaling from 3K AED spend & 1.7 ROAS to 12K AED spend & 4 ROAS using Meta & Google Ads.",
-    highlight: true,
+  hover: {
+    scale: 1.04,
   },
-  {
-    title: "Laminate Manufacturer",
-    metric: "54%",
-    metricLabel: "Quality Rate",
-    description:
-      "Optimized Google & Meta Ads, improving 20k+ qualified leads/month at 54% quality rate and approx revenue of 1.5Cr/month over 2+ years.",
+};
+
+const metricVariants = {
+  rest: {
+    scale: 1,
   },
-  {
-    title: "Interior Surface Solutions",
-    metric: "20+",
-    metricLabel: "ROAS",
-    description:
-      "Launched and scaled a new wall panel brand from ₹5K to ₹3L/month while generating 20+ ROAS in 18 months.",
+  hover: {
+    scale: 1.15,
   },
-  {
-    title: "Silverware Gifting & Furniture",
-    metric: "2K+",
-    metricLabel: "Organic Clicks",
-    description:
-      "Ranked on top SERP for high-intent keywords with 2K+ monthly organic clicks and improved page metrics in 9 months.",
-  },
-  {
-    title: "Pipe Manufacturer",
-    metric: "30%",
-    metricLabel: "Conversion",
-    description:
-      "Scaled international ads from 1 to 36 at ₹33K spend achieving 30% quality conversion and ₹30L+ closures.",
-  },
-  {
-    title: "USA Based D2C Apparel Brand",
-    metric: "USA",
-    metricLabel: "Brand",
-    description:
-      "Scaled Meta Ads in the USA from $2K spend & 1.9 ROAS to $5K spend & 4.0 ROAS.",
-  },
-  {
-    title: "Real Estate Delhi NCR",
-    metric: "1K+",
-    metricLabel: "Leads",
-    description:
-      "Generated 1000+ monthly leads at ₹250 CPL while maintaining 30% qualification rate.",
-  },
-  {
-    title: "Copperware Manufacturer",
-    metric: "ROAS",
-    metricLabel: "Boost",
-    description:
-      "Scaled ad spend from ₹30K to ₹6.5L/month, boosting ROAS from 3.2 to 7.3 using Meta & Google Ads.",
-  },
-];
+};
 
 export default function CaseStudies() {
   return (
     <section className="relative bg-[#160a1f] py-24">
-      <div className="mx-auto max-w-360 px-6">
+      <div className="relative mx-auto max-w-360 px-6">
+        <img
+          src="/business/success.png"
+          alt=""
+          className="pointer-events-none absolute right-0 top-0 opacity-60"
+        />
+
         <div className="text-center">
-          <h2 className="font-serif text-3xl md:text-[45px] text-white">
+          <h2 className="font-serif text-3xl md:text-[35px] text-white">
             Real Case Studies,{" "}
             <span className="text-yellow-400">Real ROAS</span>
           </h2>
           <div className="mx-auto mt-4 h-0.5 w-20 bg-white" />
         </div>
 
-        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {cases.map((item, i) => (
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <motion.div
+            variants={cardVariants}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="case-card group"
+          >
             <motion.div
-              key={i}
-              whileHover="hover"
-              initial="rest"
-              animate="rest"
-              className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg"
+              variants={metricVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="metric-div"
             >
-              {/* Hover Background */}
-              <motion.div
-                variants={{
-                  rest: { opacity: 0 },
-                  hover: { opacity: 1 },
-                }}
-                transition={{ duration: 0.25 }}
-                className="absolute inset-0 bg-[#1c1c1c]"
-              />
-
-              <div className="relative z-10">
-                <div className="flex items-start justify-between">
-                  <h3 className="font-serif text-lg font-semibold text-black group-hover:text-white transition">
-                    {item.title}
-                  </h3>
-                  <div className="text-right">
-                    <p className="text-3xl font-bold text-yellow-400">
-                      {item.metric}
-                    </p>
-                    <p className="text-xs font-semibold uppercase tracking-wide text-black group-hover:text-white transition">
-                      {item.metricLabel}
-                    </p>
-                  </div>
-                </div>
-
-                <p className="mt-4 text-sm leading-relaxed text-zinc-600 group-hover:text-zinc-200 transition">
-                  {item.description}
-                </p>
-
-                {item.images && (
-                  <div className="pointer-events-none absolute right-4 top-16 hidden group-hover:block">
-                    {item.images.map((img, idx) => (
-                      <img
-                        key={idx}
-                        src={img}
-                        className={`absolute w-36 rounded-lg shadow-xl ${
-                          idx === 0
-                            ? "-rotate-6 -top-10 right-0"
-                            : "rotate-6 top-10 right-10"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                )}
-              </div>
+              <p className="metric-pera">
+                30<span className="mertic-span">%</span>
+              </p>
+              <p className="metric-lead ">Qualified Lead</p>
             </motion.div>
-          ))}
+
+            <motion.div
+              variants={contentVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="relative z-10"
+            >
+              <h3 className="case-heading">
+                Real Estate <br className="lg:hidden" /> Kolkata
+              </h3>
+
+              <p className="case-desc">
+                Scaled Meta Ads for a real estate <br /> client from{" "}
+                <span className="case-highlight">₹30K/month</span> with <br />
+                <span className="case-highlight">
+                  26% qualification
+                </span> to <span className="case-highlight">₹4L/month</span>{" "}
+                with <span className="case-highlight">30% qualified leads</span>{" "}
+                through strategic targeting and optimization.
+              </p>
+            </motion.div>
+          </motion.div>
+          <motion.div
+            variants={cardVariants}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="case-card group"
+          >
+            <motion.div
+              variants={metricVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="metric-div"
+            >
+              <p className="metric-pera">4</p>
+              <p className="metric-lead ">ROAS</p>
+            </motion.div>
+
+            <motion.div
+              variants={contentVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="relative z-10"
+            >
+              <h3 className="case-heading">
+                Dubai-based <br /> Copperware <br className="lg:hidden" /> Brand
+              </h3>
+
+              <p className="case-desc">
+                Increased sales by scaling from{" "}
+                <span className="case-highlight">3K AED</span> spend &
+                <br className="hidden lg:block" />
+                <span className="case-highlight">1.7 ROAS</span> to{" "}
+                <span className="case-highlight">12K AED</span> spend &{" "}
+                <span className="case-highlight">4 ROAS</span> using Meta &
+                Google Ads.
+              </p>
+            </motion.div>
+          </motion.div>
+          <motion.div
+            variants={cardVariants}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="case-card group"
+          >
+            <motion.div
+              variants={metricVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="metric-div"
+            >
+              <p className="metric-pera">
+                54<span className="mertic-span">%</span>
+              </p>
+              <p className="metric-lead ">Quality Rate</p>
+            </motion.div>
+
+            <motion.div
+              variants={contentVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="relative z-10"
+            >
+              <h3 className="case-heading">
+                Laminate <br /> Manufacturer
+              </h3>
+
+              <p className="case-desc">
+                Optimized Google & Meta for a laminates brand,{" "}
+                <br className="hidden lg:block" /> improving{" "}
+                <span className="case-highlight">₹20K+ qualified</span>{" "}
+                leads/month at
+                <span className="case-highlight">54% quality rate</span> and
+                approximate revenue of{" "}
+                <span className="case-highlight">1.5Cr/Month</span> over{" "}
+                <span className="case-highlight">2+ years/-</span>
+              </p>
+            </motion.div>
+          </motion.div>{" "}
+          <motion.div
+            variants={cardVariants}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="case-card group"
+          >
+            <motion.div
+              variants={metricVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="metric-div"
+            >
+              <p className="metric-pera">
+                20<span className="mertic-span">+</span>
+              </p>
+              <p className="metric-lead ">ROAS</p>
+            </motion.div>
+
+            <motion.div
+              variants={contentVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="relative z-10"
+            >
+              <h3 className="case-heading">
+                Interior Surface <br /> Solutions
+              </h3>
+
+              <p className="case-desc">
+                Launched and scaled a new wall panel & interior{" "}
+                <br className="hidden lg:block" /> brand's Ads spend from{" "}
+                <span className="case-highlight">5k to ₹3L/month</span> while
+                generating <span className="case-highlight">20+ ROAS</span> in{" "}
+                <span className="case-highlight">18 months</span> using meta and
+                Google Ads.
+              </p>
+            </motion.div>
+          </motion.div>{" "}
+          <motion.div
+            variants={cardVariants}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="case-card group"
+          >
+            <motion.div
+              variants={metricVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="metric-div"
+            >
+              <p className="metric-pera">
+                2K<span className="mertic-span">+</span>
+              </p>
+              <p className="metric-lead ">Organic Clicks</p>
+            </motion.div>
+
+            <motion.div
+              variants={contentVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="relative z-10"
+            >
+              <h3 className="case-heading">
+                Silverware <br className="lg:hidden" /> Gifting & <br />{" "}
+                Furniture
+              </h3>
+
+              <p className="case-desc">
+                Ranked silver gifting brand on top{" "}
+                <span className="case-highlight">SERP</span> for “Silver{" "}
+                <br className="hidden lg:block" />
+                Wedding Gift” & “Silver Furniture” with
+                <span className="case-highlight">2K+</span> highly
+                <br />
+                relevant monthly organic clicks and improved page{" "}
+                <br className="hidden lg:block" /> quality metrics in{" "}
+                <span className="case-highlight">9 months</span>
+              </p>
+            </motion.div>
+          </motion.div>{" "}
+          <motion.div
+            variants={cardVariants}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="case-card group"
+          >
+            <motion.div
+              variants={metricVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="metric-div"
+            >
+              <p className="metric-pera">
+                30<span className="mertic-span">%</span>
+              </p>
+              <p className="metric-lead ">Conversion</p>
+            </motion.div>
+
+            <motion.div
+              variants={contentVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="relative z-10"
+            >
+              <h3 className="case-heading">
+                Pipe <br className="lg:hidden" /> Manufacturer
+              </h3>
+
+              <p className="case-desc">
+                For a hardware brand targeting international{" "}
+                <br className="hidden lg:block" /> markets, we scaled leads from{" "}
+                <span className="case-highlight">1 to 36 at ₹33K</span> spend
+                via Meta Ads, achieving{" "}
+                <span className="case-highlight">30% quality</span> conversion
+                and <span className="case-highlight">₹30L+</span>in closures.
+              </p>
+            </motion.div>
+          </motion.div>{" "}
+          <motion.div
+            variants={cardVariants}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="case-card group"
+          >
+            <motion.div
+              variants={metricVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="metric-div"
+            >
+              <p className="metric-pera">USA</p>
+              <p className="text-black text-[40px] -mt-6 lg:-mt-2 lg:text-5xl font-bold group-hover:text-white">
+                Brand
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={contentVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="relative z-10"
+            >
+              <h3 className="case-heading">
+                USA Based D2C <br /> Apparel & <br className="lg:hidden" />{" "}
+                Fashion <br className="hidden lg:block" /> Brand
+              </h3>
+
+              <p className="case-desc">
+                Scaled the clothing brand's Meta Ads in USA{" "}
+                <br className="hidden lg:block" /> Market from{" "}
+                <span className="case-highlight">$2K</span> Monthly spend &{" "}
+                <span className="case-highlight">1.9 ROAS</span> to{" "}
+                <span className="case-highlight">$5K</span>monthly spend &{" "}
+                <span className="case-highlight">4.0 ROAS.</span>
+              </p>
+            </motion.div>
+          </motion.div>{" "}
+          <motion.div
+            variants={cardVariants}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="case-card group"
+          >
+            <motion.div
+              variants={metricVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="metric-div"
+            >
+              <p className="metric-pera">
+                1K<span className="mertic-span">+</span>
+              </p>
+              <p className="metric-lead ">Leads</p>
+            </motion.div>
+
+            <motion.div
+              variants={contentVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="relative z-10"
+            >
+              <h3 className="case-heading">
+                Real Estate Delhi <br /> NCR
+              </h3>
+
+              <p className="case-desc">
+                Generated <span className="case-highlight">1000+</span> monthly
+                leads to at <span className="case-highlight">₹250 CPL</span> for
+                a Delhi NCR real estate client through Meta & Google Ads, while
+                maintaining a <span className="case-highlight">30%</span>{" "}
+                qualification rate
+              </p>
+            </motion.div>
+          </motion.div>{" "}
+          <motion.div
+            variants={cardVariants}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="case-card group"
+          >
+            <motion.div
+              variants={metricVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="metric-div"
+            >
+              <p className="metric-pera">ROAS</p>
+              <p className="text-black text-4xl -mt-4 lg:-mt-2  lg:text-5xl group-hover:text-white font-black">
+                BOOST
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={contentVariants}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="relative z-10"
+            >
+              <h3 className="case-heading">
+                Copperware <br /> Manufacturer
+              </h3>
+
+              <p className="case-desc">
+                Scaled a copperware manufacturer's ad spend{" "}
+                <br className="hidden lg:block" /> from{" "}
+                <span className="case-highlight">₹30K to ₹6.5L</span> per month
+                while boosting spend{" "}
+                <span className="case-highlight">ROAS</span> from{" "}
+                <span className="case-highlight">3.2 to 7.3</span>
+                using Meta and Google Ads.
+              </p>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

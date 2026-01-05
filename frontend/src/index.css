@@ -1,5 +1,35 @@
 @import "tailwindcss";
 
+@layer utilities {
+  .case-desc {
+    @apply mt-4 text-base leading-relaxed text-zinc-600
+           transition-colors duration-300
+           group-hover:text-zinc-200;
+  }
+  .case-heading {
+    @apply font-serif text-[22px] lg:text-2xl font-bold text-black transition-colors duration-300 group-hover:text-white;
+  }
+  .case-card {
+    @apply relative overflow-hidden rounded-2xl p-4 lg:p-8 shadow-xl;
+  }
+
+  .case-highlight {
+    @apply rounded bg-zinc-100 px-1.5 py-0.5 font-bold text-black;
+  }
+  .metric-div {
+    @apply absolute right-4 top-2 text-center;
+  }
+  .metric-pera {
+    @apply text-[40px] lg:text-5xl font-bold text-[#ffaa17];
+  }
+  .metric-span {
+    @apply text-[40px] lg:text-5xl;
+  }
+  .metric-lead {
+    @apply text-sm -mt-2 lg:mt-0 uppercase tracking-wide font-bold text-black group-hover:text-white transition;
+  }
+}
+
 @font-face {
   font-family: "Merriweather";
   src: url("/fonts/merriweather/Merriweather-Regular.ttf") format("truetype");

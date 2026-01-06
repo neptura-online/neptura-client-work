@@ -1,6 +1,11 @@
 import { FaWhatsapp } from "react-icons/fa";
+import type { OpenFormProps } from "../../types/type";
 
-const Buttons = () => {
+const Buttons = ({ setOpenForm, setId }: OpenFormProps) => {
+  const handleClick = () => {
+    setOpenForm(true);
+    setId("enquiry now sticky button");
+  };
   return (
     <div className="fixed z-60 flex flex-col ">
       <div className="fixed bottom-9 right-3 z-60">
@@ -23,7 +28,7 @@ const Buttons = () => {
       </div>
       <div className="fixed sm:hidden flex bottom-0 w-screen z-50">
         <a
-          href=""
+          onClick={handleClick}
           className="w-[50%] uppercase text-center py-3 bg-black text-white"
         >
           Enquiry now

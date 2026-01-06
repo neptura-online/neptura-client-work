@@ -33,7 +33,7 @@ const BusinessLead = () => {
 
   return (
     <div className="bg-gray-300 max-w-screen overflow-hidden">
-      <Buttons />
+      <Buttons setOpenForm={setOpenForm} setId={setId} />
 
       <HeroSection setOpenForm={setOpenForm} setId={setId} />
       <ProblemsSection

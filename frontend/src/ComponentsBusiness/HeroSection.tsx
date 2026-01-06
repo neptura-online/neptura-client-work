@@ -14,6 +14,12 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
     industry: "",
     message: "",
   });
+  const [formError, setFormError] = useState({
+    name: "",
+    email: "",
+    industry: "",
+    message: "",
+  });
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
 
@@ -97,29 +103,55 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
     } catch (err) {}
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!formData.name || !formData.industry || !formData.email) {
-      showError("Please Fill up All Fields");
-      return;
+
+    const errors = {
+      name: "",
+      email: "",
+      industry: "",
+      message: "",
+    };
+
+    if (!formData.name.trim()) {
+      errors.name = "Please enter name";
     }
-    if (!validateEmail(formData.email)) {
-      showError("Enter a valid email address");
-      return;
+
+    if (!formData.email.trim()) {
+      errors.email = "Please enter email";
+    } else if (!validateEmail(formData.email)) {
+      errors.email = "Enter a valid email address";
+    }
+
+    if (!formData.industry.trim()) {
+      errors.industry = "Please enter industry";
     }
 
     const rawPhone = phone.replace(/\D/g, "").slice(-10);
-
     if (rawPhone.length !== 10 || rawPhone.startsWith("0")) {
-      showError("Enter a valid 10-digit mobile number without 0");
+      setPhoneError("Enter a valid 10-digit mobile number");
+    } else {
+      setPhoneError("");
+    }
+
+    if (
+      errors.name ||
+      errors.email ||
+      errors.industry ||
+      rawPhone.length !== 10 ||
+      rawPhone.startsWith("0")
+    ) {
+      setFormError(errors);
       return;
     }
 
+    setFormError({ name: "", email: "", industry: "", message: "" });
+
     const body = {
-      name: e.target.name.value,
-      email: e.target.email.value,
+      name: formData.name,
+      email: formData.email,
       phone: rawPhone,
-      industry: e.target.industry.value,
+      industry: formData.industry,
       message: " ",
       utm_source,
       utm_medium,
@@ -134,7 +166,6 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
 
     try {
       setLoading(true);
-
       const res = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/lead`,
         body
@@ -145,7 +176,6 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
       }
     } catch (err: any) {
       showError(err?.response?.data || "Something went wrong");
-      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -183,6 +213,14 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
     setOpenForm(true);
     setId("hero lets work together");
   };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormError((prev) => ({ ...prev, [name]: "" }));
+  };
+
   return (
     <section className="relative w-full overflow-hidden bg-zinc-950 text-white flex justify-center">
       <div className="absolute inset-0 bg-linear-to-br lg:bg-linear-to-r from-zinc-800 via-zinc-900 to-yellow-600/90" />
@@ -319,22 +357,26 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
                   name="name"
                   type="text"
                   value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
+                  onChange={handleChange}
                   placeholder="Name*"
                   className="w-full rounded-lg border border-gray-400 placeholder:text-gray-400 px-4 py-3 outline-none"
                 />
+                {formError.name && (
+                  <p className="text-sm text-red-500 -mt-2">{formError.name}</p>
+                )}
                 <input
                   name="email"
                   type="email"
                   value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
+                  onChange={handleChange}
                   placeholder="Email*"
                   className="w-full rounded-lg border border-gray-400 placeholder:text-gray-400 px-4 py-3 outline-none"
                 />
+                {formError.email && (
+                  <p className="text-sm text-red-500 -mt-2">
+                    {formError.email}
+                  </p>
+                )}
                 <PhoneInput
                   country="in"
                   value={phone}
@@ -362,12 +404,15 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
                   type="text"
                   name="industry"
                   value={formData.industry}
-                  onChange={(e) =>
-                    setFormData({ ...formData, industry: e.target.value })
-                  }
+                  onChange={handleChange}
                   placeholder="Industry*"
                   className="w-full rounded-lg border border-gray-400 placeholder:text-gray-400 px-4 py-3 outline-none"
                 />
+                {formError.industry && (
+                  <p className="text-sm text-red-500 -mt-2">
+                    {formError.industry}
+                  </p>
+                )}
 
                 <button
                   type="submit"

@@ -22,6 +22,7 @@
   .metric-pera {
     @apply text-[40px] lg:text-5xl font-bold text-[#ffaa17];
   }
+
   .metric-span {
     @apply text-[40px] lg:text-5xl;
   }
@@ -58,4 +59,11 @@
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+.metric-pera {
+  font-size: 45px;
+  font-weight: 900;
+  color: #ffaa17;
+  -webkit-text-stroke: 3px #ffaa17;
 }

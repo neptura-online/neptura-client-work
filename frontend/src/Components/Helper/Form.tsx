@@ -218,11 +218,11 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.95 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed left-1/2 top-1/2 z-60 w-[92%] max-w-md max-h-[90vh] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-3xl bg-white p-6 sm:p-8 shadow-2xl"
+            className="fixed left-1/2 top-1/2 z-60 w-[92%] max-w-md max-h-[90vh] -translate-x-1/2 -translate-y-1/2 rounded-3xl bg-white p-6 sm:p-8 shadow-2xl"
           >
             <button
               onClick={closeSubmit}
-              className="absolute right-3 top-3 text-zinc-500 hover:text-black"
+              className="absolute -top-4 -right-4 flex h-9 w-9 items-center justify-center rounded-full bg-yellow-400 text-black shadow-lg hover:scale-105 transition"
             >
               ✕
             </button>

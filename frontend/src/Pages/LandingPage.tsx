@@ -21,6 +21,9 @@ const WhyWorkWithUs = lazy(() => import("../Components/WhyWorkWithUs"));
 const ProcessCarousel = lazy(() => import("../Components/ProcessCarousel"));
 const AdvancedServices = lazy(() => import("../Components/AdvancedServices"));
 const CaseStudiesSection = lazy(() => import("../Components/CaseStudySection"));
+// const CaseStudiesSection = lazy(
+//   () => import("../ComponentsBusiness/CaseStudies")
+// );
 const ThreeDCarousel = lazy(() => import("../Components/Carosoal"));
 const AuthoritySection = lazy(() => import("../Components/AuthoritySection"));
 const Testimonials = lazy(() => import("../Components/Testimonial"));

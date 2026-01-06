@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiChevronLeft, FiChevronRight, FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight } from "react-icons/fi";
 import { services } from "../constant/constant";
 import Heading from "./Helper/Heading";
 import type { OpenFormProps } from "../types/type";
@@ -13,6 +13,7 @@ const CarouselCard = memo(
     isMobile,
     onHover,
     onClick,
+    triggerButton,
   }: {
     service: any;
     offset: number;
@@ -20,6 +21,7 @@ const CarouselCard = memo(
     isMobile: boolean;
     onHover: (hovered: boolean) => void;
     onClick: () => void;
+    triggerButton: () => void;
   }) => {
     const absOffset = Math.abs(offset);
     if (absOffset > (isMobile ? 1 : 2)) return null;
@@ -75,6 +77,7 @@ const CarouselCard = memo(
 
             <div className="relative z-10 w-full flex justify-between items-center group">
               <span
+                onClick={triggerButton}
                 className={`text-[10px] font-bold uppercase tracking-[0.2em] ${
                   isActive ? "text-yellow-500" : "text-white/20"
                 }`}
@@ -82,6 +85,7 @@ const CarouselCard = memo(
                 Contact Us
               </span>
               <div
+                onClick={triggerButton}
                 className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-500 ${
                   isActive
                     ? "border-yellow-500 text-yellow-500 group-hover:bg-yellow-500 group-hover:text-black"
@@ -126,16 +130,6 @@ const ThreeDCarousel = ({ setOpenForm, setId }: OpenFormProps) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const nextSlide = useCallback(
-    () => setActiveIdx((prev) => (prev + 1) % services.length),
-    []
-  );
-  const prevSlide = useCallback(
-    () =>
-      setActiveIdx((prev) => (prev - 1 + services.length) % services.length),
-    []
-  );
-
   const handleHover = useCallback(
     (hovered: boolean) => setIsHovered(hovered),
     []
@@ -172,47 +166,11 @@ const ThreeDCarousel = ({ setOpenForm, setId }: OpenFormProps) => {
                   isMobile={isMobile}
                   onHover={handleHover}
                   onClick={() => setActiveIdx(i)}
+                  triggerButton={triggerButton}
                 />
               );
             })}
           </AnimatePresence>
-        </div>
-
-        <div className="xl:hidden mt-2 lg:mt-5 flex flex-col items-center gap-8">
-          <div className=" hidden lg:flex items-center gap-6">
-            <button
-              onClick={prevSlide}
-              className="p-3 lg:p-4 rounded-full border border-white/10 hover:border-yellow-500 hover:text-yellow-500 transition-all bg-white/5 backdrop-blur-md"
-            >
-              <FiChevronLeft size={24} />
-            </button>
-
-            <div className="flex gap-2">
-              {services.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveIdx(i)}
-                  className={`h-1.5 transition-all duration-500 rounded-full ${
-                    activeIdx === i ? "w-10 bg-yellow-500" : "w-2 bg-white/10"
-                  }`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={nextSlide}
-              className="p-3 lg:p-4 rounded-full border border-white/10 hover:border-yellow-500 hover:text-yellow-500 transition-all bg-white/5 backdrop-blur-md"
-            >
-              <FiChevronRight size={24} />
-            </button>
-          </div>
-
-          <button
-            onClick={triggerButton}
-            className="px-8 py-4 bg-yellow-500 text-black font-semibold uppercase tracking-widest rounded-xl shadow-[0_0_30px_rgba(255,204,0,0.2)] hover:shadow-[0_0_50px_rgba(255,204,0,0.4)] transition-all transform hover:-translate-y-1 text-sm"
-          >
-            Book a Strategy Call
-          </button>
         </div>
       </div>
     </section>

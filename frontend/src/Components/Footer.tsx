@@ -14,6 +14,12 @@ const Footer = () => {
     industry: "",
     message: "",
   });
+  const [formError, setFormError] = useState({
+    name: "",
+    email: "",
+    industry: "",
+    message: "",
+  });
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
 
@@ -99,25 +105,45 @@ const Footer = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    if (!formData) {
-      showError("Please fill all fileds");
-      return;
-    }
-    if (!validateEmail(formData.email)) {
-      showError("Enter a valid email address");
-      return;
-    }
-    if (phone.length !== 12) {
-      showError("Enter a valid 10-digit mobile number without 0");
-      return;
+    const errors = {
+      name: "",
+      email: "",
+      industry: "",
+      message: "",
+    };
+
+    if (!formData.name.trim()) {
+      errors.name = "Please enter name*";
     }
 
+    if (!formData.email.trim()) {
+      errors.email = "Please enter email*";
+    } else if (!validateEmail(formData.email)) {
+      errors.email = "Enter a valid email address*";
+    }
+
+    if (!formData.industry.trim()) {
+      errors.industry = "Please enter industry*";
+    }
     const rawPhone = phone.replace(/\D/g, "").slice(-10);
-
     if (rawPhone.length !== 10 || rawPhone.startsWith("0")) {
-      showError("Enter a valid 10-digit mobile number without 0");
+      setPhoneError("Enter a valid 10-digit mobile number*");
+    } else {
+      setPhoneError("");
+    }
+
+    if (
+      errors.name ||
+      errors.email ||
+      errors.industry ||
+      rawPhone.length !== 10 ||
+      rawPhone.startsWith("0")
+    ) {
+      setFormError(errors);
       return;
     }
+
+    setFormError({ name: "", email: "", industry: "", message: "" });
 
     const body = {
       name: e.target.name.value,
@@ -162,6 +188,13 @@ const Footer = () => {
       }
     };
   }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormError((prev) => ({ ...prev, [name]: "" }));
+  };
 
   useEffect(() => {
     const handleBeforeUnload = () => {
@@ -276,25 +309,31 @@ const Footer = () => {
                     name="name"
                     type="text"
                     value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
+                    onChange={handleChange}
                     placeholder="Name*"
                     className="rounded-xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500 w-full"
                   />
+                  {formError.name && (
+                    <p className="text-sm text-red-500 mt-1">
+                      {formError.name}
+                    </p>
+                  )}
                 </div>
 
                 <div>
                   <input
                     name="email"
                     value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
+                    onChange={handleChange}
                     type="email"
                     placeholder="Email*"
                     className="rounded-xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500 w-full"
                   />
+                  {formError.email && (
+                    <p className="text-sm mt-1 text-red-500">
+                      {formError.email}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -306,7 +345,6 @@ const Footer = () => {
                 autoFormat={false}
                 enableSearch
                 inputProps={{
-                  required: true,
                   maxLength: 13,
                   minLength: 13,
                   title: "Please enter a valid 10-digit mobile number",
@@ -326,14 +364,15 @@ const Footer = () => {
                 name="industry"
                 type="text"
                 value={formData.industry}
-                onChange={(e) =>
-                  setFormData({ ...formData, industry: e.target.value })
-                }
+                onChange={handleChange}
                 placeholder="Industry*"
                 className="rounded-xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500"
-                required
-                minLength={4}
               />
+              {formError.industry && (
+                <p className="text-sm text-red-500 -mt-2">
+                  {formError.industry}
+                </p>
+              )}
               <textarea
                 name="message"
                 value={formData.message}
@@ -341,8 +380,8 @@ const Footer = () => {
                   setFormData({ ...formData, message: e.target.value })
                 }
                 className="rounded-xl border border-zinc-300 px-4 py-3 outline-none text-sm sm:text-base focus:border-yellow-500"
-                placeholder="Message*"
-                minLength={10}
+                placeholder="Message"
+                maxLength={50}
               />
               <button
                 type="submit"

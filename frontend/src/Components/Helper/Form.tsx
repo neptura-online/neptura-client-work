@@ -13,6 +13,12 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
     industry: "",
     message: "",
   });
+  const [formError, setFormError] = useState({
+    name: "",
+    email: "",
+    industry: "",
+    message: "",
+  });
 
   const firstInputRef = useRef<HTMLInputElement | null>(null);
   const errorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -55,6 +61,10 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
 
     if (digits.startsWith("0")) {
       setPhoneError("Mobile number cannot start with 0");
+      return;
+    }
+    if (digits.length != 10) {
+      setPhoneError("Mobile number should be 10");
       return;
     }
 
@@ -107,22 +117,45 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    if (!validateEmail(formData.email)) {
-      showError("Enter a valid email address");
-      return;
+    const errors = {
+      name: "",
+      email: "",
+      industry: "",
+      message: "",
+    };
+
+    if (!formData.name.trim()) {
+      errors.name = "Please enter name*";
     }
 
-    if (phone.length !== 12) {
-      showError("Enter a valid 10-digit mobile number");
-      return;
+    if (!formData.email.trim()) {
+      errors.email = "Please enter email*";
+    } else if (!validateEmail(formData.email)) {
+      errors.email = "Enter a valid email address*";
     }
 
+    if (!formData.industry.trim()) {
+      errors.industry = "Please enter industry*";
+    }
     const rawPhone = phone.replace(/\D/g, "").slice(-10);
-
     if (rawPhone.length !== 10 || rawPhone.startsWith("0")) {
-      showError("Enter a valid 10-digit mobile number without 0");
+      setPhoneError("Enter a valid 10-digit mobile number*");
+    } else {
+      setPhoneError("");
+    }
+
+    if (
+      errors.name ||
+      errors.email ||
+      errors.industry ||
+      rawPhone.length !== 10 ||
+      rawPhone.startsWith("0")
+    ) {
+      setFormError(errors);
       return;
     }
+
+    setFormError({ name: "", email: "", industry: "", message: "" });
 
     const body = {
       name: e.target.name.value,
@@ -162,6 +195,13 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormError((prev) => ({ ...prev, [name]: "" }));
   };
 
   useEffect(() => {
@@ -218,7 +258,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.95 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed left-1/2 top-1/2 z-60 w-[92%] max-w-md max-h-[90vh] -translate-x-1/2 -translate-y-1/2 rounded-3xl bg-white p-6 sm:p-8 shadow-2xl"
+            className="fixed left-1/2 top-1/2 z-60 w-[92%] max-w-md max-h-[90vh] -translate-x-1/2 -translate-y-1/2 rounded-3xl bg-white p-4 sm:p-8 shadow-2xl"
           >
             <button
               onClick={closeSubmit}
@@ -240,25 +280,24 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
                 type="text"
                 placeholder="Name*"
                 value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
+                onChange={handleChange}
                 className="rounded-2xl border border-zinc-300 px-4 py-3 text-sm sm:text-base outline-none focus:border-yellow-500"
-                required
-                minLength={3}
               />
+              {formError.name && (
+                <p className="text-sm text-red-500 -mt-2">{formError.name}</p>
+              )}
 
               <input
                 name="email"
                 type="email"
                 value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                onChange={handleChange}
                 placeholder="Email*"
                 className="rounded-2xl border border-zinc-300 px-4 py-3 text-sm sm:text-base outline-none focus:border-yellow-500"
-                required
               />
+              {formError.email && (
+                <p className="text-sm text-red-500 -mt-2">{formError.email}</p>
+              )}
 
               <PhoneInput
                 country="in"
@@ -268,7 +307,6 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
                 autoFormat={false}
                 enableSearch
                 inputProps={{
-                  required: true,
                   maxLength: 13,
                   minLength: 13,
                   title: "Please enter a valid 10-digit mobile number",
@@ -288,14 +326,15 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
                 name="industry"
                 type="text"
                 value={formData.industry}
-                onChange={(e) =>
-                  setFormData({ ...formData, industry: e.target.value })
-                }
+                onChange={handleChange}
                 placeholder="Industry*"
                 className="rounded-2xl border border-zinc-300 px-4 py-3 text-sm sm:text-base outline-none focus:border-yellow-500"
-                required
-                minLength={5}
               />
+              {formError.industry && (
+                <p className="text-sm text-red-500 -mt-2">
+                  {formError.industry}
+                </p>
+              )}
 
               <textarea
                 name="message"
@@ -304,8 +343,8 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
                   setFormData({ ...formData, message: e.target.value })
                 }
                 className="rounded-2xl border border-zinc-300 px-4 py-3 outline-none text-sm sm:text-base focus:border-yellow-500"
-                placeholder="Message*"
-                minLength={10}
+                placeholder="Message"
+                maxLength={50}
               />
 
               <button

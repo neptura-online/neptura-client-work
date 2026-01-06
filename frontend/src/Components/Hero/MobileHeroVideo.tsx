@@ -13,6 +13,12 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
     industry: "",
     message: "",
   });
+  const [formError, setFormError] = useState({
+    name: "",
+    email: "",
+    industry: "",
+    message: "",
+  });
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
 
@@ -98,25 +104,52 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    const errors = {
+      name: "",
+      email: "",
+      industry: "",
+      message: "",
+    };
 
-    if (!validateEmail(formData.email)) {
-      showError("Enter a valid email address");
-      return;
+    if (!formData.name.trim()) {
+      errors.name = "Please enter name*";
     }
 
+    if (!formData.email.trim()) {
+      errors.email = "Please enter email*";
+    } else if (!validateEmail(formData.email)) {
+      errors.email = "Enter a valid email address*";
+    }
+
+    if (!formData.industry.trim()) {
+      errors.industry = "Please enter industry*";
+    }
     const rawPhone = phone.replace(/\D/g, "").slice(-10);
-
     if (rawPhone.length !== 10 || rawPhone.startsWith("0")) {
-      showError("Enter a valid 10-digit mobile number without 0");
+      setPhoneError("Enter a valid 10-digit mobile number*");
+    } else {
+      setPhoneError("");
+    }
+
+    if (
+      errors.name ||
+      errors.email ||
+      errors.industry ||
+      rawPhone.length !== 10 ||
+      rawPhone.startsWith("0")
+    ) {
+      setFormError(errors);
       return;
     }
+
+    setFormError({ name: "", email: "", industry: "", message: "" });
 
     const body = {
       name: e.target.name.value,
       email: e.target.email.value,
       phone: rawPhone,
-      industry: e.target.industry.value,
-      message: "Hero section lead",
+      industry: "",
+      message: e.target.message.value,
       utm_source,
       utm_medium,
       utm_term,
@@ -166,6 +199,13 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [formData.name, phone]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormError((prev) => ({ ...prev, [name]: "" }));
+  };
 
   useEffect(() => {
     return () => {
@@ -278,41 +318,33 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
                 name="name"
                 type="text"
                 value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
+                onChange={handleChange}
                 placeholder="Name*"
                 className="rounded-2xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500"
-                required
-                minLength={3}
               />
+              {formError.name && (
+                <p className="text-sm text-red-500 -mt-2">{formError.name}</p>
+              )}
 
               <input
                 name="email"
                 value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                onChange={handleChange}
                 type="email"
                 placeholder="Email*"
                 className="rounded-2xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500"
-                required
-                minLength={13}
               />
+              {formError.email && (
+                <p className="text-sm text-red-500 -mt-2">{formError.email}</p>
+              )}
 
               <PhoneInput
                 country="in"
                 value={phone}
                 onChange={handlePhoneChange}
                 countryCodeEditable={false}
-                autoFormat={false}
+                autoFormat={true}
                 enableSearch
-                inputProps={{
-                  required: true,
-                  maxLength: 13,
-                  minLength: 13,
-                  title: "Please enter a valid 10-digit mobile number",
-                }}
                 inputStyle={{
                   width: "100%",
                   height: "52px",
@@ -331,7 +363,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
                 }
                 className="rounded-2xl border border-zinc-300 px-4 py-3 outline-none text-sm sm:text-base focus:border-yellow-500"
                 placeholder="Message*"
-                minLength={10}
+                maxLength={50}
               />
               <button
                 type="submit"

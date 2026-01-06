@@ -326,7 +326,9 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
                   className="rounded-2xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500"
                 />
                 {formError.name && (
-                  <p className="text-sm text-red-500 -mt-2">{formError.name}</p>
+                  <p className="text-sm text-start text-red-500 -mt-2">
+                    {formError.name}
+                  </p>
                 )}
 
                 <input
@@ -338,7 +340,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
                   className="rounded-2xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500"
                 />
                 {formError.email && (
-                  <p className="text-sm text-red-500 -mt-2">
+                  <p className="text-sm text-start text-red-500 -mt-2">
                     {formError.email}
                   </p>
                 )}
@@ -363,7 +365,9 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
                 />
 
                 {phoneError && (
-                  <p className="text-sm text-red-500 -mt-2">{phoneError}</p>
+                  <p className="text-sm  text-red-500 -mt-2 text-start">
+                    {phoneError}
+                  </p>
                 )}
 
                 <textarea
@@ -373,7 +377,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
                     setFormData({ ...formData, message: e.target.value })
                   }
                   className="rounded-2xl border border-zinc-300 px-4 py-3 outline-none text-sm sm:text-base focus:border-yellow-500"
-                  placeholder="Message*"
+                  placeholder="Message"
                   minLength={10}
                 />
                 <button

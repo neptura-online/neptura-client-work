@@ -151,6 +151,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
     }
 
     setFormError({ name: "", email: "", industry: "", message: "" });
+
     const body = {
       name: e.target.name.value,
       email: e.target.email.value,
@@ -335,7 +336,8 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
                   setFormData({ ...formData, message: e.target.value })
                 }
                 className="rounded-xl border border-zinc-300 px-4 py-3 text-sm sm:text-base outline-none focus:border-black"
-                placeholder="Message*"
+                placeholder="Message"
+                maxLength={50}
               />
 
               <button

@@ -298,6 +298,11 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
                 countryCodeEditable={false}
                 autoFormat={false}
                 enableSearch
+                inputProps={{
+                  maxLength: 13,
+                  minLength: 13,
+                  title: "Please enter a valid 10-digit mobile number",
+                }}
                 inputStyle={{
                   width: "100%",
                   height: "52px",

@@ -385,7 +385,6 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
                   autoFormat={false}
                   enableSearch
                   inputProps={{
-                    required: true,
                     maxLength: 13,
                     minLength: 13,
                     title: "Please enter a valid 10-digit mobile number",

@@ -13,7 +13,12 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
     industry: "",
     message: "",
   });
-
+  const [formError, setFormError] = useState({
+    name: "",
+    email: "",
+    industry: "",
+    message: "",
+  });
   const firstInputRef = useRef<HTMLInputElement | null>(null);
   const errorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -107,23 +112,45 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    if (!validateEmail(formData.email)) {
-      showError("Enter a valid email address");
-      return;
+    const errors = {
+      name: "",
+      email: "",
+      industry: "",
+      message: "",
+    };
+
+    if (!formData.name.trim()) {
+      errors.name = "Please enter name*";
     }
 
-    if (phone.length !== 12) {
-      showError("Enter a valid 10-digit mobile number");
-      return;
+    if (!formData.email.trim()) {
+      errors.email = "Please enter email*";
+    } else if (!validateEmail(formData.email)) {
+      errors.email = "Enter a valid email address*";
     }
 
+    if (!formData.industry.trim()) {
+      errors.industry = "Please enter industry*";
+    }
     const rawPhone = phone.replace(/\D/g, "").slice(-10);
-
     if (rawPhone.length !== 10 || rawPhone.startsWith("0")) {
-      showError("Enter a valid 10-digit mobile number without 0");
+      setPhoneError("Enter a valid 10-digit mobile number*");
+    } else {
+      setPhoneError("");
+    }
+
+    if (
+      errors.name ||
+      errors.email ||
+      errors.industry ||
+      rawPhone.length !== 10 ||
+      rawPhone.startsWith("0")
+    ) {
+      setFormError(errors);
       return;
     }
 
+    setFormError({ name: "", email: "", industry: "", message: "" });
     const body = {
       name: e.target.name.value,
       email: e.target.email.value,
@@ -178,6 +205,13 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
       document.body.style.overflow = "auto";
     };
   }, [isOpen]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormError((prev) => ({ ...prev, [name]: "" }));
+  };
 
   useEffect(() => {
     return () => {
@@ -238,25 +272,24 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
                 type="text"
                 placeholder="Name*"
                 value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
+                onChange={handleChange}
                 className="rounded-xl border border-zinc-300 px-4 py-3 text-sm sm:text-base outline-none focus:border-black"
-                required
-                minLength={3}
               />
+              {formError.name && (
+                <p className="text-sm text-red-500 -mt-2">{formError.name}</p>
+              )}
 
               <input
                 name="email"
                 type="email"
                 value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                onChange={handleChange}
                 placeholder="Email*"
                 className="rounded-xl border border-zinc-300 px-4 py-3 text-sm sm:text-base outline-none focus:border-black"
-                required
               />
+              {formError.email && (
+                <p className="text-sm text-red-500 -mt-2">{formError.email}</p>
+              )}
 
               <PhoneInput
                 country="in"
@@ -265,12 +298,6 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
                 countryCodeEditable={false}
                 autoFormat={false}
                 enableSearch
-                inputProps={{
-                  required: true,
-                  maxLength: 13,
-                  minLength: 13,
-                  title: "Please enter a valid 10-digit mobile number",
-                }}
                 inputStyle={{
                   width: "100%",
                   height: "52px",
@@ -286,14 +313,15 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
                 name="industry"
                 type="text"
                 value={formData.industry}
-                onChange={(e) =>
-                  setFormData({ ...formData, industry: e.target.value })
-                }
+                onChange={handleChange}
                 placeholder="Industry*"
                 className="rounded-xl border border-zinc-300 px-4 py-3 text-sm sm:text-base outline-none focus:border-black"
-                required
-                minLength={5}
               />
+              {formError.industry && (
+                <p className="text-sm text-red-500 -mt-2">
+                  {formError.industry}
+                </p>
+              )}
 
               <textarea
                 name="message"
@@ -303,7 +331,6 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
                 }
                 className="rounded-xl border border-zinc-300 px-4 py-3 text-sm sm:text-base outline-none focus:border-black"
                 placeholder="Message*"
-                minLength={10}
               />
 
               <button

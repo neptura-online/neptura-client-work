@@ -114,22 +114,22 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
     };
 
     if (!formData.name.trim()) {
-      errors.name = "Please enter name";
+      errors.name = "Please enter name*";
     }
 
     if (!formData.email.trim()) {
-      errors.email = "Please enter email";
+      errors.email = "Please enter email*";
     } else if (!validateEmail(formData.email)) {
-      errors.email = "Enter a valid email address";
+      errors.email = "Enter a valid email address*";
     }
 
     if (!formData.industry.trim()) {
-      errors.industry = "Please enter industry";
+      errors.industry = "Please enter industry*";
     }
 
     const rawPhone = phone.replace(/\D/g, "").slice(-10);
     if (rawPhone.length !== 10 || rawPhone.startsWith("0")) {
-      setPhoneError("Enter a valid 10-digit mobile number");
+      setPhoneError("Enter a valid 10-digit mobile number*");
     } else {
       setPhoneError("");
     }

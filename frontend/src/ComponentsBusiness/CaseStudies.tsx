@@ -38,7 +38,7 @@ export default function CaseStudies() {
         />
 
         <div className="text-center">
-          <h2 className="font-serif text-3xl md:text-[35px] text-white">
+          <h2 className="font-serif text-3xl md:text-[45px] text-white">
             Real Case Studies,{" "}
             <span className="text-yellow-400">Real ROAS</span>
           </h2>
@@ -327,9 +327,30 @@ export default function CaseStudies() {
               transition={{ duration: 0.35, ease: "easeOut" }}
               className="metric-div"
             >
-              <p className="metric-pera">USA</p>
-              <p className="text-black text-[40px] -mt-6 lg:-mt-2 lg:text-5xl font-bold group-hover:text-white">
-                Brand
+              <p
+                style={{
+                  WebkitTextStroke: "2px #ffaa17",
+                  color: "#ffaa17",
+                }}
+                className="text-[35px] lg:text-[40px] font-bold"
+              >
+                USA
+              </p>
+
+              <p
+                style={{
+                  WebkitTextStroke: "2px var(--stroke)",
+                  color: "var(--fill)",
+                }}
+                className="
+    [--stroke:black] [--fill:black]
+    group-hover:[--stroke:white]
+    group-hover:[--fill:white]
+    text-[35px] lg:text-[40px] font-black -mt-2 lg:-mt-3
+    transition-all
+  "
+              >
+                BRAND
               </p>
             </motion.div>
 
@@ -420,8 +441,29 @@ export default function CaseStudies() {
               transition={{ duration: 0.35, ease: "easeOut" }}
               className="metric-div"
             >
-              <p className="metric-pera">ROAS</p>
-              <p className="text-black text-4xl -mt-4 lg:-mt-2  lg:text-5xl group-hover:text-white font-black">
+              <p
+                style={{
+                  WebkitTextStroke: "2px #ffaa17",
+                  color: "#ffaa17",
+                }}
+                className="text-[35px] lg:text-[40px] font-bold"
+              >
+                ROAS
+              </p>
+
+              <p
+                style={{
+                  WebkitTextStroke: "2px var(--stroke)",
+                  color: "var(--fill)",
+                }}
+                className="
+    [--stroke:black] [--fill:black]
+    group-hover:[--stroke:white]
+    group-hover:[--fill:white]
+    text-[35px] lg:text-[40px] font-black -mt-2 lg:-mt-3
+    transition-all
+  "
+              >
                 BOOST
               </p>
             </motion.div>

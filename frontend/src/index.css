@@ -17,7 +17,7 @@
     @apply rounded bg-zinc-100 px-1.5 py-0.5 font-bold text-black;
   }
   .metric-div {
-    @apply absolute right-4 top-2 text-center;
+    @apply absolute right-1 lg:right-4 top-2 text-center;
   }
   .metric-pera {
     @apply text-[40px] lg:text-5xl font-bold text-[#ffaa17];
@@ -65,5 +65,5 @@
   font-size: 45px;
   font-weight: 900;
   color: #ffaa17;
-  -webkit-text-stroke: 3px #ffaa17;
+  -webkit-text-stroke: 2px #ffaa17;
 }

@@ -110,22 +110,22 @@ export default function FinalCTASection() {
     };
 
     if (!formData.name.trim()) {
-      errors.name = "Please enter name";
+      errors.name = "Please enter name*";
     }
 
     if (!formData.email.trim()) {
-      errors.email = "Please enter email";
+      errors.email = "Please enter email*";
     } else if (!validateEmail(formData.email)) {
-      errors.email = "Enter a valid email address";
+      errors.email = "Enter a valid email address*";
     }
 
     if (!formData.industry.trim()) {
-      errors.industry = "Please enter industry";
+      errors.industry = "Please enter industry*";
     }
 
     const rawPhone = phone.replace(/\D/g, "").slice(-10);
     if (rawPhone.length !== 10 || rawPhone.startsWith("0")) {
-      setPhoneError("Enter a valid 10-digit mobile number");
+      setPhoneError("Enter a valid 10-digit mobile number*");
     } else {
       setPhoneError("");
     }
@@ -222,7 +222,7 @@ export default function FinalCTASection() {
             transition={{ duration: 0.6 }}
             className="xl:w-[55%] flex items-center xl:items-start flex-col"
           >
-            <h2 className="font-serif text-3xl font-medium md:text-4xl text-center lg:text-start px-6 lg:px-0">
+            <h2 className="font-serif text-3xl font-semibold md:text-4xl text-center lg:text-start px-6 lg:px-0">
               Time to Stop Losing Business to Competitors!
             </h2>
 

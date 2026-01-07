@@ -3,8 +3,6 @@ import HeroSection from "../ComponentsBusiness/HeroSection";
 import ProblemsSection from "../ComponentsBusiness/ProblemsSection";
 import Buttons from "../ComponentsBusiness/Helper/whatsapp";
 
-/* ---------------- LAZY COMPONENTS ---------------- */
-
 const Form = lazy(() => import("../ComponentsBusiness/Helper/Form"));
 const NumbersSection = lazy(
   () => import("../ComponentsBusiness/NumbersSection")
@@ -24,16 +22,12 @@ const FinalCTASection = lazy(
   () => import("../ComponentsBusiness/FinalCTASection")
 );
 
-/* ---------------- SKELETON ---------------- */
-
 const SectionSkeleton = ({ height = 400 }: { height?: number }) => (
   <div
     style={{ height }}
     className="my-16 w-full animate-pulse rounded-xl bg-gray-400/40"
   />
 );
-
-/* ---------------- PAGE ---------------- */
 
 const BusinessLead = () => {
   const [openForm, setOpenForm] = useState(false);
@@ -45,10 +39,8 @@ const BusinessLead = () => {
 
   return (
     <div className="bg-gray-300 max-w-screen overflow-hidden">
-      {/* FLOATING CTA */}
       <Buttons setOpenForm={setOpenForm} setId={setId} />
 
-      {/* ABOVE THE FOLD */}
       <HeroSection setOpenForm={setOpenForm} setId={setId} />
       <ProblemsSection
         setOpenForm={setOpenForm}
@@ -57,12 +49,10 @@ const BusinessLead = () => {
         settriggerUrl={setTriggerUrl}
       />
 
-      {/* NON-BLOCKING NUMBERS */}
       <Suspense fallback={<SectionSkeleton height={250} />}>
         <NumbersSection />
       </Suspense>
 
-      {/* FORM (ONLY WHEN OPEN) */}
       {openForm && (
         <Suspense fallback={null}>
           <Form
@@ -75,7 +65,6 @@ const BusinessLead = () => {
         </Suspense>
       )}
 
-      {/* BELOW THE FOLD (PROGRESSIVE) */}
       <Suspense fallback={<SectionSkeleton height={350} />}>
         <WhyWorkWithUs setOpenForm={setOpenForm} setId={setId} />
       </Suspense>

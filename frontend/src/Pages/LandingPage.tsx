@@ -3,6 +3,10 @@ import NavBar from "../Components/NavBar";
 import HeroSectionVideoBG from "../Components/Hero/HeroSectionVideoBG";
 import Counter from "../Components/Counter";
 import OfferContainer from "../Components/OfferContainer";
+import ProblemSection from "../Components/ProblemSection";
+import LandingProblemSection from "../Components/LandingProblemSection";
+
+/* ---------------- LAZY COMPONENTS ---------------- */
 
 const ExitIntentWrapper = lazy(
   () => import("../Components/Helper/ExitIntentWrapper")
@@ -10,10 +14,6 @@ const ExitIntentWrapper = lazy(
 
 const Form = lazy(() => import("../Components/Helper/Form"));
 
-const ProblemSection = lazy(() => import("../Components/ProblemSection"));
-const LandingProblemSection = lazy(
-  () => import("../Components/LandingProblemSection")
-);
 const ConversionPhilosophy = lazy(
   () => import("../Components/ConversionPhilosophy")
 );
@@ -27,6 +27,17 @@ const Testimonials = lazy(() => import("../Components/Testimonial"));
 const FAQSection = lazy(() => import("../Components/FAQQuestion"));
 const Footer = lazy(() => import("../Components/Footer"));
 
+/* ---------------- SKELETON ---------------- */
+
+const SectionSkeleton = ({ height = 400 }: { height?: number }) => (
+  <div
+    style={{ height }}
+    className="my-16 w-full animate-pulse rounded-xl bg-zinc-900/60"
+  />
+);
+
+/* ---------------- PAGE ---------------- */
+
 const LandingPage = () => {
   const [openForm, setOpenForm] = useState(false);
   const [id, setId] = useState("");
@@ -37,41 +48,74 @@ const LandingPage = () => {
 
   return (
     <>
+      {/* ABOVE THE FOLD (NO LAZY) */}
       <NavBar />
       <HeroSectionVideoBG setOpenForm={setOpenForm} setId={setId} />
       <Counter />
       <OfferContainer setOpenForm={setOpenForm} setId={setId} />
-      <Suspense fallback={null}>
-        <ProblemSection
-          setOpenForm={setOpenForm}
-          setId={setId}
-          settriggerUrl={setTriggerUrl}
-          setSave={setSave}
-        />
-        <LandingProblemSection setOpenForm={setOpenForm} setId={setId} />
-      </Suspense>
+      <ProblemSection
+        setOpenForm={setOpenForm}
+        setId={setId}
+        settriggerUrl={setTriggerUrl}
+        setSave={setSave}
+      />
+      <LandingProblemSection setOpenForm={setOpenForm} setId={setId} />
+
+      {/* NON-BLOCKING HELPERS */}
       <Suspense fallback={null}>
         <ExitIntentWrapper />
-        <Form
-          isOpen={openForm}
-          onClose={() => setOpenForm(false)}
-          id={id}
-          triggered={triggerUrl}
-          save={save}
-        />
+      </Suspense>
 
+      {openForm && (
+        <Suspense fallback={null}>
+          <Form
+            isOpen={openForm}
+            onClose={() => setOpenForm(false)}
+            id={id}
+            triggered={triggerUrl}
+            save={save}
+          />
+        </Suspense>
+      )}
+
+      {/* BELOW THE FOLD (PROGRESSIVE LOADING) */}
+      <Suspense fallback={<SectionSkeleton height={300} />}>
         <ConversionPhilosophy setOpenForm={setOpenForm} setId={setId} />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton height={300} />}>
         <WhyWorkWithUs setOpenForm={setOpenForm} setId={setId} />
+      </Suspense>
 
+      <Suspense fallback={<SectionSkeleton height={400} />}>
         <ProcessCarousel />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton height={450} />}>
         <AdvancedServices />
+      </Suspense>
 
+      <Suspense fallback={<SectionSkeleton height={450} />}>
         <CaseStudiesSection setOpenForm={setOpenForm} setId={setId} />
-        <ThreeDCarousel setOpenForm={setOpenForm} setId={setId} />
-        <AuthoritySection setOpenForm={setOpenForm} setId={setId} />
+      </Suspense>
 
+      <Suspense fallback={<SectionSkeleton height={500} />}>
+        <ThreeDCarousel setOpenForm={setOpenForm} setId={setId} />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton height={400} />}>
+        <AuthoritySection setOpenForm={setOpenForm} setId={setId} />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton height={350} />}>
         <Testimonials />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton height={350} />}>
         <FAQSection />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton height={250} />}>
         <Footer />
       </Suspense>
     </>

@@ -3,8 +3,9 @@ import HeroSection from "../ComponentsBusiness/HeroSection";
 import ProblemsSection from "../ComponentsBusiness/ProblemsSection";
 import Buttons from "../ComponentsBusiness/Helper/whatsapp";
 
-const Form = lazy(() => import("../ComponentsBusiness/Helper/Form"));
+/* ---------------- LAZY COMPONENTS ---------------- */
 
+const Form = lazy(() => import("../ComponentsBusiness/Helper/Form"));
 const NumbersSection = lazy(
   () => import("../ComponentsBusiness/NumbersSection")
 );
@@ -23,6 +24,17 @@ const FinalCTASection = lazy(
   () => import("../ComponentsBusiness/FinalCTASection")
 );
 
+/* ---------------- SKELETON ---------------- */
+
+const SectionSkeleton = ({ height = 400 }: { height?: number }) => (
+  <div
+    style={{ height }}
+    className="my-16 w-full animate-pulse rounded-xl bg-gray-400/40"
+  />
+);
+
+/* ---------------- PAGE ---------------- */
+
 const BusinessLead = () => {
   const [openForm, setOpenForm] = useState(false);
   const [id, setId] = useState("");
@@ -33,8 +45,10 @@ const BusinessLead = () => {
 
   return (
     <div className="bg-gray-300 max-w-screen overflow-hidden">
+      {/* FLOATING CTA */}
       <Buttons setOpenForm={setOpenForm} setId={setId} />
 
+      {/* ABOVE THE FOLD */}
       <HeroSection setOpenForm={setOpenForm} setId={setId} />
       <ProblemsSection
         setOpenForm={setOpenForm}
@@ -42,29 +56,47 @@ const BusinessLead = () => {
         setSave={setSave}
         settriggerUrl={setTriggerUrl}
       />
-      <Suspense fallback={null}>
+
+      {/* NON-BLOCKING NUMBERS */}
+      <Suspense fallback={<SectionSkeleton height={250} />}>
         <NumbersSection />
       </Suspense>
 
-      <Suspense fallback={null}>
-        <Form
-          isOpen={openForm}
-          onClose={() => setOpenForm(false)}
-          id={id}
-          triggered={triggerUrl}
-          save={save}
-        />
+      {/* FORM (ONLY WHEN OPEN) */}
+      {openForm && (
+        <Suspense fallback={null}>
+          <Form
+            isOpen={openForm}
+            onClose={() => setOpenForm(false)}
+            id={id}
+            triggered={triggerUrl}
+            save={save}
+          />
+        </Suspense>
+      )}
 
+      {/* BELOW THE FOLD (PROGRESSIVE) */}
+      <Suspense fallback={<SectionSkeleton height={350} />}>
         <WhyWorkWithUs setOpenForm={setOpenForm} setId={setId} />
+      </Suspense>
 
+      <Suspense fallback={<SectionSkeleton height={450} />}>
         <CaseStudies />
+      </Suspense>
 
+      <Suspense fallback={<SectionSkeleton height={400} />}>
         <ResultsSection setOpenForm={setOpenForm} setId={setId} />
+      </Suspense>
 
+      <Suspense fallback={<SectionSkeleton height={450} />}>
         <MarketingServicesShowcase />
+      </Suspense>
 
+      <Suspense fallback={<SectionSkeleton height={400} />}>
         <IndustriesHeroSection setOpenForm={setOpenForm} setId={setId} />
+      </Suspense>
 
+      <Suspense fallback={<SectionSkeleton height={300} />}>
         <FinalCTASection />
       </Suspense>
     </div>

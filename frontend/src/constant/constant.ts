@@ -138,12 +138,12 @@ export const landingProblems = [
     text: "You lose revenue opportunities that should have been yours",
   },
   {
-    url: "/icons/under-utilized.png",
-    text: "Your sales team remains under-utilized",
-  },
-  {
     url: "/icons/Competitors.png",
     text: "Competitors grab the same leads because their pages convert better",
+  },
+  {
+    url: "/icons/under-utilized.png",
+    text: "Your sales team remains under-utilized",
   },
 ];
 

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import FormImg from "/assets/hero-screenshot-skew-min.png";
+import FormImg from "/assets/hero.webp";
 import WpImg from "/assets/Img.svg";
 import type { OpenFormProps } from "../types/type";
 

@@ -37,22 +37,26 @@ export const steps = [
 ];
 
 export const problems = [
-  { id: 1, text: "Confusing or cluttered layouts.", url: "/icons/layouts.png" },
+  {
+    id: 1,
+    text: "Confusing or cluttered layouts.",
+    url: "/icons/layouts.webp",
+  },
   {
     id: 2,
     text: "Weak messaging that doesn’t connect.",
-    url: "/icons/Weak_messaging.png",
+    url: "/icons/Weak_messaging.webp",
   },
-  { id: 3, text: "Slow loading time", url: "/icons/loading.png" },
-  { id: 4, text: "No clear Call To Action", url: "/icons/call-to-action.png" },
+  { id: 3, text: "Slow loading time", url: "/icons/loading.webp" },
+  { id: 4, text: "No clear Call To Action", url: "/icons/call-to-action.webp" },
 
-  { id: 5, text: "Information overload", url: "/icons/overload.png" },
-  { id: 6, text: "Poor mobile experience", url: "/icons/experience.png" },
-  { id: 7, text: "No trust-building elements", url: "/icons/trust.png" },
+  { id: 5, text: "Information overload", url: "/icons/overload.webp" },
+  { id: 6, text: "Poor mobile experience", url: "/icons/experience.webp" },
+  { id: 7, text: "No trust-building elements", url: "/icons/trust.webp" },
   {
     id: 8,
     text: "Not able to capture analizable data",
-    url: "/icons/analizable_data.png",
+    url: "/icons/analizable_data.webp",
   },
 ];
 
@@ -60,89 +64,89 @@ export const ITEMS = [
   {
     title: "Business-Owner Mindset",
     desc: "We think like founders — revenue, positioning, and long-term scalability come first.",
-    url: `/icons/Business-Owner.png`,
+    url: `/icons/Business-Owner.webp`,
   },
   {
     title: "Transparent Process",
     desc: "Clear communication, predictable timelines, and complete visibility at every stage.",
-    url: "/icons/Transparent.png",
+    url: "/icons/Transparent.webp",
   },
   {
     title: "Control in Your Hands",
     desc: "You retain full ownership of assets, data, and decisions. No lock-ins. Ever.",
-    url: "/icons/Hands.png",
+    url: "/icons/Hands.webp",
   },
   {
     title: "Consistent Lead Generation",
     desc: "We build systems designed to attract, qualify, and convert — consistently.",
-    url: "/icons/Lead_Generation.png",
+    url: "/icons/Lead_Generation.webp",
   },
   {
     title: "ROI-Driven Approach",
     desc: "Every decision is tied to measurable impact, not visual preference.",
-    url: "/icons/ROI-Driven.png",
+    url: "/icons/ROI-Driven.webp",
   },
 ];
 
 export const pillars = [
   {
     title: "Clear & Persuasive Messaging",
-    url: "/icons/Clear.png",
+    url: "/icons/Clear.webp",
   },
   {
     title: "Proven Conversion Frameworks",
-    url: "/icons/Proven.png",
+    url: "/icons/Proven.webp",
   },
   {
     title: "Behavioural UX + UI Design",
-    url: "/icons/Behavioural.png",
+    url: "/icons/Behavioural.webp",
   },
   {
     title: "High-trust Elements",
-    url: "/icons/High-trust.png",
+    url: "/icons/High-trust.webp",
   },
   {
     title: "Heatmap-Optimized Layouts",
-    url: "/icons/Heatmap.png",
+    url: "/icons/Heatmap.webp",
   },
   {
     title: "Tracking, Analytics & Pixel Setup",
-    url: "/icons/Tracking.png",
+    url: "/icons/Tracking.webp",
   },
   {
     title: "Fast-Loading, Mobile-Optimized Pages",
-    url: "/icons/Fast-Loading.png",
+    url: "/icons/Fast-Loading.webp",
   },
   {
     title: "Ad-to-Landing Page Relevance Matching",
-    url: "/icons/Ad-to-Landing.png",
+    url: "/icons/Ad-to-Landing.webp",
   },
 
   {
     title: "A/B Testing for Continuous Improvement",
-    url: "/icons/Testing.png",
+    url: "/icons/Testing.webp",
   },
 ];
 
 export const landingProblems = [
   {
-    url: "/icons/leads.png",
+    url: "/icons/leads.webp",
     text: "You lose high-intent leads",
   },
   {
-    url: "/icons/budget.png",
+    url: "/icons/budget.webp",
     text: "Your ad budget burns with no ROI",
   },
   {
-    url: "/icons/revenue.png",
+    url: "/icons/revenue.webp",
     text: "You lose revenue opportunities that should have been yours",
   },
   {
-    url: "/icons/Competitors.png",
+    url: "/icons/Competitors.webp",
     text: "Competitors grab the same leads because their pages convert better",
   },
   {
-    url: "/icons/under-utilized.png",
+    url: "/icons/under-utilized.webp",
     text: "Your sales team remains under-utilized",
   },
 ];
@@ -326,55 +330,55 @@ export const caseStudies = [
 export const testimonials: Testimonial[] = [
   {
     text: "As a seasoned designer always on the lookout for innovative tools, Framer.com instantly grabbed my attention.",
-    imageSrc: "/assets/user.png",
+    imageSrc: "/assets/user.webp",
     name: "Jamie Rivera",
     username: "@jamietechguru00",
   },
   {
     text: "Our team's productivity has skyrocketed since we started using this tool. ",
-    imageSrc: "/assets/user.png",
+    imageSrc: "/assets/user.webp",
     name: "Josh Smith",
     username: "@jjsmith",
   },
   {
     text: "This app has completely transformed how I manage my projects and deadlines.",
-    imageSrc: "/assets/user.png",
+    imageSrc: "/assets/user.webp",
     name: "Morgan Lee",
     username: "@morganleewhiz",
   },
   {
     text: "I was amazed at how quickly we were able to integrate this app into our workflow.",
-    imageSrc: "/assets/user.png",
+    imageSrc: "/assets/user.webp",
     name: "Casey Jordan",
     username: "@caseyj",
   },
   {
     text: "Planning and executing events has never been easier. This app helps me keep track of all the moving parts, ensuring nothing slips through the cracks.",
-    imageSrc: "/assets/user.png",
+    imageSrc: "/assets/user.webp",
     name: "Taylor Kim",
     username: "@taylorkimm",
   },
   {
     text: "The customizability and integration capabilities of this app are top-notch.",
-    imageSrc: "/assets/user.png",
+    imageSrc: "/assets/user.webp",
     name: "Riley Smith",
     username: "@rileysmith1",
   },
   {
     text: "Adopting this app for our team has streamlined our project management and improved communication across the board.",
-    imageSrc: "/assets/user.png",
+    imageSrc: "/assets/user.webp",
     name: "Jordan Patels",
     username: "@jpatelsdesign",
   },
   {
     text: "With this app, we can easily assign tasks, track progress, and manage documents all in one place.",
-    imageSrc: "/assets/user.png",
+    imageSrc: "/assets/user.webp",
     name: "Sam Dawson",
     username: "@dawsontechtips",
   },
   {
     text: "Its user-friendly interface and robust features support our diverse needs.",
-    imageSrc: "/assets/user.png",
+    imageSrc: "/assets/user.webp",
     name: "Casey Harper",
     username: "@casey09",
   },

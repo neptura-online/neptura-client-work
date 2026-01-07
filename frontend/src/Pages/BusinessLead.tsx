@@ -42,6 +42,9 @@ const BusinessLead = () => {
         setSave={setSave}
         settriggerUrl={setTriggerUrl}
       />
+      <Suspense fallback={null}>
+        <NumbersSection />
+      </Suspense>
 
       <Suspense fallback={null}>
         <Form
@@ -51,8 +54,6 @@ const BusinessLead = () => {
           triggered={triggerUrl}
           save={save}
         />
-
-        <NumbersSection />
 
         <WhyWorkWithUs setOpenForm={setOpenForm} setId={setId} />
 

@@ -48,6 +48,7 @@ const LandingPage = () => {
           settriggerUrl={setTriggerUrl}
           setSave={setSave}
         />
+        <LandingProblemSection setOpenForm={setOpenForm} setId={setId} />
       </Suspense>
       <Suspense fallback={null}>
         <ExitIntentWrapper />
@@ -59,7 +60,6 @@ const LandingPage = () => {
           save={save}
         />
 
-        <LandingProblemSection setOpenForm={setOpenForm} setId={setId} />
         <ConversionPhilosophy setOpenForm={setOpenForm} setId={setId} />
         <WhyWorkWithUs setOpenForm={setOpenForm} setId={setId} />
 

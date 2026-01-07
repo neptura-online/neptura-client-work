@@ -13,26 +13,32 @@ export const steps = [
   {
     title: "Understanding Business & Offer",
     desc: "We dig into product USPs, audience pain points, and objections to build core elements that a landing page must solve.",
+    url: "/assets/Understanding.webp",
   },
   {
     title: "Preparing Winning Narrative",
     desc: "Messaging that is emotional, logical, and structured like a funnel to guide visitors from awareness to action in seconds.",
+    url: "/assets/Winning.webp",
   },
   {
     title: "High-Converting Design",
     desc: "UI/UX that reduces friction, boosts clarity, and enhances trust especially for paid traffic.",
+    url: "/assets/High-Converting.webp",
   },
   {
     title: "Advanced Form Engineering",
     desc: "Conditional logic, hidden fields, tracking, multiple forms, popups, everything optimized for quick lead generations.",
+    url: "/assets/Engineering.webp",
   },
   {
     title: "Full Technical Setup",
     desc: "UTM tracking, GA4, GTM, FB Pixel, CAPI, CRM integration, schema, security, faster load, everything your conversions depend on.",
+    url: "/assets/Technical.webp",
   },
   {
     title: "Continuous Optimization",
     desc: "After launch, we track behaviour and refine the page for max conversions.",
+    url: "/assets/Optimization.webp",
   },
 ];
 

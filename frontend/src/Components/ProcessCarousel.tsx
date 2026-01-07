@@ -2,13 +2,13 @@ import { motion, useMotionValue, animate } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { steps } from "../constant/constant";
 import Heading from "./Helper/Heading";
-import sampleBg from "/assets/online.webp";
 
 const GAP = 24;
 
 interface Step {
   title: string;
   desc: string;
+  url: string;
 }
 
 const ProcessCarousel = () => {
@@ -124,7 +124,7 @@ const ProcessCarousel = () => {
                 className="shrink-0 rounded-2xl bg-zinc-900 shadow-lg shadow-black"
               >
                 <img
-                  src={sampleBg}
+                  src={step.url}
                   alt={step.title}
                   loading="lazy"
                   className="h-38 w-full rounded-t-2xl object-cover"

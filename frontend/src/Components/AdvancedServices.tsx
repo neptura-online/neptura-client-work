@@ -22,7 +22,7 @@ type ServiceItem = {
 const SERVICES: ServiceItem[] = [
   {
     title: "Advanced Form System",
-    image: "/assets/Advanced Form System.png  ",
+    image: "/assets/Advanced_Form.webp  ",
     icon: <FiSettings />,
     points: [
       "Paid Gravity Forms addon integration",
@@ -39,7 +39,7 @@ const SERVICES: ServiceItem[] = [
   },
   {
     title: "On-Page Conversion Enhancers",
-    image: "/assets/On-Page Conversion Enhancers.png",
+    image: "/assets/On-Page.webp",
     icon: <FiTrendingUp />,
     points: [
       "Live Chat Bot setup",
@@ -50,7 +50,7 @@ const SERVICES: ServiceItem[] = [
   },
   {
     title: "Performance Engineering",
-    image: "/assets/Performance Engineering.png",
+    image: "/assets/Performance_Engineering.webp",
     icon: <FiZap />,
     points: [
       "Fully mobile responsive",
@@ -61,7 +61,7 @@ const SERVICES: ServiceItem[] = [
   },
   {
     title: "Advanced Tracking & Analytics",
-    image: "/assets/Advanced Tracking & Analytics.png",
+    image: "/assets/Advanced_Tracking.webp",
     icon: <FiActivity />,
     points: [
       "Full UTM tracking",
@@ -75,7 +75,7 @@ const SERVICES: ServiceItem[] = [
   },
   {
     title: "CRM-Ready Integrations",
-    image: "/assets/CRM-Ready Integrations.png",
+    image: "/assets/CRM-Ready.webp",
     icon: <FiDatabase />,
     points: [
       "Zoho CRM",
@@ -87,7 +87,7 @@ const SERVICES: ServiceItem[] = [
   },
   {
     title: "SEO Foundation",
-    image: "/assets/SEO Foundation.png",
+    image: "/assets/SEO_Foundation.webp",
     icon: <FiTrendingUp />,
     points: [
       "SEO-friendly structure",
@@ -99,7 +99,7 @@ const SERVICES: ServiceItem[] = [
   },
   {
     title: "Security & Spam Protection",
-    image: "/assets/Security & Spam Protection.png",
+    image: "/assets/Spam_Protection.webp",
     icon: <FiShield />,
     points: [
       "Google reCAPTCHA v2/v3",
@@ -109,7 +109,7 @@ const SERVICES: ServiceItem[] = [
   },
   {
     title: "Deployment & Launch Support",
-    image: "/assets/Deployment & Launch Support.png",
+    image: "/assets/Deployment.webp",
     icon: <FiUploadCloud />,
     points: [
       "Domain & hosting access",
@@ -130,26 +130,28 @@ const MOBSERVICES: ServiceItem[] = [
     image: "/assets/online.webp",
     icon: <FiSettings />,
     points: [
-      "Paid Gravity Forms addon",
-      "Advanced fields & multi-step logic",
+      "Paid Gravity Forms addon integration",
+      "Advanced fields and multi-step logic",
       "Multiple enquiry forms setup",
-      "Individual email alerts",
+      "Individual email alerts for each form",
       "Full form validation",
       "Google Sheet lead sync",
-      "Popup & exit-intent forms",
+      "Instant email notifications",
+      "Button-triggered popup forms",
+      "Page-load & exit-intent popup forms",
       "Thank You Pages (Static + Dynamic)",
     ],
   },
   {
     title: "On-Page Conversion Enhancers",
     image: "/assets/online.webp",
+
     icon: <FiTrendingUp />,
     points: [
       "Live Chat Bot setup",
-      "WhatsApp Click-to-Chat",
+      "WhatsApp Click-to-Chat integration",
       "Sticky CTAs",
-      "Multiple CTA placements",
-      "Scroll-depth optimization",
+      "Multiple CTA placements optimized by scroll-depth",
     ],
   },
   {
@@ -158,9 +160,9 @@ const MOBSERVICES: ServiceItem[] = [
     icon: <FiZap />,
     points: [
       "Fully mobile responsive",
-      "Minified CSS & JS",
-      "Lazy loading strategy",
-      "High PageSpeed score",
+      "Minified CSS/JS",
+      "Lazy loading",
+      "High page speed score",
     ],
   },
   {
@@ -169,10 +171,12 @@ const MOBSERVICES: ServiceItem[] = [
     icon: <FiActivity />,
     points: [
       "Full UTM tracking",
-      "Campaign & URL tracking",
-      "Button & form tracking",
+      "Page URL & Campaign Name Tracking",
+      "CRM data mapping",
+      "Button click tracking",
+      "Form submission tracking",
       "WhatsApp click tracking",
-      "GA4, GTM, FB Pixel, CAPI",
+      "GA4, GTM, FB Pixel, CAPI setup",
     ],
   },
   {
@@ -184,7 +188,7 @@ const MOBSERVICES: ServiceItem[] = [
       "HubSpot",
       "LeadSquared",
       "Pabbly Connect",
-      "Webhooks & automation",
+      "Webhooks & automation setup",
     ],
   },
   {
@@ -194,9 +198,9 @@ const MOBSERVICES: ServiceItem[] = [
     points: [
       "SEO-friendly structure",
       "Custom meta tags",
-      "OG tags",
+      "OG tags for social sharing",
       "Schema Markup",
-      "Image alt optimization",
+      "Alt tags for all images",
     ],
   },
   {
@@ -206,7 +210,7 @@ const MOBSERVICES: ServiceItem[] = [
     points: [
       "Google reCAPTCHA v2/v3",
       "Advanced spam filtering",
-      "Form security rules",
+      "Form security settings",
     ],
   },
   {
@@ -215,8 +219,11 @@ const MOBSERVICES: ServiceItem[] = [
     icon: <FiUploadCloud />,
     points: [
       "Domain & hosting access",
-      "DNS & SSL setup",
-      "Email SMTP configuration",
+      "Subdomain creation",
+      "DNS configuration",
+      "SSL installation",
+      "Email SMTP setup",
+      "Google reCAPTCHA API setup",
       "Pre-launch backups",
       "Final deployment & testing",
     ],

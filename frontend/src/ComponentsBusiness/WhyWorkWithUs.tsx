@@ -1,20 +1,14 @@
-import {
-  FiUser,
-  FiEye,
-  FiTool,
-  FiBarChart2,
-  FiTrendingUp,
-  FiArrowRight,
-} from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
 import type { OpenFormProps } from "../types/type";
+import WorkIcon from "./Helper/WorkIcon";
 
 const items = [
-  { icon: <FiUser size={32} />, label: "Business-Owner Mindset" },
-  { icon: <FiEye size={32} />, label: "Transparent Process" },
-  { icon: <FiTool size={32} />, label: "Control in Your Hands" },
-  { icon: <FiBarChart2 size={32} />, label: "Consistent Lead Generation" },
-  { icon: <FiTrendingUp size={32} />, label: "ROI-Driven Approach" },
+  { url: "/icons/Business-Owner.png", label: "Business-Owner Mindset" },
+  { url: "/icons/Transparent.png", label: "Transparent Process" },
+  { url: "/icons/Hands.png", label: "Control in Your Hands" },
+  { url: "/icons/Lead_Generation.png", label: "Consistent Lead Generation" },
+  { url: "/icons/ROI-Driven.png", label: "ROI-Driven Approach" },
 ];
 
 export default function WhyWorkWithUsExact({
@@ -82,7 +76,7 @@ export default function WhyWorkWithUsExact({
               {items.map((item, i) => (
                 <div key={i} className="text-center">
                   <div className="mx-auto relative flex h-25 w-25 items-center justify-center rounded-full bg-zinc-900 text-(--yellow-emarketing) z-20">
-                    {item.icon}
+                    <WorkIcon url={item.url} alt={item.label} />
                   </div>
                   <p className="mt-4 font-medium text-zinc-900">{item.label}</p>
                 </div>

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Heading from "./Helper/Heading";
 import type { OpenFormProps } from "../types/type";
 import { problems } from "../constant/constant";
+import WorkIcon from "./Helper/PreetyIcon";
 
 const gridMotion = {
   hidden: { opacity: 0, scale: 0.95 },
@@ -35,12 +36,14 @@ const ProblemSection = ({
           viewport={{ once: true }}
           className="mt-16 grid grid-cols-2 gap-6 lg:grid-cols-4"
         >
-          {problems.map(({ id, text, icon: Icon }) => (
+          {problems.map(({ id, text, url }) => (
             <div
               key={id}
-              className="group flex flex-col gap-4 rounded-2xl border border-stone-800 bg-stone-900 p-6 font-bold text-stone-300 transition hover:border-yellow-600 hover:bg-yellow-500 hover:text-black"
+              className="group flex flex-col gap-4 rounded-2xl border border-stone-800 bg-stone-900 p-6 font-bold text-stone-300 transition hover:border-yellow-500"
             >
-              <Icon className="text-2xl text-yellow-500 transition group-hover:text-black" />
+              <div className=" flex h-12 w-12 items-center justify-center rounded-xl bg-stone-800 text-yellow-400">
+                <WorkIcon url={url} alt={text} />
+              </div>
               <p className="text-base">{text}</p>
             </div>
           ))}

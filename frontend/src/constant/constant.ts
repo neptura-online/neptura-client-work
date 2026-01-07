@@ -1,27 +1,4 @@
 import type { Testimonial } from "../types/type";
-import {
-  FiLayout,
-  FiClock,
-  FiTarget,
-  FiMessageSquare,
-  FiLayers,
-  FiSmartphone,
-  FiShield,
-  FiBarChart2,
-  FiTrendingUp,
-  FiZap,
-  FiRepeat,
-  FiDollarSign,
-  FiSliders,
-  FiBriefcase,
-  FiEye,
-} from "react-icons/fi";
-import { HiOutlineTrendingDown } from "react-icons/hi";
-import {
-  HiOutlineChartBar,
-  HiOutlineCurrencyDollar,
-  HiOutlineUsers,
-} from "react-icons/hi2";
 
 export const navLinks = [
   { id: 1, url: "/", label: "Home" },
@@ -60,107 +37,112 @@ export const steps = [
 ];
 
 export const problems = [
-  { id: 1, text: "Confusing or cluttered layouts.", icon: FiLayout },
-  { id: 2, text: "Slow loading time", icon: FiClock },
-  { id: 3, text: "No clear Call To Action", icon: FiTarget },
+  { id: 1, text: "Confusing or cluttered layouts.", url: "/icons/layouts.png" },
   {
-    id: 4,
+    id: 2,
     text: "Weak messaging that doesn’t connect.",
-    icon: FiMessageSquare,
+    url: "/icons/Weak_messaging.png",
   },
-  { id: 5, text: "Information overload", icon: FiLayers },
-  { id: 6, text: "Poor mobile experience", icon: FiSmartphone },
-  { id: 7, text: "No trust-building elements", icon: FiShield },
-  { id: 8, text: "Not able to capture analizable data", icon: FiBarChart2 },
+  { id: 3, text: "Slow loading time", url: "/icons/loading.png" },
+  { id: 4, text: "No clear Call To Action", url: "/icons/call-to-action.png" },
+
+  { id: 5, text: "Information overload", url: "/icons/overload.png" },
+  { id: 6, text: "Poor mobile experience", url: "/icons/experience.png" },
+  { id: 7, text: "No trust-building elements", url: "/icons/trust.png" },
+  {
+    id: 8,
+    text: "Not able to capture analizable data",
+    url: "/icons/analizable_data.png",
+  },
 ];
 
 export const ITEMS = [
   {
     title: "Business-Owner Mindset",
     desc: "We think like founders — revenue, positioning, and long-term scalability come first.",
-    icon: FiBriefcase,
+    url: `/icons/Business-Owner.png`,
   },
   {
     title: "Transparent Process",
     desc: "Clear communication, predictable timelines, and complete visibility at every stage.",
-    icon: FiEye,
+    url: "/icons/Transparent.png",
   },
   {
     title: "Control in Your Hands",
     desc: "You retain full ownership of assets, data, and decisions. No lock-ins. Ever.",
-    icon: FiSliders,
+    url: "/icons/Hands.png",
   },
   {
     title: "Consistent Lead Generation",
     desc: "We build systems designed to attract, qualify, and convert — consistently.",
-    icon: FiTrendingUp,
+    url: "/icons/Lead_Generation.png",
   },
   {
     title: "ROI-Driven Approach",
     desc: "Every decision is tied to measurable impact, not visual preference.",
-    icon: FiDollarSign,
+    url: "/icons/ROI-Driven.png",
   },
 ];
 
 export const pillars = [
   {
     title: "Clear & Persuasive Messaging",
-    icon: FiTarget,
+    url: "/icons/Clear.png",
   },
   {
     title: "Proven Conversion Frameworks",
-    icon: FiTrendingUp,
+    url: "/icons/Proven.png",
   },
   {
     title: "Behavioural UX + UI Design",
-    icon: FiShield,
+    url: "/icons/Behavioural.png",
   },
   {
     title: "High-trust Elements",
-    icon: FiBarChart2,
+    url: "/icons/High-trust.png",
   },
   {
     title: "Heatmap-Optimized Layouts",
-    icon: FiRepeat,
+    url: "/icons/Heatmap.png",
   },
   {
     title: "Tracking, Analytics & Pixel Setup",
-    icon: FiRepeat,
+    url: "/icons/Tracking.png",
   },
   {
     title: "Fast-Loading, Mobile-Optimized Pages",
-    icon: FiZap,
+    url: "/icons/Fast-Loading.png",
   },
   {
     title: "Ad-to-Landing Page Relevance Matching",
-    icon: FiRepeat,
+    url: "/icons/Ad-to-Landing.png",
   },
 
   {
     title: "A/B Testing for Continuous Improvement",
-    icon: FiRepeat,
+    url: "/icons/Testing.png",
   },
 ];
 
 export const landingProblems = [
   {
-    icon: HiOutlineUsers,
+    url: "/icons/leads.png",
     text: "You lose high-intent leads",
   },
   {
-    icon: HiOutlineCurrencyDollar,
+    url: "/icons/budget.png",
     text: "Your ad budget burns with no ROI",
   },
   {
-    icon: HiOutlineChartBar,
+    url: "/icons/revenue.png",
     text: "You lose revenue opportunities that should have been yours",
   },
   {
-    icon: HiOutlineUsers,
+    url: "/icons/under-utilized.png",
     text: "Your sales team remains under-utilized",
   },
   {
-    icon: HiOutlineTrendingDown,
+    url: "/icons/Competitors.png",
     text: "Competitors grab the same leads because their pages convert better",
   },
 ];

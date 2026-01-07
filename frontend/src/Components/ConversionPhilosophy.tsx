@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Heading from "./Helper/Heading";
 import type { OpenFormProps } from "../types/type";
 import { pillars } from "../constant/constant";
+import PreetyIcon from "./Helper/WorkIcon";
 
 export default function ConversionPhilosophy({
   setOpenForm,
@@ -45,8 +46,8 @@ export default function ConversionPhilosophy({
               className="group rounded-2xl border border-white/10 bg-zinc-900 p-6 transition hover:border-yellow-400/40"
             >
               <div className="flex items-center justify-start gap-4">
-                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-yellow-400 text-black">
-                  <item.icon className="text-sm" />
+                <div className="flex min-h-10 min-w-10 items-center justify-center rounded-xl bg-yellow-400 text-black">
+                  <PreetyIcon url={item.url} alt={item.title} />
                 </div>
 
                 <h3 className="mb-2 text-base font-semibold">{item.title}</h3>

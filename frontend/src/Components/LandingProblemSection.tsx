@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import type { OpenFormProps } from "../types/type";
 import { landingProblems } from "../constant/constant";
+import WorkIcon from "./Helper/PreetyIcon";
 
 const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
   const triggerButton = () => {
@@ -56,8 +57,10 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
                   viewport={{ once: true }}
                   className="rounded-xl border-white/10 bg-stone-900/60 p-4 backdrop-blur border hover:border-yellow-400"
                 >
-                  <div className="flex items-start gap-3 ">
-                    <item.icon className="mt-1 h-5 w-5 text-yellow-500 shrink-0" />
+                  <div className="flex items-center gap-3 ">
+                    <div className=" flex min-h-10 min-w-10 items-center justify-center rounded-xl bg-stone-800 text-yellow-400">
+                      <WorkIcon url={item.url} alt={item.text} />
+                    </div>
                     <p className="text-sm text-stone-300">{item.text}</p>
                   </div>
                 </motion.div>

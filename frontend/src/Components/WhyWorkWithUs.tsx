@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import type { OpenFormProps } from "../types/type";
 import { ITEMS } from "../constant/constant";
+import WorkIcon from "./Helper/WorkIcon";
 
 export default function WhyWorkWithUs({ setId, setOpenForm }: OpenFormProps) {
   const [active, setActive] = useState(0);
@@ -17,8 +18,9 @@ export default function WhyWorkWithUs({ setId, setOpenForm }: OpenFormProps) {
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-20 lg:grid-cols-2">
           <div className="max-w-xl">
-            <h2 className="text-3xl font-serif font-medium leading-[1.5em] md:text-6xl">
-              Why Work <br /> <span className="text-yellow-400">With Us?</span>
+            <h2 className="text-3xl font-serif font-medium leading-[1.5em] md:text-6xl text-center sm:text-start">
+              Why Work <br className="hidden sm:block" />{" "}
+              <span className="text-yellow-400">With Us?</span>
             </h2>
 
             <p className="mt-8 text-lg text-stone-300">
@@ -57,8 +59,8 @@ export default function WhyWorkWithUs({ setId, setOpenForm }: OpenFormProps) {
                           : "bg-stone-900/40"
                       }`}
                   >
-                    <div className=" flex h-10 w-10 items-center justify-center rounded-xl bg-stone-800 text-yellow-400">
-                      <item.icon className="text-lg" />
+                    <div className=" flex h-12 w-12 items-center justify-center rounded-xl bg-stone-800 text-yellow-400">
+                      <WorkIcon url={item.url} alt={item.title} />
                     </div>
 
                     <h2 className=" text-xl font-medium">{item.title}</h2>
@@ -79,8 +81,8 @@ export default function WhyWorkWithUs({ setId, setOpenForm }: OpenFormProps) {
               transition={{ duration: 0.5 }}
               className="rounded-3xl bg-stone-900/60 p-4 flex gap-4 items-center"
             >
-              <div className=" flex h-11 w-11 items-center justify-center rounded-xl bg-stone-800 text-yellow-400">
-                <item.icon />
+              <div className=" flex h-12 w-12 items-center justify-center rounded-xl bg-stone-800 text-yellow-400">
+                <WorkIcon url={item.url} alt={item.title} />
               </div>
 
               <h3 className="mb-2 text-lg font-medium">{item.title}</h3>

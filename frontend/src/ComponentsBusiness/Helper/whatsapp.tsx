@@ -10,7 +10,7 @@ const Buttons = ({ setOpenForm, setId }: OpenFormProps) => {
     <div className="fixed z-60 flex flex-col ">
       <div className="fixed bottom-9 right-3 z-60">
         <a
-          href="https://wa.me/"
+          href="tel:1245365478"
           target="_blank"
           className="
     bg-green-500 text-white rounded-full 
@@ -27,14 +27,14 @@ const Buttons = ({ setOpenForm, setId }: OpenFormProps) => {
         </a>
       </div>
       <div className="fixed sm:hidden flex bottom-0 w-screen z-50">
-        <a
+        <button
           onClick={handleClick}
           className="w-[50%] uppercase text-center py-3 bg-black text-white"
         >
           Enquiry now
-        </a>
+        </button>
         <a
-          href=""
+          href="tel:1234567890"
           className="uppercase w-[50%]  py-3 bg-(--yellow-emarketing) text-center"
         >
           call now

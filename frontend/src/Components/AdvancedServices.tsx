@@ -22,7 +22,7 @@ type ServiceItem = {
 const SERVICES: ServiceItem[] = [
   {
     title: "Advanced Form System",
-    image: "/assets/one.webp",
+    image: "/assets/Advanced Form System.png  ",
     icon: <FiSettings />,
     points: [
       "Paid Gravity Forms addon integration",
@@ -39,7 +39,7 @@ const SERVICES: ServiceItem[] = [
   },
   {
     title: "On-Page Conversion Enhancers",
-    image: "/assets/two.webp",
+    image: "/assets/On-Page Conversion Enhancers.png",
     icon: <FiTrendingUp />,
     points: [
       "Live Chat Bot setup",
@@ -50,7 +50,7 @@ const SERVICES: ServiceItem[] = [
   },
   {
     title: "Performance Engineering",
-    image: "/assets/one.webp",
+    image: "/assets/Performance Engineering.png",
     icon: <FiZap />,
     points: [
       "Fully mobile responsive",
@@ -61,7 +61,7 @@ const SERVICES: ServiceItem[] = [
   },
   {
     title: "Advanced Tracking & Analytics",
-    image: "/assets/two.webp",
+    image: "/assets/Advanced Tracking & Analytics.png",
     icon: <FiActivity />,
     points: [
       "Full UTM tracking",
@@ -75,7 +75,7 @@ const SERVICES: ServiceItem[] = [
   },
   {
     title: "CRM-Ready Integrations",
-    image: "/assets/one.webp",
+    image: "/assets/CRM-Ready Integrations.png",
     icon: <FiDatabase />,
     points: [
       "Zoho CRM",
@@ -87,7 +87,7 @@ const SERVICES: ServiceItem[] = [
   },
   {
     title: "SEO Foundation",
-    image: "/assets/two.webp",
+    image: "/assets/SEO Foundation.png",
     icon: <FiTrendingUp />,
     points: [
       "SEO-friendly structure",
@@ -99,7 +99,7 @@ const SERVICES: ServiceItem[] = [
   },
   {
     title: "Security & Spam Protection",
-    image: "/assets/one.webp",
+    image: "/assets/Security & Spam Protection.png",
     icon: <FiShield />,
     points: [
       "Google reCAPTCHA v2/v3",
@@ -109,7 +109,7 @@ const SERVICES: ServiceItem[] = [
   },
   {
     title: "Deployment & Launch Support",
-    image: "/assets/two.webp",
+    image: "/assets/Deployment & Launch Support.png",
     icon: <FiUploadCloud />,
     points: [
       "Domain & hosting access",

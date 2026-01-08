@@ -1,10 +1,7 @@
 import { Router } from "express";
 import { auth } from "../middleware/auth.js";
 import { Lead } from "../modules/Lead.js";
-import {
-  addToGoogleSheet,
-  deleteFromGoogleSheetByEmail,
-} from "../utils/googleSheet.js";
+import { addToGoogleSheet } from "../utils/googleSheet.js";
 
 export const router = Router();
 

@@ -4,7 +4,6 @@ interface WorkIcon {
 }
 
 const WorkIcon = ({ url, alt }: WorkIcon) => {
-  console.log(url);
   return <img src={`${url}`} alt={alt} className="h-11 w-11" />;
 };
 

@@ -62,6 +62,10 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
       setPhoneError("Mobile number cannot start with 0");
       return;
     }
+    if (digits.length != 10) {
+      setPhoneError("Mobile number should be 10");
+      return;
+    }
 
     setPhoneError("");
   };

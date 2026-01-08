@@ -349,14 +349,8 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
                   value={phone}
                   onChange={handlePhoneChange}
                   countryCodeEditable={false}
-                  autoFormat={false}
+                  autoFormat={true}
                   enableSearch
-                  inputProps={{
-                    required: true,
-                    maxLength: 13,
-                    minLength: 13,
-                    title: "Please enter a valid 10-digit mobile number",
-                  }}
                   inputStyle={{
                     width: "100%",
                     height: "52px",

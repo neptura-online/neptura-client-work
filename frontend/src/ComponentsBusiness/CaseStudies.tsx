@@ -32,7 +32,7 @@ export default function CaseStudies() {
     <section className="relative bg-[#160a1f] py-24">
       <div className="relative mx-auto max-w-360 px-6">
         <img
-          src="/business/success.png"
+          src="/business/success.webp"
           alt=""
           className="pointer-events-none absolute right-0 top-0 opacity-60"
         />

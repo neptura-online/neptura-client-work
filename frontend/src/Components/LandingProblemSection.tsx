@@ -10,9 +10,9 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
   };
 
   return (
-    <section className="relative bg-stone-950 px-2 py-10 lg:py-24 overflow-hidden">
-      <div className="mx-auto relative max-w-6xl p-4">
-        <div className="grid lg:grid-cols-2 items-center gap-2">
+    <section className="relative bg-zinc-100 px-2 py-10 lg:py-24 overflow-hidden">
+      <div className="mx-auto relative max-w-350 p-4">
+        <div className="grid xl:grid-cols-2 items-center gap-2">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -23,7 +23,7 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
             <img
               src="/assets/one.webp"
               alt=""
-              className="hidden lg:block min-w-125 max-h-150 rounded-xl"
+              className="hidden xl:block min-w-125 max-h-130 rounded-xl"
             />
           </motion.div>
 
@@ -35,7 +35,7 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
             className="space-y-8 mt-8 lg:mt-0"
           >
             <div className="space-y-4">
-              <h2 className="text-3xl sm:text-4xl font-serif font-medium text-white leading-[1.5em] capitalize">
+              <h2 className="text-3xl sm:text-4xl font-serif font-medium text-black leading-[1.5em] capitalize">
                 A poorly designed Landing Page can{" "}
                 <span className="text-yellow-500">kill your revenue! </span>
                 But how?
@@ -50,19 +50,19 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.08 }}
                   viewport={{ once: true }}
-                  className="rounded-xl border-white/10 bg-stone-900/60 p-4 backdrop-blur border hover:border-yellow-400"
+                  className="rounded-xl border-black/10 bg-white p-4 backdrop-blur border hover:border-yellow-400"
                 >
                   <div className="flex items-center gap-3 ">
-                    <div className=" flex min-h-10 min-w-10 items-center justify-center rounded-xl bg-stone-800 text-yellow-400">
+                    <div className=" flex min-h-10 min-w-10 items-center justify-center rounded-xl bg-[#160a1f] text-yellow-400">
                       <WorkIcon url={item.url} alt={item.text} />
                     </div>
-                    <p className="text-sm text-stone-300">{item.text}</p>
+                    <p className="text-sm text-zinc-900">{item.text}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            <p className="text-base font-semibold text-white">
+            <p className="text-base font-semibold text-black">
               But here’s the good news —{" "}
               <span className="text-yellow-500">we can fix that.</span>
             </p>

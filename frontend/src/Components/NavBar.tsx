@@ -1,33 +1,51 @@
-import { FaPhone } from "react-icons/fa";
-import logo from "/assets/logowhite.webp";
+import { useEffect, useState } from "react";
+import { FaEnvelope } from "react-icons/fa";
+import { FiPhone } from "react-icons/fi";
 
 const NavBar = () => {
+  const [navBg, setNavBg] = useState(false);
+
+  useEffect(() => {
+    const handler = () => {
+      if (window.scrollY >= 90) setNavBg(true);
+      if (window.scrollY < 90) setNavBg(false);
+    };
+    window.addEventListener("scroll", handler);
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
   return (
     <div
-      className={
-        "bg-black shadow-md shadow-yellow-500/10 transition-all duration-200 h-[10vh] z-50 fixed w-screen"
-      }
+      className={`${
+        navBg ? "bg-[#0a040f]/90 shadow-md" : ""
+      } transition-all duration-200 z-500 fixed w-full`}
     >
-      <div className="flex items-center h-full justify-between w-[90%] lg:max-w-6xl mx-auto">
-        <div className="flex items-center space-x-2 justify-center">
-          <a href="/">
+      <div className="w-full max-w-390 mx-auto ">
+        <div className="relative z-10 flex  items-center justify-between px-3 py-2 lg:px-16 ">
+          <div className="flex items-center gap-2">
             <img
-              src={logo}
-              alt="logo"
-              className="h-15 w-28 lg:h-25 lg:w-40 lg:py-4 py-2"
+              src="/assets/logowhite.webp"
+              alt="Logo"
+              className="h-15 md:h-20 w-auto"
+              loading="lazy"
             />
-          </a>
-        </div>
-        <div className="flex items-center space-x-4">
-          <a
-            href="tel:8239999732"
-            className="flex items-center md:px-12 md:py-2.5 px-4 py-3 text-black font-semibold md:font-bold text-sm md:text-base bg-yellow-500 hover:bg-yellow-400 transition-all duration-300 rounded-2xl "
-          >
-            <span className="pr-2">
-              <FaPhone className="rotate-90 " />
-            </span>{" "}
-            <span className="hidden md:block">Call Us : </span> 8239999732
-          </a>
+          </div>
+
+          <div className="items-center gap-4 flex ">
+            <a
+              href="/"
+              className="hidden text-white md:flex items-center gap-2 rounded-xl border border-white/30 px-4 py-3 text-base"
+            >
+              <FaEnvelope />
+              Email ID@e-marketing.io
+            </a>
+            <a
+              href="/"
+              className="flex items-center gap-2 rounded-xl bg-(--yellow-emarketing) px-4 py-3 text-sm lg:text-base text-black"
+            >
+              <FiPhone />
+              +91-9602694444
+            </a>
+          </div>
         </div>
       </div>
     </div>

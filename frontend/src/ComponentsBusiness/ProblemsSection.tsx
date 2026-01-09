@@ -1,45 +1,46 @@
 import { motion } from "framer-motion";
-import type { JSX } from "react";
-import {
-  FiSearch,
-  FiMonitor,
-  FiUsers,
-  FiDollarSign,
-  FiVolume2,
-  FiArrowRight,
-} from "react-icons/fi";
 import type { OpenFormProps } from "../types/type";
+import { FiArrowRight } from "react-icons/fi";
 
 type Problem = {
   id: number;
-  icon: JSX.Element;
+  url: string;
   text: string;
+};
+
+interface ProblemProps {
+  url: string;
+  alt: string;
+}
+
+const ProblemIcon = ({ url, alt }: ProblemProps) => {
+  return <img src={`${url}`} alt={alt} className="h-15 w-15 lg:h-25 lg:w-25" />;
 };
 
 const problems: Problem[] = [
   {
     id: 1,
-    icon: <FiSearch size={35} />,
+    url: "/icons/problem1.webp",
     text: "Your ideal clients don’t know you exist.",
   },
   {
     id: 2,
-    icon: <FiMonitor size={35} />,
+    url: "/icons/problem2.webp",
     text: "Your competitors are running targeted ads and taking the leads.",
   },
   {
     id: 3,
-    icon: <FiUsers size={35} />,
+    url: "/icons/problem3.webp",
     text: "You are not sure which platform or strategy will deliver results for your business.",
   },
   {
     id: 4,
-    icon: <FiDollarSign size={35} />,
+    url: "/icons/problem4.webp",
     text: "Your website is just a “digital visiting card” instead of a “sales machine.”",
   },
   {
     id: 5,
-    icon: <FiVolume2 size={35} />,
+    url: "/icons/problem5.webp",
     text: "Burnt money on wrong campaigns, leaving you hesitant to invest again.",
   },
 ];
@@ -95,8 +96,8 @@ export default function ProblemsSection({ setId, setOpenForm }: OpenFormProps) {
 
           {problems.map((p) => (
             <div key={p.id} className="flex flex-col items-center text-center">
-              <div className="relative flex h-25 w-25 items-center justify-center rounded-full bg-(--yellow-emarketing) text-black">
-                {p.icon}
+              <div className="relative flex items-center justify-center rounded-full  text-black">
+                <ProblemIcon url={p.url} alt={p.text} />
                 <span className="absolute -top-2 -right-2 flex h-9 w-9 items-center justify-center rounded-full bg-white text-md font-bold shadow italic text-[#071E31]">
                   {p.id}.
                 </span>
@@ -131,8 +132,8 @@ export default function ProblemsSection({ setId, setOpenForm }: OpenFormProps) {
                 i === problems.length - 1 ? "col-span-2" : ""
               }`}
             >
-              <div className="relative flex h-18 w-18 items-center justify-center rounded-full bg-(--yellow-emarketing) text-black">
-                {p.icon}
+              <div className="relative flex  items-center justify-center rounded-full text-black">
+                <ProblemIcon url={p.url} alt={p.text} />
                 <span className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-xs font-semibold shadow italic text-[#071E31]">
                   {p.id}.
                 </span>

@@ -5,6 +5,8 @@ import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { FiPhone } from "react-icons/fi";
+import { FaEnvelope } from "react-icons/fa";
 
 const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
   const [formData, setFormData] = useState({
@@ -220,7 +222,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
     setId("book free landing page audit");
   };
   return (
-    <section className="lg:hidden relative flex w-screen justify-center overflow-hidden bg-zinc-950 pt-12 text-white">
+    <section className="lg:hidden relative flex w-screen justify-center overflow-hidden  bg-[#160a1f] text-white">
       <div className="w-full flex flex-col items-center gap-12 pb-10 ">
         <div className="relative px-4 md:px-12 pb-10">
           <video
@@ -231,13 +233,42 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
             className="absolute inset-0 h-full w-full object-cover"
             src="/videos/bg.mp4"
           />
-          <div className="absolute inset-0 bg-black/40 " />
+          <div className="absolute inset-0 bg-linear-to-br from-zinc-800/80 via-zinc-900/80 to-yellow-600/40" />
+          <div className="sm:hidden w-full max-w-390 mx-auto ">
+            <div className="relative z-10 flex  items-center justify-between py-2 lg:px-16 ">
+              <div className="flex items-center gap-2">
+                <img
+                  src="/assets/logowhite.webp"
+                  alt="Logo"
+                  className="h-15 md:h-20 w-auto"
+                  loading="lazy"
+                />
+              </div>
+
+              <div className="items-center gap-4 flex ">
+                <a
+                  href="/"
+                  className="hidden text-white md:flex items-center gap-2 rounded-xl border border-white/30 px-4 py-3 text-base"
+                >
+                  <FaEnvelope />
+                  Email ID@e-marketing.io
+                </a>
+                <a
+                  href="/"
+                  className="flex items-center gap-2 rounded-xl bg-(--yellow-emarketing) px-4 py-3 text-sm lg:text-base text-black"
+                >
+                  <FiPhone />
+                  +91-9602694444
+                </a>
+              </div>
+            </div>
+          </div>
           <div className="relative flex w-full flex-col gap-6 z-10 sm:pt-30 ">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ease: "easeIn", duration: 0.5 }}
-              className="font-serif mt-12 text-3xl font-extrabold leading-tight md:-mt-14 md:text-6xl"
+              className="font-serif  text-3xl font-extrabold leading-tight md:text-6xl"
             >
               <span className="bg-linear-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent leading-[1.5em]">
                 Spending Money On Ads And Still Losing Leads?

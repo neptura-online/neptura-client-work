@@ -228,26 +228,35 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
 
   return (
     <>
-      <section className="hidden relative lg:flex w-full min-h-screen justify-center overflow-hidden bg-zinc-950 pt-12 text-white">
+      <section className="hidden relative lg:flex w-full justify-center overflow-hidden pt-30 pb-10 bg-zinc-950 text-white">
+        <div className="absolute inset-0 bg-linear-to-br from-zinc-800 via-zinc-900 to-yellow-600/90" />
+        <div
+          className="absolute inset-0 opacity-80"
+          style={{
+            backgroundImage: "url('/business/banner.webp')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
         <video
           src={video}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-fill"
           muted
           autoPlay
           loop
           playsInline
         />
+        <div className="absolute inset-0 bg-linear-to-br from-zinc-800/70 via-zinc-900/60 to-yellow-600/40" />
 
-        <div className="absolute inset-0 bg-black/75" />
-        <div className="container mx-auto flex max-w-6xl flex-row items-center gap-12 ">
+        <div className="container mx-auto py-auto flex max-w-350 flex-row items-start gap-12 ">
           <div className="flex flex-col gap-6 w-1/2 z-10">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ease: "easeIn", duration: 0.5 }}
-              className="font-serif text-3xl font-semibold md:-mt-14 md:text-5xl"
+              className="font-serif text-3xl font-semibold  md:text-5xl"
             >
-              <span className="bg-linear-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent leading-[1.5em]">
+              <span className="bg-linear-to-r from-yellow-400 to-(--yellow-emarketing) bg-clip-text text-transparent leading-[1.5em]">
                 Spending Money On Ads And Still Losing Leads?
               </span>
             </motion.h1>
@@ -267,7 +276,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ease: "easeInOut", duration: 0.8 }}
-              className="group mt-4 flex w-fit  items-center gap-4 rounded-2xl bg-yellow-500 px-6 py-3 transition-all hover:scale-105 hover:bg-yellow-400  hover:cursor-pointer"
+              className="group mt-4 flex w-fit  items-center gap-4 rounded-2xl bg-(--yellow-emarketing) px-6 py-3 transition-all hover:scale-105 hover:bg-yellow-400  hover:cursor-pointer"
             >
               {" "}
               <span className="hidden lg:flex h-7 w-7 items-center justify-center rounded-full bg-black">
@@ -381,7 +390,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="mt-4 rounded-2xl hover:bg-black py-3 text-base font-semibold hover:text-white transition bg-yellow-500 text-black disabled:cursor-not-allowed disabled:bg-gray-600 cursor-pointer"
+                  className="mt-4 rounded-2xl hover:bg-black py-3 text-base font-semibold hover:text-white transition bg-(--yellow-emarketing) text-black disabled:cursor-not-allowed disabled:bg-gray-600 cursor-pointer"
                 >
                   {loading ? "Loading..." : "Book A Free Consultation"}
                 </button>

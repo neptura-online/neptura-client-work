@@ -3,8 +3,8 @@ interface WorkIcon {
   alt: string;
 }
 
-const WorkIcon = ({ url, alt }: WorkIcon) => {
+const PreetyIcon = ({ url, alt }: WorkIcon) => {
   return <img src={`${url}`} alt={alt} className="h-8 w-8 " />;
 };
 
-export default WorkIcon;
+export default PreetyIcon;

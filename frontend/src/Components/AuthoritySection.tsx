@@ -10,9 +10,16 @@ export default function AuthoritySection({
     setId("book a call ceo");
   };
   return (
-    <section className="relative text-white overflow-hidden">
-      <div className="relative z-10 lg:max-w-6xl mx-auto px-10 py-10 rounded-3xl overflow-hidden bg-stone-950">
-        <div className="pointer-events-none absolute inset-0 z-50 bg-[url('assets/noise.svg')] opacity-10" />
+    <section className="relative text-white overflow-hidden bg-zinc-100 pb-20">
+      <div
+        className="absolute inset-0 opacity-80"
+        style={{
+          backgroundImage: "url('/business/pattern.svg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="relative z-10 lg:max-w-350 mx-auto px-10 py-10 rounded-3xl overflow-hidden bg-[#160a1f]">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -78,7 +85,7 @@ export default function AuthoritySection({
                 className="w-full h-full object-cover"
               />
 
-              <div className="absolute bottom-6 left-6 rounded-2xl bg-black/70 backdrop-blur-md px-6 py-4 border border-white/10">
+              <div className="absolute bottom-6 left-6 rounded-2xl bg-[#160a1f]/70 backdrop-blur-md px-6 py-4 border border-white/10">
                 <p className="text-sm font-bold text-white">Abhishek Jain</p>
                 <p className="text-xs text-yellow-500 uppercase tracking-widest">
                   Founder & CEO

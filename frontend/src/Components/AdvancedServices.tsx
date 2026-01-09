@@ -10,7 +10,6 @@ import {
   FiDatabase,
   FiUploadCloud,
 } from "react-icons/fi";
-import Heading from "./Helper/Heading";
 
 type ServiceItem = {
   title: string;
@@ -231,10 +230,36 @@ const MOBSERVICES: ServiceItem[] = [
 
 export default function AdvancedServices() {
   return (
-    <section className="relative bg-zinc-950 py-10 text-white">
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="relative bg-zinc-100 py-10 text-white">
+      <div
+        className="absolute inset-0 opacity-80"
+        style={{
+          backgroundImage: "url('/business/pattern.svg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="relative mx-auto max-w-350 px-6 z-10">
         <div className="text-center mb-6">
-          <Heading white="What You Get" yellow="From Us?" />
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="font-serif text-3xl md:text-[40px] font-medium text-black leading-[1.2em] capitalize"
+          >
+            What You Get With Our High-Performance <br />
+            <span className="text-(--yellow-emarketing)">
+              Landing Page Development
+            </span>
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="mx-auto mt-4 h-1 w-20 lg:w-30 rounded-full bg-(--yellow-emarketing)"
+          />
         </div>
         <DesktopServices />
         <MobileServices />
@@ -254,14 +279,16 @@ const MobileServices = () => {
         return (
           <div
             key={item.title}
-            className="rounded-2xl border border-white/10 bg-zinc-900 overflow-hidden"
+            className="rounded-2xl border border-black/10 bg-[#160a1f] overflow-hidden"
           >
             <button
               onClick={() => setOpenIndex(isOpen ? null : index)}
               className="flex w-full items-center justify-between px-5 py-4"
             >
               <div className="flex items-center gap-3">
-                <span className="text-xl text-yellow-400">{item.icon}</span>
+                <span className="text-xl text-(--yellow-emarketing)">
+                  {item.icon}
+                </span>
                 <span className="text-left font-medium">{item.title}</span>
               </div>
             </button>
@@ -278,13 +305,13 @@ const MobileServices = () => {
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="mb-4 rounded-xl border border-white/10"
+                    className="mb-4 rounded-xl border border-black/10"
                   />
 
-                  <ul className="space-y-3 text-sm text-zinc-300">
+                  <ul className="space-y-3 text-sm text-zinc-100">
                     {item.points.map((point) => (
                       <li key={point} className="flex gap-2">
-                        <FiCheckCircle className="mt-0.5 text-yellow-400" />
+                        <FiCheckCircle className="mt-0.5 text-(--yellow-emarketing)" />
                         <span>{point}</span>
                       </li>
                     ))}
@@ -315,8 +342,8 @@ function DesktopServices() {
               className={`flex items-center gap-4 rounded-2xl px-6 py-3 text-left transition
                     ${
                       isActive
-                        ? "bg-yellow-400 text-black shadow-lg"
-                        : "bg-zinc-900 text-white hover:bg-zinc-800"
+                        ? "bg-(--yellow-emarketing) text-black shadow-lg"
+                        : "bg-[#160a1f] text-white hover:bg-zinc-800"
                     }`}
             >
               <span className="text-base">{item.icon}</span>
@@ -336,13 +363,13 @@ function DesktopServices() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.96 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="rounded-3xl border border-white/10 shadow-2xl"
+            className="rounded-3xl border border-black/10 shadow-2xl max-h-120"
           />
         </AnimatePresence>
       </div>
 
       <div>
-        <h3 className="mb-6 text-2xl font-semibold text-yellow-400">
+        <h3 className="mb-6 text-2xl font-semibold text-(--yellow-emarketing)">
           {active.title}
         </h3>
 
@@ -353,9 +380,9 @@ function DesktopServices() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
-              className="flex items-start gap-3 text-zinc-300"
+              className="flex items-start gap-3 text-zinc-900"
             >
-              <FiCheckCircle className="mt-1 text-base text-yellow-400" />
+              <FiCheckCircle className="mt-1 text-base text-(--yellow-emarketing)" />
               <span className="text-base">{point}</span>
             </motion.li>
           ))}

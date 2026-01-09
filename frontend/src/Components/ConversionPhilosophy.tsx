@@ -14,8 +14,8 @@ export default function ConversionPhilosophy({
     setId("built pages that lead are magnet");
   };
   return (
-    <section className="relative bg-zinc-950 py-10 md:py-20 text-white">
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="relative bg-[#160a1f] py-10 md:py-20 text-white">
+      <div className="mx-auto max-w-350 px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -43,20 +43,22 @@ export default function ConversionPhilosophy({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="group rounded-2xl border border-white/10 bg-zinc-900 p-6 transition hover:border-yellow-400/40"
+              className="group rounded-2xl border border-black/10 bg-zinc-100 p-6 transition hover:border-yellow-400/40"
             >
               <div className="flex items-center justify-start gap-4">
-                <div className="flex min-h-10 min-w-10 items-center justify-center rounded-xl bg-yellow-400 text-black">
+                <div className="flex min-h-10 min-w-10 items-center justify-center rounded-xl bg-yellow-400">
                   <PreetyIcon url={item.url} alt={item.title} />
                 </div>
 
-                <h3 className="mb-2 text-base font-semibold">{item.title}</h3>
+                <h3 className="mb-2 text-base font-semibold text-zinc-950">
+                  {item.title}
+                </h3>
               </div>
             </motion.div>
           ))}
         </div>
         <div className="mx-auto mt-10 max-w-2xl text-center">
-          <p className="text-sm text-stone-300 ">
+          <p className="text- text-stone-300 ">
             We combine design psychology + persuasive copywriting + performance
             marketing to build pages that convert like crazy.
           </p>

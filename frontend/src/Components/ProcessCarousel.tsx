@@ -1,7 +1,6 @@
 import { motion, useMotionValue, animate } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { steps } from "../constant/constant";
-import Heading from "./Helper/Heading";
 
 const GAP = 24;
 
@@ -90,11 +89,33 @@ const ProcessCarousel = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-zinc-950 py-10 lg:py-20">
+    <section className="relative overflow-hidden bg-[#160a1f] py-10 lg:py-20">
       <div className="pointer-events-none absolute inset-0 z-50 bg-[url('assets/noise.svg')] opacity-10" />
-      <div className="mx-2 px-4 lg:mx-auto lg:max-w-6xl">
+      <div className="mx-2 px-4 lg:mx-auto lg:max-w-350">
         <div className="mb-12 text-center">
-          <Heading white="Our Highly" yellow="Converting Approach" />
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="font-serif text-3xl md:text-[40px] font-medium text-white leading-[1.2em] capitalize"
+          >
+            Our Approach To Highly Converting <br />
+            <span
+              className="text-(--yellow-emarketing)
+"
+            >
+              Landing Page
+            </span>
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="mx-auto mt-4 h-1 w-20 lg:w-30 rounded-full bg-(--yellow-emarketing)
+"
+          />
         </div>
 
         <div className="overflow-hidden">
@@ -121,7 +142,7 @@ const ProcessCarousel = () => {
               <div
                 key={i}
                 style={{ width: cardWidth }}
-                className="shrink-0 rounded-2xl bg-zinc-900 shadow-lg shadow-black"
+                className="shrink-0 rounded-2xl bg-zinc-100 shadow-lg shadow-black"
               >
                 <img
                   src={step.url}
@@ -131,10 +152,10 @@ const ProcessCarousel = () => {
                 />
 
                 <div className="p-4 text-center">
-                  <h3 className="text-md font-semibold font-serif text-yellow-500">
+                  <h3 className="text-md font-semibold font-serif text-(--yellow-emarketing)">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-sm text-gray-300">{step.desc}</p>
+                  <p className="mt-2 text-sm text-zinc-950">{step.desc}</p>
                 </div>
               </div>
             ))}

@@ -28,10 +28,17 @@ const OfferContainer = ({ setOpenForm, setId }: OpenFormProps) => {
     setId("claim offer");
   };
   return (
-    <section className=" text-white flex justify-center w-screen">
-      <div className="container mx-auto md:max-w-6xl px-2 lg:px-0 py-20">
-        <div className="flex relative flex-col items-center gap-12 rounded-3xl border border-stone-800 bg-stone-950 p-6 md:flex-row md:p-16 ">
-          <div className="pointer-events-none absolute inset-0 z-50 bg-[url('assets/noise.svg')] opacity-10 rounded-3xl" />
+    <section className=" text-white relative flex justify-center w-screen bg-linear-to-br from-zinc-800 via-zinc-900 to-yellow-600/90">
+      <div
+        className="absolute inset-0 opacity-100"
+        style={{
+          backgroundImage: "url('/business/pattern.svg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="container mx-auto w-full md:max-w-370 px-2 lg:px-0 py-20">
+        <div className="flex relative flex-col items-center gap-12 rounded-3xl  p-6 md:flex-row md:p-16 ">
           <motion.div {...fadeUp} className="w-full md:w-1/2 ">
             <span className="inline-block rounded-full bg-yellow-500/10 px-4 py-2 text-sm font-semibold text-yellow-400">
               Limited Time Offer
@@ -59,7 +66,7 @@ const OfferContainer = ({ setOpenForm, setId }: OpenFormProps) => {
             <motion.div
               initial="rest"
               whileHover="hover"
-              className="relative rounded-2xl border border-stone-800 bg-stone-900 p-6"
+              className="relative rounded-2xl border border-yellow-500 p-6"
             >
               <h3 className="text-xl font-serif font-semibold">
                 1 Year Gravity Forms <br className="sm:hidden" /> –{" "}
@@ -94,7 +101,7 @@ const OfferContainer = ({ setOpenForm, setId }: OpenFormProps) => {
             <motion.div
               initial="rest"
               whileHover="hover"
-              className="relative rounded-2xl border border-stone-800 bg-stone-900 p-6"
+              className="relative rounded-2xl border border-yellow-500 p-6"
             >
               <h3 className="text-xl font-serif font-semibold">
                 1 Year WP Rocket <br className="sm:hidden" /> –{" "}

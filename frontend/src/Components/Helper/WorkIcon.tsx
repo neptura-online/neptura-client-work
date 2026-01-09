@@ -4,7 +4,7 @@ interface PreetyIcon {
 }
 
 const PreetyIcon = ({ url, alt }: PreetyIcon) => {
-  return <img src={`${url}`} alt={alt} className="h-8 w-8 lg:h-10 lg:w-10" />;
+  return <img src={`${url}`} alt={alt} className="h-8 w-8 lg:h-12 lg:w-12" />;
 };
 
 export default PreetyIcon;

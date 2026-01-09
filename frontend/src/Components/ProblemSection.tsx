@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import Heading from "./Helper/Heading";
 import type { OpenFormProps } from "../types/type";
 import { problems } from "../constant/constant";
 import WorkIcon from "./Helper/PreetyIcon";
@@ -21,11 +20,39 @@ const ProblemSection = ({
     //setSave?.("/pdf/sample.pdf");
   };
   return (
-    <section className="relative w-full bg-stone-950 py-10 lg:mt-10 lg:pt-10 text-white">
-      <div className="pointer-events-none absolute inset-0 z-50 bg-[url('assets/noise.svg')] opacity-10" />
-      <div className="mx-auto px-4 lg:max-w-6xl">
-        <div className="mx-auto max-w-3xl text-center">
-          <Heading white="Why Your Landing Page Not" yellow="Convert ?" />
+    <section className="relative w-full bg-zinc-100 py-10 lg:py-20 text-white">
+      <div
+        className="absolute inset-0 opacity-80"
+        style={{
+          backgroundImage: "url('/business/pattern.svg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="mx-auto px-4 lg:max-w-350 relative z-10">
+        <div className="mx-auto max-w-7xl text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="font-serif text-3xl md:text-[40px] font-medium text-black leading-[1.5em] capitalize"
+          >
+            Your Landing Page is doing everything <br /> except guiding{" "}
+            <span className="text-(--yellow-emarketing)">
+              visitors to convert!
+            </span>
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="mx-auto mt-4 h-1 w-20 lg:w-30 rounded-full bg-(--yellow-emarketing)"
+          />
+          <p className="mt-6 text-2xl text-(--yellow-emarketing)">
+            Why is it so?
+          </p>
         </div>
 
         <motion.div
@@ -39,9 +66,9 @@ const ProblemSection = ({
           {problems.map(({ id, text, url }) => (
             <div
               key={id}
-              className="group flex flex-col gap-4 rounded-2xl border border-stone-800 bg-stone-900 p-6 font-bold text-stone-300 transition hover:border-yellow-500"
+              className="group flex flex-col gap-4 rounded-2xl border border-zinc-100 bg-white p-5 font-bold text-zinc-900 transition hover:border-yellow-500"
             >
-              <div className=" flex h-12 w-12 items-center justify-center rounded-xl bg-stone-800 text-yellow-400">
+              <div className=" flex h-12 w-12 items-center justify-center rounded-xl bg-[#160a1f] text-yellow-400">
                 <WorkIcon url={url} alt={text} />
               </div>
               <p className="text-base">{text}</p>
@@ -50,13 +77,13 @@ const ProblemSection = ({
         </motion.div>
 
         <div className="mx-auto mt-10 max-w-3xl text-center">
-          <p className="text-sm text-stone-300 ">
+          <p className="text-base text-zinc-900 ">
             As a result, the visitor leaves within seconds without submitting
             enquiry!
           </p>
 
-          <p className="mt-3 text-base text-stone-300 ">
-            But here’s the good news. We can fix that.
+          <p className="mt-3 text-base text-zinc-900 ">
+            But we can help you avoid these mistakes.
           </p>
         </div>
 

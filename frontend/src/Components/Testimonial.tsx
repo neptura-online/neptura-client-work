@@ -10,8 +10,8 @@ const TestimonialCard = ({
   username,
 }: TestimonialCardProps) => {
   return (
-    <div className="rounded-2xl bg-zinc-800 p-6 shadow-sm border border-black/5">
-      <p className="text-sm leading-relaxed text-white/80">{text}</p>
+    <div className="rounded-2xl bg-zinc-100 p-6 shadow-sm border border-black/5">
+      <p className="text-sm leading-relaxed text-black/80">{text}</p>
 
       <div className="flex items-center gap-3 mt-6">
         <img
@@ -20,8 +20,8 @@ const TestimonialCard = ({
           className="h-8 w-8 rounded-full object-cover"
         />
         <div className="leading-tight">
-          <p className="font-semibold text-white text-sm">{name}</p>
-          <p className="text-xs text-white/50">{username}</p>
+          <p className="font-semibold text-black text-sm">{name}</p>
+          <p className="text-xs text-black/50">{username}</p>
         </div>
       </div>
     </div>
@@ -53,12 +53,16 @@ const Testimonials = () => {
   const thirdColumn = testimonials.slice(6, 9);
 
   return (
-    <section className="relative overflow-hidden bg-zinc-950 py-10 my-10">
-      <div className="relative text-center max-w-7xl mx-auto px-6 z-20">
+    <section className="relative overflow-hidden bg-[#160a1f] py-20">
+      <div className="relative text-center max-w-7xl mx-auto py-6 z-20">
         <Heading white="Client Success " yellow="Stories & Testimonials" />
+
+        <p className="mt-6 text-base text-zinc-100">
+          Stop losing customers due to missed or mishandled calls!
+        </p>
       </div>
 
-      <div className="relative mx-5 sm:mx-auto max-w-6xl px-6">
+      <div className="relative mx-5 sm:mx-auto max-w-350 px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 h-130 overflow-hidden">
           <InfiniteColumn items={firstColumn} duration={22} />
 
@@ -67,9 +71,9 @@ const Testimonials = () => {
           <InfiniteColumn items={thirdColumn} duration={25} />
         </div>
       </div>
-      <div className="pointer-events-none absolute bottom-0 left-0 h-40 w-full bg-linear-to-t from-zinc-950 via-zinc-900 to-zinc-850 z-10" />
+      <div className="pointer-events-none absolute bottom-0 left-0 h-40 w-full bg-linear-to-t from-[#160a1f] via-[#160a1f] to-transparent z-10" />
 
-      <div className="pointer-events-none absolute top-20 left-0 h-40  w-full bg-linear-to-t from-zinc-850 via-zinc-900 to-zinc-950 z-10" />
+      <div className="pointer-events-none absolute top-40 left-0 h-40  w-full bg-linear-to-t from-transparent via-[#160a1f] to-[#160a1f] z-10" />
     </section>
   );
 };

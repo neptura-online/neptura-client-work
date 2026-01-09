@@ -2,7 +2,6 @@ import { useState, useEffect, useRef, useCallback, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowUpRight } from "react-icons/fi";
 import { services } from "../constant/constant";
-import Heading from "./Helper/Heading";
 import type { OpenFormProps } from "../types/type";
 
 const CarouselCard = memo(
@@ -51,7 +50,7 @@ const CarouselCard = memo(
               : "bg-white/10"
           }`}
         >
-          <div className="w-full h-full rounded-[23px] bg-[#0a0a0a] p-8 md:p-10 flex flex-col justify-between items-start overflow-hidden relative">
+          <div className="w-full h-full rounded-[23px] bg-white p-8 md:p-10 flex flex-col justify-between items-start overflow-hidden relative">
             {isActive && (
               <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 blur-3xl rounded-full" />
             )}
@@ -61,14 +60,14 @@ const CarouselCard = memo(
                 className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-3xl md:text-4xl mb-8 transition-all duration-500 ${
                   isActive
                     ? "bg-yellow-500 text-black rotate-6"
-                    : "bg-white/5 text-white/30"
+                    : "bg-white/5 text-black/30"
                 }`}
               >
                 {service.icon}
               </div>
               <h3
                 className={`text-2xl md:text-3xl font-serif font-medium mb-4 tracking-tight leading-tight ${
-                  isActive ? "text-white" : "text-gray-500"
+                  isActive ? "text-black" : "text-zinc-800"
                 }`}
               >
                 {service.title}
@@ -139,15 +138,33 @@ const ThreeDCarousel = ({ setOpenForm, setId }: OpenFormProps) => {
     setId("book landing");
   };
   return (
-    <section className="py-10 lg:py-20 bg-zinc-950 text-white overflow-hidden relative selection:bg-yellow-500 selection:text-black">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%yellow-5005_0%,transparent_60%)] pointer-events-none" />
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="py-10 lg:py-20 bg-zinc-100 text-black overflow-hidden relative selection:bg-yellow-500 selection:text-black">
+      <div
+        className="absolute inset-0 opacity-80"
+        style={{
+          backgroundImage: "url('/business/pattern.svg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="container mx-auto px-6 relative z-10 max-w-350">
         <div className="text-center mb-2">
-          <Heading
-            white="Other Digital"
-            yellow="Marketing Services
-"
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="font-serif text-3xl md:text-[40px] font-medium text-black leading-[1.2em] capitalize"
+          >
+            Other Digital{" "}
+            <span className="text-yellow-500">Marketing Services</span>
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="mx-auto mt-4 h-1 w-20 lg:w-30 rounded-full bg-yellow-500"
           />
         </div>
 

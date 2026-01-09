@@ -5,6 +5,7 @@ import Counter from "../Components/Counter";
 import OfferContainer from "../Components/OfferContainer";
 import ProblemSection from "../Components/ProblemSection";
 import LandingProblemSection from "../Components/LandingProblemSection";
+import Buttons from "../ComponentsBusiness/Helper/whatsapp";
 
 const ExitIntentWrapper = lazy(
   () => import("../Components/Helper/ExitIntentWrapper")
@@ -42,7 +43,10 @@ const LandingPage = () => {
 
   return (
     <>
-      <NavBar />
+      <div className="hidden sm:block">
+        <NavBar />
+      </div>
+      <Buttons setOpenForm={setOpenForm} setId={setId} />
       <HeroSectionVideoBG setOpenForm={setOpenForm} setId={setId} />
       <Counter />
       <OfferContainer setOpenForm={setOpenForm} setId={setId} />

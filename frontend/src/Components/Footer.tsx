@@ -222,21 +222,19 @@ const Footer = () => {
   return (
     <footer
       id="contact"
-      className="relative overflow-hidden border-t border-black/10 bg-stone-950 pt-10 lg:pt-24 pb-10"
+      className="relative overflow-hidden border-t border-black/10 bg-[#160a1f] pt-10 lg:pt-24 pb-10"
     >
-      <div className="pointer-events-none absolute inset-0 z-50 bg-[url('assets/noise.svg')] opacity-10" />
-
-      <div className="relative mx-auto max-w-6xl px-6">
+      <div className="relative mx-auto max-w-350 px-6">
         <div className="mb-20 grid gap-16 lg:grid-cols-2">
           <div className="text-left">
-            <span className="mb-4 inline-block text-sm font-medium uppercase tracking-[0.4em] text-yellow-400">
+            <span className="mb-4 inline-block text-sm font-medium uppercase tracking-[0.4em] text-(--yellow-emarketing)">
               Let’s Talk
             </span>
 
             <h2 className="mb-6 text-3xl  md:text-5xl font-medium uppercase tracking-tight text-white leading-[1.5em] font-serif">
               Let's work together.
               <br />
-              <span className="bg-linear-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-yellow-300 to-(--yellow-emarketing) bg-clip-text text-transparent">
                 fixed a meeting
               </span>
             </h2>
@@ -244,34 +242,41 @@ const Footer = () => {
             <div className="flex flex-col gap-4 mt-4 justify-start items-start">
               <div className="flex items-center justify-center gap-4 lg:justify-start">
                 <div className="rounded-full border border-white/20 bg-black/40 p-3 backdrop-blur">
-                  <CiLocationOn size={18} className="text-yellow-400" />
+                  <CiLocationOn
+                    size={18}
+                    className="text-(--yellow-emarketing)"
+                  />
                 </div>
                 <a
                   href="mailto:hello@uxmotionz.studio"
-                  className="text-base font-semibold text-white transition hover:text-yellow-400"
+                  className="text-base font-semibold text-white transition hover:text-(--yellow-emarketing)"
                 >
-                  8/10, Shaheed Amit Bhardwaj Marg, Sector 8, Malviya Nagar,
+                  8/10, Shaheed Amit Bhardwaj Marg, Sector 8, Malviya Nagar,{" "}
+                  <br />
                   Jaipur - 302017 (Raj)
                 </a>
               </div>
               <div className=" flex items-center justify-center gap-4 lg:justify-start">
                 <div className="rounded-full border border-white/20 bg-black/40 p-3 backdrop-blur">
-                  <FiMail size={18} className="text-yellow-400" />
+                  <FiMail size={18} className="text-(--yellow-emarketing)" />
                 </div>
                 <a
                   href="mailto:hello@uxmotionz.studio"
-                  className="text-base font-semibold text-white transition hover:text-yellow-400"
+                  className="text-base font-semibold text-white transition hover:text-(--yellow-emarketing)"
                 >
                   cagarwal389@gmail.com
                 </a>
               </div>
               <div className=" flex items-center justify-center gap-4 lg:justify-start">
                 <div className="rounded-full border border-white/20 bg-black/40 p-3 backdrop-blur">
-                  <FiPhoneCall size={18} className="text-yellow-400" />
+                  <FiPhoneCall
+                    size={18}
+                    className="text-(--yellow-emarketing)"
+                  />
                 </div>
                 <a
                   href="mailto:hello@uxmotionz.studio"
-                  className="text-base font-semibold text-white transition hover:text-yellow-400"
+                  className="text-base font-semibold text-white transition hover:text-(--yellow-emarketing)"
                 >
                   +91-8239999732
                 </a>
@@ -315,7 +320,7 @@ const Footer = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Name*"
-                    className="rounded-xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500 w-full"
+                    className="rounded-xl border border-zinc-300 px-4 py-3 outline-none focus:border-(--yellow-emarketing) w-full"
                   />
                   {formError.name && (
                     <p className="text-sm text-red-500 mt-1">
@@ -331,7 +336,7 @@ const Footer = () => {
                     onChange={handleChange}
                     type="email"
                     placeholder="Email*"
-                    className="rounded-xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500 w-full"
+                    className="rounded-xl border border-zinc-300 px-4 py-3 outline-none focus:border-(--yellow-emarketing) w-full"
                   />
                   {formError.email && (
                     <p className="text-sm mt-1 text-red-500">
@@ -365,7 +370,7 @@ const Footer = () => {
                 value={formData.industry}
                 onChange={handleChange}
                 placeholder="Industry*"
-                className="rounded-xl border border-zinc-300 px-4 py-3 outline-none focus:border-yellow-500"
+                className="rounded-xl border border-zinc-300 px-4 py-3 outline-none focus:border-(--yellow-emarketing)"
               />
               {formError.industry && (
                 <p className="text-sm text-red-500 -mt-2">
@@ -378,14 +383,14 @@ const Footer = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
-                className="rounded-xl border border-zinc-300 px-4 py-3 outline-none text-sm sm:text-base focus:border-yellow-500"
+                className="rounded-xl border border-zinc-300 px-4 py-3 outline-none text-sm sm:text-base focus:border-(--yellow-emarketing)"
                 placeholder="Message"
                 maxLength={50}
               />
               <button
                 type="submit"
                 disabled={loading}
-                className="mt-4 rounded-xl bg-black disabled:cursor-not-allowed disabled:bg-gray-600 py-4 text-lg font-semibold text-white hover:text-black transition hover:bg-yellow-500"
+                className="mt-4 rounded-xl bg-black disabled:cursor-not-allowed disabled:bg-gray-600 py-4 text-lg font-semibold text-white hover:text-black transition hover:bg-(--yellow-emarketing)"
               >
                 Book A Free Consultation
               </button>
@@ -393,11 +398,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 md:flex-row">
-          <p className="text-xs text-white/40">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/90 pt-6 md:flex-row">
+          <p className="text-xs text-white/90">
             © {new Date().getFullYear()} e-Marketing. All rights reserved.
           </p>
-          <div className="flex gap-6 text-xs text-white/40">
+          <div className="flex gap-6 text-xs text-white/90">
             <a href="#" className="transition hover:text-white">
               Privacy Policy
             </a>

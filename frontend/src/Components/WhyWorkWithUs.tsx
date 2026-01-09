@@ -1,113 +1,97 @@
-import { useState } from "react";
+import { FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
 import type { OpenFormProps } from "../types/type";
-import { ITEMS } from "../constant/constant";
-import WorkIcon from "./Helper/WorkIcon";
+import WorkIcon from "../ComponentsBusiness/Helper/WorkIcon";
 
-export default function WhyWorkWithUs({ setId, setOpenForm }: OpenFormProps) {
-  const [active, setActive] = useState(0);
+const items = [
+  { url: "/icons/Business-Owner.webp", label: "Business-Owner Mindset" },
+  { url: "/icons/Transparent.webp", label: "Transparent Process" },
+  { url: "/icons/Hands.webp", label: "Control in Your Hands" },
+  { url: "/icons/Lead_Generation.webp", label: "Consistent Lead Generation" },
+  { url: "/icons/ROI-Driven.webp", label: "ROI-Driven Approach" },
+];
 
-  const triggerButton = () => {
+export default function WhyWorkWithUsExact({
+  setOpenForm,
+  setId,
+}: OpenFormProps) {
+  const handleClick = () => {
     setOpenForm(true);
-    setId("connect with us");
+    setId("hero lets work together");
   };
-
   return (
-    <section className="relative bg-stone-950 py-10 text-white">
-      <div className="pointer-events-none absolute inset-0 z-50 bg-[url('assets/noise.svg')] opacity-8 " />
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="grid gap-20 lg:grid-cols-2">
-          <div className="max-w-xl">
-            <h2 className="text-3xl font-serif font-medium leading-[1.5em] md:text-6xl text-center sm:text-start">
-              Why Work <br className="hidden sm:block" />{" "}
-              <span className="text-yellow-400">With Us?</span>
+    <section className="bg-zinc-100 py-6">
+      <div className="mx-auto max-w-360 px-3 md:px-6">
+        <div className="flex flex-col-reverse items-center lg:items-start gap-14 lg:flex-row">
+          <div className="relative">
+            <div className="pt-4 pl-1 relative overflow-hidden rounded-[28px]">
+              <img
+                src="/business/bg.webp"
+                alt="Client reaction"
+                className="absolute inset-0 z-0 w-full h-full object-cover"
+                loading="eager"
+              />
+              <img
+                src="/business/about.webp"
+                alt="Client reaction"
+                className="relative h-full z-10 w-full object-cover rounded-[28px]"
+                loading="lazy"
+              />
+            </div>
+
+            <motion.img
+              src="/business/review.webp"
+              alt="Client reaction"
+              className="h-30 absolute -bottom-15 object-cover rounded-[28px] z-20"
+              animate={{
+                x: [-10, 60],
+                y: [0, -6],
+                scale: [1, 1.02],
+              }}
+              transition={{
+                duration: 3,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+            />
+          </div>
+
+          <div className="mt-4 flex flex-col items-center lg:items-start">
+            <h2 className="font-serif font-semibold text-3xl md:text-[45px]">
+              Why Work With Us?
             </h2>
 
-            <p className="mt-8 text-lg text-stone-300">
+            <div className="mt-4 h-0.5 w-24 bg-black" />
+
+            <p className="mt-4 max-w-2xl text-zinc-600 text-center px-2 sm:px-0 sm:text-start">
               You deserve a partner who understands your challenges and is
               committed to your success.
             </p>
 
-            <p className="mt-6 text-stone-400">Here's what sets us apart:</p>
-          </div>
+            <div className="relative mt-6 grid grid-cols-2 sm:grid-cols-3 gap-y-4 gap-x-12">
+              <div className="absolute left-20 right-0 top-10 h-px z-10 bg-zinc-300" />
+              <div className="absolute lg:max-w-60 left-20 top-48 right-10 lg:right-32 lg:top-42 h-px z-10 bg-zinc-300" />
 
-          <div className="relative hidden lg:block">
-            <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-20 bg-linear-to-t from-stone-950 to-transparent" />
-
-            <div
-              className="
-                flex max-h-70 flex-col gap-5 overflow-y-auto pr-5 pl-5
-                scrollbar-hide
-              "
-            >
-              {ITEMS.map((item, index) => {
-                const isActive = index === active;
-
-                return (
-                  <motion.div
-                    key={item.title}
-                    onMouseEnter={() => setActive(index)}
-                    animate={{
-                      opacity: isActive ? 1 : 0.65,
-                      scale: isActive ? 1.02 : 0.98,
-                    }}
-                    transition={{ duration: 0.35, ease: "easeOut" }}
-                    className={`rounded-3xl p-4 backdrop-blur flex items-center gap-4
-                      ${
-                        isActive
-                          ? "bg-stone-900/80 shadow-2xl"
-                          : "bg-stone-900/40"
-                      }`}
-                  >
-                    <div className=" flex h-12 w-12 items-center justify-center rounded-xl bg-stone-800 text-yellow-400">
-                      <WorkIcon url={item.url} alt={item.title} />
-                    </div>
-
-                    <h2 className=" text-xl font-medium">{item.title}</h2>
-                  </motion.div>
-                );
-              })}
+              {items.map((item, i) => (
+                <div key={i} className="text-center">
+                  <div className="mx-auto relative flex h-18 w-18 items-center justify-center rounded-full bg-[#160a1f] text-(--yellow-emarketing) z-20">
+                    <WorkIcon url={item.url} alt={item.label} />
+                  </div>
+                  <p className="mt-4 font-medium text-zinc-900">{item.label}</p>
+                </div>
+              ))}
             </div>
+
+            <button
+              onClick={handleClick}
+              className="mt-14 inline-flex items-center gap-2 rounded-lg bg-black px-8 py-3 text-white transition hover:bg-zinc-900"
+            >
+              Connect With Us
+              <FiArrowRight />
+            </button>
           </div>
         </div>
-
-        <div className="mt-20 space-y-6 lg:hidden">
-          {ITEMS.map((item) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="rounded-3xl bg-stone-900/60 p-4 flex gap-4 items-center"
-            >
-              <div className=" flex h-12 w-12 items-center justify-center rounded-xl bg-stone-800 text-yellow-400">
-                <WorkIcon url={item.url} alt={item.title} />
-              </div>
-
-              <h3 className="mb-2 text-lg font-medium">{item.title}</h3>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-8 text-center"
-        >
-          <p className="mb-4 text-base text-stone-300">
-            If you’re serious about growth, we should talk.
-          </p>
-
-          <button
-            onClick={triggerButton}
-            className="rounded-2xl bg-yellow-400 px-6 py-3 text-sm font-semibold text-black transition hover:scale-[1.05]"
-          >
-            Connect With Us
-          </button>
-        </motion.div>
       </div>
     </section>
   );

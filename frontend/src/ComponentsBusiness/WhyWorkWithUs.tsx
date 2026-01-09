@@ -4,11 +4,11 @@ import type { OpenFormProps } from "../types/type";
 import WorkIcon from "./Helper/WorkIcon";
 
 const items = [
-  { url: "/icons/Business-Owner.png", label: "Business-Owner Mindset" },
-  { url: "/icons/Transparent.png", label: "Transparent Process" },
-  { url: "/icons/Hands.png", label: "Control in Your Hands" },
-  { url: "/icons/Lead_Generation.png", label: "Consistent Lead Generation" },
-  { url: "/icons/ROI-Driven.png", label: "ROI-Driven Approach" },
+  { url: "/icons/Business-Owner.webp", label: "Business-Owner Mindset" },
+  { url: "/icons/Transparent.webp", label: "Transparent Process" },
+  { url: "/icons/Hands.webp", label: "Control in Your Hands" },
+  { url: "/icons/Lead_Generation.webp", label: "Consistent Lead Generation" },
+  { url: "/icons/ROI-Driven.webp", label: "ROI-Driven Approach" },
 ];
 
 export default function WhyWorkWithUsExact({

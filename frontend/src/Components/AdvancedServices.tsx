@@ -127,7 +127,7 @@ const SERVICES: ServiceItem[] = [
 const MOBSERVICES: ServiceItem[] = [
   {
     title: "Advanced Form System",
-    image: "/assets/online.webp",
+    image: "/assets/Advanced_Form2.webp  ",
     icon: <FiSettings />,
     points: [
       "Paid Gravity Forms addon integration",
@@ -144,8 +144,7 @@ const MOBSERVICES: ServiceItem[] = [
   },
   {
     title: "On-Page Conversion Enhancers",
-    image: "/assets/online.webp",
-
+    image: "/assets/On-Page2.webp",
     icon: <FiTrendingUp />,
     points: [
       "Live Chat Bot setup",
@@ -156,7 +155,7 @@ const MOBSERVICES: ServiceItem[] = [
   },
   {
     title: "Performance Engineering",
-    image: "/assets/online.webp",
+    image: "/assets/Performance_Engineering2.webp",
     icon: <FiZap />,
     points: [
       "Fully mobile responsive",
@@ -167,7 +166,7 @@ const MOBSERVICES: ServiceItem[] = [
   },
   {
     title: "Advanced Tracking & Analytics",
-    image: "/assets/online.webp",
+    image: "/assets/Advanced_Tracking2.webp",
     icon: <FiActivity />,
     points: [
       "Full UTM tracking",
@@ -181,7 +180,7 @@ const MOBSERVICES: ServiceItem[] = [
   },
   {
     title: "CRM-Ready Integrations",
-    image: "/assets/online.webp",
+    image: "/assets/CRM-Ready2.webp",
     icon: <FiDatabase />,
     points: [
       "Zoho CRM",
@@ -193,7 +192,7 @@ const MOBSERVICES: ServiceItem[] = [
   },
   {
     title: "SEO Foundation",
-    image: "/assets/online.webp",
+    image: "/assets/SEO_Foundation2.webp",
     icon: <FiTrendingUp />,
     points: [
       "SEO-friendly structure",
@@ -205,7 +204,7 @@ const MOBSERVICES: ServiceItem[] = [
   },
   {
     title: "Security & Spam Protection",
-    image: "/assets/online.webp",
+    image: "/assets/Spam_Protection2.webp",
     icon: <FiShield />,
     points: [
       "Google reCAPTCHA v2/v3",
@@ -215,7 +214,7 @@ const MOBSERVICES: ServiceItem[] = [
   },
   {
     title: "Deployment & Launch Support",
-    image: "/assets/online.webp",
+    image: "/assets/Deployment2.webp",
     icon: <FiUploadCloud />,
     points: [
       "Domain & hosting access",

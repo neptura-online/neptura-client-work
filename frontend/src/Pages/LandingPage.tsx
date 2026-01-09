@@ -6,8 +6,6 @@ import OfferContainer from "../Components/OfferContainer";
 import ProblemSection from "../Components/ProblemSection";
 import LandingProblemSection from "../Components/LandingProblemSection";
 
-/* ---------------- LAZY COMPONENTS ---------------- */
-
 const ExitIntentWrapper = lazy(
   () => import("../Components/Helper/ExitIntentWrapper")
 );
@@ -27,16 +25,12 @@ const Testimonials = lazy(() => import("../Components/Testimonial"));
 const FAQSection = lazy(() => import("../Components/FAQQuestion"));
 const Footer = lazy(() => import("../Components/Footer"));
 
-/* ---------------- SKELETON ---------------- */
-
 const SectionSkeleton = ({ height = 400 }: { height?: number }) => (
   <div
     style={{ height }}
     className="my-16 w-full animate-pulse rounded-xl bg-zinc-900/60"
   />
 );
-
-/* ---------------- PAGE ---------------- */
 
 const LandingPage = () => {
   const [openForm, setOpenForm] = useState(false);
@@ -48,7 +42,6 @@ const LandingPage = () => {
 
   return (
     <>
-      {/* ABOVE THE FOLD (NO LAZY) */}
       <NavBar />
       <HeroSectionVideoBG setOpenForm={setOpenForm} setId={setId} />
       <Counter />
@@ -61,7 +54,6 @@ const LandingPage = () => {
       />
       <LandingProblemSection setOpenForm={setOpenForm} setId={setId} />
 
-      {/* NON-BLOCKING HELPERS */}
       <Suspense fallback={null}>
         <ExitIntentWrapper />
       </Suspense>
@@ -78,7 +70,6 @@ const LandingPage = () => {
         </Suspense>
       )}
 
-      {/* BELOW THE FOLD (PROGRESSIVE LOADING) */}
       <Suspense fallback={<SectionSkeleton height={300} />}>
         <ConversionPhilosophy setOpenForm={setOpenForm} setId={setId} />
       </Suspense>

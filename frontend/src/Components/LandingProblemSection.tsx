@@ -12,23 +12,18 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
   return (
     <section className="relative bg-stone-950 px-2 py-10 lg:py-24 overflow-hidden">
       <div className="mx-auto relative max-w-6xl p-4">
-        <div className="grid lg:grid-cols-2 items-center">
+        <div className="grid lg:grid-cols-2 items-center gap-2">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="flex justify-center lg:justify-start"
+            className="flex justify-center lg:justify-start "
           >
             <img
               src="/assets/one.webp"
               alt=""
-              className="hidden lg:block w-full max-w-xs rounded-xl"
-            />
-            <img
-              src="/assets/bg.webpcl"
-              alt=""
-              className="w-full lg:hidden max-w-xs rounded-xl"
+              className="hidden lg:block min-w-[500px] max-h-[600px] rounded-xl"
             />
           </motion.div>
 

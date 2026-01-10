@@ -118,7 +118,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
   };
 
   const closeSubmit = async () => {
-    if (formData.name && phone.length === 12) {
+    if (formData.name && phone && !phoneError) {
       await partialSubmit();
     }
     onClose();
@@ -126,6 +126,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
     const errors = {
       name: "",
       email: "",
@@ -147,7 +148,10 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
       errors.industry = "Please enter industry*";
     }
     if (!phone) {
-      setPhoneError("Please enter valid number");
+      setPhoneError("Please enter a mobile number");
+    }
+
+    if (phoneError) {
       return;
     }
 
@@ -157,11 +161,11 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
     }
 
     setFormError({ name: "", email: "", industry: "", message: "" });
-
+    setPhoneError("");
     const body = {
       name: e.target.name.value,
       email: e.target.email.value,
-      phone: phone,
+      phone: `+${phone}`,
       industry: e.target.industry.value,
       message: e.target.message.value,
       utm_source,
@@ -197,7 +201,6 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
     } finally {
       setLoading(false);
       setFormData({ name: "", email: "", industry: "", message: "" });
-      hasSubmittedRef.current = false;
     }
   };
 

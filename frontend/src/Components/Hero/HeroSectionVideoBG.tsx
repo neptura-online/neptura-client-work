@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import video from "/videos/bg.mp4";
+import { STRICT_LENGTHS } from "../../utils/phoneLengths";
 
 const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
   const [formData, setFormData] = useState({
@@ -23,7 +24,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
   });
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
-
+  const hasSubmittedRef = useRef(false);
   const [loading, setLoading] = useState(false);
   const errorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [error, setError] = useState("");
@@ -55,16 +56,31 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
     return pattern.test(email);
   }
 
-  const handlePhoneChange = (value: string) => {
+  const handlePhoneChange = (value: string, country: any) => {
     setPhone(value);
-    const digits = value.replace(/\D/g, "").replace(/^91/, "");
-
-    if (digits.startsWith("0")) {
-      setPhoneError("Mobile number cannot start with 0");
+    if (!value || !country) {
+      setPhoneError("Mobile number is required");
       return;
     }
-    if (digits.length != 10) {
-      setPhoneError("Mobile number should be 10");
+
+    const countryIso = country.countryCode;
+    const dialCode = country.dialCode;
+
+    const strictLength = STRICT_LENGTHS[countryIso];
+
+    const nationalNumber = value.slice(dialCode.length);
+
+    if (!/^\d+$/.test(nationalNumber)) {
+      setPhoneError("Mobile number must contain only digits");
+      return;
+    }
+    if (nationalNumber.length < 5) {
+      setPhoneError(`Mobile number must be valid`);
+      return;
+    }
+
+    if (strictLength && nationalNumber.length !== strictLength) {
+      setPhoneError(`Mobile number must be ${strictLength} digits`);
       return;
     }
 
@@ -72,22 +88,15 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
   };
 
   const partialSubmit = async () => {
+    if (hasSubmittedRef.current) return;
     if (formData.name.length < 3) return;
-    if (phone.length !== 12) return;
-
-    const email = validateEmail(formData.email);
-    formData.email = email ? formData.email : "";
-
-    const rawPhone = phone.replace(/\D/g, "").slice(-10);
-
-    if (rawPhone.length !== 10 || rawPhone.startsWith("0")) {
-      return;
-    }
-    console.log(rawPhone);
+    if (!phone || phoneError) return;
+    const emailValid = validateEmail(formData.email);
 
     const body = {
       ...formData,
-      phone: rawPhone,
+      email: emailValid ? formData.email : "",
+      phone: `+${phone}`,
       utm_source,
       utm_medium,
       utm_term,
@@ -108,7 +117,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
     } catch (err) {}
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const errors = {
@@ -128,34 +137,28 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
       errors.email = "Enter a valid email address*";
     }
 
-    if (!formData.message.trim()) {
-      errors.industry = "Please enter message*";
+    if (!phone) {
+      setPhoneError("Please enter a mobile number");
     }
 
-    const rawPhone = phone.replace(/\D/g, "").slice(-10);
-    if (rawPhone.length !== 10 || rawPhone.startsWith("0")) {
-      setPhoneError("Enter a valid 10-digit mobile number*");
-    } else {
-      setPhoneError("");
-    }
-
-    if (
-      errors.name ||
-      errors.email ||
-      errors.industry ||
-      rawPhone.length !== 10 ||
-      rawPhone.startsWith("0")
-    ) {
-      setFormError(errors);
+    if (phoneError) {
       return;
     }
 
+    if (errors.name || errors.email || errors.industry || phoneError) {
+      setFormError(errors);
+      return;
+    }
+    setPhoneError("");
+
+    setFormError({ name: "", email: "", industry: "", message: "" });
+
     const body = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      phone: rawPhone,
-      industry: e.target.industry.value || "",
-      message: e.target.message.value,
+      name: formData.name,
+      email: formData.email,
+      phone: `+${phone}`,
+      industry: "",
+      message: formData.message,
       utm_source,
       utm_medium,
       utm_term,
@@ -169,20 +172,20 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
 
     try {
       setLoading(true);
-
       const res = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/lead`,
         body
       );
 
       if (res.status === 200 || res.status === 201) {
+        hasSubmittedRef.current = true;
         window.location.href = "https://digital.e-marketing.io/thank-you/";
       }
     } catch (err: any) {
       showError(err?.response?.data || "Something went wrong");
-      console.error(err);
     } finally {
       setLoading(false);
+      setFormData({ name: "", email: "", industry: "", message: "" });
     }
   };
 
@@ -276,11 +279,11 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ease: "easeInOut", duration: 0.8 }}
-              className="group mt-4 flex w-fit  items-center gap-4 rounded-2xl bg-(--yellow-emarketing) px-6 py-3 transition-all hover:scale-105 hover:bg-yellow-400  hover:cursor-pointer"
+              className="group mt-4 flex w-fit  items-center gap-4 rounded-2xl bg-(--yellow-emarketing) px-6 py-3 transition-all hover:scale-105   hover:cursor-pointer"
             >
               {" "}
               <span className="hidden lg:flex h-7 w-7 items-center justify-center rounded-full bg-black">
-                <FaArrowUpLong className="rotate-45 text-md text-yellow-400 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                <FaArrowUpLong className="rotate-45 text-md text-(--yellow-emarketing) transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
               </span>
               <span className="text-left font-medium text-black text-md">
                 Get Free Landing Page
@@ -360,9 +363,11 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
                 <PhoneInput
                   country="in"
                   value={phone}
-                  onChange={handlePhoneChange}
+                  onChange={(value, country) =>
+                    handlePhoneChange(value, country)
+                  }
                   countryCodeEditable={false}
-                  autoFormat={true}
+                  autoFormat={false}
                   enableSearch
                   inputStyle={{
                     width: "100%",

@@ -94,9 +94,10 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
     if (!email) {
       formData.email = "";
     }
+
     const body = {
       ...formData,
-      phone: phone,
+      phone: `+${phone}`,
       utm_source,
       utm_medium,
       utm_term,

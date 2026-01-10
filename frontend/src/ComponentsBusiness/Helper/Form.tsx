@@ -93,7 +93,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
 
     const body = {
       ...formData,
-      phone: phone,
+      phone: `+${phone}`,
       utm_source,
       utm_medium,
       utm_term,

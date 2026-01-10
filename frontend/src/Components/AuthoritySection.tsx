@@ -19,7 +19,7 @@ export default function AuthoritySection({
           backgroundPosition: "center",
         }}
       />
-      <div className="relative z-10 lg:max-w-350 mx-auto px-10 py-10 rounded-3xl overflow-hidden bg-[#160a1f]">
+      <div className="relative z-10 lg:max-w-340 mx-auto px-10 py-10 rounded-3xl overflow-hidden bg-[#160a1f]">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, y: 40 }}

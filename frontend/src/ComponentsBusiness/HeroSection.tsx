@@ -92,13 +92,11 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
     if (hasSubmittedRef.current) return;
     if (formData.name.length < 3) return;
     if (!phone || phoneError) return;
-    const email = validateEmail(formData.email);
-    if (!email) {
-      formData.email = "";
-    }
+    const emailValid = validateEmail(formData.email);
 
     const body = {
       ...formData,
+      email: emailValid ? formData.email : "",
       phone: `+${phone}`,
       utm_source,
       utm_medium,

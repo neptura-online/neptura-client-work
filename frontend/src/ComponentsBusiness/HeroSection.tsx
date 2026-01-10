@@ -90,12 +90,12 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
   const partialSubmit = async () => {
     if (formData.name.length < 3) return;
     if (!phone) return;
-
-    const phoneDigits = phone.replace(/\D/g, "");
+    const email = validateEmail(formData.email);
+    formData.email = email ? formData.email : "";
 
     const body = {
       ...formData,
-      phone: phoneDigits, // keep full international number
+      phone: phone,
       utm_source,
       utm_medium,
       utm_term,

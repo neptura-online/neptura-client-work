@@ -2,6 +2,7 @@ import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import PhoneInput from "react-phone-input-2";
+import { STRICT_LENGTHS } from "../utils/phoneLengths";
 
 export default function FinalCTASection() {
   const [formData, setFormData] = useState({
@@ -50,39 +51,46 @@ export default function FinalCTASection() {
     return pattern.test(email);
   }
 
-  const handlePhoneChange = (value: string) => {
-    setPhone(value);
-    const digits = value.replace(/\D/g, "").replace(/^91/, "");
+  const handlePhoneChange = (value: string, country: any) => {
+    if (!value || !country) {
+      setPhoneError("Mobile number is required");
+      return;
+    }
 
-    if (digits.startsWith("0")) {
-      setPhoneError("Mobile number cannot start with 0");
+    const countryIso = country.countryCode;
+    const dialCode = country.dialCode;
+
+    const strictLength = STRICT_LENGTHS[countryIso];
+
+    const nationalNumber = value.slice(dialCode.length);
+
+    if (!/^\d+$/.test(nationalNumber)) {
+      setPhoneError("Mobile number must contain only digits");
       return;
     }
-    if (digits.length != 10) {
-      setPhoneError("Mobile number should be 10");
+    if (nationalNumber.length < 5) {
+      setPhoneError(`Mobile number must be valid`);
       return;
     }
+
+    if (strictLength && nationalNumber.length !== strictLength) {
+      setPhoneError(`Mobile number must be ${strictLength} digits`);
+      return;
+    }
+    setPhone(value);
 
     setPhoneError("");
   };
 
   const partialSubmit = async () => {
     if (formData.name.length < 3) return;
-    if (phone.length !== 12) return;
-
+    if (!phone) return;
     const email = validateEmail(formData.email);
     formData.email = email ? formData.email : "";
 
-    const rawPhone = phone.replace(/\D/g, "").slice(-10);
-
-    if (rawPhone.length !== 10 || rawPhone.startsWith("0")) {
-      return;
-    }
-    console.log(rawPhone);
-
     const body = {
       ...formData,
-      phone: rawPhone,
+      phone: phone,
       utm_source,
       utm_medium,
       utm_term,
@@ -127,30 +135,22 @@ export default function FinalCTASection() {
       errors.industry = "Please enter industry*";
     }
 
-    const rawPhone = phone.replace(/\D/g, "").slice(-10);
-    if (rawPhone.length !== 10 || rawPhone.startsWith("0")) {
-      setPhoneError("Enter a valid 10-digit mobile number*");
-    } else {
-      setPhoneError("");
+    if (!phone.trim()) {
+      setPhoneError("Please enter valid number ");
     }
 
-    if (
-      errors.name ||
-      errors.email ||
-      errors.industry ||
-      rawPhone.length !== 10 ||
-      rawPhone.startsWith("0")
-    ) {
+    if (errors.name || errors.email || errors.industry || phoneError) {
       setFormError(errors);
       return;
     }
+    setPhoneError("");
 
     setFormError({ name: "", email: "", industry: "", message: "" });
 
     const body = {
       name: formData.name,
       email: formData.email,
-      phone: rawPhone,
+      phone: `+${phone}`,
       industry: formData.industry,
       message: " ",
       utm_source,

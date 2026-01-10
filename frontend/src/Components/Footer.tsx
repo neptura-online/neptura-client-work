@@ -350,7 +350,7 @@ const Footer = () => {
                 value={phone}
                 onChange={handlePhoneChange}
                 countryCodeEditable={false}
-                autoFormat={true}
+                autoFormat={false}
                 enableSearch
                 inputStyle={{
                   width: "100%",

@@ -4,7 +4,7 @@ const partialLeadSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     email: { type: String },
-    phone: { type: Number, required: true, unique: true },
+    phone: { type: String, required: true, unique: true },
     industry: { type: String },
     leadType: { type: String, default: "PartialLead" },
     message: { type: String },

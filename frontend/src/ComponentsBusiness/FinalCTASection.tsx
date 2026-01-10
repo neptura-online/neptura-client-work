@@ -178,6 +178,7 @@ export default function FinalCTASection() {
       showError(err?.response?.data || "Something went wrong");
     } finally {
       setLoading(false);
+      setFormData({ name: "", email: "", industry: "", message: "" });
     }
   };
 

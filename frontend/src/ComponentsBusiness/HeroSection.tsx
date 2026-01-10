@@ -91,8 +91,9 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
     if (formData.name.length < 3) return;
     if (!phone) return;
     const email = validateEmail(formData.email);
-    formData.email = email ? formData.email : "";
-
+    if (!email) {
+      formData.email = "";
+    }
     const body = {
       ...formData,
       phone: phone,
@@ -183,6 +184,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
       showError(err?.response?.data || "Something went wrong");
     } finally {
       setLoading(false);
+      setFormData({ name: "", email: "", industry: "", message: "" });
     }
   };
 

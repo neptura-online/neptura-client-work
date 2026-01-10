@@ -1,5 +1,5 @@
 import { FiMail, FiPhoneCall } from "react-icons/fi";
-import { CiLocationOn } from "react-icons/ci";
+import { LuMapPin } from "react-icons/lu";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import PhoneInput from "react-phone-input-2";
@@ -246,11 +246,8 @@ const Footer = () => {
 
             <div className="flex flex-col gap-4 mt-4 justify-start items-start">
               <div className="flex items-center justify-center gap-4 lg:justify-start">
-                <div className="rounded-full border border-white/20 bg-black/40 p-3 backdrop-blur">
-                  <CiLocationOn
-                    size={18}
-                    className="text-(--yellow-emarketing)"
-                  />
+                <div className="rounded-full border border-black/20 bg-(--yellow-emarketing) p-3 backdrop-blur">
+                  <LuMapPin size={18} className="text-black" />
                 </div>
                 <a
                   href="mailto:hello@uxmotionz.studio"
@@ -262,8 +259,8 @@ const Footer = () => {
                 </a>
               </div>
               <div className=" flex items-center justify-center gap-4 lg:justify-start">
-                <div className="rounded-full border border-white/20 bg-black/40 p-3 backdrop-blur">
-                  <FiMail size={18} className="text-(--yellow-emarketing)" />
+                <div className="rounded-full border border-black/20 bg-(--yellow-emarketing) p-3 backdrop-blur">
+                  <FiMail size={18} className="text-black" />
                 </div>
                 <a
                   href="mailto:hello@uxmotionz.studio"
@@ -273,11 +270,8 @@ const Footer = () => {
                 </a>
               </div>
               <div className=" flex items-center justify-center gap-4 lg:justify-start">
-                <div className="rounded-full border border-white/20 bg-black/40 p-3 backdrop-blur">
-                  <FiPhoneCall
-                    size={18}
-                    className="text-(--yellow-emarketing)"
-                  />
+                <div className="rounded-full border border-black/20 bg-(--yellow-emarketing) p-3 backdrop-blur">
+                  <FiPhoneCall size={18} className="text-black" />
                 </div>
                 <a
                   href="mailto:hello@uxmotionz.studio"

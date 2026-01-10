@@ -505,13 +505,15 @@ export default function CaseStudySection({
           transition={{ duration: 0.6 }}
           className="mt-10 text-center"
         >
-          <button
+          <motion.button
             onClick={handleClick}
-            className=" inline-flex items-center gap-2 rounded-xl border border-white/70 px-4 py-3 text-white transition hover:bg-white hover:text-black"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+            className=" mt-14 w-fit inline-flex items-center gap-2 rounded-2xl bg-(--yellow-emarketing) px-6 py-3 font-semibold text-sm text-black"
           >
             Book Your FREE Audit
             <FiArrowRight />
-          </button>
+          </motion.button>
         </motion.div>
       </div>
     </section>

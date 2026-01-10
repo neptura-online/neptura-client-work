@@ -3,7 +3,15 @@ import { motion } from "framer-motion";
 import Heading from "./Helper/Heading";
 import type { OpenFormProps } from "../types/type";
 import { pillars } from "../constant/constant";
-import PreetyIcon from "./Helper/WorkIcon";
+
+interface PreetyIcon {
+  url: string;
+  alt: string;
+}
+
+const PreetyIcon = ({ url, alt }: PreetyIcon) => {
+  return <img src={`${url}`} alt={alt} className="h-12 w-12" />;
+};
 
 export default function ConversionPhilosophy({
   setOpenForm,
@@ -15,7 +23,7 @@ export default function ConversionPhilosophy({
   };
   return (
     <section className="relative bg-[#160a1f] py-10 md:py-20 text-white">
-      <div className="mx-auto max-w-350 px-6">
+      <div className="mx-auto max-w-340 px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -46,9 +54,7 @@ export default function ConversionPhilosophy({
               className="group rounded-2xl border border-black/10 bg-zinc-100 p-6 transition hover:border-yellow-400/40"
             >
               <div className="flex items-center justify-start gap-4">
-                <div className="flex min-h-10 min-w-10 items-center justify-center rounded-xl bg-yellow-400">
-                  <PreetyIcon url={item.url} alt={item.title} />
-                </div>
+                <PreetyIcon url={item.url} alt={item.title} />
 
                 <h3 className="mb-2 text-base font-semibold text-zinc-950">
                   {item.title}

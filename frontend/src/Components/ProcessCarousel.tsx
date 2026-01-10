@@ -91,7 +91,7 @@ const ProcessCarousel = () => {
   return (
     <section className="relative overflow-hidden bg-[#160a1f] py-10 lg:py-20">
       <div className="pointer-events-none absolute inset-0 z-50 bg-[url('assets/noise.svg')] opacity-10" />
-      <div className="mx-2 px-4 lg:mx-auto lg:max-w-350">
+      <div className="mx-2 px-4 lg:mx-auto lg:max-w-340">
         <div className="mb-12 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

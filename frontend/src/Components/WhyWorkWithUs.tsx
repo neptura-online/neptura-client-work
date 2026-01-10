@@ -21,7 +21,7 @@ export default function WhyWorkWithUsExact({
   };
   return (
     <section className="bg-zinc-100 py-6">
-      <div className="mx-auto max-w-360 px-3 md:px-6">
+      <div className="mx-auto max-w-350 px-3 md:px-6">
         <div className="flex flex-col-reverse items-center lg:items-start gap-14 lg:flex-row">
           <div className="relative">
             <div className="pt-4 pl-1 relative overflow-hidden rounded-[28px]">
@@ -83,13 +83,14 @@ export default function WhyWorkWithUsExact({
               ))}
             </div>
 
-            <button
+            <motion.button
               onClick={handleClick}
-              className="mt-14 inline-flex items-center gap-2 rounded-lg bg-black px-8 py-3 text-white transition hover:bg-zinc-900"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className=" mt-14 w-fit inline-flex items-center gap-2 rounded-2xl bg-(--yellow-emarketing) px-6 py-3 font-semibold text-sm text-black"
             >
-              Connect With Us
-              <FiArrowRight />
-            </button>
+              Connect With Us <FiArrowRight />
+            </motion.button>
           </div>
         </div>
       </div>

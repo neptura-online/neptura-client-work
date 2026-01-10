@@ -19,7 +19,7 @@ const NavBar = () => {
         navBg ? "bg-[#0a040f]/90 shadow-md" : ""
       } transition-all duration-200 z-500 fixed w-full`}
     >
-      <div className="w-full max-w-390 mx-auto ">
+      <div className="w-full max-w-380 mx-auto ">
         <div className="relative z-10 flex  items-center justify-between px-3 py-2 lg:px-16 ">
           <div className="flex items-center gap-2">
             <img

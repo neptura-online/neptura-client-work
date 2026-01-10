@@ -27,14 +27,16 @@ export default function AuthoritySection({
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <span className="inline-flex items-center gap-2 mb-6 text-xs font-bold tracking-[0.30em] uppercase text-yellow-500">
+            <span className="inline-flex items-center gap-2 mb-6 text-xs font-bold tracking-[0.30em] uppercase text-(--yellow-emarketing)">
               Founder • Strategist • CEO
             </span>
 
             <h2 className="font-serif text-3xl md:text-4xl font-medium leading-[1.5em] tracking-tight">
               Meet the Mind Behind
               <br />
-              <span className="text-yellow-500">7X Growth Strategies</span>
+              <span className="text-(--yellow-emarketing)">
+                7X Growth Strategies
+              </span>
             </h2>
 
             <p className="mt-6 text-md text-gray-300 max-w-xl leading-relaxed">
@@ -64,7 +66,7 @@ export default function AuthoritySection({
             <div className="mt-10 flex items-center gap-6">
               <button
                 onClick={triggerButton}
-                className="px-8 py-4 rounded-xl text-sm lg:text-md bg-yellow-500 text-black font-semibold uppercase tracking-widest hover:scale-105 transition shadow-[0_0_50px_rgba(255,204,0,0.35)]"
+                className="px-6 py-3 rounded-2xl text-sm font-semibold bg-(--yellow-emarketing) text-black"
               >
                 Book a 15-Minute Call With Our CEO
               </button>
@@ -82,12 +84,12 @@ export default function AuthoritySection({
               <img
                 src="/business/author.webp"
                 alt="CEO Portrait"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover brightness-95"
               />
 
               <div className="absolute bottom-6 left-6 rounded-2xl bg-[#160a1f]/70 backdrop-blur-md px-6 py-4 border border-white/10">
                 <p className="text-sm font-bold text-white">Abhishek Jain</p>
-                <p className="text-xs text-yellow-500 uppercase tracking-widest">
+                <p className="text-xs text-(--yellow-emarketing) uppercase tracking-widest">
                   Founder & CEO
                 </p>
               </div>

@@ -253,7 +253,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
         />
         <div className="absolute inset-0 bg-linear-to-br from-zinc-800/70 via-zinc-900/60 to-yellow-600/40" />
 
-        <div className="container mx-auto py-auto flex max-w-350 flex-row items-start gap-12 ">
+        <div className="container mx-auto py-auto flex max-w-360 flex-row items-start gap-12 px-3 lg:px-16 ">
           <div className="flex flex-col gap-6 w-1/2 z-10">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -281,7 +281,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ease: "easeInOut", duration: 0.8 }}
-              className="group mt-4 flex w-fit  items-center gap-4 rounded-2xl bg-(--yellow-emarketing) px-6 py-3 transition-all hover:scale-105 hover:bg-yellow-400  hover:cursor-pointer"
+              className="group mt-4 flex w-fit  items-center gap-4 rounded-2xl bg-(--yellow-emarketing) px-6 py-3 transition-all hover:scale-105   hover:cursor-pointer"
             >
               {" "}
               <span className="hidden lg:flex h-7 w-7 items-center justify-center rounded-full bg-black">

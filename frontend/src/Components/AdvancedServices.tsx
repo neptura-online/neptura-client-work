@@ -239,7 +239,7 @@ export default function AdvancedServices() {
           backgroundPosition: "center",
         }}
       />
-      <div className="relative mx-auto max-w-350 px-6 z-10">
+      <div className="relative mx-auto max-w-340 px-6 z-10">
         <div className="text-center mb-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

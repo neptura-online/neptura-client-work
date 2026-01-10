@@ -46,7 +46,7 @@ const CarouselCard = memo(
           onMouseLeave={() => onHover(false)}
           className={`w-full h-full rounded-3xl p-px transition-all duration-500 hover:scale-105 ${
             isActive
-              ? "bg-linear-to-b from-yellow-500 to-transparent shadow-[0_25px_60px_-15px_rgba(255,204,0,0.3)]"
+              ? "bg-linear-to-b from-black to-transparent shadow-[0_25px_60px_-15px_rgba(255,204,0,0.3)]"
               : "bg-white/10"
           }`}
         >
@@ -59,7 +59,7 @@ const CarouselCard = memo(
               <div
                 className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-3xl md:text-4xl mb-8 transition-all duration-500 ${
                   isActive
-                    ? "bg-yellow-500 text-black rotate-6"
+                    ? "bg-(--yellow-emarketing) text-black rotate-6"
                     : "bg-white/5 text-black/30"
                 }`}
               >
@@ -78,7 +78,7 @@ const CarouselCard = memo(
               <span
                 onClick={triggerButton}
                 className={`text-[10px] font-bold uppercase tracking-[0.2em] ${
-                  isActive ? "text-yellow-500" : "text-white/20"
+                  isActive ? "text-black" : "text-white/20"
                 }`}
               >
                 Contact Us
@@ -87,7 +87,7 @@ const CarouselCard = memo(
                 onClick={triggerButton}
                 className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-500 ${
                   isActive
-                    ? "border-yellow-500 text-yellow-500 group-hover:bg-yellow-500 group-hover:text-black"
+                    ? "border-black text-black group-hover:bg-(--yellow-emarketing) group-hover:text-black"
                     : "border-white/10 text-white/10"
                 }`}
               >
@@ -157,7 +157,9 @@ const ThreeDCarousel = ({ setOpenForm, setId }: OpenFormProps) => {
             className="font-serif text-3xl md:text-[40px] font-medium text-black leading-[1.2em] capitalize"
           >
             Other Digital{" "}
-            <span className="text-yellow-500">Marketing Services</span>
+            <span className="text-(--yellow-emarketing)">
+              Marketing Services
+            </span>
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

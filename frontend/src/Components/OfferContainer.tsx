@@ -28,7 +28,7 @@ const OfferContainer = ({ setOpenForm, setId }: OpenFormProps) => {
     setId("claim offer");
   };
   return (
-    <section className=" text-white relative flex justify-center w-screen bg-linear-to-br from-zinc-800 via-zinc-900 to-yellow-600/90">
+    <section className=" text-white relative flex justify-center w-screen bg-[#160a1f]">
       <div
         className="absolute inset-0 opacity-100"
         style={{
@@ -37,16 +37,18 @@ const OfferContainer = ({ setOpenForm, setId }: OpenFormProps) => {
           backgroundPosition: "center",
         }}
       />
-      <div className="container mx-auto w-full md:max-w-370 px-2 lg:px-0 py-20">
-        <div className="flex relative flex-col items-center gap-12 rounded-3xl  p-6 md:flex-row md:p-16 ">
+      <div className="container mx-auto w-full md:max-w-340 px-2 lg:px-0 py-20">
+        <div className="flex relative flex-col items-center gap-12 rounded-3xl  md:flex-row  ">
           <motion.div {...fadeUp} className="w-full md:w-1/2 ">
-            <span className="inline-block rounded-full bg-yellow-500/10 px-4 py-2 text-sm font-semibold text-yellow-400">
+            <span className="inline-block rounded-full bg-yellow-500/10 px-4 py-2 text-sm font-semibold text-(--yellow-emarketing)">
               Limited Time Offer
             </span>
 
             <h2 className="mt-6 font-serif text-3xl md:text-4xl font-medium leading-[1.5em]">
               Get Premium Tools Worth{" "}
-              <span className="text-yellow-400">₹19,589 Absolutely FREE</span>
+              <span className="text-(--yellow-emarketing)">
+                ₹19,589 Absolutely FREE
+              </span>
             </h2>
 
             <p className="mt-6 text-stone-400">
@@ -56,7 +58,7 @@ const OfferContainer = ({ setOpenForm, setId }: OpenFormProps) => {
 
             <button
               onClick={triggerButton}
-              className="mt-10 rounded-2xl bg-yellow-500 px-6 py-3 text-sm font-semibold text-black transition hover:scale-105 lg:text-md"
+              className="mt-10 rounded-2xl bg-(--yellow-emarketing) px-6 py-3 text-sm font-semibold text-black transition hover:scale-105 lg:text-md"
             >
               Register To Claim The Offer
             </button>
@@ -66,11 +68,11 @@ const OfferContainer = ({ setOpenForm, setId }: OpenFormProps) => {
             <motion.div
               initial="rest"
               whileHover="hover"
-              className="relative rounded-2xl border border-yellow-500 p-6"
+              className="relative rounded-2xl border border-(--yellow-emarketing) p-6"
             >
               <h3 className="text-xl font-serif font-semibold">
                 1 Year Gravity Forms <br className="sm:hidden" /> –{" "}
-                <span className="text-yellow-400">FREE</span>
+                <span className="text-(--yellow-emarketing)">FREE</span>
               </h3>
 
               <p className="mt-2 text-sm md:text-md text-stone-400">
@@ -101,11 +103,11 @@ const OfferContainer = ({ setOpenForm, setId }: OpenFormProps) => {
             <motion.div
               initial="rest"
               whileHover="hover"
-              className="relative rounded-2xl border border-yellow-500 p-6"
+              className="relative rounded-2xl border border-(--yellow-emarketing) p-6"
             >
               <h3 className="text-xl font-serif font-semibold">
                 1 Year WP Rocket <br className="sm:hidden" /> –{" "}
-                <span className="text-yellow-400">FREE</span>
+                <span className="text-(--yellow-emarketing)">FREE</span>
               </h3>
 
               <p className="mt-2 text-sm md:text-md text-stone-400">

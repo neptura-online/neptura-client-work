@@ -299,7 +299,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ease: "easeInOut", duration: 0.8 }}
-              className="group mt-4 flex w-fit  items-center gap-4 rounded-2xl bg-yellow-500 px-4 py-3 transition-all hover:scale-105 hover:bg-yellow-400  hover:cursor-pointer"
+              className="group mt-4 flex w-fit  items-center gap-4 rounded-2xl bg-(--yellow-emarketing) px-4 py-3 transition-all hover:scale-105   hover:cursor-pointer"
             >
               {" "}
               <span className="hidden lg:flex h-10 w-10 items-center justify-center rounded-full bg-black">

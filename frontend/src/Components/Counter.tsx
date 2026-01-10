@@ -95,7 +95,7 @@ const Counter = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-4xl font-serif font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-serif font-semibold leading-[1.5em] px-2">
             We Have Helped{" "}
             <span className="text-(--yellow-emarketing) font-sans">
               167+ Businesses

@@ -143,7 +143,10 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
     }
 
     if (!phone) {
-      setPhoneError("Please enter valid number");
+      setPhoneError("Please enter a mobile number");
+    }
+
+    if (phoneError) {
       return;
     }
 
@@ -188,7 +191,6 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
     } finally {
       setLoading(false);
       setFormData({ name: "", email: "", industry: "", message: "" });
-      hasSubmittedRef.current = false;
     }
   };
 

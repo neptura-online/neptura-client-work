@@ -137,7 +137,10 @@ export default function FinalCTASection() {
     }
 
     if (!phone) {
-      setPhoneError("Please enter valid number");
+      setPhoneError("Please enter a mobile number");
+    }
+
+    if (phoneError) {
       return;
     }
 
@@ -182,7 +185,6 @@ export default function FinalCTASection() {
     } finally {
       setLoading(false);
       setFormData({ name: "", email: "", industry: "", message: "" });
-      hasSubmittedRef.current = false;
     }
   };
 

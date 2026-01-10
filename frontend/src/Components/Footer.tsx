@@ -127,9 +127,11 @@ const Footer = () => {
     if (!formData.industry.trim()) {
       errors.industry = "Please enter industry*";
     }
-
     if (!phone) {
-      setPhoneError("Please enter valid number");
+      setPhoneError("Please enter a mobile number");
+    }
+
+    if (phoneError) {
       return;
     }
 
@@ -174,7 +176,6 @@ const Footer = () => {
     } finally {
       setLoading(false);
       setFormData({ name: "", email: "", industry: "", message: "" });
-      hasSubmittedRef.current = false;
     }
   };
 

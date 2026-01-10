@@ -7,7 +7,6 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { FiPhone } from "react-icons/fi";
 import { FaEnvelope } from "react-icons/fa";
-import { STRICT_LENGTHS } from "../../utils/phoneLengths";
 
 const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
   const [formData, setFormData] = useState({
@@ -24,7 +23,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
   });
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
-  const hasSubmittedRef = useRef(false);
+
   const [loading, setLoading] = useState(false);
   const errorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [error, setError] = useState("");
@@ -56,31 +55,12 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
     return pattern.test(email);
   }
 
-  const handlePhoneChange = (value: string, country: any) => {
+  const handlePhoneChange = (value: string) => {
     setPhone(value);
-    if (!value || !country) {
-      setPhoneError("Mobile number is required");
-      return;
-    }
+    const digits = value.replace(/\D/g, "").replace(/^91/, "");
 
-    const countryIso = country.countryCode;
-    const dialCode = country.dialCode;
-
-    const strictLength = STRICT_LENGTHS[countryIso];
-
-    const nationalNumber = value.slice(dialCode.length);
-
-    if (!/^\d+$/.test(nationalNumber)) {
-      setPhoneError("Mobile number must contain only digits");
-      return;
-    }
-    if (nationalNumber.length < 5) {
-      setPhoneError(`Mobile number must be valid`);
-      return;
-    }
-
-    if (strictLength && nationalNumber.length !== strictLength) {
-      setPhoneError(`Mobile number must be ${strictLength} digits`);
+    if (digits.startsWith("0")) {
+      setPhoneError("Mobile number cannot start with 0");
       return;
     }
 
@@ -88,15 +68,22 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
   };
 
   const partialSubmit = async () => {
-    if (hasSubmittedRef.current) return;
     if (formData.name.length < 3) return;
-    if (!phone || phoneError) return;
-    const emailValid = validateEmail(formData.email);
+    if (phone.length !== 12) return;
+
+    const email = validateEmail(formData.email);
+    formData.email = email ? formData.email : "";
+
+    const rawPhone = phone.replace(/\D/g, "").slice(-10);
+
+    if (rawPhone.length !== 10 || rawPhone.startsWith("0")) {
+      return;
+    }
+    console.log(rawPhone);
 
     const body = {
       ...formData,
-      email: emailValid ? formData.email : "",
-      phone: `+${phone}`,
+      phone: rawPhone,
       utm_source,
       utm_medium,
       utm_term,
@@ -117,9 +104,8 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
     } catch (err) {}
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-
     const errors = {
       name: "",
       email: "",
@@ -140,26 +126,32 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
     if (!formData.industry.trim()) {
       errors.industry = "Please enter industry*";
     }
-
-    if (!phone) {
-      setPhoneError("Please enter valid number");
-      return;
+    const rawPhone = phone.replace(/\D/g, "").slice(-10);
+    if (rawPhone.length !== 10 || rawPhone.startsWith("0")) {
+      setPhoneError("Enter a valid 10-digit mobile number*");
+    } else {
+      setPhoneError("");
     }
 
-    if (errors.name || errors.email || errors.industry) {
+    if (
+      errors.name ||
+      errors.email ||
+      errors.industry ||
+      rawPhone.length !== 10 ||
+      rawPhone.startsWith("0")
+    ) {
       setFormError(errors);
       return;
     }
-    setPhoneError("");
 
     setFormError({ name: "", email: "", industry: "", message: "" });
 
     const body = {
-      name: formData.name,
-      email: formData.email,
-      phone: `+${phone}`,
-      industry: formData.industry,
-      message: " ",
+      name: e.target.name.value,
+      email: e.target.email.value,
+      phone: rawPhone,
+      industry: "",
+      message: e.target.message.value,
       utm_source,
       utm_medium,
       utm_term,
@@ -173,20 +165,20 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
 
     try {
       setLoading(true);
+
       const res = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/lead`,
         body
       );
 
       if (res.status === 200 || res.status === 201) {
-        hasSubmittedRef.current = true;
         window.location.href = "https://digital.e-marketing.io/thank-you/";
       }
     } catch (err: any) {
       showError(err?.response?.data || "Something went wrong");
+      console.error(err);
     } finally {
       setLoading(false);
-      setFormData({ name: "", email: "", industry: "", message: "" });
     }
   };
 
@@ -298,7 +290,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ease: "easeInOut", duration: 0.8 }}
-              className="group mt-4 flex w-fit  items-center gap-4 rounded-2xl bg-(--yellow-emarketing) px-4 py-3 transition-all hover:scale-105   hover:cursor-pointer"
+              className="group mt-4 flex w-fit  items-center gap-4 rounded-2xl bg-yellow-500 px-4 py-3 transition-all hover:scale-105 hover:bg-yellow-400  hover:cursor-pointer"
             >
               {" "}
               <span className="hidden lg:flex h-10 w-10 items-center justify-center rounded-full bg-black">
@@ -382,7 +374,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
                 value={phone}
                 onChange={handlePhoneChange}
                 countryCodeEditable={false}
-                autoFormat={false}
+                autoFormat={true}
                 enableSearch
                 inputStyle={{
                   width: "100%",

@@ -148,13 +148,14 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
       setFormError(errors);
       return;
     }
+    setPhoneError("");
 
     setFormError({ name: "", email: "", industry: "", message: "" });
 
     const body = {
       name: formData.name,
       email: formData.email,
-      phone: phone,
+      phone: `+${phone}`,
       industry: formData.industry,
       message: " ",
       utm_source,

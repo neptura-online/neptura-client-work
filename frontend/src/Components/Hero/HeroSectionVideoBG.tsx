@@ -143,7 +143,6 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
 
     if (!phone) {
       setPhoneError("Please enter valid number");
-      return;
     }
 
     if (errors.name || errors.email || errors.industry || phoneError) {

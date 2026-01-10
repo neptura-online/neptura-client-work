@@ -146,7 +146,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
       return;
     }
 
-    if (errors.name || errors.email || errors.industry || phoneError) {
+    if (errors.name || errors.email || errors.industry) {
       setFormError(errors);
       return;
     }
@@ -187,7 +187,6 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
     } finally {
       setLoading(false);
       setFormData({ name: "", email: "", industry: "", message: "" });
-      hasSubmittedRef.current = false;
     }
   };
 

@@ -24,6 +24,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
   });
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
+  const hasSubmittedRef = useRef(false);
 
   const [loading, setLoading] = useState(false);
   const errorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -57,6 +58,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
   }
 
   const handlePhoneChange = (value: string, country: any) => {
+    setPhone(value);
     if (!value || !country) {
       setPhoneError("Mobile number is required");
       return;
@@ -82,14 +84,14 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
       setPhoneError(`Mobile number must be ${strictLength} digits`);
       return;
     }
-    setPhone(value);
 
     setPhoneError("");
   };
 
   const partialSubmit = async () => {
+    if (hasSubmittedRef.current) return;
     if (formData.name.length < 3) return;
-    if (!phone) return;
+    if (!phone || phoneError) return;
     const email = validateEmail(formData.email);
     if (!email) {
       formData.email = "";
@@ -142,8 +144,9 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
       errors.industry = "Please enter industry*";
     }
 
-    if (!phone.trim()) {
-      setPhoneError("Please enter valid number ");
+    if (!phone) {
+      setPhoneError("Please enter valid number");
+      return;
     }
 
     if (errors.name || errors.email || errors.industry || phoneError) {
@@ -179,6 +182,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
       );
 
       if (res.status === 200 || res.status === 201) {
+        hasSubmittedRef.current = true;
         window.location.href = "https://digital.e-marketing.io/thank-you/";
       }
     } catch (err: any) {

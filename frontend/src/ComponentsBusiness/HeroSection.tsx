@@ -190,6 +190,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
     } finally {
       setLoading(false);
       setFormData({ name: "", email: "", industry: "", message: "" });
+      hasSubmittedRef.current = false;
     }
   };
 

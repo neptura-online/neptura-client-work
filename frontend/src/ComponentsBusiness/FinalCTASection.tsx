@@ -19,7 +19,7 @@ export default function FinalCTASection() {
   });
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
-
+  const hasSubmittedRef = useRef(false);
   const [loading, setLoading] = useState(false);
   const errorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [error, setError] = useState("");
@@ -52,6 +52,7 @@ export default function FinalCTASection() {
   }
 
   const handlePhoneChange = (value: string, country: any) => {
+    setPhone(value);
     if (!value || !country) {
       setPhoneError("Mobile number is required");
       return;
@@ -77,19 +78,19 @@ export default function FinalCTASection() {
       setPhoneError(`Mobile number must be ${strictLength} digits`);
       return;
     }
-    setPhone(value);
 
     setPhoneError("");
   };
 
   const partialSubmit = async () => {
+    if (hasSubmittedRef.current) return;
     if (formData.name.length < 3) return;
-    if (!phone) return;
-    const email = validateEmail(formData.email);
-    formData.email = email ? formData.email : "";
+    if (!phone || phoneError) return;
+    const emailValid = validateEmail(formData.email);
 
     const body = {
       ...formData,
+      email: emailValid ? formData.email : "",
       phone: `+${phone}`,
       utm_source,
       utm_medium,
@@ -135,8 +136,9 @@ export default function FinalCTASection() {
       errors.industry = "Please enter industry*";
     }
 
-    if (!phone.trim()) {
-      setPhoneError("Please enter valid number ");
+    if (!phone) {
+      setPhoneError("Please enter valid number");
+      return;
     }
 
     if (errors.name || errors.email || errors.industry || phoneError) {
@@ -172,6 +174,7 @@ export default function FinalCTASection() {
       );
 
       if (res.status === 200 || res.status === 201) {
+        hasSubmittedRef.current = true;
         window.location.href = "https://digital.e-marketing.io/thank-you/";
       }
     } catch (err: any) {
@@ -179,6 +182,7 @@ export default function FinalCTASection() {
     } finally {
       setLoading(false);
       setFormData({ name: "", email: "", industry: "", message: "" });
+      hasSubmittedRef.current = false;
     }
   };
 

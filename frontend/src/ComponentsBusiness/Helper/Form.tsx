@@ -22,7 +22,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
   });
   const firstInputRef = useRef<HTMLInputElement | null>(null);
   const errorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
+  const hasSubmittedRef = useRef(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [phone, setPhone] = useState("");
@@ -55,6 +55,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
   }
 
   const handlePhoneChange = (value: string, country: any) => {
+    setPhone(value);
     if (!value || !country) {
       setPhoneError("Mobile number is required");
       return;
@@ -80,19 +81,19 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
       setPhoneError(`Mobile number must be ${strictLength} digits`);
       return;
     }
-    setPhone(value);
 
     setPhoneError("");
   };
 
   const partialSubmit = async () => {
+    if (hasSubmittedRef.current) return;
     if (formData.name.length < 3) return;
-    if (!phone) return;
-    const email = validateEmail(formData.email);
-    formData.email = email ? formData.email : "";
+    if (!phone || phoneError) return;
+    const emailValid = validateEmail(formData.email);
 
     const body = {
       ...formData,
+      email: emailValid ? formData.email : "",
       phone: `+${phone}`,
       utm_source,
       utm_medium,
@@ -143,8 +144,9 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
     if (!formData.industry.trim()) {
       errors.industry = "Please enter industry*";
     }
-    if (!phone.trim()) {
-      setPhoneError("Please enter valid number ");
+    if (!phone) {
+      setPhoneError("Please enter valid number");
+      return;
     }
 
     if (errors.name || errors.email || errors.industry || phoneError) {
@@ -184,6 +186,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
       }
 
       if (res.status === 200 || res.status === 201) {
+        hasSubmittedRef.current = true;
         window.location.href =
           triggered ?? "https://digital.e-marketing.io/thank-you/";
       }
@@ -192,6 +195,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
     } finally {
       setLoading(false);
       setFormData({ name: "", email: "", industry: "", message: "" });
+      hasSubmittedRef.current = false;
     }
   };
 

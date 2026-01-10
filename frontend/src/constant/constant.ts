@@ -97,40 +97,40 @@ export const ITEMS = [
 export const pillars = [
   {
     title: "Clear & Persuasive Messaging",
-    url: "/icons/Clear.webp",
+    url: "/icons/preety1.webp",
   },
   {
     title: "Proven Conversion Frameworks",
-    url: "/icons/Proven.webp",
+    url: "/icons/preety2.webp",
   },
   {
     title: "Behavioural UX + UI Design",
-    url: "/icons/Behavioural.webp",
+    url: "/icons/preety3.webp",
   },
   {
     title: "High-trust Elements",
-    url: "/icons/High-trust.webp",
+    url: "/icons/preety4.webp",
   },
   {
     title: "Heatmap-Optimized Layouts",
-    url: "/icons/Heatmap.webp",
+    url: "/icons/preety5.webp",
   },
   {
     title: "Tracking, Analytics & Pixel Setup",
-    url: "/icons/Tracking.webp",
+    url: "/icons/preety6.webp",
   },
   {
     title: "Fast-Loading, Mobile-Optimized Pages",
-    url: "/icons/Fast-Loading.webp",
+    url: "/icons/preety7.webp",
   },
   {
     title: "Ad-to-Landing Page Relevance Matching",
-    url: "/icons/Ad-to-Landing.webp",
+    url: "/icons/preety8.webp",
   },
 
   {
     title: "A/B Testing for Continuous Improvement",
-    url: "/icons/Testing.webp",
+    url: "/icons/preety9.webp",
   },
 ];
 

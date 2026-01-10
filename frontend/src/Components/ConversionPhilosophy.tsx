@@ -3,15 +3,7 @@ import { motion } from "framer-motion";
 import Heading from "./Helper/Heading";
 import type { OpenFormProps } from "../types/type";
 import { pillars } from "../constant/constant";
-
-interface PreetyIcon {
-  url: string;
-  alt: string;
-}
-
-const PreetyIcon = ({ url, alt }: PreetyIcon) => {
-  return <img src={`${url}`} alt={alt} className="h-12 w-12" />;
-};
+import WorkIcon from "../ComponentsBusiness/Helper/WorkIcon";
 
 export default function ConversionPhilosophy({
   setOpenForm,
@@ -54,7 +46,9 @@ export default function ConversionPhilosophy({
               className="group rounded-2xl border border-black/10 bg-zinc-100 p-6 transition hover:border-yellow-400/40"
             >
               <div className="flex items-center justify-start gap-4">
-                <PreetyIcon url={item.url} alt={item.title} />
+                <div className=" flex h-12 w-12 items-center justify-center rounded-xl bg-(--yellow-emarketing)">
+                  <WorkIcon url={item.url} alt={item.title} />
+                </div>
 
                 <h3 className="mb-2 text-base font-semibold text-zinc-950">
                   {item.title}
@@ -79,7 +73,7 @@ export default function ConversionPhilosophy({
         >
           <button
             onClick={triggerButton}
-            className="mt-8 rounded-2xl bg-yellow-400 px-6 py-3 font-semibold text-black transition hover:scale-[1.03] text-sm"
+            className="mt-8 rounded-2xl bg-(--yellow-emarketing) px-6 py-3 font-semibold text-black transition hover:scale-[1.03] text-sm"
           >
             Build Pages That Are Lead Magnets
           </button>

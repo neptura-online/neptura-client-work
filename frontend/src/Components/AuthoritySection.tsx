@@ -82,7 +82,7 @@ export default function AuthoritySection({
           >
             <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl">
               <img
-                src="/business/author.webp"
+                src="/assets/ceo.webp"
                 alt="CEO Portrait"
                 className="w-full h-full object-cover brightness-95"
               />

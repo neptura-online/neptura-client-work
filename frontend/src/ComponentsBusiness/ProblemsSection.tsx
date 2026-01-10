@@ -8,39 +8,39 @@ type Problem = {
   text: string;
 };
 
-interface ProblemProps {
+interface WorkIcon {
   url: string;
   alt: string;
 }
 
-const ProblemIcon = ({ url, alt }: ProblemProps) => {
-  return <img src={`${url}`} alt={alt} className="h-15 w-15 lg:h-25 lg:w-25" />;
+const WorkIcon = ({ url, alt }: WorkIcon) => {
+  return <img src={`${url}`} alt={alt} className="h-13 w-13" />;
 };
 
 const problems: Problem[] = [
   {
     id: 1,
-    url: "/icons/problem1.webp",
+    url: "/icons/prob1.webp",
     text: "Your ideal clients don’t know you exist.",
   },
   {
     id: 2,
-    url: "/icons/problem2.webp",
+    url: "/icons/prob2.webp",
     text: "Your competitors are running targeted ads and taking the leads.",
   },
   {
     id: 3,
-    url: "/icons/problem3.webp",
+    url: "/icons/prob3.webp",
     text: "You are not sure which platform or strategy will deliver results for your business.",
   },
   {
     id: 4,
-    url: "/icons/problem4.webp",
+    url: "/icons/prob4.webp",
     text: "Your website is just a “digital visiting card” instead of a “sales machine.”",
   },
   {
     id: 5,
-    url: "/icons/problem5.webp",
+    url: "/icons/prob5.webp",
     text: "Burnt money on wrong campaigns, leaving you hesitant to invest again.",
   },
 ];
@@ -97,7 +97,9 @@ export default function ProblemsSection({ setId, setOpenForm }: OpenFormProps) {
           {problems.map((p) => (
             <div key={p.id} className="flex flex-col items-center text-center">
               <div className="relative flex items-center justify-center rounded-full  text-black">
-                <ProblemIcon url={p.url} alt={p.text} />
+                <div className="mx-auto relative flex h-25 w-25 items-center justify-center rounded-full bg-(--yellow-emarketing) ">
+                  <WorkIcon url={p.url} alt={p.text} />
+                </div>
                 <span className="absolute -top-2 -right-2 flex h-9 w-9 items-center justify-center rounded-full bg-white text-md font-bold shadow italic text-[#071E31]">
                   {p.id}.
                 </span>
@@ -133,8 +135,10 @@ export default function ProblemsSection({ setId, setOpenForm }: OpenFormProps) {
               }`}
             >
               <div className="relative flex  items-center justify-center rounded-full text-black">
-                <ProblemIcon url={p.url} alt={p.text} />
-                <span className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-xs font-semibold shadow italic text-[#071E31]">
+                <div className="mx-auto relative flex h-25 w-25 items-center justify-center rounded-full bg-(--yellow-emarketing)">
+                  <WorkIcon url={p.url} alt={p.text} />
+                </div>
+                <span className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-white text-xs font-semibold shadow italic text-[#071E31]">
                   {p.id}.
                 </span>
               </div>

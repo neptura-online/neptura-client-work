@@ -312,7 +312,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
             </motion.button>
           </div>
         </div>
-        <div className="relative w-full flex md:w-1/2 justify-end px-2 md:p-0">
+        <div className="relative w-full flex md:w-1/2 justify-center px-2 md:p-0">
           <AnimatePresence>
             {error && (
               <motion.div

@@ -3,7 +3,7 @@ import { formatDate } from "./formateDate.js";
 
 export const addToGoogleSheet = async (lead) => {
   const auth = new google.auth.GoogleAuth({
-    keyFile: "./google.json",
+    keyFile: JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT),
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
 

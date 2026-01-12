@@ -251,7 +251,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
         />
         <div className="absolute inset-0 bg-linear-to-br from-zinc-800/70 via-zinc-900/60 to-yellow-600/40" />
 
-        <div className="container mx-auto py-auto flex max-w-340 flex-row items-start gap-12 ">
+        <div className="container mx-auto py-auto flex max-w-370 flex-row items-start gap-12 py-2 lg:px-16 ">
           <div className="flex flex-col gap-6 w-1/2 z-10">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}

@@ -159,10 +159,10 @@ export default function ProblemsSection({ setId, setOpenForm }: OpenFormProps) {
           </p>
           <button
             onClick={handleClick}
-            className="relative inline-flex items-center gap-2 rounded-xl bg-black px-4 py-3 text-white transition hover:bg-zinc-900"
+            className="relative group inline-flex items-center gap-2 rounded-xl bg-black px-4 py-3 text-white transition hover:bg-zinc-900 hover:cursor-pointer"
           >
             Consult Our Marketing Experts
-            <FiArrowRight />
+            <FiArrowRight className="transition group-hover:translate-x-1" />
           </button>
         </motion.div>
       </div>

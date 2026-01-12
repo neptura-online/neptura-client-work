@@ -64,7 +64,7 @@ export default function IndustriesHeroSection({
 
             <button
               onClick={handleClick}
-              className="group mt-10 z-10 inline-flex items-center gap-2 rounded-xl border border-white/70 px-8 py-3 text-sm transition hover:bg-white hover:text-black"
+              className="group mt-10 z-10 inline-flex items-center gap-2 rounded-xl border border-white/70 px-8 py-3 text-sm transition hover:bg-white hover:text-black hover:cursor-pointer "
             >
               Let’s Grow Together
               <FiArrowRight className="transition group-hover:translate-x-1" />

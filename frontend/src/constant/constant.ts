@@ -173,7 +173,7 @@ export const faqs = [
   {
     q: "4. Do you handle form integration, CRM setup, and tracking?",
     n: "Absolutely",
-    h: " We set up:",
+    h: " We set up:\n",
     a: `      • UTM tracking
               • Pixel + GA4 + GTM events
               • CRM mapping (HubSpot, Zoho, LeadSquared, Pabbly)
@@ -199,7 +199,7 @@ export const faqs = [
   {
     q: "7. Can you build multiple landing pages for different campaigns?",
     n: "Yes,",
-    h: " we offer packages for:",
+    h: " we offer packages for:\n",
     a: `    • Multiple niche-specific LPs
             • A/B variants
             • Multi-city campaigns

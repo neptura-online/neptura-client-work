@@ -39,7 +39,7 @@ const CarouselCard = memo(
         }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
         onClick={onClick}
-        className="absolute w-60 md:w-80 h-87 md:h-100 cursor-pointer"
+        className="absolute w-60 md:w-80 h-87 md:h-100"
       >
         <div
           onMouseEnter={() => onHover(true)}
@@ -77,7 +77,7 @@ const CarouselCard = memo(
             <div className="relative z-10 w-full flex justify-between items-center group">
               <span
                 onClick={triggerButton}
-                className={`text-[10px] font-bold uppercase tracking-[0.2em] ${
+                className={`text-[10px] font-bold uppercase tracking-[0.2em] hover:cursor-pointer ${
                   isActive ? "text-black" : "text-white/20"
                 }`}
               >
@@ -85,7 +85,7 @@ const CarouselCard = memo(
               </span>
               <div
                 onClick={triggerButton}
-                className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-500 ${
+                className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all hover:cursor-pointer duration-500 ${
                   isActive
                     ? "border-black text-black group-hover:bg-(--yellow-emarketing) group-hover:text-black"
                     : "border-white/10 text-white/10"

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import type { OpenFormProps } from "../types/type";
 import { landingProblems } from "../constant/constant";
 import WorkIcon from "./Helper/PreetyIcon";
+import { FiArrowRight } from "react-icons/fi";
 
 const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
   const triggerButton = () => {
@@ -10,7 +11,7 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
   };
 
   return (
-    <section className="relative bg-zinc-100 px-2 py-10 lg:py-24 overflow-hidden">
+    <section className="relative bg-[#160a1f] px-2 py-10 lg:py-24 overflow-hidden">
       <div className="mx-auto relative max-w-340 p-4">
         <div className="grid xl:grid-cols-2 items-center gap-2">
           <motion.div
@@ -35,7 +36,7 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
             className="space-y-8 mt-8 lg:mt-0"
           >
             <div className="space-y-4 text-center">
-              <h2 className="text-3xl sm:text-4xl font-serif font-medium text-black leading-[1.5em] capitalize">
+              <h2 className="text-3xl sm:text-4xl font-serif font-medium text-white leading-[1.5em] capitalize">
                 A poorly designed Landing Page can{" "}
                 <span className="text-(--yellow-emarketing)">
                   kill your revenue!{" "}
@@ -52,7 +53,7 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.08 }}
                   viewport={{ once: true }}
-                  className="rounded-xl border-black/10 bg-white p-4 backdrop-blur border hover:border-yellow-500"
+                  className="rounded-xl border-black/10 bg-zinc-100 p-4 backdrop-blur border hover:border-yellow-500"
                 >
                   <div className="flex items-center gap-3 ">
                     <div className=" flex min-h-12 min-w-12 items-center justify-center rounded-xl  bg-(--yellow-emarketing)">
@@ -64,7 +65,7 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
               ))}
             </div>
 
-            <p className="text-base font-semibold text-black">
+            <p className="text-base font-semibold text-white">
               But here’s the good news —{" "}
               <span className="text-(--yellow-emarketing)">
                 we can fix that.
@@ -75,9 +76,10 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
               onClick={triggerButton}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex w-fit rounded-2xl bg-(--yellow-emarketing) px-6 py-3 font-semibold text-sm text-black"
+              className="inline-flex w-fit rounded-2xl bg-(--yellow-emarketing) px-6 py-3 font-semibold text-sm text-black items-center gap-2 hover:cursor-pointer"
             >
               Start With Free Audit
+              <FiArrowRight />
             </motion.button>
           </motion.div>
         </div>

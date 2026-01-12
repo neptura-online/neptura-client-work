@@ -43,9 +43,9 @@ const FAQSection = () => {
 
                 <span className="shrink-0">
                   {active === index ? (
-                    <FaMinus className="text-(--yellow-emarketing) text-sm md:text-lg" />
+                    <FaMinus className="text-(--yellow-emarketing) text-sm md:text-lg hover:cursor-pointer" />
                   ) : (
-                    <FaPlus className="text-(--yellow-emarketing) text-sm md:text-lg" />
+                    <FaPlus className="text-(--yellow-emarketing) text-sm md:text-lg hover:cursor-pointer" />
                   )}
                 </span>
               </button>

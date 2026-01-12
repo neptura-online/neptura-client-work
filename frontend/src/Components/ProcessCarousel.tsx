@@ -1,6 +1,7 @@
 import { motion, useMotionValue, animate } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { steps } from "../constant/constant";
+import type { OpenFormProps } from "../types/type";
 
 const GAP = 24;
 
@@ -10,7 +11,7 @@ interface Step {
   url: string;
 }
 
-const ProcessCarousel = () => {
+const ProcessCarousel = ({ setOpenForm, setId }: OpenFormProps) => {
   const x = useMotionValue(0);
 
   const isTransitioningRef = useRef(false);
@@ -33,8 +34,8 @@ const ProcessCarousel = () => {
       const w = window.innerWidth;
 
       if (w < 640) setCardWidth(Math.floor(w * 0.75));
-      else if (w < 1020) setCardWidth(250);
-      else if (w < 1700) setCardWidth(260);
+      else if (w < 1020) setCardWidth(300);
+      else if (w < 1700) setCardWidth(300);
       else setCardWidth(270);
     };
 
@@ -87,6 +88,11 @@ const ProcessCarousel = () => {
 
     return () => window.clearInterval(id);
   }, []);
+
+  const handleClick = () => {
+    setOpenForm(true);
+    setId("approach slider");
+  };
 
   return (
     <section className="relative overflow-hidden bg-[#160a1f] py-10 lg:py-20">
@@ -142,21 +148,46 @@ const ProcessCarousel = () => {
               <div
                 key={i}
                 style={{ width: cardWidth }}
-                className="shrink-0 rounded-2xl bg-zinc-100 shadow-lg shadow-black"
+                className="relative shrink-0"
               >
-                <img
-                  src={step.url}
-                  alt={step.title}
-                  loading="lazy"
-                  className="h-38 w-full rounded-t-2xl object-cover"
-                />
+                <img src="/assets/mask.webp" alt="" className="w-full" />
 
-                <div className="p-4 text-center">
-                  <h3 className="text-md font-semibold font-serif text-(--yellow-emarketing)">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-zinc-950">{step.desc}</p>
+                <div className="absolute inset-0 p-4 flex">
+                  <div className="flex w-full flex-col rounded-2xl p-4 text-zinc-900">
+                    <h3 className="text-lg font-semibold text-(--yellow-emarketing)">
+                      {step.title}
+                    </h3>
+
+                    <div className="mt-3 overflow-hidden rounded-xl">
+                      <img
+                        src={step.url}
+                        alt={step.title}
+                        loading="lazy"
+                        className="h-40 w-full object-cover"
+                      />
+                    </div>
+
+                    <p className="mt-4 text-sm text-zinc-800 leading-relaxed">
+                      {step.desc}
+                    </p>
+
+                    <div className="mt-auto pt-4 flex items-center justify-between pr-10 ">
+                      <span className="h-px w-10 bg-zinc-900" />
+                      <button
+                        onClick={handleClick}
+                        className="text-xs tracking-widest text-zinc-900 hover:text-(--yellow-emarketing) hover:cursor-pointer"
+                      >
+                        VIEW MORE
+                      </button>
+                    </div>
+                  </div>
                 </div>
+                <button
+                  onClick={handleClick}
+                  className="absolute h-13 w-11 bottom-0 bg-(--yellow-emarketing) right-0 rounded-2xl text-zinc-900 text-2xl hover:cursor-pointer"
+                >
+                  +
+                </button>
               </div>
             ))}
           </motion.div>

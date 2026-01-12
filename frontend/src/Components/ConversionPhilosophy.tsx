@@ -4,6 +4,7 @@ import Heading from "./Helper/Heading";
 import type { OpenFormProps } from "../types/type";
 import { pillars } from "../constant/constant";
 import WorkIcon from "../ComponentsBusiness/Helper/WorkIcon";
+import { FiArrowRight } from "react-icons/fi";
 
 export default function ConversionPhilosophy({
   setOpenForm,
@@ -43,7 +44,7 @@ export default function ConversionPhilosophy({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="group rounded-2xl border border-black/10 bg-zinc-100 p-6 transition hover:border-yellow-400/40"
+              className="group rounded-2xl border border-black/10 bg-zinc-100 p-6 transition hover:border-yellow-400/40 "
             >
               <div className="flex items-center justify-start gap-4">
                 <div className=" flex h-12 w-12 items-center justify-center rounded-xl bg-(--yellow-emarketing)">
@@ -73,9 +74,10 @@ export default function ConversionPhilosophy({
         >
           <button
             onClick={triggerButton}
-            className="mt-8 rounded-2xl bg-(--yellow-emarketing) px-6 py-3 font-semibold text-black transition hover:scale-[1.03] text-sm"
+            className="mt-8 mx-auto rounded-2xl bg-(--yellow-emarketing) px-6 py-3 font-semibold text-black transition hover:scale-[1.03] text-sm cursor-pointer flex items-center gap-2 "
           >
             Build Pages That Are Lead Magnets
+            <FiArrowRight />
           </button>
         </motion.div>
       </div>

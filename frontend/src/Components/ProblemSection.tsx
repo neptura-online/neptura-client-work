@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import type { OpenFormProps } from "../types/type";
 import { problems } from "../constant/constant";
 import WorkIcon from "./Helper/PreetyIcon";
+import { FiArrowRight } from "react-icons/fi";
 
 const gridMotion = {
   hidden: { opacity: 0, scale: 0.95 },
@@ -66,7 +67,7 @@ const ProblemSection = ({
           {problems.map(({ id, text, url }) => (
             <div
               key={id}
-              className="group flex flex-col gap-4 rounded-2xl border border-zinc-100 bg-white p-5 font-bold text-zinc-900 transition hover:border-yellow-500"
+              className="group flex flex-col gap-4 rounded-2xl border border-zinc-100 bg-white p-4 font-bold text-zinc-900 transition hover:border-yellow-500"
             >
               <div className=" flex h-12 w-12 items-center justify-center rounded-xl bg-(--yellow-emarketing)">
                 <WorkIcon url={url} alt={text} />
@@ -90,9 +91,10 @@ const ProblemSection = ({
         <div className="mt-8 flex justify-center">
           <button
             onClick={triggerButton}
-            className="rounded-2xl px-6 py-3 text-sm font-semibold text-black transition hover:scale-105 bg-(--yellow-emarketing) lg:text-md"
+            className="rounded-2xl px-6 py-3 text-sm font-semibold text-black transition hover:scale-105 bg-(--yellow-emarketing) lg:text-md flex items-center gap-2 cursor-pointer"
           >
             Talk To Our Marketing Experts
+            <FiArrowRight />
           </button>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import FormImg from "/assets/hero.webp";
 import WpImg from "/assets/Img.svg";
 import type { OpenFormProps } from "../types/type";
+import { FiArrowRight } from "react-icons/fi";
 
 const fadeUp = {
   initial: { opacity: 0, y: 40 },
@@ -58,9 +59,10 @@ const OfferContainer = ({ setOpenForm, setId }: OpenFormProps) => {
 
             <button
               onClick={triggerButton}
-              className="mt-10 rounded-2xl bg-(--yellow-emarketing) px-6 py-3 text-sm font-semibold text-black transition hover:scale-105 lg:text-md"
+              className="mt-10 rounded-2xl bg-(--yellow-emarketing) px-6 py-3 text-sm font-semibold text-black transition hover:scale-105 lg:text-md hover:cursor-pointer flex items-center gap-2"
             >
               Register To Claim The Offer
+              <FiArrowRight />
             </button>
           </motion.div>
 

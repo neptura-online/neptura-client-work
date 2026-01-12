@@ -260,14 +260,20 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
           </div>
 
           <div className="items-center gap-4 flex">
-            <div className="hidden md:flex items-center gap-2 rounded-xl border border-white/30 px-4 py-3 text-base">
+            <a
+              href="#"
+              className="hidden md:flex items-center gap-2 rounded-xl border border-white/30 px-4 py-3 text-base"
+            >
               <FaEnvelope />
               Email ID@e-marketing.io
-            </div>
-            <div className="flex items-center gap-2 rounded-xl bg-(--yellow-emarketing) px-4 py-3 text-sm lg:text-base text-black">
+            </a>
+            <a
+              href="#"
+              className="flex items-center gap-2 rounded-xl bg-(--yellow-emarketing) px-4 py-3 text-sm lg:text-base text-black"
+            >
               <FiPhone />
               +91-9602694444
-            </div>
+            </a>
           </div>
         </div>
 
@@ -324,7 +330,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
 
             <button
               onClick={handleClick}
-              className="group mt-8 inline-flex w-fit items-center gap-2 rounded-xl border border-white/30 px-6 py-3 text-sm transition hover:bg-white hover:text-black"
+              className="group mt-8 inline-flex w-fit items-center gap-2 rounded-xl border border-white/30 px-6 py-3 text-sm transition hover:bg-white hover:text-black hover:cursor-pointer"
             >
               Let’s Grow Together
               <FiArrowRight className="transition group-hover:translate-x-1" />
@@ -424,7 +430,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
 
                 <button
                   type="submit"
-                  className="w-full rounded-lg bg-black py-3 text-lg font-semibold text-white transition hover:bg-zinc-900"
+                  className="w-full rounded-lg bg-black py-3 text-lg font-semibold text-white transition hover:bg-zinc-900 hover:cursor-pointer"
                 >
                   {loading ? "Loading..." : "Get Your FREE Audit"}
                 </button>

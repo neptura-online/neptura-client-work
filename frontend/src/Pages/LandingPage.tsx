@@ -16,6 +16,7 @@ const Form = lazy(() => import("../Components/Helper/Form"));
 const ConversionPhilosophy = lazy(
   () => import("../Components/ConversionPhilosophy")
 );
+const YouKnow = lazy(() => import("../Components/YouKnow"));
 const WhyWorkWithUs = lazy(() => import("../Components/WhyWorkWithUs"));
 const ProcessCarousel = lazy(() => import("../Components/ProcessCarousel"));
 const AdvancedServices = lazy(() => import("../Components/AdvancedServices"));
@@ -74,6 +75,10 @@ const LandingPage = () => {
         </Suspense>
       )}
 
+      <Suspense fallback={null}>
+        <YouKnow />
+      </Suspense>
+
       <Suspense fallback={<SectionSkeleton height={300} />}>
         <ConversionPhilosophy setOpenForm={setOpenForm} setId={setId} />
       </Suspense>
@@ -83,7 +88,7 @@ const LandingPage = () => {
       </Suspense>
 
       <Suspense fallback={<SectionSkeleton height={400} />}>
-        <ProcessCarousel />
+        <ProcessCarousel setOpenForm={setOpenForm} setId={setId} />
       </Suspense>
 
       <Suspense fallback={<SectionSkeleton height={450} />}>

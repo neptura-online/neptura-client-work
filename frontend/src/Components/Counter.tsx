@@ -67,7 +67,7 @@ const CounterItem = ({ value, text, index }: any) => {
         md:col-span-1 md:min-w-65
       `}
     >
-      <h2 className="text-2xl md:text-5xl font-medium text-black">
+      <h2 className="text-4xl md:text-5xl font-medium text-black">
         {count}
         <span className="text-black">{suffix || "+"}</span>
       </h2>

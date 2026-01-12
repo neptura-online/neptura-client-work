@@ -88,13 +88,13 @@ export default function MarketingServicesShowcase() {
         />
         <button
           onClick={increase}
-          className="hidden lg:flex absolute p-3 bg-gray-400 text-2xl text-black z-20 right-100 rounded-lg"
+          className="hidden lg:flex absolute p-3 bg-gray-400 text-2xl text-black z-20 right-100 rounded-lg hover:cursor-pointer"
         >
           <SlArrowRight />
         </button>
         <button
           onClick={decrease}
-          className="hidden lg:flex absolute p-3 bg-gray-400 text-2xl text-black z-20 left-100 rounded-lg"
+          className="hidden lg:flex absolute p-3 bg-gray-400 text-2xl text-black z-20 left-100 rounded-lg hover:cursor-pointer"
         >
           <SlArrowLeft />
         </button>

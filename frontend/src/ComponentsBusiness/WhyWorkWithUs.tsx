@@ -85,10 +85,10 @@ export default function WhyWorkWithUsExact({
 
             <button
               onClick={handleClick}
-              className="mt-14 inline-flex items-center gap-2 rounded-lg bg-black px-8 py-3 text-white transition hover:bg-zinc-900"
+              className="mt-14 group inline-flex items-center gap-2 rounded-lg bg-black px-8 py-3 text-white transition hover:bg-zinc-900 hover:cursor-pointer"
             >
               Connect With Us
-              <FiArrowRight />
+              <FiArrowRight className="transition group-hover:translate-x-1" />
             </button>
           </div>
         </div>

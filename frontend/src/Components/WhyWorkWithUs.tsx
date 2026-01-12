@@ -87,7 +87,7 @@ export default function WhyWorkWithUsExact({
               onClick={handleClick}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              className=" mt-14 w-fit inline-flex items-center gap-2 rounded-2xl bg-(--yellow-emarketing) px-6 py-3 font-semibold text-sm text-black"
+              className=" mt-14 w-fit inline-flex items-center gap-2 rounded-2xl bg-(--yellow-emarketing) px-6 py-3 font-semibold text-sm text-black hover:cursor-pointer"
             >
               Connect With Us <FiArrowRight />
             </motion.button>

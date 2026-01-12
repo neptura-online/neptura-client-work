@@ -81,3 +81,46 @@
   outline: none;
   border-color: #eab308; /* yellow-500 */
 }
+
+@media (max-width: 767px) {
+  .cardContainer {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0px;
+  }
+  .cardboxdb {
+    position: sticky;
+    top: 0px;
+  }
+  .cardsticky1 {
+    top: 0px;
+  }
+  .cardsticky2 {
+    top: 20px;
+  }
+  .cardsticky3 {
+    top: 30px;
+  }
+  .cardsticky4 {
+    top: 40px;
+  }
+  .cardsticky5 {
+    top: 50px;
+  }
+  .cardsticky6 {
+    top: 20px;
+  }
+  .cardsticky7 {
+    top: 30px;
+  }
+  .cardsticky8 {
+    top: 40px;
+  }
+  .cardsticky9 {
+    top: 50px;
+  }
+}

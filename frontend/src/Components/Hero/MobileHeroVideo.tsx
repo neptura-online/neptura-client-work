@@ -343,7 +343,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ ease: "easeInOut", duration: 0.8 }}
-            className="w-full max-w-md rounded-3xl bg-white p-8 text-black shadow-2xl"
+            className="w-full max-w-md rounded-3xl bg-white p-7 text-black shadow-2xl"
           >
             <h3 className="text-2xl font-extrabold font-serif leading-[1.5em] text-center">
               Create <span className="text-yellow-500">Lead Capturing</span>

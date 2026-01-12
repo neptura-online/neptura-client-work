@@ -267,7 +267,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
           >
             <button
               onClick={closeSubmit}
-              className="absolute -top-4 -right-4 flex h-9 w-9 items-center justify-center rounded-full bg-yellow-400 text-black shadow-lg hover:scale-105 transition"
+              className="absolute -top-4 -right-4 flex h-9 w-9 items-center justify-center rounded-full bg-yellow-400 text-black shadow-lg hover:scale-105 transition hover:cursor-pointer"
             >
               ✕
             </button>
@@ -348,7 +348,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
               <button
                 type="submit"
                 disabled={loading}
-                className="mt-4 rounded-xl bg-black py-3 text-base font-semibold text-white transition hover:bg-zinc-900 disabled:opacity-70"
+                className="mt-4 rounded-xl bg-black py-3 text-base font-semibold text-white transition hover:bg-zinc-900 disabled:opacity-70 hover:cursor-pointer"
               >
                 {loading ? "Submitting..." : "Get Your FREE Audit"}
               </button>

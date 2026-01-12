@@ -359,7 +359,7 @@ export default function FinalCTASection() {
               )}
               <button
                 type="submit"
-                className="mt-3 lg:mt-6 w-full rounded-lg bg-black py-3 text-base lg:text-lg font-semibold text-white transition hover:bg-zinc-900"
+                className="mt-3 lg:mt-6 w-full rounded-lg bg-black py-3 text-base lg:text-lg font-semibold text-white transition hover:bg-zinc-900 hover:cursor-pointer"
               >
                 {loading ? "Loading..." : "Get Your FREE Audit"}
               </button>
@@ -375,14 +375,23 @@ export default function FinalCTASection() {
             © {new Date().getFullYear()} e-Marketing. All rights reserved.
           </p>
           <div className="flex gap-6 text-xs text-white/90">
-            <a href="#" className="transition hover:text-yellow-emarketing">
+            <a
+              href="https://www.e-marketing.io/privacy-policy/"
+              className="transition hover:text-yellow-emarketing"
+            >
               Privacy Policy
             </a>
-            <a href="#" className="transition hover:text-yellow-emarketing">
-              Cookies Policy
+            <a
+              href="https://www.e-marketing.io/disclaimer/"
+              className="transition hover:text-yellow-emarketing"
+            >
+              Disclaimer
             </a>
-            <a href="#" className="transition hover:text-yellow-emarketing">
-              Data Policy
+            <a
+              href="https://www.e-marketing.io/terms-of-use/"
+              className="transition hover:text-yellow-emarketing"
+            >
+              Terms of Use
             </a>
           </div>
         </div>

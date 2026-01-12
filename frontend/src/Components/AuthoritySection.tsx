@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import type { OpenFormProps } from "../types/type";
+import { FiArrowRight } from "react-icons/fi";
 
 export default function AuthoritySection({
   setOpenForm,
@@ -66,9 +67,10 @@ export default function AuthoritySection({
             <div className="mt-10 flex items-center gap-6">
               <button
                 onClick={triggerButton}
-                className="px-6 py-3 rounded-2xl text-sm font-semibold bg-(--yellow-emarketing) text-black"
+                className="px-6 py-3 rounded-2xl text-sm font-semibold bg-(--yellow-emarketing) text-black flex items-center gap-2 hover:cursor-pointer"
               >
                 Book a 15-Minute Call With Our CEO
+                <FiArrowRight />
               </button>
             </div>
           </motion.div>

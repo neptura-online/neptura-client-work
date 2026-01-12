@@ -101,7 +101,7 @@ export default function ResultsSection({ setOpenForm, setId }: OpenFormProps) {
 
             <button
               onClick={handleClick}
-              className="group mt-10 inline-flex items-center gap-2 rounded-lg bg-black px-8 py-3 text-white transition hover:bg-zinc-900"
+              className="group mt-10 inline-flex items-center gap-2 rounded-lg bg-black px-8 py-3 text-white transition hover:bg-zinc-900 hover:cursor-pointer"
             >
               Optimize My Marketing
               <FiArrowRight className="transition group-hover:translate-x-1" />

@@ -390,7 +390,7 @@ const Footer = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="mt-4 rounded-xl bg-black disabled:cursor-not-allowed disabled:bg-gray-600 py-4 text-lg font-semibold text-white hover:text-black transition hover:bg-(--yellow-emarketing)"
+                className="mt-4 rounded-xl bg-black disabled:cursor-not-allowed disabled:bg-gray-600 py-4 text-lg font-semibold text-white hover:text-black transition hover:bg-(--yellow-emarketing) hover:cursor-pointer"
               >
                 Book A Free Consultation
               </button>
@@ -403,14 +403,23 @@ const Footer = () => {
             © {new Date().getFullYear()} e-Marketing. All rights reserved.
           </p>
           <div className="flex gap-6 text-xs text-white/90">
-            <a href="#" className="transition hover:text-white">
+            <a
+              href="https://www.e-marketing.io/privacy-policy/"
+              className="transition hover:text-white"
+            >
               Privacy Policy
             </a>
-            <a href="#" className="transition hover:text-white">
-              Cookies Policy
+            <a
+              href="https://www.e-marketing.io/disclaimer/"
+              className="transition hover:text-white"
+            >
+              Disclaimer
             </a>
-            <a href="#" className="transition hover:text-white">
-              Data Policy
+            <a
+              href="https://www.e-marketing.io/terms-of-use/"
+              className="transition hover:text-white"
+            >
+              Terms of Use
             </a>
           </div>
         </div>

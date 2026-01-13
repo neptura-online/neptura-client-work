@@ -37,9 +37,7 @@ const SectionSkeleton = ({ height = 400 }: { height?: number }) => (
 const LandingPage = () => {
   const [openForm, setOpenForm] = useState(false);
   const [id, setId] = useState("");
-  const [triggerUrl, setTriggerUrl] = useState(
-    "https://digital.e-marketing.io/thank-you/"
-  );
+  const [triggerUrl, setTriggerUrl] = useState("");
   const [save, setSave] = useState("");
 
   return (

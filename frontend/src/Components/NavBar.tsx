@@ -7,8 +7,8 @@ const NavBar = () => {
 
   useEffect(() => {
     const handler = () => {
-      if (window.scrollY >= 70) setNavBg(true);
-      if (window.scrollY < 70) setNavBg(false);
+      if (window.scrollY >= 40) setNavBg(true);
+      if (window.scrollY < 40) setNavBg(false);
     };
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);

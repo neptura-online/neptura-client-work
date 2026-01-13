@@ -78,7 +78,7 @@ router.get("/", auth, async (req, res) => {
 router.delete("/:id", auth, async (req, res) => {
   try {
     const id = req.params.id;
-    const lead = await Lead.findByIdAndDelete({ _id: id });
+    await Lead.findByIdAndDelete({ _id: id });
     res.status(200).json("lead deleted successful");
   } catch (error) {
     res.status(500).json(error);

@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
 
 export const sendLeadMail = async ({ name, email }) => {
   return transporter.sendMail({
-    from: `"DarkVision" <${process.env.EMAIL_USER}>`,
+    from: `"e-Marketing" <${process.env.EMAIL_USER}>`,
     to: email,
     subject: "Thanks for contacting us!",
     html: `
@@ -20,7 +20,7 @@ export const sendLeadMail = async ({ name, email }) => {
       <p>Thanks for reaching out to us.</p>
       <p>Our team will contact you shortly.</p>
       <br/>
-      <p>Regards,<br/>DarkVision Team</p>
+      <p>Regards,<br/>e-Marketing Team</p>
     `,
   });
 };

@@ -55,6 +55,7 @@ router.post("/", async (req, res) => {
     });
 
     await addToGoogleSheet(lead);
+    sendLeadMail({ name, email }).catch(console.error);
 
     return res.status(200).json("user created");
   } catch (error) {

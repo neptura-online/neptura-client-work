@@ -13,7 +13,7 @@ const Thankyou = () => {
         <div
           className="absolute inset-0 opacity-80"
           style={{
-            backgroundImage: "url('/assets/pattern-bg.png')",
+            backgroundImage: "url('/assets/pattern-bg.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -21,7 +21,7 @@ const Thankyou = () => {
         <div
           className="absolute inset-0 opacity-80"
           style={{
-            backgroundImage: "url('/assets/bg-shape.png')",
+            backgroundImage: "url('/assets/bg-shape.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

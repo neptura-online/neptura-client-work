@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import { STRICT_LENGTHS } from "../utils/phoneLengths";
+import { useNavigate } from "react-router-dom";
 
 export default function FinalCTASection() {
   const [formData, setFormData] = useState({
@@ -33,6 +34,7 @@ export default function FinalCTASection() {
   const utm_content = params.get("utm_content");
   const utm_adgroup = params.get("adgroupid");
   const gclid = params.get("gclid");
+  const navigate = useNavigate();
 
   const showError = (message: string) => {
     setError(message);
@@ -178,7 +180,7 @@ export default function FinalCTASection() {
 
       if (res.status === 200 || res.status === 201) {
         hasSubmittedRef.current = true;
-        window.location.href = "https://digital.e-marketing.io/thank-you/";
+        navigate("/thankyou");
       }
     } catch (err: any) {
       showError(err?.response?.data || "Something went wrong");
@@ -371,10 +373,10 @@ export default function FinalCTASection() {
       {/* footer started */}
       <div className=" bg-[#1A1421] py-4 flex justify-center w-screen ">
         <div className="w-full max-w-340 flex flex-col items-center justify-between gap-4 xl:flex-row">
-          <p className="text-xs text-white/90">
-            © {new Date().getFullYear()} e-Marketing. All rights reserved.
+          <p className="text-xs sm:text-sm text-white/90">
+            Copyright © {new Date().getFullYear()} | Powered by JAI MARKETING.
           </p>
-          <div className="flex gap-6 text-xs text-white/90">
+          <div className="flex gap-6 text-xs sm:text-sm text-white/90">
             <a
               href="https://www.e-marketing.io/privacy-policy/"
               className="transition hover:text-yellow-emarketing"

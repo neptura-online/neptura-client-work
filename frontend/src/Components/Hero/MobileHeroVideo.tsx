@@ -8,6 +8,7 @@ import "react-phone-input-2/lib/style.css";
 import { FiPhone } from "react-icons/fi";
 import { FaEnvelope } from "react-icons/fa";
 import { STRICT_LENGTHS } from "../../utils/phoneLengths";
+import { useNavigate } from "react-router-dom";
 
 const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
   const [formData, setFormData] = useState({
@@ -38,6 +39,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
   const utm_content = params.get("utm_content");
   const utm_adgroup = params.get("adgroupid");
   const gclid = params.get("gclid");
+  const navigate = useNavigate();
 
   const showError = (message: string) => {
     setError(message);
@@ -179,7 +181,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
 
       if (res.status === 200 || res.status === 201) {
         hasSubmittedRef.current = true;
-        window.location.href = "https://digital.e-marketing.io/thank-you/";
+        navigate("/thankyou");
       }
     } catch (err: any) {
       showError(err?.response?.data || "Something went wrong");

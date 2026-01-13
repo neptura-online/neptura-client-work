@@ -6,6 +6,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { saveAs } from "file-saver";
 import { STRICT_LENGTHS } from "../../utils/phoneLengths";
+import { useNavigate } from "react-router-dom";
 
 const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
   const [formData, setFormData] = useState({
@@ -31,7 +32,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
   const site = window.location.href;
   const url = new URL(site);
   const params = new URLSearchParams(url.search);
-
+  const navigate = useNavigate();
   const utm_source = params.get("utm_source") || "direct";
   const utm_medium = params.get("utm_medium");
   const utm_term = params.get("utm_term");
@@ -191,8 +192,11 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
 
       if (res.status === 200 || res.status === 201) {
         hasSubmittedRef.current = true;
-        window.location.href =
-          triggered ?? "https://digital.e-marketing.io/thank-you/";
+        if (triggered) {
+          window.location.href = triggered;
+        } else {
+          navigate("/thankyou");
+        }
       }
     } catch (err: any) {
       showError(err?.response?.data || "Something went wrong");

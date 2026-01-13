@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import "react-phone-input-2/lib/style.css";
 import { STRICT_LENGTHS } from "../utils/phoneLengths";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const [formData, setFormData] = useState({
@@ -37,6 +38,7 @@ const Footer = () => {
   const utm_content = params.get("utm_content");
   const utm_adgroup = params.get("adgroupid");
   const gclid = params.get("gclid");
+  const navigate = useNavigate();
 
   function validateEmail(email: string) {
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -169,7 +171,7 @@ const Footer = () => {
 
       if (res.status === 200 || res.status === 201) {
         hasSubmittedRef.current = true;
-        window.location.href = "https://digital.e-marketing.io/thank-you/";
+        navigate("/thankyou");
       }
     } catch (err: any) {
       showError(err?.response?.data || "Something went wrong");
@@ -400,7 +402,7 @@ const Footer = () => {
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/90 pt-6 md:flex-row">
           <p className="text-xs text-white/90">
-            © {new Date().getFullYear()} e-Marketing. All rights reserved.
+            Copyright © {new Date().getFullYear()} | Powered by JAI MARKETING.
           </p>
           <div className="flex gap-6 text-xs text-white/90">
             <a

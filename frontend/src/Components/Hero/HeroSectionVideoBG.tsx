@@ -8,6 +8,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import video from "/videos/bg.mp4";
 import { STRICT_LENGTHS } from "../../utils/phoneLengths";
+import { useNavigate } from "react-router-dom";
 
 const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
   const [formData, setFormData] = useState({
@@ -38,6 +39,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
   const utm_content = params.get("utm_content");
   const utm_adgroup = params.get("adgroupid");
   const gclid = params.get("gclid");
+  const navigate = useNavigate();
 
   const showError = (message: string) => {
     setError(message);
@@ -179,7 +181,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
 
       if (res.status === 200 || res.status === 201) {
         hasSubmittedRef.current = true;
-        window.location.href = "https://digital.e-marketing.io/thank-you/";
+        navigate("/thankyou");
       }
     } catch (err: any) {
       showError(err?.response?.data || "Something went wrong");
@@ -390,7 +392,6 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
                   }
                   className="rounded-2xl border border-zinc-300 px-4 py-3 outline-none text-sm sm:text-base focus:border-yellow-500"
                   placeholder="Message"
-                  minLength={10}
                 />
                 <button
                   type="submit"

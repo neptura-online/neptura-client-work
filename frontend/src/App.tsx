@@ -5,6 +5,7 @@ import axios from "axios";
 import AdminProtectedRoute from "./Components/Helper/AdminProtectedRoute";
 import AdminLayout from "./Layouts/AdminLayout";
 import type { Lead, User } from "./types/type";
+import Thankyou from "./Pages/Thankyou";
 
 const LandingPage = lazy(() => import("./Pages/LandingPage"));
 const BusinessLead = lazy(() => import("./Pages/BusinessLead"));
@@ -219,6 +220,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/business-lead" element={<BusinessLead />} />
+            <Route path="/thankyou" element={<Thankyou />} />
 
             <Route
               path="/admin"

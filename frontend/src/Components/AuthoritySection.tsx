@@ -82,14 +82,14 @@ export default function AuthoritySection({
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl">
+            <div className="relative rounded-xl md:rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl">
               <img
                 src="/assets/ceo.webp"
                 alt="CEO Portrait"
                 className="w-full h-full object-cover brightness-95"
               />
 
-              <div className="absolute bottom-6 left-6 rounded-2xl bg-[#160a1f]/70 backdrop-blur-md px-6 py-4 border border-white/10">
+              <div className="absolute bottom-2  right-2 w-fit md:bottom-6 md:left-6 rounded-lg md:rounded-2xl bg-[#160a1f]/70 backdrop-blur-md px-3 md:px-6 py-2 md:py-4 border border-white/10">
                 <p className="text-sm font-bold text-white">Abhishek Jain</p>
                 <p className="text-xs text-(--yellow-emarketing) uppercase tracking-widest">
                   Founder & CEO

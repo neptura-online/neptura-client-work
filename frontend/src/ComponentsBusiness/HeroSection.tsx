@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { STRICT_LENGTHS } from "../utils/phoneLengths";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const hasSubmittedRef = useRef(false);
-
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const errorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [error, setError] = useState("");
@@ -184,7 +185,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
 
       if (res.status === 200 || res.status === 201) {
         hasSubmittedRef.current = true;
-        window.location.href = "https://digital.e-marketing.io/thank-you/";
+        navigate("/thankyou");
       }
     } catch (err: any) {
       showError(err?.response?.data || "Something went wrong");

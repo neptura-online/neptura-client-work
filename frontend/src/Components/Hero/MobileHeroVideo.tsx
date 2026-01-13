@@ -157,7 +157,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
       name: formData.name,
       email: formData.email,
       phone: `+${phone}`,
-      industry: "no industry",
+      industry: "-",
       message: formData.message,
       utm_source,
       utm_medium,

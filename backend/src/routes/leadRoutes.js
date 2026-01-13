@@ -2,6 +2,7 @@ import { Router } from "express";
 import { auth } from "../middleware/auth.js";
 import { Lead } from "../modules/Lead.js";
 import { addToGoogleSheet } from "../utils/googleSheet.js";
+import { sendLeadMail } from "../utils/sendMail.js";
 
 export const router = Router();
 

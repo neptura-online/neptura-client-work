@@ -3,15 +3,27 @@ import nodemailer from "nodemailer";
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 587,
-  secure: false,
+  secure: false, // Must be false for 587
+  pool: true, // Helps with serverless function "hanging"
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+  tls: {
+    // This is critical for Vercel environments
+    rejectUnauthorized: false,
+    minVersion: "TLSv1.2",
+  },
 });
 
-console.log("EMAIL_USER:", process.env.EMAIL_USER);
-console.log("EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
+// Add this below your transporter definition
+transporter.verify(function (error, success) {
+  if (error) {
+    console.log("Connection error:", error);
+  } else {
+    console.log("Server is ready to take our messages");
+  }
+});
 
 export const sendAdminLeadMail = async (lead) => {
   const {

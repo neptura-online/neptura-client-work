@@ -56,8 +56,19 @@ router.post("/", async (req, res) => {
     });
 
     await addToGoogleSheet(lead);
-    sendLeadMail({ name, email }).catch(console.error);
-    sendAdminLeadMail(lead).catch(console.error);
+    try {
+      // Use Promise.all to send both emails at the same time efficiently
+      await Promise.all([
+        sendLeadMail({ name, email }),
+        sendAdminLeadMail(lead),
+      ]);
+
+      console.log("Emails sent successfully");
+    } catch (mailError) {
+      // Log the error but don't necessarily fail the whole request
+      // if the lead was already saved to DB and Sheets
+      console.error("Mail Delivery Failed:", mailError);
+    }
 
     return res.status(200).json("user created");
   } catch (error) {

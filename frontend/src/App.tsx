@@ -170,7 +170,7 @@ const App = () => {
       setLoading(true);
 
       await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/paritallead/bulk-delete`,
+        `${import.meta.env.VITE_BACKEND_URL}/partiallead/bulk-delete`,
         { ids },
         { headers: getAuthHeader() }
       );

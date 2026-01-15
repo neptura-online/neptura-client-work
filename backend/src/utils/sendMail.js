@@ -3,20 +3,18 @@ import nodemailer from "nodemailer";
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 587,
-  secure: false, // Must be false for 587
-  pool: true, // Helps with serverless function "hanging"
+  secure: false,
+  pool: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
   tls: {
-    // This is critical for Vercel environments
     rejectUnauthorized: false,
     minVersion: "TLSv1.2",
   },
 });
 
-// Add this below your transporter definition
 transporter.verify(function (error, success) {
   if (error) {
     console.log("Connection error:", error);
@@ -36,6 +34,7 @@ export const sendAdminLeadMail = async (lead) => {
     utm_medium,
     utm_campaign,
     gclid,
+    lpurl,
     createdAt,
   } = lead;
 
@@ -95,6 +94,10 @@ export const sendAdminLeadMail = async (lead) => {
                 <td>${gclid || "-"}</td>
               </tr>
               <tr>
+                <td><strong>LPUrl</strong></td>
+                <td>${lpurl}</td>
+              </tr>
+                            <tr style="background:#f9fafb">
                 <td><strong>Submitted At</strong></td>
                 <td>${new Date(createdAt).toLocaleString()}</td>
               </tr>

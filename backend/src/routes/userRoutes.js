@@ -165,3 +165,70 @@ router.patch("/:id/password", auth, async (req, res) => {
     res.status(500).json("Failed to update password");
   }
 });
+
+router.patch("/:id/reset-password", auth, async (req, res) => {
+  try {
+    const { newPassword } = req.body;
+
+    if (req.user.role !== "owner") {
+      return res.status(403).json("Only owner can reset passwords");
+    }
+
+    if (!newPassword || newPassword.length < 6) {
+      return res.status(400).json("Password must be at least 6 characters");
+    }
+
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json("User not found");
+
+    user.password = await bcrypt.hash(newPassword, 10);
+    await user.save();
+
+    res.status(200).json("Password reset successfully");
+  } catch (error) {
+    console.log(error);
+    res.status(500).json("Failed to reset password");
+  }
+});
+
+router.patch("/:id/profile", auth, async (req, res) => {
+  try {
+    const { name, email, phone } = req.body;
+
+    if (!name || !email || !phone) {
+      return res.status(400).json("Name and email and phone are required");
+    }
+
+    const isSelf = req.user._id === req.params.id;
+    const isAdmin = ["admin", "owner"].includes(req.user.role);
+
+    if (!isSelf && !isAdmin) {
+      return res.status(403).json("Not authorized");
+    }
+
+    const existing = await User.findOne({
+      email,
+      _id: { $ne: req.params.id },
+    });
+
+    if (existing) {
+      return res.status(400).json("Email already in use");
+    }
+
+    const user = await User.findByIdAndUpdate(
+      req.params.id,
+      { name, email, phone },
+      { new: true }
+    );
+
+    if (!user) return res.status(404).json("User not found");
+
+    res.status(200).json({
+      message: "Profile updated successfully",
+      user,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json("Failed to update profile");
+  }
+});

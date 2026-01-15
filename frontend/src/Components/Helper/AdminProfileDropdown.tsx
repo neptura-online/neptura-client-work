@@ -20,7 +20,7 @@ const AdminProfileDropdown = ({ currentUser }: Props) => {
     <div className="relative">
       <button
         onClick={() => setOpen((p) => !p)}
-        className="flex items-center gap-2 rounded-lg border border-white/10 bg-zinc-900 px-3 py-2 hover:bg-zinc-800"
+        className="flex items-center gap-2 rounded-lg border border-white/10 bg-zinc-900 px-3 py-2 hover:bg-zinc-800 cursor-pointer"
       >
         <div className="h-8 w-8 rounded-full bg-yellow-500 text-black flex items-center justify-center font-bold">
           {currentUser.name[0]}
@@ -47,18 +47,17 @@ const AdminProfileDropdown = ({ currentUser }: Props) => {
             <div className="py-2">
               <button
                 onClick={() => navigate("/admin/profile")}
-                className="flex w-full items-center gap-3 px-4 py-2 text-sm hover:bg-zinc-800"
+                className="flex w-full items-center gap-3 px-4 py-2 text-sm hover:bg-zinc-800 cursor-pointer"
               >
                 {" "}
                 <FiUser />
                 My profile
               </button>
-              <DropdownItem icon={<FiSettings />} label="Account settings" />
             </div>
 
             <button
               onClick={handleClick}
-              className="flex w-full items-center gap-2 border-t border-white/10 px-4 py-3 text-sm text-red-400 hover:bg-red-500/10"
+              className="flex w-full items-center gap-2 border-t border-white/10 px-4 py-3 text-sm text-red-400 hover:bg-red-500/10 cursor-pointer"
             >
               <FiLogOut />
               Log out
@@ -69,18 +68,5 @@ const AdminProfileDropdown = ({ currentUser }: Props) => {
     </div>
   );
 };
-
-const DropdownItem = ({
-  icon,
-  label,
-}: {
-  icon: React.ReactNode;
-  label: string;
-}) => (
-  <button className="flex w-full items-center gap-3 px-4 py-2 text-sm hover:bg-zinc-800">
-    {icon}
-    {label}
-  </button>
-);
 
 export default AdminProfileDropdown;

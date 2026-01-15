@@ -72,3 +72,20 @@ router.delete("/:id", auth, async (req, res) => {
     console.log(error);
   }
 });
+
+router.post("/bulk-delete", auth, async (req, res) => {
+  try {
+    const { ids } = req.body;
+
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return res.status(400).json("No leads selected");
+    }
+
+    await Lead.deleteMany({ _id: { $in: ids } });
+
+    return res.status(200).json("Leads deleted successfully");
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});

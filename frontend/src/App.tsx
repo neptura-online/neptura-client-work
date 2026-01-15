@@ -6,6 +6,7 @@ import AdminProtectedRoute from "./Components/Helper/AdminProtectedRoute";
 import AdminLayout from "./Layouts/AdminLayout";
 import type { Lead, User } from "./types/type";
 import Thankyou from "./Pages/Thankyou";
+import UserPage from "./Pages/UserPage";
 
 const LandingPage = lazy(() => import("./Pages/LandingPage"));
 const BusinessLead = lazy(() => import("./Pages/BusinessLead"));
@@ -90,6 +91,32 @@ const App = () => {
     }
   };
 
+  const handleBulkDelete = async (ids: string[]) => {
+    if (ids.length === 0) return;
+
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete ${ids.length} leads?`
+    );
+    if (!confirmDelete) return;
+
+    try {
+      setLoading(true);
+
+      await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/lead/bulk-delete`,
+        { ids },
+        { headers: getAuthHeader() }
+      );
+
+      setLeads((prev) => prev.filter((lead) => !ids.includes(lead._id)));
+    } catch (error) {
+      console.error(error);
+      alert("Failed to delete selected leads");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const fetchPartialData = async () => {
     try {
       setLoading(true);
@@ -126,6 +153,32 @@ const App = () => {
     } catch (error) {
       alert("Failed to delete lead");
       console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleBulkDeletePartial = async (ids: string[]) => {
+    if (ids.length === 0) return;
+
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete ${ids.length} leads?`
+    );
+    if (!confirmDelete) return;
+
+    try {
+      setLoading(true);
+
+      await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/paritallead/bulk-delete`,
+        { ids },
+        { headers: getAuthHeader() }
+      );
+
+      setPartialLeads((prev) => prev.filter((lead) => !ids.includes(lead._id)));
+    } catch (error) {
+      console.error(error);
+      alert("Failed to delete selected leads");
     } finally {
       setLoading(false);
     }
@@ -230,6 +283,7 @@ const App = () => {
                 </AdminProtectedRoute>
               }
             >
+              <Route path="users/:id" element={<UserPage />} />
               <Route
                 index
                 element={
@@ -249,6 +303,7 @@ const App = () => {
                     loading={loading}
                     leads={leads}
                     handleDelete={handleDelete}
+                    handleBulkDelete={handleBulkDelete}
                   />
                 }
               />
@@ -261,6 +316,7 @@ const App = () => {
                     loading={loading}
                     leads={partialLeads}
                     handleDelete={handleDeletePartial}
+                    handleBulkDelete={handleBulkDeletePartial}
                   />
                 }
               />

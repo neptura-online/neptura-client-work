@@ -43,6 +43,7 @@ export type LeadDashboardProps = {
   loading: boolean;
   leads: Lead[];
   handleDelete: (id: string) => Promise<void>;
+  handleBulkDelete?: (ids: string[]) => void;
 };
 
 export type LeadDetailsProps = {

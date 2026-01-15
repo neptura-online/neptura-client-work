@@ -15,11 +15,12 @@ const LeadDashboard = ({
   loading,
   handleDelete,
   leads,
+  handleBulkDelete,
 }: LeadDashboardProps) => {
   const navigate = useNavigate();
-
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [search, setSearch] = useState("");
-  const [sortKey, setSortKey] = useState<SortKey>(null);
+  const [sortKey, setSortKey] = useState<SortKey>("date");
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
   const [page, setPage] = useState(1);
 
@@ -32,6 +33,10 @@ const LeadDashboard = ({
       setSortOrder("asc");
     }
   };
+
+  useEffect(() => {
+    setSelectedIds([]);
+  }, [loading]);
 
   const filteredLeads = useMemo(() => {
     if (!Array.isArray(leads)) return [];
@@ -80,6 +85,30 @@ const LeadDashboard = ({
     </span>
   );
 
+  const toggleSelect = (id: string) => {
+    setSelectedIds((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+    );
+  };
+
+  const selectAllCurrent = () => {
+    if (paginatedLeads.length === 0) return;
+    const currentIds = paginatedLeads.map((l) => l._id);
+
+    const allSelected = currentIds.every((id) => selectedIds.includes(id));
+
+    setSelectedIds((prev) =>
+      allSelected
+        ? prev.filter((id) => !currentIds.includes(id))
+        : [...new Set([...prev, ...currentIds])]
+    );
+  };
+
+  const selectedLeads = useMemo(() => {
+    if (selectedIds.length === 0) return [];
+    return leads.filter((lead) => selectedIds.includes(lead._id));
+  }, [selectedIds, leads]);
+
   useEffect(() => {
     if (page > totalPages) {
       setPage(totalPages || 1);
@@ -101,11 +130,28 @@ const LeadDashboard = ({
               </p>
 
               <button
-                onClick={() => exportToExcel(leads)}
-                disabled={loading || leads.length === 0}
-                className="rounded-lg border border-white/10 bg-zinc-900 px-4 py-2 text-sm hover:bg-zinc-800 disabled:opacity-40 cursor-pointer"
+                onClick={() =>
+                  exportToExcel(selectedIds.length > 0 ? selectedLeads : leads)
+                }
+                disabled={
+                  loading || (selectedIds.length === 0 && leads.length === 0)
+                }
+                className="rounded-lg border border-white/10 bg-zinc-900 px-4 py-2 text-sm hover:bg-zinc-800 disabled:opacity-40 cursor-pointer disabled:cursor-not-allowed"
               >
-                Export Excel
+                Export ({selectedIds.length})
+              </button>
+
+              <button
+                disabled={selectedIds.length === 0 || loading}
+                onClick={() => handleBulkDelete?.(selectedIds)}
+                className={`rounded-lg px-4 py-2 text-sm text-white transition
+                        ${
+                          selectedIds.length === 0 || loading
+                            ? "bg-red-500/30 cursor-not-allowed"
+                            : "bg-red-600 hover:bg-red-500 cursor-pointer"
+                        }`}
+              >
+                Delete ({selectedIds.length})
               </button>
             </div>
           </div>
@@ -129,7 +175,7 @@ const LeadDashboard = ({
             </button>
           </div>
 
-          <div className="grid gap-4 md:hidden">
+          <div className="grid gap-4 xl:hidden">
             {loading &&
               Array.from({ length: 5 }).map((_, i) => (
                 <div
@@ -162,6 +208,12 @@ const LeadDashboard = ({
                     <p className="text-xs text-zinc-500">
                       {formatDate(new Date(lead.createdAt))}
                     </p>
+                    <input
+                      type="checkbox"
+                      className="h-4 w-4 cursor-pointer accent-yellow-400"
+                      checked={selectedIds.includes(lead._id)}
+                      onChange={() => toggleSelect(lead._id)}
+                    />
                   </div>
 
                   <div>
@@ -179,7 +231,7 @@ const LeadDashboard = ({
                       onClick={() =>
                         navigate(`/admin/lead/${lead._id}`, { state: lead })
                       }
-                      className="flex-1 rounded-lg bg-yellow-500 py-2 text-black font-semibold hover:bg-yellow-400"
+                      className="flex-1 rounded-lg bg-yellow-500 py-2 text-black font-semibold hover:bg-yellow-400 cursor-pointer"
                     >
                       View
                     </button>
@@ -187,7 +239,7 @@ const LeadDashboard = ({
                     {isAdmin && (
                       <button
                         onClick={() => handleDelete(lead._id)}
-                        className="flex-1 rounded-lg border border-red-500/40 py-2 text-red-400 hover:bg-red-500/10"
+                        className="flex-1 rounded-lg border border-red-500/40 py-2 text-red-400 hover:bg-red-500/10 cursor-pointer"
                       >
                         Delete
                       </button>
@@ -199,11 +251,23 @@ const LeadDashboard = ({
 
           <div
             style={{ scrollbarWidth: "none" }}
-            className="hidden md:block overflow-x-auto rounded-2xl border border-white/10 bg-zinc-900/30 backdrop-blur"
+            className="hidden xl:block overflow-x-auto rounded-2xl border border-white/10 bg-zinc-900/30 backdrop-blur"
           >
             <table className="w-full text-sm lg:text-base">
               <thead className="bg-zinc-900 text-zinc-400">
                 <tr>
+                  <th className="p-4">
+                    <input
+                      type="checkbox"
+                      className="h-4 w-4 cursor-pointer accent-yellow-400"
+                      checked={
+                        paginatedLeads.length > 0 &&
+                        paginatedLeads.every((l) => selectedIds.includes(l._id))
+                      }
+                      onChange={selectAllCurrent}
+                    />
+                  </th>
+
                   <th className="p-4 text-left">Id</th>
                   <th
                     className="p-4 text-left cursor-pointer"
@@ -228,7 +292,7 @@ const LeadDashboard = ({
                 {loading &&
                   Array.from({ length: 6 }).map((_, i) => (
                     <tr key={i} className="border-t border-white/5">
-                      {Array.from({ length: 7 }).map((__, j) => (
+                      {Array.from({ length: 8 }).map((__, j) => (
                         <td key={j} className="p-4">
                           <div className="h-4 w-full bg-zinc-800 rounded animate-pulse" />
                         </td>
@@ -245,6 +309,15 @@ const LeadDashboard = ({
                       transition={{ duration: 0.25 }}
                       className="border-t border-white/5 hover:bg-zinc-800/50"
                     >
+                      <td className="p-4">
+                        <input
+                          type="checkbox"
+                          checked={selectedIds.includes(lead._id)}
+                          onChange={() => toggleSelect(lead._id)}
+                          className="h-4 w-4 cursor-pointer accent-yellow-400"
+                        />
+                      </td>
+
                       <td className="p-4 font-medium">
                         {(page - 1) * PAGE_SIZE + index + 1}
                       </td>

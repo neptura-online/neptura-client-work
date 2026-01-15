@@ -101,7 +101,7 @@ const ExportLeads = ({ leads }: { leads: Lead[] }) => {
           <button
             disabled={filteredLeads.length === 0}
             onClick={() => exportToExcel(filteredLeads)}
-            className="rounded-lg bg-yellow-500 px-6 py-2 text-black font-semibold hover:bg-yellow-400 disabled:opacity-40"
+            className="rounded-lg bg-yellow-500 px-6 py-2 text-black font-semibold hover:bg-yellow-400 disabled:opacity-40 cursor-pointer"
           >
             Export Excel
           </button>

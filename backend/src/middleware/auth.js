@@ -1,18 +1,27 @@
 import jwt from "jsonwebtoken";
+import { User } from "../modules/User.js";
 
 export const auth = async (req, res, next) => {
   try {
     const token = req.headers.token;
-    const key = process.env.KEY;
-    const authorized = jwt.verify(token, key);
-    if (authorized) {
-      next();
-    } else {
-      console.log("invalid token");
-      res.status(401).json("unauthorized");
-      return;
+    if (!token) {
+      return res.status(401).json("Token missing");
     }
+
+    const decoded = jwt.verify(token, process.env.KEY);
+
+    const user = await User.findOne({ email: decoded.email }).select(
+      "-password"
+    );
+
+    if (!user) {
+      return res.status(401).json("User not found");
+    }
+
+    req.user = user;
+
+    next();
   } catch (error) {
-    res.status(500).json("server error");
+    return res.status(401).json("Invalid or expired token");
   }
 };

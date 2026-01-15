@@ -3,6 +3,7 @@ import { useMemo, useState, useEffect } from "react";
 import { FaEye } from "react-icons/fa6";
 import { FiEyeOff } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 type User = {
   _id: string;
@@ -162,6 +163,7 @@ const UsersDashboard = ({
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const filteredUsers = useMemo(() => {
     if (!Array.isArray(users)) return [];
@@ -200,7 +202,7 @@ const UsersDashboard = ({
 
           <button
             onClick={() => setOpen(true)}
-            className="rounded-lg bg-yellow-500 px-4 py-2 text-sm font-semibold text-black hover:bg-yellow-400"
+            className="rounded-lg bg-yellow-500 px-4 py-2 text-sm font-semibold text-black hover:bg-yellow-400 cursor-pointer"
           >
             + Add User
           </button>
@@ -247,10 +249,18 @@ const UsersDashboard = ({
                         user.role === "admin" ? "user" : "admin"
                       )
                     }
-                    className="flex-1 rounded-lg border border-white/10 py-2 text-xs hover:bg-zinc-800"
+                    className="flex-1 rounded-lg border border-white/10 py-2 text-xs hover:bg-zinc-800 cursor-pointer"
                   >
                     Make {user.role === "admin" ? "User" : "Admin"}
                   </button>
+                  {foundUser?.role === "owner" && (
+                    <button
+                      onClick={() => navigate(`/admin/users/${user._id}`)}
+                      className="rounded-lg bg-yellow-500 px-4 py-2 text-xs font-semibold text-black hover:bg-yellow-400 cursor-pointer"
+                    >
+                      View
+                    </button>
+                  )}
                 </div>
               )}
             </motion.div>
@@ -288,7 +298,7 @@ const UsersDashboard = ({
                     <td className="p-4 flex gap-2">
                       <button
                         onClick={() => handleDelete(user._id)}
-                        className="rounded-lg border border-red-500/40 bg-red-500 px-3 py-1 text-xs text-white hover:bg-red-500/10"
+                        className="rounded-lg border border-red-500/40 bg-red-500 px-3 py-1 text-xs text-white hover:bg-red-500/10 cursor-pointer"
                       >
                         Delete
                       </button>
@@ -299,10 +309,18 @@ const UsersDashboard = ({
                             user.role === "admin" ? "user" : "admin"
                           )
                         }
-                        className="rounded-lg border border-white/10 px-3 py-1 text-xs hover:bg-zinc-800"
+                        className="rounded-lg border border-white/10 px-3 py-1 text-xs hover:bg-zinc-800 cursor-pointer"
                       >
                         Make {user.role === "admin" ? "User" : "Admin"}
                       </button>
+                      {foundUser?.role === "owner" && (
+                        <button
+                          onClick={() => navigate(`/admin/users/${user._id}`)}
+                          className="rounded-lg bg-yellow-500 px-4 py-2 text-xs font-semibold text-black hover:bg-yellow-400 cursor-pointer"
+                        >
+                          View
+                        </button>
+                      )}
                     </td>
                   )}
                 </motion.tr>

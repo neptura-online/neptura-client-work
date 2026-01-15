@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import PasswordInput from "../Components/Helper/PasswordInput";
 
 type User = {
   _id: string;
@@ -18,6 +19,18 @@ type Props = {
 
 const ProfilePage = ({ user }: Props) => {
   const navigate = useNavigate();
+
+  // ✅ SINGLE STATUS STATES
+  const [saving, setSaving] = useState(false);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const resetStatus = () => {
+    setError(null);
+    setSuccess(null);
+  };
+
+  // PROFILE STATE
   const [profile, setProfile] = useState({
     name: user.name,
     email: user.email,
@@ -30,17 +43,57 @@ const ProfilePage = ({ user }: Props) => {
     confirm: "",
   });
 
-  const handleProfileSave = () => {
-    console.log("Profile update payload:", profile);
-  };
+  const handleProfileSave = async () => {
+    resetStatus();
 
-  const handlePasswordChange = async () => {
-    if (passwords.next !== passwords.confirm) {
-      alert("Passwords do not match");
+    if (!profile.name || !profile.email) {
+      setError("Name and email are required");
       return;
     }
 
     try {
+      setSaving(true);
+
+      const res = await axios.patch(
+        `${import.meta.env.VITE_BACKEND_URL}/user/${user._id}/profile`,
+        profile,
+        {
+          headers: {
+            token: localStorage.getItem("token"),
+          },
+        }
+      );
+
+      setProfile({
+        name: res.data.user.name,
+        email: res.data.user.email,
+        phone: res.data.user.phone || "",
+      });
+
+      setSuccess("Profile updated successfully");
+    } catch (err: any) {
+      setError(err.response?.data || "Failed to update profile");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handlePasswordChange = async () => {
+    resetStatus();
+
+    if (!passwords.current || !passwords.next) {
+      setError("All password fields are required");
+      return;
+    }
+
+    if (passwords.next !== passwords.confirm) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    try {
+      setSaving(true);
+
       await axios.patch(
         `${import.meta.env.VITE_BACKEND_URL}/user/${user._id}/password`,
         {
@@ -54,10 +107,12 @@ const ProfilePage = ({ user }: Props) => {
         }
       );
 
-      alert("Password updated successfully");
       setPasswords({ current: "", next: "", confirm: "" });
-    } catch (error: any) {
-      alert(error.response?.data || "Password update failed");
+      setSuccess("Password updated successfully");
+    } catch (err: any) {
+      setError(err.response?.data || "Failed to update password");
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -78,36 +133,39 @@ const ProfilePage = ({ user }: Props) => {
             <p className="text-sm text-zinc-400">{user.email}</p>
           </div>
 
-          <span
-            className={`rounded-md px-3 py-1 text-xs font-medium ${
-              user.role === "admin"
-                ? "bg-yellow-500 text-black"
-                : "bg-zinc-800 text-zinc-300"
-            }`}
-          >
+          <span className="rounded-md px-3 py-1 text-xs font-medium bg-zinc-800 text-zinc-300">
             {user.role}
           </span>
         </div>
         <div>
-          <label className="text-xs text-zinc-400">Role Assign By</label>
+          {" "}
+          <label className="text-xs text-zinc-400">Role Assign By</label>{" "}
           <div>
-            <p>{Object(user.roleAssignedBy)}</p>
+            {" "}
+            <p>{Object(user.roleAssignedBy)}</p>{" "}
           </div>
         </div>
+
         <button
           onClick={() => navigate(-1)}
-          className="w-full rounded-lg border border-red-500/40 py-2 text-red-400 hover:bg-red-500/10"
+          className="w-full rounded-lg border border-red-500/40 py-2 text-red-400 hover:bg-red-500/10 cursor-pointer"
         >
-          Close Account
+          Back
         </button>
       </motion.div>
 
+      {/* RIGHT CARD */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.05 }}
         className="lg:col-span-2 rounded-2xl border border-white/10 bg-zinc-900 p-6 space-y-6"
       >
+        {/* GLOBAL MESSAGE (ONLY ONCE) */}
+        {error && <p className="text-sm text-red-400">{error}</p>}
+        {success && <p className="text-sm text-green-400">{success}</p>}
+
+        {/* PROFILE */}
         <div>
           <h3 className="text-lg font-semibold mb-4">Profile Information</h3>
 
@@ -141,52 +199,45 @@ const ProfilePage = ({ user }: Props) => {
 
           <button
             onClick={handleProfileSave}
-            className="mt-4 rounded-lg bg-yellow-500 px-6 py-2 text-black font-semibold hover:bg-yellow-400"
+            disabled={saving}
+            className={`mt-4 rounded-lg px-6 py-2 font-semibold transition ${
+              saving
+                ? "bg-yellow-500/40 cursor-not-allowed"
+                : "bg-yellow-500 hover:bg-yellow-400 text-black cursor-pointer"
+            }`}
           >
-            Save Changes
+            {saving ? "Saving..." : "Save Changes"}
           </button>
         </div>
 
+        {/* PASSWORD */}
         <div className="pt-6 border-t border-white/10">
           <h3 className="text-lg font-semibold mb-4">Change Password</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="password"
+            <PasswordInput
               placeholder="Current Password"
               value={passwords.current}
-              onChange={(e) =>
-                setPasswords({ ...passwords, current: e.target.value })
-              }
-              className="rounded-lg bg-zinc-800 border border-white/10 px-4 py-2 text-sm md:col-span-2"
+              onChange={(v) => setPasswords({ ...passwords, current: v })}
             />
-
-            <input
-              type="password"
+            <PasswordInput
               placeholder="New Password"
               value={passwords.next}
-              onChange={(e) =>
-                setPasswords({ ...passwords, next: e.target.value })
-              }
-              className="rounded-lg bg-zinc-800 border border-white/10 px-4 py-2 text-sm"
+              onChange={(v) => setPasswords({ ...passwords, next: v })}
             />
-
-            <input
-              type="password"
+            <PasswordInput
               placeholder="Confirm New Password"
               value={passwords.confirm}
-              onChange={(e) =>
-                setPasswords({ ...passwords, confirm: e.target.value })
-              }
-              className="rounded-lg bg-zinc-800 border border-white/10 px-4 py-2 text-sm"
+              onChange={(v) => setPasswords({ ...passwords, confirm: v })}
             />
           </div>
 
           <button
             onClick={handlePasswordChange}
-            className="mt-4 rounded-lg border border-white/10 px-6 py-2 hover:bg-zinc-800"
+            disabled={saving}
+            className="mt-4 rounded-lg border border-white/10 px-6 py-2 hover:bg-zinc-800 cursor-pointer"
           >
-            Update Password
+            {saving ? "Updating..." : "Update Password"}
           </button>
         </div>
       </motion.div>

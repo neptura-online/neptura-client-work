@@ -2,7 +2,7 @@ import { Router } from "express";
 import { auth } from "../middleware/auth.js";
 import { Lead } from "../modules/Lead.js";
 import { addToGoogleSheet } from "../utils/googleSheet.js";
-import { sendLeadMail } from "../utils/sendMail.js";
+import { sendAdminLeadMail, sendLeadMail } from "../utils/sendMail.js";
 
 export const router = Router();
 
@@ -57,6 +57,7 @@ router.post("/", async (req, res) => {
 
     await addToGoogleSheet(lead);
     sendLeadMail({ name, email }).catch(console.error);
+    sendAdminLeadMail(lead).catch(console.error);
 
     return res.status(200).json("user created");
   } catch (error) {
@@ -83,5 +84,22 @@ router.delete("/:id", auth, async (req, res) => {
   } catch (error) {
     res.status(500).json(error);
     console.log(error);
+  }
+});
+
+router.post("/bulk-delete", auth, async (req, res) => {
+  try {
+    const { ids } = req.body;
+
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return res.status(400).json("No leads selected");
+    }
+
+    await Lead.deleteMany({ _id: { $in: ids } });
+
+    return res.status(200).json("Leads deleted successfully");
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
   }
 });

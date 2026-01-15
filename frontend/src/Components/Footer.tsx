@@ -144,7 +144,7 @@ const Footer = () => {
     setPhoneError("");
 
     setFormError({ name: "", email: "", industry: "", message: "" });
-
+    const LPURL = window.location.href;
     const body = {
       name: formData.name,
       email: formData.email,
@@ -158,7 +158,7 @@ const Footer = () => {
       utm_content,
       adgroupid: utm_adgroup,
       gclid,
-      lpurl: site,
+      lpurl: LPURL,
       formID: "hero",
     };
 

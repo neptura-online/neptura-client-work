@@ -161,6 +161,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
 
     setFormError({ name: "", email: "", industry: "", message: "" });
     setPhoneError("");
+    const LPURL = window.location.href;
     const body = {
       name: e.target.name.value,
       email: e.target.email.value,
@@ -174,7 +175,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
       utm_content,
       adgroupid: utm_adgroup,
       gclid,
-      lpurl: site,
+      lpurl: LPURL,
       formID: id,
     };
 

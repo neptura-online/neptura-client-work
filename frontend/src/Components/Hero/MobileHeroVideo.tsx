@@ -154,6 +154,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
     setPhoneError("");
 
     setFormError({ name: "", email: "", industry: "", message: "" });
+    const LPURL = window.location.href;
 
     const body = {
       name: formData.name,
@@ -168,7 +169,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
       utm_content,
       adgroupid: utm_adgroup,
       gclid,
-      lpurl: site,
+      lpurl: LPURL,
       formID: "hero",
     };
 

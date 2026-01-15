@@ -81,7 +81,7 @@ router.post("/bulk-delete", auth, async (req, res) => {
       return res.status(400).json("No leads selected");
     }
 
-    await Lead.deleteMany({ _id: { $in: ids } });
+    await PartialLead.deleteMany({ _id: { $in: ids } });
 
     return res.status(200).json("Leads deleted successfully");
   } catch (error) {

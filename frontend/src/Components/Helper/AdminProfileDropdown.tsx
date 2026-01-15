@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiLogOut, FiUser, FiSettings } from "react-icons/fi";
+import { FiLogOut, FiUser } from "react-icons/fi";
 import type { User } from "../../types/type";
 import { useNavigate } from "react-router-dom";
 

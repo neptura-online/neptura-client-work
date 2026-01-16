@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { auth } from "../middleware/auth.js";
 import { PartialLead } from "../modules/Partial.js";
+import { addPartialToGoogleSheet } from "../utils/googleSheet.js";
 
 export const router = Router();
 
@@ -28,7 +29,7 @@ router.post("/", async (req, res) => {
       return res.status(409).json("phone number already exist");
     }
 
-    await PartialLead.create({
+    const lead = await PartialLead.create({
       name,
       email,
       phone,
@@ -44,6 +45,8 @@ router.post("/", async (req, res) => {
       lpurl,
       formID,
     });
+
+    addPartialToGoogleSheet(lead);
 
     return res.status(200).json("user created");
   } catch (error) {

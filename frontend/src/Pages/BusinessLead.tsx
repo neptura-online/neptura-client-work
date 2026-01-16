@@ -36,7 +36,7 @@ const BusinessLead = () => {
   const [save, setSave] = useState("");
 
   return (
-    <div className="bg-gray-300 max-w-screen overflow-hidden">
+    <div className="bg-gray-300 max-w-screen main-scroll-container">
       <Buttons setOpenForm={setOpenForm} setId={setId} />
 
       <HeroSection setOpenForm={setOpenForm} setId={setId} />

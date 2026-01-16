@@ -267,7 +267,7 @@ const App = () => {
   useEffect(() => {}, []);
 
   return (
-    <div className="bg-zinc-950 max-w-screen overflow-hidden">
+    <div className="bg-zinc-950 max-w-screen main-scroll-container">
       <BrowserRouter>
         <Suspense fallback={null}>
           <Routes>

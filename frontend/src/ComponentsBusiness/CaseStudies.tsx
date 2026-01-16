@@ -5,7 +5,7 @@ const cardVariants = {
     backgroundColor: "#ffffff",
   },
   hover: {
-    backgroundColor: "#18181b", // zinc-900
+    backgroundColor: "#18181b",
   },
 };
 
@@ -45,7 +45,7 @@ export default function CaseStudies() {
           <div className="mx-auto mt-4 h-0.5 w-20 bg-white" />
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 shrink-0 ">
           <motion.div
             variants={cardVariants}
             initial="rest"
@@ -146,7 +146,7 @@ export default function CaseStudies() {
             whileHover="hover"
             animate="rest"
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="case-card group"
+            className="case-card group cardboxdb cardsticky3"
           >
             <motion.div
               variants={metricVariants}
@@ -186,7 +186,7 @@ export default function CaseStudies() {
             whileHover="hover"
             animate="rest"
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="relative w-full h-full group rounded-2xl"
+            className="relative w-full h-full group rounded-2xl cardboxdb cardsticky4 case-card"
           >
             <motion.img
               variants={metricVariants}
@@ -201,7 +201,7 @@ export default function CaseStudies() {
               whileHover="hover"
               animate="rest"
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="case-card group"
+              className=" group"
             >
               <motion.div
                 variants={metricVariants}
@@ -240,7 +240,7 @@ export default function CaseStudies() {
             whileHover="hover"
             animate="rest"
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="case-card group"
+            className="case-card group cardboxdb cardsticky5"
           >
             <motion.div
               variants={metricVariants}
@@ -250,7 +250,7 @@ export default function CaseStudies() {
               <p className="metric-pera">
                 2K<span className="mertic-span">+</span>
               </p>
-              <p className="metric-lead ">Organic Clicks</p>
+              <p className="metric-lead ">Clicks</p>
             </motion.div>
 
             <motion.div
@@ -259,8 +259,8 @@ export default function CaseStudies() {
               className="relative z-10"
             >
               <h3 className="case-heading">
-                Silverware <br className="lg:hidden" /> Gifting & <br />{" "}
-                Furniture
+                Silverware Gifting <br className="lg:hidden" /> &{" "}
+                <br className="hidden lg:block" /> Furniture
               </h3>
 
               <p className="case-desc">
@@ -282,7 +282,7 @@ export default function CaseStudies() {
             whileHover="hover"
             animate="rest"
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="case-card group"
+            className="case-card group cardboxdb cardsticky6"
           >
             <motion.div
               variants={metricVariants}
@@ -320,7 +320,7 @@ export default function CaseStudies() {
             whileHover="hover"
             animate="rest"
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="case-card group"
+            className="case-card group cardboxdb cardsticky7"
           >
             <motion.div
               variants={metricVariants}
@@ -380,7 +380,7 @@ export default function CaseStudies() {
             whileHover="hover"
             animate="rest"
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="relative w-full h-full group rounded-2xl"
+            className="relative w-full h-full group rounded-2xl cardboxdb cardsticky8 case-card"
           >
             <motion.img
               variants={metricVariants}
@@ -395,7 +395,7 @@ export default function CaseStudies() {
               whileHover="hover"
               animate="rest"
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="case-card group"
+              className=" group"
             >
               <motion.div
                 variants={metricVariants}
@@ -434,7 +434,7 @@ export default function CaseStudies() {
             whileHover="hover"
             animate="rest"
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="case-card group"
+            className="case-card group cardboxdb cardsticky9"
           >
             <motion.div
               variants={metricVariants}

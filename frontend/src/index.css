@@ -79,48 +79,60 @@
 
 .phone-input input:focus {
   outline: none;
-  border-color: #eab308; /* yellow-500 */
+  border-color: #eab308;
 }
 
 @media (max-width: 767px) {
-  .cardContainer {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: sticky;
-    top: 0px;
-  }
   .cardboxdb {
     position: sticky;
-    top: 0px;
+    border: rgba(0, 0, 0, 0.37) 1px solid;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    background: white;
+    min-height: 275px;
   }
+
   .cardsticky1 {
-    top: 0px;
+    top: 50px;
+    z-index: 1;
   }
   .cardsticky2 {
-    top: 20px;
+    top: 60px;
+    z-index: 2;
   }
   .cardsticky3 {
-    top: 30px;
+    top: 70px;
+    z-index: 3;
   }
   .cardsticky4 {
-    top: 40px;
+    top: 80px;
+    z-index: 4;
   }
   .cardsticky5 {
-    top: 50px;
+    top: 90px;
+    z-index: 5;
   }
   .cardsticky6 {
-    top: 20px;
+    top: 100px;
+    z-index: 6;
   }
   .cardsticky7 {
-    top: 30px;
+    top: 110px;
+    z-index: 7;
   }
   .cardsticky8 {
-    top: 40px;
+    top: 120px;
+    z-index: 8;
   }
+
   .cardsticky9 {
-    top: 50px;
+    top: 130px;
+    z-index: 50;
   }
+}
+
+.main-scroll-container {
+  display: block;
+
+  overflow-x: clip;
+  width: 100%;
 }

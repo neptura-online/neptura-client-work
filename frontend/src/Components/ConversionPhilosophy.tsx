@@ -36,28 +36,32 @@ export default function ConversionPhilosophy({
           </p>
         </motion.div>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8  grid gap-6 items-start sm:grid-cols-2 lg:grid-cols-3">
           {pillars.map((item, i) => (
-            <motion.div
+            <div
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="group rounded-2xl border border-black/10 bg-zinc-100 p-6 transition hover:border-yellow-400/40 "
+              className="sticky sm:static h-full"
+              style={{ top: `${70 + i * 15}px`, zIndex: i }}
             >
-              <div className="flex items-center justify-start gap-4">
-                <div className=" flex h-12 w-12 items-center justify-center rounded-xl bg-(--yellow-emarketing)">
-                  <WorkIcon url={item.url} alt={item.title} />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="group rounded-2xl border border-black/10 bg-zinc-100 p-6 shadow-xl transition hover:border-yellow-400/40"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="flex min-h-12 min-w-12 items-center justify-center rounded-xl bg-(--yellow-emarketing)">
+                    <WorkIcon url={item.url} alt={item.title} />
+                  </div>
+                  <h3 className="text-base font-semibold text-zinc-950">
+                    {item.title}
+                  </h3>
                 </div>
-
-                <h3 className="mb-2 text-base font-semibold text-zinc-950">
-                  {item.title}
-                </h3>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           ))}
         </div>
+
         <div className="mx-auto mt-10 max-w-2xl text-center">
           <p className="text- text-stone-300 ">
             We combine design psychology + persuasive copywriting + performance

@@ -29,7 +29,7 @@ const OfferContainer = ({ setOpenForm, setId }: OpenFormProps) => {
     setId("claim offer");
   };
   return (
-    <section className=" text-white relative flex justify-center w-screen bg-[#160a1f]">
+    <section className=" text-white relative flex justify-center max-w-screen bg-[#160a1f]">
       <div
         className="absolute inset-0 opacity-100"
         style={{

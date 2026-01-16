@@ -3,6 +3,8 @@ import NavBar from "../Components/NavBar";
 import HeroSectionVideoBG from "../Components/Hero/HeroSectionVideoBG";
 import Counter from "../Components/Counter";
 import OfferContainer from "../Components/OfferContainer";
+import ProblemSection from "../Components/ProblemSection";
+import LandingProblemSection from "../Components/LandingProblemSection";
 import Buttons from "../ComponentsBusiness/Helper/whatsapp";
 
 const ExitIntentWrapper = lazy(
@@ -13,10 +15,6 @@ const Form = lazy(() => import("../Components/Helper/Form"));
 
 const ConversionPhilosophy = lazy(
   () => import("../Components/ConversionPhilosophy")
-);
-const ProblemSection = lazy(() => import("../Components/ProblemSection"));
-const LandingProblemSection = lazy(
-  () => import("../Components/LandingProblemSection")
 );
 const YouKnow = lazy(() => import("../Components/YouKnow"));
 const WhyWorkWithUs = lazy(() => import("../Components/WhyWorkWithUs"));
@@ -51,17 +49,13 @@ const LandingPage = () => {
       <HeroSectionVideoBG setOpenForm={setOpenForm} setId={setId} />
       <Counter />
       <OfferContainer setOpenForm={setOpenForm} setId={setId} />
-      <Suspense fallback={null}>
-        <ProblemSection
-          setOpenForm={setOpenForm}
-          setId={setId}
-          settriggerUrl={setTriggerUrl}
-          setSave={setSave}
-        />
-      </Suspense>
-      <Suspense fallback={null}>
-        <LandingProblemSection setOpenForm={setOpenForm} setId={setId} />
-      </Suspense>
+      <ProblemSection
+        setOpenForm={setOpenForm}
+        setId={setId}
+        settriggerUrl={setTriggerUrl}
+        setSave={setSave}
+      />
+      <LandingProblemSection setOpenForm={setOpenForm} setId={setId} />
 
       <Suspense fallback={null}>
         <ExitIntentWrapper />

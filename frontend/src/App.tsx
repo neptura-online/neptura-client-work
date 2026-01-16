@@ -278,14 +278,7 @@ const App = () => {
               </Suspense>
             }
           />
-          <Route
-            path="/business-lead"
-            element={
-              <Suspense fallback={null}>
-                <BusinessLead />
-              </Suspense>
-            }
-          />
+          <Route path="/business-lead" element={<BusinessLead />} />
           <Route path="/thankyou" element={<Thankyou />} />
 
           <Route

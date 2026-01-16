@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { FaChevronLeft, FaEnvelope } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import FAQSection from "../Components/FAQQuestion";
 const Thankyou = () => {
   const navigate = useNavigate();
@@ -96,19 +96,23 @@ const Thankyou = () => {
                   src="/business/meta.webp"
                   alt="Meta"
                   loading="lazy"
-                  className="h-8 lg:h-16 rounded-sm"
+                  decoding="async"
+                  className="h-8 lg:h-16 aspect-3/1 rounded-sm"
                 />
                 <img
                   src="/business/google.webp"
                   alt="Google"
-                  className="h-8 lg:h-16 rounded-sm"
                   loading="lazy"
+                  decoding="async"
+                  className="h-8 lg:h-16 aspect-3/1 rounded-sm"
                 />
+
                 <img
                   src="/business/whatsapp.webp"
                   alt="WhatsApp"
                   loading="lazy"
-                  className="h-8 lg:h-16 rounded-sm"
+                  decoding="async"
+                  className="h-8 lg:h-16 aspect-3/1 rounded-sm"
                 />
               </div>
 
@@ -141,7 +145,9 @@ const Thankyou = () => {
         </div>
       </section>
 
-      <FAQSection />
+      <Suspense fallback={<div className="min-h-125 bg-zinc-100" />}>
+        <FAQSection />
+      </Suspense>
 
       <section>
         <div className=" bg-[#1A1421] py-4 flex justify-center w-screen ">

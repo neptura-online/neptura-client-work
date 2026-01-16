@@ -20,7 +20,6 @@ type Props = {
 const ProfilePage = ({ user }: Props) => {
   const navigate = useNavigate();
 
-  // ✅ SINGLE STATUS STATES
   const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -30,7 +29,6 @@ const ProfilePage = ({ user }: Props) => {
     setSuccess(null);
   };
 
-  // PROFILE STATE
   const [profile, setProfile] = useState({
     name: user.name,
     email: user.email,
@@ -154,18 +152,15 @@ const ProfilePage = ({ user }: Props) => {
         </button>
       </motion.div>
 
-      {/* RIGHT CARD */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.05 }}
         className="lg:col-span-2 rounded-2xl border border-white/10 bg-zinc-900 p-6 space-y-6"
       >
-        {/* GLOBAL MESSAGE (ONLY ONCE) */}
         {error && <p className="text-sm text-red-400">{error}</p>}
         {success && <p className="text-sm text-green-400">{success}</p>}
 
-        {/* PROFILE */}
         <div>
           <h3 className="text-lg font-semibold mb-4">Profile Information</h3>
 
@@ -206,11 +201,10 @@ const ProfilePage = ({ user }: Props) => {
                 : "bg-yellow-500 hover:bg-yellow-400 text-black cursor-pointer"
             }`}
           >
-            {saving ? "Saving..." : "Save Changes"}
+            {saving ? "Updating..." : "Update Profile"}
           </button>
         </div>
 
-        {/* PASSWORD */}
         <div className="pt-6 border-t border-white/10">
           <h3 className="text-lg font-semibold mb-4">Change Password</h3>
 

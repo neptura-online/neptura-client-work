@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { lazy, Suspense, useEffect, useState } from "react";
 import axios from "axios";
-
+import { AdminAuthProvider } from "./context/AdminAuthContext";
 import AdminProtectedRoute from "./Components/Helper/AdminProtectedRoute";
 import AdminLayout from "./Layouts/AdminLayout";
 import type { Lead, User } from "./types/type";
@@ -264,8 +264,6 @@ const App = () => {
     }
   }, []);
 
-  useEffect(() => {}, []);
-
   return (
     <div className="bg-zinc-950 max-w-screen main-scroll-container">
       <BrowserRouter>
@@ -278,9 +276,11 @@ const App = () => {
             <Route
               path="/admin"
               element={
-                <AdminProtectedRoute>
-                  <AdminLayout isAdmin={isAdmin} />
-                </AdminProtectedRoute>
+                <AdminAuthProvider>
+                  <AdminProtectedRoute>
+                    <AdminLayout isAdmin={isAdmin} />
+                  </AdminProtectedRoute>
+                </AdminAuthProvider>
               }
             >
               <Route path="users/:id" element={<UserPage />} />

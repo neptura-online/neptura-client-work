@@ -1,10 +1,16 @@
-import { type JSX } from "react";
 import { Navigate } from "react-router-dom";
+import { useAdminAuth } from "../../context/AdminAuthContext";
+import type { JSX } from "react";
+import AdminAuthLoader from "./AdminAuthLoader";
 
 const AdminProtectedRoute = ({ children }: { children: JSX.Element }) => {
-  const isAuth = localStorage.getItem("token");
+  const { status } = useAdminAuth();
 
-  if (!isAuth) {
+  if (status === "loading") {
+    return <AdminAuthLoader />;
+  }
+
+  if (status === "unauthorized") {
     return <Navigate to="/admin/login" replace />;
   }
 

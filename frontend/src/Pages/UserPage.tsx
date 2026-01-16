@@ -192,7 +192,7 @@ const UserPage = () => {
                   : "bg-yellow-500 hover:bg-yellow-400 text-black"
               }`}
           >
-            {saving ? "Saving..." : "Save Profile"}
+            {saving ? "Updating..." : "Update Profile"}
           </button>
         </div>
 

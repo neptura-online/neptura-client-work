@@ -51,7 +51,7 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08 }}
+                  transition={{ delay: i * 0.04 }}
                   viewport={{ once: true }}
                   className="rounded-xl border-black/10 bg-zinc-100 p-4 backdrop-blur border hover:border-yellow-500"
                 >

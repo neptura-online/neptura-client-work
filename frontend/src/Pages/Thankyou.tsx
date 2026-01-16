@@ -21,16 +21,15 @@ const Thankyou = () => {
 
         <img
           src="/assets/pattern-bg.webp"
-          alt=""
+          alt="pattern1"
           fetchPriority="high"
-          loading="lazy"
           decoding="async"
           className="absolute inset-0 w-full h-full object-cover opacity-80"
         />
 
         <img
           src="/assets/bg-shape.webp"
-          alt=""
+          alt="pattern2"
           decoding="async"
           className="absolute inset-0 w-full h-full object-cover opacity-80"
         />

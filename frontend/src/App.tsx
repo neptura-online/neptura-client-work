@@ -270,14 +270,7 @@ const App = () => {
     <div className="bg-zinc-950 max-w-screen main-scroll-container">
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Suspense fallback={null}>
-                <LandingPage />
-              </Suspense>
-            }
-          />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/business-lead" element={<BusinessLead />} />
           <Route path="/thankyou" element={<Thankyou />} />
 

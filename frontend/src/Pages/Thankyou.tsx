@@ -1,15 +1,12 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { FaChevronLeft, FaEnvelope, FaMinus, FaPlus } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FaChevronLeft, FaEnvelope } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { faqs } from "../constant/constant";
-
+import { Suspense, useEffect, useState } from "react";
+import FAQSection from "../Components/FAQQuestion";
 const Thankyou = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
-  const [active, setActive] = useState<number | null>(null);
-
   useEffect(() => {
     const name = localStorage.getItem("name");
     console.log(name);
@@ -18,26 +15,23 @@ const Thankyou = () => {
     }
   }, []);
   return (
-    <div className="bg-zinc-100">
+    <>
       <section className="relative w-full overflow-hidden bg-zinc-950 text-white flex justify-center">
         <div className="absolute inset-0 bg-black" />
 
         <img
           src="/assets/pattern-bg.webp"
-          alt=""
+          alt="pattter1"
           fetchPriority="high"
-          loading="lazy"
           decoding="async"
           className="absolute inset-0 w-full h-full object-cover opacity-80"
         />
 
-        <div
-          className="absolute inset-0 opacity-80"
-          style={{
-            backgroundImage: "url('/assets/bg-shape.webp')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+        <img
+          src="/assets/bg-shape.webp"
+          alt="pattern2"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover opacity-80"
         />
 
         <div className="max-w-390">
@@ -71,12 +65,7 @@ const Thankyou = () => {
           </div>
 
           <div className="relative z-10 mx-auto md:mx-4 flex gap-12 flex-col lg:flex-row justify-between lg:px-16 ">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="flex flex-col justify-start items-start lg:w-[90%] px-5 py-10"
-            >
+            <div className="flex flex-col justify-start items-start lg:w-[90%] px-5 py-10">
               {name && (
                 <h1 className="text-[30px] mb-3 font-serif font-medium leading-tight md:text-[45px] ">
                   Hi,{" "}
@@ -127,7 +116,7 @@ const Thankyou = () => {
                 <FaChevronLeft />
                 Back To Home
               </button>
-            </motion.div>
+            </div>
             {/* second part */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
@@ -149,72 +138,11 @@ const Thankyou = () => {
         </div>
       </section>
 
-      <section className="bg-zinc-100 py-10 lg:py-20 text-white">
-        <div className="mx-auto max-w-3xl px-4 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="font-serif text-3xl md:text-[40px] font-medium text-black leading-[1.2em] capitalize"
-          >
-            Frequently Asked{" "}
-            <span className="text-(--yellow-emarketing)">Questions</span>
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="mx-auto mt-4 h-1 w-20 lg:w-30 rounded-full bg-(--yellow-emarketing)"
-          />
-
-          <div className="mt-14 space-y-4">
-            {faqs.map((item, index) => (
-              <div
-                key={index}
-                className="overflow-hidden rounded-xl border border-zinc-800 bg-[#160a1f]"
-              >
-                <button
-                  onClick={() => setActive(active === index ? null : index)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
-                >
-                  <span className="text-sm leading-snug font-medium text-white md:text-lg">
-                    {item.q}
-                  </span>
-
-                  <span className="shrink-0">
-                    {active === index ? (
-                      <FaMinus className="text-(--yellow-emarketing) text-sm md:text-lg hover:cursor-pointer" />
-                    ) : (
-                      <FaPlus className="text-(--yellow-emarketing) text-sm md:text-lg hover:cursor-pointer" />
-                    )}
-                  </span>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {active === index && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -6 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -6 }}
-                      transition={{ duration: 0.25, ease: "easeInOut" }}
-                      className="border-t border-zinc-800 px-5 py-4 text-xs lg:text-base leading-relaxed text-start whitespace-pre-line text-zinc-300"
-                    >
-                      {" "}
-                      {item.n}
-                      <span className="text-zinc-100 font-semibold">
-                        {item.h}
-                      </span>
-                      {item.a}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Suspense
+        fallback={<section className="bg-zinc-100 min-h-130 py-10 lg:py-20" />}
+      >
+        <FAQSection />
+      </Suspense>
 
       <section>
         <div className=" bg-[#1A1421] py-4 flex justify-center w-screen ">
@@ -245,7 +173,7 @@ const Thankyou = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

@@ -2,15 +2,17 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { lazy, Suspense, useEffect, useState } from "react";
 import axios from "axios";
 import { AdminAuthProvider } from "./context/AdminAuthContext";
-import AdminProtectedRoute from "./Components/Helper/AdminProtectedRoute";
-import AdminLayout from "./Layouts/AdminLayout";
 import type { Lead, User } from "./types/type";
-import Thankyou from "./Pages/Thankyou";
-import UserPage from "./Pages/UserPage";
+
+const Thankyou = lazy(() => import("./Pages/Thankyou"));
+const UserPage = lazy(() => import("./Pages/UserPage"));
 
 const LandingPage = lazy(() => import("./Pages/LandingPage"));
 const BusinessLead = lazy(() => import("./Pages/BusinessLead"));
-
+const AdminLayout = lazy(() => import("./Layouts/AdminLayout"));
+const AdminProtectedRoute = lazy(
+  () => import("./Components/Helper/AdminProtectedRoute")
+);
 const AdminLogin = lazy(() => import("./Pages/AdminLogin"));
 const AdminDasBoard = lazy(() => import("./Pages/AdminDasBoard"));
 const LeadDashboard = lazy(() => import("./Pages/LeadDashBoard"));
@@ -267,37 +269,69 @@ const App = () => {
   return (
     <div className="bg-zinc-950 max-w-screen main-scroll-container">
       <BrowserRouter>
-        <Suspense fallback={null}>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/business-lead" element={<BusinessLead />} />
-            <Route path="/thankyou" element={<Thankyou />} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={null}>
+                <LandingPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/business-lead"
+            element={
+              <Suspense fallback={null}>
+                <BusinessLead />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/thankyou"
+            element={
+              <Suspense fallback={null}>
+                <Thankyou />
+              </Suspense>
+            }
+          />
 
-            <Route
-              path="/admin"
-              element={
+          <Route
+            path="/admin"
+            element={
+              <Suspense fallback={null}>
                 <AdminAuthProvider>
                   <AdminProtectedRoute>
                     <AdminLayout isAdmin={isAdmin} />
                   </AdminProtectedRoute>
                 </AdminAuthProvider>
+              </Suspense>
+            }
+          >
+            <Route
+              path="users/:id"
+              element={
+                <Suspense fallback={null}>
+                  <UserPage />
+                </Suspense>
               }
-            >
-              <Route path="users/:id" element={<UserPage />} />
-              <Route
-                index
-                element={
+            />
+            <Route
+              index
+              element={
+                <Suspense fallback={null}>
                   <AdminDasBoard
                     users={users}
                     loading={loading}
                     leads={leads}
                   />
-                }
-              />
+                </Suspense>
+              }
+            />
 
-              <Route
-                path="leads"
-                element={
+            <Route
+              path="leads"
+              element={
+                <Suspense fallback={null}>
                   <LeadDashboard
                     isAdmin={isAdmin}
                     loading={loading}
@@ -305,12 +339,14 @@ const App = () => {
                     handleDelete={handleDelete}
                     handleBulkDelete={handleBulkDelete}
                   />
-                }
-              />
+                </Suspense>
+              }
+            />
 
-              <Route
-                path="partialleads"
-                element={
+            <Route
+              path="partialleads"
+              element={
+                <Suspense fallback={null}>
                   <PartialLeadDashboard
                     isAdmin={isAdmin}
                     loading={loading}
@@ -318,43 +354,54 @@ const App = () => {
                     handleDelete={handleDeletePartial}
                     handleBulkDelete={handleBulkDeletePartial}
                   />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="export"
+              element={
+                <Suspense fallback={null}>
+                  <ExportLeads leads={combinedArray} />
+                </Suspense>
+              }
+            />
+
+            {isAdmin && (
+              <Route
+                path="users"
+                element={
+                  <UsersDashboard
+                    users={users}
+                    loading={loading}
+                    handleDelete={userDelete}
+                    handleCreate={handleCreate}
+                    handleRoleChange={handleRoleChange}
+                  />
                 }
               />
+            )}
 
-              <Route
-                path="export"
-                element={<ExportLeads leads={combinedArray} />}
-              />
+            <Route
+              path="lead/:id"
+              element={<LeadDetails leads={combinedArray} />}
+            />
 
-              {isAdmin && (
-                <Route
-                  path="users"
-                  element={
-                    <UsersDashboard
-                      users={users}
-                      loading={loading}
-                      handleDelete={userDelete}
-                      handleCreate={handleCreate}
-                      handleRoleChange={handleRoleChange}
-                    />
-                  }
-                />
-              )}
+            <Route
+              path="profile"
+              element={user && <ProfilePage user={user} />}
+            />
+          </Route>
 
-              <Route
-                path="lead/:id"
-                element={<LeadDetails leads={combinedArray} />}
-              />
-
-              <Route
-                path="profile"
-                element={user && <ProfilePage user={user} />}
-              />
-            </Route>
-
-            <Route path="/admin/login" element={<AdminLogin />} />
-          </Routes>
-        </Suspense>
+          <Route
+            path="/admin/login"
+            element={
+              <Suspense fallback={null}>
+                <AdminLogin />
+              </Suspense>
+            }
+          />
+        </Routes>
       </BrowserRouter>
     </div>
   );

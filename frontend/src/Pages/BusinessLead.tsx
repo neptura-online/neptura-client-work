@@ -47,6 +47,10 @@ const BusinessLead = () => {
         settriggerUrl={setTriggerUrl}
       />
 
+      <Suspense fallback={<SectionSkeleton height={250} />}>
+        <NumbersSection />
+      </Suspense>
+
       {openForm && (
         <Suspense fallback={null}>
           <Form
@@ -59,9 +63,11 @@ const BusinessLead = () => {
         </Suspense>
       )}
 
-      <Suspense fallback={<SectionSkeleton height={1200} />}>
-        <NumbersSection />
+      <Suspense fallback={<SectionSkeleton height={350} />}>
         <WhyWorkWithUs setOpenForm={setOpenForm} setId={setId} />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton height={450} />}>
         <CaseStudies />
       </Suspense>
 

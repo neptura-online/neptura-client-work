@@ -55,7 +55,31 @@ const Testimonials = () => {
   return (
     <section className="relative overflow-hidden bg-[#160a1f] py-20">
       <div className="relative text-center max-w-7xl mx-auto py-6 z-20">
-        <Heading white="Client Success " yellow="Stories & Testimonials" />
+        <div className="mb-12 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="font-serif text-3xl md:text-[40px] font-medium text-white leading-[1.2em] capitalize"
+          >
+            client Success <br className="lg:hidden" />
+            <span
+              className="text-(--yellow-emarketing)
+"
+            >
+              Stories & Testimonials
+            </span>
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="mx-auto mt-4 h-1 w-20 lg:w-30 rounded-full bg-(--yellow-emarketing)
+"
+          />
+        </div>
 
         <p className="mt-6 text-base text-zinc-100">
           Stop losing customers due to missed or mishandled calls!
@@ -73,7 +97,7 @@ const Testimonials = () => {
       </div>
       <div className="pointer-events-none absolute bottom-0 left-0 h-40 w-full bg-linear-to-t from-[#160a1f] via-[#160a1f] to-transparent z-10" />
 
-      <div className="pointer-events-none absolute top-40 left-0 h-40  w-full bg-linear-to-t from-transparent via-[#160a1f] to-[#160a1f] z-10" />
+      <div className="pointer-events-none absolute top-60 left-0 h-40  w-full bg-linear-to-b from-[#160a1f] via-[#160a1f] to-transparent z-10" />
     </section>
   );
 };

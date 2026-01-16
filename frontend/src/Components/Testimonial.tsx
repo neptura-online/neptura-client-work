@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import Heading from "./Helper/Heading";
 import type { InfiniteColumnProps, TestimonialCardProps } from "../types/type";
 import { testimonials } from "../constant/constant";
 

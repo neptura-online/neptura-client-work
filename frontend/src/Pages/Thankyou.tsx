@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { FaChevronLeft, FaEnvelope } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { lazy, Suspense, useEffect, useState } from "react";
-const FAQSection = lazy(() => import("../Components/FAQQuestion"));
+import { useEffect, useState } from "react";
+import FAQSection from "../Components/FAQQuestion";
 const Thankyou = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -140,9 +140,8 @@ const Thankyou = () => {
           </div>
         </div>
       </section>
-      <Suspense fallback={null}>
-        <FAQSection />
-      </Suspense>
+
+      <FAQSection />
 
       <section>
         <div className=" bg-[#1A1421] py-4 flex justify-center w-screen ">

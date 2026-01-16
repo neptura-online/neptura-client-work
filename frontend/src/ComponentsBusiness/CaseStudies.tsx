@@ -186,7 +186,7 @@ export default function CaseStudies() {
             whileHover="hover"
             animate="rest"
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="relative w-full h-full group rounded-2xl cardboxdb cardsticky4 case-card"
+            className="lg:relative w-full h-full group rounded-2xl cardboxdb cardsticky4"
           >
             <motion.img
               variants={metricVariants}
@@ -201,7 +201,7 @@ export default function CaseStudies() {
               whileHover="hover"
               animate="rest"
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className=" group"
+              className="case-card group h-full"
             >
               <motion.div
                 variants={metricVariants}
@@ -380,14 +380,14 @@ export default function CaseStudies() {
             whileHover="hover"
             animate="rest"
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="relative w-full h-full group rounded-2xl cardboxdb cardsticky8 case-card"
+            className="lg:relative w-full h-full group rounded-2xl cardboxdb cardsticky8"
           >
             <motion.img
               variants={metricVariants}
               transition={{ duration: 0.35, ease: "easeOut" }}
               src="/business/graph-img.webp"
-              alt=""
-              className="img-position"
+              alt="stats"
+              className="pointer-events-none absolute z-20 -right-10 opacity-0 transition-opacity duration-300 h-100 -top-20 group-hover:opacity-100"
             />
             <motion.div
               variants={cardVariants}
@@ -395,7 +395,7 @@ export default function CaseStudies() {
               whileHover="hover"
               animate="rest"
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className=" group"
+              className="case-card group h-full"
             >
               <motion.div
                 variants={metricVariants}

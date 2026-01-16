@@ -18,7 +18,7 @@ const Thankyou = () => {
     }
   }, []);
   return (
-    <>
+    <div className="bg-zinc-100">
       <section className="relative w-full overflow-hidden bg-zinc-950 text-white flex justify-center">
         <div className="absolute inset-0 bg-black" />
 
@@ -26,6 +26,7 @@ const Thankyou = () => {
           src="/assets/pattern-bg.webp"
           alt=""
           fetchPriority="high"
+          loading="lazy"
           decoding="async"
           className="absolute inset-0 w-full h-full object-cover opacity-80"
         />
@@ -244,7 +245,7 @@ const Thankyou = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

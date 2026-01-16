@@ -376,7 +376,7 @@ const App = () => {
             path="/admin/login"
             element={
               <Suspense fallback={null}>
-                <LandingPage />
+                <AdminLogin />
               </Suspense>
             }
           />

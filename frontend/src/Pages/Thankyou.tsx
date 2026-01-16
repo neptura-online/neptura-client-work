@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { FaChevronLeft, FaEnvelope } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
-import FAQSection from "../Components/FAQQuestion";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
+const FAQSection = lazy(() => import("../Components/FAQQuestion"));
 const Thankyou = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -95,16 +95,19 @@ const Thankyou = () => {
                 <img
                   src="/business/meta.webp"
                   alt="Meta"
+                  loading="lazy"
                   className="h-8 lg:h-16 rounded-sm"
                 />
                 <img
                   src="/business/google.webp"
                   alt="Google"
                   className="h-8 lg:h-16 rounded-sm"
+                  loading="lazy"
                 />
                 <img
                   src="/business/whatsapp.webp"
                   alt="WhatsApp"
+                  loading="lazy"
                   className="h-8 lg:h-16 rounded-sm"
                 />
               </div>
@@ -128,6 +131,7 @@ const Thankyou = () => {
               <div className="relative">
                 <img
                   src="/business/scale.webp"
+                  loading="lazy"
                   alt="Mobile marketing preview"
                   className="relative z-10 w-full lg:w-280 bottom-0"
                 />
@@ -136,7 +140,10 @@ const Thankyou = () => {
           </div>
         </div>
       </section>
-      <FAQSection />
+      <Suspense fallback={null}>
+        <FAQSection />
+      </Suspense>
+
       <section>
         <div className=" bg-[#1A1421] py-4 flex justify-center w-screen ">
           <div className="w-full max-w-350 flex flex-col items-center justify-between gap-4 xl:flex-row">

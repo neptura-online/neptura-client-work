@@ -318,15 +318,18 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
                 src="/business/meta.webp"
                 alt="Meta"
                 className="h-8 lg:h-16 rounded-sm"
+                loading="lazy"
               />
               <img
                 src="/business/google.webp"
                 alt="Google"
                 className="h-8 lg:h-16 rounded-sm"
+                loading="lazy"
               />
               <img
                 src="/business/whatsapp.webp"
                 alt="WhatsApp"
+                loading="lazy"
                 className="h-8 lg:h-16 rounded-sm"
               />
             </div>

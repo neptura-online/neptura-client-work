@@ -75,7 +75,10 @@ const Thankyou = () => {
             >
               {name && (
                 <h1 className="text-[30px] mb-3 font-serif font-medium leading-tight md:text-[45px] ">
-                  Hi, <span className="text-(--yellow-emarketing)">{name}</span>
+                  Hi,{" "}
+                  <span className="text-(--yellow-emarketing) capitalize">
+                    {name}
+                  </span>
                 </h1>
               )}
               <h1 className="text-[30px] font-serif font-medium leading-tight md:text-[45px] ">

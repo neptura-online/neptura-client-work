@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@layer utilities {
+@layer components {
   .case-desc {
     @apply mt-4 text-base leading-relaxed text-zinc-600
            transition-colors duration-300
@@ -20,7 +20,8 @@
     @apply absolute right-1 lg:right-4 top-2 text-center;
   }
   .metric-pera {
-    @apply text-[40px] lg:text-5xl font-bold text-[#ffaa17];
+    @apply text-[45px] font-black text-[#ffaa17];
+    -webkit-text-stroke: 2px #ffaa17;
   }
 
   .metric-span {
@@ -36,14 +37,14 @@
 
 @font-face {
   font-family: "Merriweather";
-  src: url("/fonts/merriweather/Merriweather-Regular.ttf") format("truetype");
+  src: url("/fonts/merriweather/Merriweather-Regular.woff2") format("woff2");
   font-weight: 500;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Figtree";
-  src: url("/fonts/figtree/Figtree.ttf") format("truetype");
+  src: url("/fonts/figtree/Figtree.woff2") format("woff2");
   font-weight: 500;
   font-display: swap;
 }
@@ -59,13 +60,6 @@
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
-}
-
-.metric-pera {
-  font-size: 45px;
-  font-weight: 900;
-  color: #ffaa17;
-  -webkit-text-stroke: 2px #ffaa17;
 }
 
 .phone-input input {

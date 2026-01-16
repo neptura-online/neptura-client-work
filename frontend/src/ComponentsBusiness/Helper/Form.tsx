@@ -193,6 +193,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
 
       if (res.status === 200 || res.status === 201) {
         hasSubmittedRef.current = true;
+        localStorage.setItem("name", formData.name);
         if (triggered) {
           window.location.href = triggered;
         } else {

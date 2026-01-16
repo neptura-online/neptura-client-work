@@ -171,6 +171,7 @@ const Footer = () => {
 
       if (res.status === 200 || res.status === 201) {
         hasSubmittedRef.current = true;
+        localStorage.setItem("name", formData.name);
         navigate("/thankyou");
       }
     } catch (err: any) {

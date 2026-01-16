@@ -195,10 +195,10 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
 
       if (res.status === 200 || res.status === 201) {
         hasSubmittedRef.current = true;
+        localStorage.setItem("name", formData.name);
         if (triggered) {
           window.location.href = triggered;
-        }
-        navigate("/thankyou");
+        } else navigate("/thankyou");
       }
     } catch (err: any) {
       showError(err?.response?.data || "Something went wrong");

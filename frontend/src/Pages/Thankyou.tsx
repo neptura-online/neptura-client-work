@@ -3,8 +3,17 @@ import { FaChevronLeft, FaEnvelope } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 import FAQSection from "../Components/FAQQuestion";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 const Thankyou = () => {
   const navigate = useNavigate();
+  const [name, setName] = useState("");
+  useEffect(() => {
+    const name = localStorage.getItem("name");
+    console.log(name);
+    if (name) {
+      setName(name);
+    }
+  }, []);
   return (
     <>
       <section className="relative w-full overflow-hidden bg-zinc-950 text-white flex justify-center">
@@ -62,9 +71,14 @@ const Thankyou = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="flex flex-col justify-start items-start lg:w-[90%] px-6 py-10"
+              className="flex flex-col justify-start items-start lg:w-[90%] px-5 py-10"
             >
-              <h1 className="text-[35px] font-serif font-medium leading-tight md:text-[45px] ">
+              {name && (
+                <h1 className="text-[30px] mb-3 font-serif font-medium leading-tight md:text-[45px] ">
+                  Hi, <span className="text-(--yellow-emarketing)">{name}</span>
+                </h1>
+              )}
+              <h1 className="text-[30px] font-serif font-medium leading-tight md:text-[45px] ">
                 Thank You For Sending Your Enquiry.
               </h1>
 

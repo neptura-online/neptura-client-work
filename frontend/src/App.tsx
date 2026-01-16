@@ -307,64 +307,43 @@ const App = () => {
               </Suspense>
             }
           >
-            <Route
-              path="users/:id"
-              element={
-                <Suspense fallback={null}>
-                  <UserPage />
-                </Suspense>
-              }
-            />
+            <Route path="users/:id" element={<UserPage />} />
             <Route
               index
               element={
-                <Suspense fallback={null}>
-                  <AdminDasBoard
-                    users={users}
-                    loading={loading}
-                    leads={leads}
-                  />
-                </Suspense>
+                <AdminDasBoard users={users} loading={loading} leads={leads} />
               }
             />
 
             <Route
               path="leads"
               element={
-                <Suspense fallback={null}>
-                  <LeadDashboard
-                    isAdmin={isAdmin}
-                    loading={loading}
-                    leads={leads}
-                    handleDelete={handleDelete}
-                    handleBulkDelete={handleBulkDelete}
-                  />
-                </Suspense>
+                <LeadDashboard
+                  isAdmin={isAdmin}
+                  loading={loading}
+                  leads={leads}
+                  handleDelete={handleDelete}
+                  handleBulkDelete={handleBulkDelete}
+                />
               }
             />
 
             <Route
               path="partialleads"
               element={
-                <Suspense fallback={null}>
-                  <PartialLeadDashboard
-                    isAdmin={isAdmin}
-                    loading={loading}
-                    leads={partialLeads}
-                    handleDelete={handleDeletePartial}
-                    handleBulkDelete={handleBulkDeletePartial}
-                  />
-                </Suspense>
+                <PartialLeadDashboard
+                  isAdmin={isAdmin}
+                  loading={loading}
+                  leads={partialLeads}
+                  handleDelete={handleDeletePartial}
+                  handleBulkDelete={handleBulkDeletePartial}
+                />
               }
             />
 
             <Route
               path="export"
-              element={
-                <Suspense fallback={null}>
-                  <ExportLeads leads={combinedArray} />
-                </Suspense>
-              }
+              element={<ExportLeads leads={combinedArray} />}
             />
 
             {isAdmin && (
@@ -397,7 +376,7 @@ const App = () => {
             path="/admin/login"
             element={
               <Suspense fallback={null}>
-                <AdminLogin />
+                <LandingPage />
               </Suspense>
             }
           />

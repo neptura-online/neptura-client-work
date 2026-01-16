@@ -286,14 +286,7 @@ const App = () => {
               </Suspense>
             }
           />
-          <Route
-            path="/thankyou"
-            element={
-              <Suspense fallback={null}>
-                <Thankyou />
-              </Suspense>
-            }
-          />
+          <Route path="/thankyou" element={<Thankyou />} />
 
           <Route
             path="/admin"

@@ -79,17 +79,15 @@ const Thankyou = () => {
                 Our Team Will Get In Touch With You.
               </p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-4">
+              <div className="mt-8 flex flex-wrap items-center gap-2 md:gap-4">
                 {["meta", "google", "whatsapp"].map((img) => (
                   <img
                     key={img}
                     src={`/business/${img}.webp`}
                     alt={img}
-                    width={120}
-                    height={40}
                     loading="lazy"
                     decoding="async"
-                    className="h-8 lg:h-16 aspect-3/1 rounded-sm"
+                    className="h-8 lg:h-16  rounded-sm"
                   />
                 ))}
               </div>

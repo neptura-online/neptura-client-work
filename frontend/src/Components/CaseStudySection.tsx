@@ -54,7 +54,7 @@ export default function CaseStudySection({
           <div className="mx-auto mt-4 h-0.5 w-20 bg-white" />
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 shrink-0 ">
           <motion.div
             variants={cardVariants}
             initial="rest"
@@ -195,7 +195,7 @@ export default function CaseStudySection({
             whileHover="hover"
             animate="rest"
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="relative w-full h-full group rounded-2xl cardboxdb cardsticky4"
+            className="lg:relative w-full h-full group rounded-2xl cardboxdb cardsticky4"
           >
             <motion.img
               variants={metricVariants}
@@ -210,7 +210,7 @@ export default function CaseStudySection({
               whileHover="hover"
               animate="rest"
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="case-card group"
+              className="case-card group h-full"
             >
               <motion.div
                 variants={metricVariants}
@@ -259,7 +259,7 @@ export default function CaseStudySection({
               <p className="metric-pera">
                 2K<span className="mertic-span">+</span>
               </p>
-              <p className="metric-lead ">Organic Clicks</p>
+              <p className="metric-lead ">Clicks</p>
             </motion.div>
 
             <motion.div
@@ -268,8 +268,8 @@ export default function CaseStudySection({
               className="relative z-10"
             >
               <h3 className="case-heading">
-                Silverware <br className="lg:hidden" /> Gifting & <br />{" "}
-                Furniture
+                Silverware Gifting <br className="lg:hidden" /> &{" "}
+                <br className="hidden lg:block" /> Furniture
               </h3>
 
               <p className="case-desc">
@@ -389,14 +389,14 @@ export default function CaseStudySection({
             whileHover="hover"
             animate="rest"
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="relative w-full h-full group rounded-2xl cardboxdb cardsticky8"
+            className="lg:relative w-full h-full group rounded-2xl cardboxdb cardsticky8"
           >
             <motion.img
               variants={metricVariants}
               transition={{ duration: 0.35, ease: "easeOut" }}
               src="/business/graph-img.webp"
-              alt=""
-              className="img-position"
+              alt="stats"
+              className="pointer-events-none absolute z-20 -right-10 opacity-0 transition-opacity duration-300 h-100 -top-20 group-hover:opacity-100"
             />
             <motion.div
               variants={cardVariants}
@@ -404,7 +404,7 @@ export default function CaseStudySection({
               whileHover="hover"
               animate="rest"
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="case-card group"
+              className="case-card group h-full"
             >
               <motion.div
                 variants={metricVariants}

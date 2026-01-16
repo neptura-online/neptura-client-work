@@ -128,7 +128,7 @@ export const sendLeadMail = async ({ name, email }) => {
     to: email,
     subject: "Thanks for contacting us!",
     html: `
-      <h6>Hello ${name},</h6>
+      <h3>Hello ${name},</h3>
       <p>Thanks for reaching out to us.</p>
       <p>Our team will contact you shortly.</p>
       <br/>

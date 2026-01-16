@@ -19,14 +19,14 @@ const Thankyou = () => {
       <section className="relative w-full overflow-hidden bg-zinc-950 text-white flex justify-center">
         <div className="absolute inset-0 bg-black" />
 
-        <div
-          className="absolute inset-0 opacity-80"
-          style={{
-            backgroundImage: "url('/assets/pattern-bg.webp')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+        <img
+          src="/assets/pattern-bg.webp"
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover opacity-80"
         />
+
         <div
           className="absolute inset-0 opacity-80"
           style={{
@@ -145,7 +145,9 @@ const Thankyou = () => {
         </div>
       </section>
 
-      <Suspense fallback={<div className="min-h-125 bg-zinc-100" />}>
+      <Suspense
+        fallback={<section className="bg-zinc-100 min-h-130 py-10 lg:py-20" />}
+      >
         <FAQSection />
       </Suspense>
 

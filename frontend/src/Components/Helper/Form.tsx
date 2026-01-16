@@ -269,7 +269,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.95 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed left-1/2 top-1/2 z-1000 w-[92%] max-w-md max-h-[90vh] -translate-x-1/2 -translate-y-1/2 rounded-3xl bg-white p-4 sm:p-8 shadow-2xl"
+            className="fixed left-1/2 top-1/2 z-1000 w-[92%] max-w-md max-h-[90vh] -translate-x-1/2 -translate-y-1/2 rounded-3xl bg-white p-3 sm:p-8 shadow-2xl"
           >
             <button
               onClick={closeSubmit}
@@ -284,7 +284,10 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
               Landing Pages With Us!
             </h3>
 
-            <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
+            <form
+              onSubmit={handleSubmit}
+              className="mt-6 flex flex-col gap-2 sm:gap-4"
+            >
               <input
                 name="name"
                 ref={firstInputRef}

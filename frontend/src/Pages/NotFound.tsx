@@ -1,113 +1,102 @@
+import { FaEnvelope } from "react-icons/fa";
+import { FiPhone } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <section className="min-h-screen bg-zinc-100 flex items-center justify-center px-4 sm:px-6">
-      <div className="w-full max-w-2xl lg:max-w-4xl text-center">
-        {/* CAVE */}
-        <div
-          className="
-            relative mx-auto
-            mb-10 sm:mb-14
-            w-65 h-42.5
-            sm:w-[320px] sm:h-53
-            lg:w-140 lg:h-88
-            flex items-center justify-center
-          "
-        >
-          {/* CAVE SHAPE */}
-          <svg
-            viewBox="0 0 300 180"
-            className="absolute inset-0 w-full h-full"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid meet"
+    <section className="min-h-screen bg-zinc-100 flex flex-col">
+      <header className="relative z-10 bg-zinc-900 flex items-center justify-between px-3 py-2 lg:px-16">
+        <a href="/">
+          <img
+            src="/assets/logowhite.webp"
+            alt="Logo"
+            className="h-12 md:h-16 w-auto"
+            loading="lazy"
+          />
+        </a>
+
+        <div className="flex items-center gap-4">
+          <a className="hidden md:flex items-center gap-2 rounded-xl border border-white/80 px-4 py-3 text-base text-white">
+            <FaEnvelope />
+            ID@e-marketing.io
+          </a>
+          <a className="flex items-center gap-2 rounded-xl bg-(--yellow-emarketing) px-4 py-3 text-sm lg:text-base font-semibold text-black">
+            <FiPhone />
+            +91-9602694444
+          </a>
+        </div>
+      </header>
+
+      <main className="flex-1 flex items-center justify-center px-4">
+        <div className="w-full max-w-3xl text-center">
+          <h1 className="text-[72px] sm:text-[96px] lg:text-[140px] font-extrabold leading-none">
+            <span className="float text-zinc-900">4</span>
+            <span className="float-delay text-(--yellow-emarketing)">0</span>
+            <span className="float text-zinc-900">4</span>
+          </h1>
+
+          <p className="mt-4 text-xs sm:text-sm tracking-[0.35em] uppercase text-zinc-500">
+            Page not found
+          </p>
+
+          <p className="mt-6 text-base sm:text-lg text-zinc-700">
+            Sorry! The page you’re looking for doesn’t exist.
+          </p>
+
+          <Link
+            to="/"
+            className="
+              inline-flex items-center
+              mt-8
+              rounded-full
+              border border-zinc-300
+              bg-white
+              px-6 py-3
+              text-sm sm:text-base
+              font-medium text-zinc-900
+              shadow-sm
+              transition
+              hover:scale-[1.03]
+              hover:border-zinc-400
+            "
           >
-            <path
-              d="M20 160C20 80 80 20 150 20C220 20 280 80 280 160Z"
-              fill="#18181B"
-            />
-          </svg>
+            ← Return home
+          </Link>
+        </div>
+      </main>
 
-          {/* CAVE CONTENT */}
-          <div className="relative z-10 flex flex-col items-center justify-center">
-            {/* FLOATING 404 */}
-            <div className="flex items-center justify-center gap-2 sm:gap-4 lg:gap-6">
-              <span className="error-num floating text-white">4</span>
-
-              <span className="error-num floating-delay text-(--yellow-emarketing)">
-                0
-              </span>
-
-              <span className="error-num floating text-white">4</span>
-            </div>
-
-            {/* SUBTEXT INSIDE CAVE */}
-            <span
-              className="
-                mt-2 sm:mt-3
-                text-[10px] sm:text-xs lg:text-sm
-                tracking-widest uppercase
-                text-white  
-              "
-            >
-              Page not found
-            </span>
+      {/* FOOTER */}
+      <footer className="bg-zinc-900 py-4 flex justify-center w-screen">
+        <div className="w-full max-w-350 flex flex-col-reverse xl:flex-row items-center justify-between gap-4">
+          <p className="text-xs sm:text-sm text-white/90">
+            Copyright © {new Date().getFullYear()} | Powered by JAI MARKETING.
+          </p>
+          <div className="flex gap-6 text-xs sm:text-sm text-white/90">
+            <a href="https://www.e-marketing.io/privacy-policy/">
+              Privacy Policy
+            </a>
+            <a href="https://www.e-marketing.io/disclaimer/">Disclaimer</a>
+            <a href="https://www.e-marketing.io/terms-of-use/">Terms of Use</a>
           </div>
         </div>
+      </footer>
 
-        <p className="text-base sm:text-lg lg:text-xl text-zinc-800">
-          It appears you have strayed from the path.
-        </p>
-
-        <Link
-          to="/"
-          className="
-            mt-3 sm:mt-4
-            inline-flex items-center gap-2
-            text-sm sm:text-base
-            text-zinc-900 font-medium
-            hover:underline
-          "
-        >
-          ← Return home
-        </Link>
-      </div>
-
-      {/* FLOATING + DEPTH */}
+      {/* FLOAT ANIMATION */}
       <style>{`
         @keyframes float {
-          0%,100% { transform: translateY(0); }
-          50% { transform: translateY(-14px); }
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
         }
 
-        .floating {
+        .float {
+          display: inline-block;
           animation: float 5s ease-in-out infinite;
         }
 
-        .floating-delay {
+        .float-delay {
+          display: inline-block;
           animation: float 5s ease-in-out infinite;
-          animation-delay: 0.7s;
-        }
-
-        .error-num {
-          font-size: 48px;
-          font-weight: 800;
-          line-height: 1;
-          text-shadow:
-            0 2px 0 rgba(0,0,0,0.35),
-            0 6px 14px rgba(0,0,0,0.45);
-        }
-
-        @media (min-width: 640px) {
-          .error-num {
-            font-size: 68px;
-          }
-        }
-
-        @media (min-width: 1024px) {
-          .error-num {
-            font-size: 120px;
-          }
+          animation-delay: 0.6s;
         }
       `}</style>
     </section>

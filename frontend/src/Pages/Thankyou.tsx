@@ -136,9 +136,11 @@ const Thankyou = () => {
             Copyright © {new Date().getFullYear()} | Powered by JAI MARKETING.
           </p>
           <div className="flex gap-6 text-xs sm:text-sm text-white/90">
-            <a href="/privacy-policy/">Privacy Policy</a>
-            <a href="/disclaimer/">Disclaimer</a>
-            <a href="/terms-of-use/">Terms of Use</a>
+            <a href="https://www.e-marketing.io/privacy-policy/">
+              Privacy Policy
+            </a>
+            <a href="https://www.e-marketing.io/disclaimer/">Disclaimer</a>
+            <a href="https://www.e-marketing.io/terms-of-use/">Terms of Use</a>
           </div>
         </div>
       </footer>

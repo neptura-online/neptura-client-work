@@ -160,9 +160,11 @@ const AdminDasBoard = ({
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-zinc-900/40 p-6">
-            <p className="text-sm text-zinc-400 mb-4">Total Partial : 54</p>
+            <p className="text-sm text-zinc-400 mb-4">
+              Total Partial : {partialLeads.length}
+            </p>
             <Link
-              to="/admin/leads"
+              to="/admin/partialleads"
               className="block rounded-lg bg-yellow-500 py-2 text-center font-semibold text-black hover:bg-yellow-400"
             >
               View All Partial Leads

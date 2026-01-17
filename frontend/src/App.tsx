@@ -4,9 +4,9 @@ import axios from "axios";
 import { AdminAuthProvider } from "./context/AdminAuthContext";
 import type { Lead, User } from "./types/type";
 
+const NotFound = lazy(() => import("./Pages/NotFound"));
 const Thankyou = lazy(() => import("./Pages/Thankyou"));
 const UserPage = lazy(() => import("./Pages/UserPage"));
-
 const LandingPage = lazy(() => import("./Pages/LandingPage"));
 const BusinessLead = lazy(() => import("./Pages/BusinessLead"));
 const AdminLayout = lazy(() => import("./Layouts/AdminLayout"));
@@ -271,7 +271,14 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/business-lead" element={<BusinessLead />} />
+          <Route
+            path="/business-lead"
+            element={
+              <Suspense fallback={null}>
+                <BusinessLead />
+              </Suspense>
+            }
+          />
           <Route path="/thankyou" element={<Thankyou />} />
 
           <Route
@@ -356,6 +363,14 @@ const App = () => {
             element={
               <Suspense fallback={null}>
                 <AdminLogin />
+              </Suspense>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <Suspense fallback={null}>
+                <NotFound />
               </Suspense>
             }
           />

@@ -401,7 +401,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/90 pt-6 md:flex-row">
+        <div className="flex flex-col-reverse items-center justify-between gap-4 border-t border-white/90 pt-6 md:flex-row">
           <p className="text-xs text-white/90">
             Copyright © {new Date().getFullYear()} | Powered by JAI MARKETING.
           </p>

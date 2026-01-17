@@ -36,15 +36,17 @@ const Thankyou = () => {
 
         <div className="relative z-10 max-w-390 w-full">
           <div className="flex items-center justify-between px-3 py-2 lg:px-16">
-            <img
-              src="/assets/logowhite.webp"
-              alt="Logo"
-              width={160}
-              height={64}
-              className="h-15 md:h-20 w-auto"
-              loading="lazy"
-              decoding="async"
-            />
+            <a href="/">
+              <img
+                src="/assets/logowhite.webp"
+                alt="Logo"
+                width={160}
+                height={64}
+                className="h-15 md:h-20 w-auto"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
 
             <div className="flex items-center gap-4">
               <a className="hidden md:flex items-center gap-2 rounded-xl border border-white/30 px-4 py-3 text-base">
@@ -129,7 +131,7 @@ const Thankyou = () => {
       </Suspense>
 
       <footer className="bg-[#1A1421] py-4 flex justify-center w-screen">
-        <div className="w-full max-w-350 flex flex-col xl:flex-row items-center justify-between gap-4">
+        <div className="w-full max-w-350 flex flex-col-reverse xl:flex-row items-center justify-between gap-4">
           <p className="text-xs sm:text-sm text-white/90">
             Copyright © {new Date().getFullYear()} | Powered by JAI MARKETING.
           </p>

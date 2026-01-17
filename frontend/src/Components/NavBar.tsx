@@ -22,12 +22,14 @@ const NavBar = () => {
       <div className="w-full max-w-380 mx-auto ">
         <div className="relative z-10 flex  items-center justify-between px-3 py-2 lg:px-16 ">
           <div className="flex items-center gap-2">
-            <img
-              src="/assets/logowhite.webp"
-              alt="Logo"
-              className="h-15 md:h-20 w-auto"
-              loading="lazy"
-            />
+            <a href="/">
+              <img
+                src="/assets/logowhite.webp"
+                alt="Logo"
+                className="h-15 md:h-20 w-auto"
+                loading="lazy"
+              />
+            </a>
           </div>
 
           <div className="items-center gap-4 flex ">

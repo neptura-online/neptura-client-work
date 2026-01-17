@@ -375,7 +375,7 @@ export default function FinalCTASection() {
 
       {/* footer started */}
       <div className=" bg-[#1A1421] py-4 flex justify-center w-screen ">
-        <div className="w-full max-w-340 flex flex-col items-center justify-between gap-4 xl:flex-row">
+        <div className="w-full max-w-340 flex flex-col-reverse items-center justify-between gap-4 xl:flex-row">
           <p className="text-xs sm:text-sm text-white/90">
             Copyright © {new Date().getFullYear()} | Powered by JAI MARKETING.
           </p>

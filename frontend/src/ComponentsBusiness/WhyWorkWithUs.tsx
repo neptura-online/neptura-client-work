@@ -24,7 +24,7 @@ export default function WhyWorkWithUsExact({
       <div className="mx-auto max-w-360 px-3 md:px-6">
         <div className="flex flex-col-reverse items-center lg:items-start gap-14 lg:flex-row">
           <div className="relative">
-            <div className="pt-4 pl-1 relative overflow-hidden rounded-[28px]">
+            <div className="pt-4 pl-1 relative overflow-hidden  rounded-xl sm:rounded-[28px]">
               <img
                 src="/business/bg.webp"
                 alt="Client reaction"
@@ -34,7 +34,7 @@ export default function WhyWorkWithUsExact({
               <img
                 src="/business/about.webp"
                 alt="Client reaction"
-                className="relative h-full z-10 w-full object-cover rounded-[28px]"
+                className="relative h-full z-10 w-full object-cover  rounded-xl sm:rounded-[28px]"
                 loading="lazy"
               />
             </div>
@@ -42,7 +42,7 @@ export default function WhyWorkWithUsExact({
             <motion.img
               src="/business/review.webp"
               alt="Client reaction"
-              className="h-30 absolute -bottom-15 object-cover rounded-[28px] z-20"
+              className="h-30 absolute -bottom-15 object-cover rounded-xl sm:rounded-[28px] z-20"
               animate={{
                 x: [-10, 60],
                 y: [0, -6],

@@ -59,7 +59,7 @@ const LeadsChart = ({ leads }: { leads: Lead[] }) => {
   return (
     <div className="rounded-2xl border border-white/10 bg-zinc-900/40 p-6">
       <div className="flex justify-between items-center mb-4">
-        <p className="text-sm text-zinc-400">Leads Trend</p>
+        <p className="text-sm text-zinc-400">Main Leads</p>
 
         <div className="flex gap-2">
           {ranges.map((r) => (

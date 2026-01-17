@@ -248,12 +248,14 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
           <div className="sm:hidden w-full max-w-390 mx-auto ">
             <div className="relative z-10 flex  items-center justify-between py-2 lg:px-16 ">
               <div className="flex items-center gap-2">
-                <img
-                  src="/assets/logowhite.webp"
-                  alt="Logo"
-                  className="h-15 md:h-20 w-auto"
-                  loading="lazy"
-                />
+                <a href="/">
+                  <img
+                    src="/assets/logowhite.webp"
+                    alt="Logo"
+                    className="h-15 md:h-20 w-auto"
+                    loading="lazy"
+                  />
+                </a>
               </div>
 
               <div className="items-center gap-4 flex ">
@@ -304,14 +306,12 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
               className="group mt-4 flex w-fit  items-center gap-4 rounded-2xl bg-yellow-500 px-4 py-3 transition-all hover:scale-105 hover:bg-yellow-400  hover:cursor-pointer"
             >
               {" "}
-              <span className="hidden lg:flex h-10 w-10 items-center justify-center rounded-full bg-black">
-                <FaArrowUpLong className="rotate-45 text-xl text-yellow-400 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-              </span>
+              <span className="hidden lg:flex h-7 w-7 items-center justify-center rounded-full bg-black"></span>
               <span className="text-left text-sm font-semibold text-black md:text-xl">
                 Get Free Landing Page
               </span>
-              <span className="lg:hidden flex h-10 w-10 items-center justify-center rounded-full bg-black">
-                <FaArrowUpLong className="rotate-45 text-lg lg:text-xl text-yellow-400 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+              <span className="lg:hidden flex h-7 w-7 items-center justify-center rounded-full bg-black">
+                <FaArrowUpLong className="rotate-45 text-sm text-yellow-400 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
               </span>
             </motion.button>
           </div>

@@ -297,7 +297,12 @@ const App = () => {
             <Route
               index
               element={
-                <AdminDasBoard users={users} loading={loading} leads={leads} />
+                <AdminDasBoard
+                  users={users}
+                  loading={loading}
+                  leads={leads}
+                  partialLeads={partialLeads}
+                />
               }
             />
 

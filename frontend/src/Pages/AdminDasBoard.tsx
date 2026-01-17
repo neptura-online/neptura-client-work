@@ -8,8 +8,14 @@ import { FiMenu } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import AdminProfileDropdown from "../Components/Helper/AdminProfileDropdown";
 import axios from "axios";
+import PartialLeadsChart from "../Components/PartialLeadsChart";
 
-const AdminDasBoard = ({ users, leads, loading }: AdminDashBoardProps) => {
+const AdminDasBoard = ({
+  users,
+  leads,
+  loading,
+  partialLeads,
+}: AdminDashBoardProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
 
@@ -24,11 +30,7 @@ const AdminDasBoard = ({ users, leads, loading }: AdminDashBoardProps) => {
       await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/user/verify`,
         {},
-        {
-          headers: {
-            token: `${token}`,
-          },
-        }
+        { headers: { token } }
       );
     } catch {
       localStorage.removeItem("token");
@@ -43,11 +45,8 @@ const AdminDasBoard = ({ users, leads, loading }: AdminDashBoardProps) => {
   useEffect(() => {
     const id = localStorage.getItem("id");
     if (!id || users.length === 0) return;
-
-    const foundUser = users.find((user) => user._id === id);
-    if (foundUser) {
-      setUser(foundUser);
-    }
+    const foundUser = users.find((u) => u._id === id);
+    if (foundUser) setUser(foundUser);
   }, [users]);
 
   const todayLeads = useMemo(
@@ -74,49 +73,45 @@ const AdminDasBoard = ({ users, leads, loading }: AdminDashBoardProps) => {
   }, [leads, today]);
 
   return (
-    <div className="space-y-6">
-      <header className="sticky top-0 z-20 bg-zinc-950/80 backdrop-blur border-b border-white/10 py-4 flex flex-col md:flex-row justify-between gap-3">
-        <h2 className="hidden md:block text-2xl font-semibold font-serif">
-          Welcome back, {user?.name} 👋
+    <div className="space-y-6 relative">
+      <header className="sticky top-0 z-30 bg-zinc-950/80 backdrop-blur border-b border-white/10 px-4 py-4 flex items-center justify-between">
+        <h2 className="text-xl md:text-2xl font-semibold font-serif">
+          Welcome back{user?.name ? `, ${user.name}` : ""} 👋
         </h2>
-        <div className="flex md:gap-3 justify-between md:justify-start">
-          {user && <AdminProfileDropdown currentUser={user} />}
 
-          <div className="flex justify-between items-center gap-2">
-            <button
-              onClick={() => setMenuOpen((menuOpen) => !menuOpen)}
-              className="md:hidden"
-            >
-              {menuOpen ? (
-                <IoMdClose className="h-8 w-8" />
-              ) : (
-                <FiMenu className="h-8 w-8" />
-              )}
-            </button>
-          </div>
+        <div className="flex items-center gap-3">
+          {user && <AdminProfileDropdown currentUser={user} />}
+          <button onClick={() => setMenuOpen((v) => !v)} className="md:hidden">
+            {menuOpen ? (
+              <IoMdClose className="h-7 w-7" />
+            ) : (
+              <FiMenu className="h-7 w-7" />
+            )}
+          </button>
         </div>
-        <h2 className="text-2xl md:hidden font-semibold">
-          Welcome back,admin 👋
-        </h2>
       </header>
+
       {menuOpen && (
-        <div className="md:hidden absolute bg-zinc-900/60 h-40 w-50 top-22 right-7 z-60 rounded-2xl p-2">
-          <nav className="flex flex-col gap-2 text-sm p-1">
-            <NavLink
-              to="/admin"
-              className="px-4 py-2 rounded-lg bg-zinc-800 text-white"
-            >
+        <div className="md:hidden absolute right-4 top-20 z-40 w-56 rounded-2xl bg-zinc-900 border border-white/10 p-2">
+          <nav className="flex flex-col gap-2 text-sm">
+            <NavLink to="/admin" className="px-4 py-2 rounded-lg bg-zinc-800">
               Dashboard
             </NavLink>
             <NavLink
               to="/admin/leads"
-              className="px-4 py-2 rounded-lg bg-zinc-800 text-white"
+              className="px-4 py-2 rounded-lg bg-zinc-800"
             >
               Leads
             </NavLink>
             <NavLink
+              to="/admin/partialleads"
+              className="px-4 py-2 rounded-lg bg-zinc-800"
+            >
+              Partial Leads
+            </NavLink>
+            <NavLink
               to="/admin/export"
-              className="px-4 py-2 rounded-lg bg-zinc-800 text-white"
+              className="px-4 py-2 rounded-lg bg-zinc-800"
             >
               Export Leads
             </NavLink>
@@ -124,7 +119,7 @@ const AdminDasBoard = ({ users, leads, loading }: AdminDashBoardProps) => {
         </div>
       )}
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard
           title="Today Leads"
           value={todayLeads}
@@ -147,30 +142,32 @@ const AdminDasBoard = ({ users, leads, loading }: AdminDashBoardProps) => {
         />
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-3">
-        <div className="lg:col-span-2">
+      <div className="grid gap-4 grid-cols-1 lg:grid-cols-3">
+        <div className="lg:col-span-2 space-y-4">
           <LeadsChart leads={leads} />
+          <PartialLeadsChart leads={partialLeads} />
         </div>
-        <div className="rounded-2xl border border-white/10 bg-zinc-900/40 p-6 flex flex-col justify-center">
-          <p className="text-sm text-zinc-400 mb-2">System Status</p>
-          <p className="text-sm text-emerald-400">
-            {loading ? "Loading data..." : "All systems operational"}
-          </p>
-        </div>
-      </div>
 
-      <div className="grid gap-4 lg:grid-cols-3">
-        <div className="lg:col-span-2">
-          <RecentLeads leads={leads} />
-        </div>
-        <div className="rounded-2xl border border-white/10 bg-zinc-900/40 p-6">
-          <p className="text-sm text-zinc-400 mb-4">Quick Actions</p>
-          <Link
-            to="/admin/leads"
-            className="block rounded-lg bg-yellow-500 py-2 text-center text-black font-semibold hover:bg-yellow-400"
-          >
-            View All Leads
-          </Link>
+        <div className="space-y-4">
+          <div className="rounded-2xl border border-white/10 bg-zinc-900/40 p-6">
+            <div className="flex items-center justify-between mb-3">
+              <p className="text-sm text-zinc-400">System Status</p>
+              <p className="text-sm text-emerald-400">
+                {loading ? "Loading..." : "Operational"}
+              </p>
+            </div>
+            <RecentLeads leads={leads} />
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-zinc-900/40 p-6">
+            <p className="text-sm text-zinc-400 mb-4">Total Partial : 54</p>
+            <Link
+              to="/admin/leads"
+              className="block rounded-lg bg-yellow-500 py-2 text-center font-semibold text-black hover:bg-yellow-400"
+            >
+              View All Partial Leads
+            </Link>
+          </div>
         </div>
       </div>
     </div>

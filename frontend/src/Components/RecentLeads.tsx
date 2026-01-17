@@ -32,7 +32,7 @@ const RecentLeads = ({ leads }: { leads: Lead[] }) => {
           {recent.map((l) => (
             <div
               key={l._id}
-              className="flex justify-between border border-white/10 rounded-lg p-3"
+              className="flex flex-col sm:flex-row justify-between border border-white/10 rounded-lg p-3"
             >
               <div>
                 <p className="font-medium">{l.name}</p>

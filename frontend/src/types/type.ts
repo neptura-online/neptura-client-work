@@ -64,4 +64,5 @@ export type AdminDashBoardProps = {
   users: User[];
   loading: boolean;
   leads: Lead[];
+  partialLeads: Lead[];
 };

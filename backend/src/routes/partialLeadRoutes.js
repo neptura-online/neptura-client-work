@@ -24,11 +24,6 @@ router.post("/", async (req, res) => {
       formID,
     } = req.body;
 
-    const findPhone = await PartialLead.findOne({ phone });
-    if (findPhone) {
-      return res.status(409).json("phone number already exist");
-    }
-
     const lead = await PartialLead.create({
       name,
       email,

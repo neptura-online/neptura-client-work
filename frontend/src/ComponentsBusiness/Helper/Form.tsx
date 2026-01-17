@@ -89,8 +89,9 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
   const partialSubmit = async () => {
     if (hasSubmittedRef.current) return;
     if (formData.name.length < 3) return;
-    if (!phone || phoneError) return;
+    if (!phone && !formData.email) return;
     const emailValid = validateEmail(formData.email);
+    if (phoneError && !emailValid) return;
 
     const body = {
       ...formData,
@@ -117,7 +118,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
   };
 
   const closeSubmit = async () => {
-    if (formData.name && phone && !phoneError) {
+    if (formData.name) {
       await partialSubmit();
     }
     onClose();
@@ -222,6 +223,26 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
       document.body.style.overflow = "auto";
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      partialSubmit();
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        partialSubmit();
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [formData.name, phone, formData.email]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

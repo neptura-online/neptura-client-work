@@ -29,15 +29,6 @@ router.post("/", async (req, res) => {
       return res.status(400).json("please enter something");
     }
 
-    const findEmail = await Lead.findOne({ email });
-    if (findEmail) {
-      return res.status(409).json("email already exist");
-    }
-    const findPhone = await Lead.findOne({ phone });
-    if (findPhone) {
-      return res.status(409).json("phone number already exist");
-    }
-
     const lead = await Lead.create({
       name,
       email,

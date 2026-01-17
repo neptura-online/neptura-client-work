@@ -30,7 +30,7 @@ const ProblemSection = ({
           backgroundPosition: "center",
         }}
       />
-      <div className="mx-auto px-4 lg:max-w-340 relative z-10">
+      <div className="mx-auto px-4 lg:max-w-340 relative z-10 flex flex-col items-center">
         <div className="mx-auto max-w-7xl text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -67,12 +67,12 @@ const ProblemSection = ({
           {problems.map(({ id, text, url }) => (
             <div
               key={id}
-              className="group flex flex-col gap-4 rounded-2xl border border-zinc-100 bg-white p-4 font-bold text-zinc-900 transition hover:border-yellow-500"
+              className="group flex flex-col gap-4 rounded-2xl border border-zinc-100 bg-white p-4 lg:p-8 font-bold text-zinc-900 transition hover:border-yellow-500 items-center max-w-60"
             >
               <div className=" flex h-12 w-12 items-center justify-center rounded-xl bg-(--yellow-emarketing)">
                 <WorkIcon url={url} alt={text} />
               </div>
-              <p className="text-base">{text}</p>
+              <p className="text-base text-center">{text}</p>
             </div>
           ))}
         </motion.div>

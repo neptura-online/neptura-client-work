@@ -50,7 +50,7 @@ const NotFound = () => {
               mt-8
               rounded-full
               border border-zinc-300
-              bg-white
+             bg-(--yellow-emarketing)
               px-6 py-3
               text-sm sm:text-base
               font-medium text-zinc-900

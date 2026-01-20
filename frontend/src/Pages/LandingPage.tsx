@@ -6,6 +6,7 @@ import OfferContainer from "../Components/OfferContainer";
 import ProblemSection from "../Components/ProblemSection";
 import LandingProblemSection from "../Components/LandingProblemSection";
 import Buttons from "../ComponentsBusiness/Helper/whatsapp";
+import GallerySection from "../Components/Gallery/ GallerySection";
 
 const ExitIntentWrapper = lazy(
   () => import("../Components/Helper/ExitIntentWrapper")
@@ -55,6 +56,9 @@ const LandingPage = () => {
         settriggerUrl={setTriggerUrl}
         setSave={setSave}
       />
+
+      <GallerySection />
+
       <LandingProblemSection setOpenForm={setOpenForm} setId={setId} />
 
       <Suspense fallback={null}>

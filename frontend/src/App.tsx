@@ -3,7 +3,6 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import axios from "axios";
 import { AdminAuthProvider } from "./context/AdminAuthContext";
 import type { Lead, User } from "./types/type";
-
 const NotFound = lazy(() => import("./Pages/NotFound"));
 const Thankyou = lazy(() => import("./Pages/Thankyou"));
 const UserPage = lazy(() => import("./Pages/UserPage"));

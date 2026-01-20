@@ -130,3 +130,11 @@
   overflow-x: clip;
   width: 100%;
 }
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}

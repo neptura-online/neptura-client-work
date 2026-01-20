@@ -2,6 +2,7 @@ import { useRef } from "react";
 
 interface ScrollCard {
   image: string;
+  title?: string;
   onClick: () => void;
   onPreviewStart: () => void;
   onPreviewEnd: () => void;
@@ -9,6 +10,7 @@ interface ScrollCard {
 
 const HoverScrollCard = ({
   image,
+  title = "Landing page",
   onClick,
   onPreviewStart,
   onPreviewEnd,
@@ -78,16 +80,17 @@ const HoverScrollCard = ({
   };
 
   return (
-    <div
-      onClick={onClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      onContextMenu={(e) => e.preventDefault()}
-      className="
+    <div className="">
+      <div
+        onClick={onClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        onContextMenu={(e) => e.preventDefault()}
+        className="
         min-w-70
-        h-75
+        h-80
         overflow-hidden
         rounded-2xl
         border
@@ -96,22 +99,28 @@ const HoverScrollCard = ({
         select-none
         touch-none       
       "
-    >
-      <div className="relative h-full overflow-hidden pointer-events-none">
-        <img
-          ref={imgRef}
-          src={image}
-          alt=""
-          draggable={false}
-          className="
+      >
+        <div className="relative h-full overflow-hidden pointer-events-none">
+          <img
+            ref={imgRef}
+            src={image}
+            alt=""
+            draggable={false}
+            className="
             w-full
             object-cover
             transition-transform
-            duration-900
+            duration-4000
             ease-linear
             pointer-events-none   
           "
-        />
+          />
+        </div>
+      </div>
+      <div>
+        <p className="mt-3 text-center text-lg font-medium text-zinc-800 mx-auto">
+          {title}
+        </p>
       </div>
     </div>
   );

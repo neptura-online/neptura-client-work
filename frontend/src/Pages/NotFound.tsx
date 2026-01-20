@@ -66,7 +66,7 @@ const NotFound = () => {
       </main>
 
       {/* FOOTER */}
-      <footer className="bg-zinc-900 py-4 flex justify-center w-screen">
+      <footer className="bg-zinc-900 px-2 py-4 flex justify-center w-screen">
         <div className="w-full max-w-350 flex flex-col-reverse xl:flex-row items-center justify-between gap-4">
           <p className="text-xs sm:text-sm text-white/90">
             Copyright © {new Date().getFullYear()} | Powered by JAI MARKETING.

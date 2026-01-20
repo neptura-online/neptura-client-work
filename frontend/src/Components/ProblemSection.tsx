@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import type { OpenFormProps } from "../types/type";
 import { problems } from "../constant/constant";
-import WorkIcon from "./Helper/PreetyIcon";
 import { FiArrowRight } from "react-icons/fi";
 
 const gridMotion = {
@@ -12,12 +11,12 @@ const gridMotion = {
 const ProblemSection = ({
   setOpenForm,
   setId,
-  settriggerUrl,
-}: OpenFormProps) => {
+}: //settriggerUrl,
+OpenFormProps) => {
   const triggerButton = () => {
     setOpenForm(true);
     setId("Marketing expert audit");
-    settriggerUrl?.("https://www.e-marketing.io/contact-us/");
+    // settriggerUrl?.("https://www.e-marketing.io/contact-us/");
     //setSave?.("/pdf/sample.pdf");
   };
   return (
@@ -31,7 +30,7 @@ const ProblemSection = ({
         }}
       />
       <div className="mx-auto px-4 lg:max-w-340 relative z-10 flex flex-col items-center">
-        <div className="mx-auto max-w-7xl text-center">
+        <div className="mx-auto  text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -62,17 +61,23 @@ const ProblemSection = ({
           whileInView="visible"
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="mt-16 grid grid-cols-2 gap-6 lg:grid-cols-4"
+          className="mt-16 grid grid-cols-2 gap-6 lg:grid-cols-4 w-full"
         >
           {problems.map(({ id, text, url }) => (
             <div
               key={id}
-              className="group flex flex-col gap-4 rounded-2xl border border-zinc-100 bg-white p-4 lg:p-8 font-bold text-zinc-900 transition hover:border-yellow-500 items-center max-w-60"
+              className="group flex flex-col gap-4 rounded-2xl border border-zinc-100 bg-white p-4 lg:p-8 font-bold text-zinc-900 transition hover:border-yellow-500 items-center "
             >
-              <div className=" flex h-12 w-12 items-center justify-center rounded-xl bg-(--yellow-emarketing)">
-                <WorkIcon url={url} alt={text} />
+              <div className=" flex items-center justify-center rounded-xl">
+                <img
+                  src={`${url}`}
+                  alt={text}
+                  className="h-18 w-auto brightness-0 "
+                />
               </div>
-              <p className="text-base text-center">{text}</p>
+              <h6 className="text-base text-center whitespace-pre-line">
+                {text}
+              </h6>
             </div>
           ))}
         </motion.div>

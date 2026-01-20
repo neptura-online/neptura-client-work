@@ -48,8 +48,8 @@ router.post("/", async (req, res) => {
 
     const reportingTasks = [
       addToGoogleSheet(lead),
-      sendLeadMail({ name, email }),
-      sendAdminLeadMail(lead),
+    //  sendLeadMail({ name, email }),
+    //  sendAdminLeadMail(lead),
     ];
     try {
       await Promise.all(reportingTasks);

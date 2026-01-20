@@ -71,14 +71,16 @@ export default function WhyWorkWithUsExact({
 
             <div className="relative mt-6 grid grid-cols-2 sm:grid-cols-3 gap-y-4 gap-x-12">
               <div className="absolute left-20 right-0 top-13 h-px z-10 bg-zinc-300" />
-              <div className="absolute left-20 max-w-80 right-32 top-52 h-px z-10 bg-zinc-300" />
+              <div className="absolute left-20 sm:max-w-80 right-32 top-58 lg:top-52 h-px z-10 bg-zinc-300" />
 
               {items.map((item, i) => (
                 <div key={i} className="text-center">
                   <div className="mx-auto relative flex h-25 w-25 items-center justify-center rounded-full bg-zinc-900 text-(--yellow-emarketing) z-20">
                     <WorkIcon url={item.url} alt={item.label} />
                   </div>
-                  <p className="mt-4 font-medium text-zinc-900">{item.label}</p>
+                  <h6 className="mt-4 font-medium text-zinc-900">
+                    {item.label}
+                  </h6>
                 </div>
               ))}
             </div>

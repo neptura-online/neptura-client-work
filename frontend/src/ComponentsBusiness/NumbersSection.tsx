@@ -67,9 +67,9 @@ export default function NumbersSection() {
               <div className="text-5xl font-bold text-(--yellow-emarketing) md:text-6xl">
                 {stat.value}
               </div>
-              <p className="mt-3 text-base font-serif lg:text-lg font-semibold text-zinc-900 leading-[1.1em]">
+              <h5 className="mt-3 text-base font-serif lg:text-lg font-semibold text-zinc-900 leading-[1.1em]">
                 {stat.label}
-              </p>
+              </h5>
             </motion.div>
           ))}
         </div>

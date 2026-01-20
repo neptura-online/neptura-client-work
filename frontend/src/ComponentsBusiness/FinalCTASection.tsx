@@ -94,7 +94,7 @@ export default function FinalCTASection() {
     const body = {
       ...formData,
       email: emailValid ? formData.email : "",
-      phone: `+${phone}`,
+      phone: phone ? `+${phone}` : "-",
       utm_source,
       utm_medium,
       utm_term,
@@ -112,7 +112,10 @@ export default function FinalCTASection() {
         body,
         { headers: { "Content-Type": "application/json" } }
       );
-    } catch (err) {}
+    } catch (err) {
+    } finally {
+      hasSubmittedRef.current = true;
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -229,25 +232,6 @@ export default function FinalCTASection() {
     setFormError((prev) => ({ ...prev, [name]: "" }));
   };
 
-  useEffect(() => {
-    const handleBeforeUnload = () => {
-      partialSubmit();
-    };
-
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "hidden") {
-        partialSubmit();
-      }
-    };
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, [formData.name, phone]);
   return (
     <section className="bg-zinc-100 pt-10 lg:pt-20">
       <div className="mx-auto max-w-350 px-3 lg:px-6 pb-10">
@@ -274,7 +258,7 @@ export default function FinalCTASection() {
               We guarantee a
             </span>
 
-            <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2 min-w-80 sm:min-w-170 lg:min-w-200">
+            <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2 min-w-80 sm:min-w-170 p-2">
               <div className="overflow-hidden rounded-3xl bg-linear-to-br p-8 text-black bg-[url('/business/donut.webp')] h-fit ">
                 <div className="text-6xl font-extrabold">15%</div>
                 <div className="mt-2 text-xl font-semibold">ROAS</div>
@@ -297,7 +281,7 @@ export default function FinalCTASection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-3xl bg-white p-8 shadow-xl xl:w-[40%]"
+            className="rounded-3xl bg-white p-8 shadow-xl w-full min-[1370px]:w-[40%]"
           >
             <AnimatePresence>
               {error && (
@@ -395,7 +379,7 @@ export default function FinalCTASection() {
       </div>
 
       {/* footer started */}
-      <div className=" bg-[#1A1421] py-4 flex justify-center w-screen ">
+      <div className=" bg-[#1A1421] px-4 py-4 flex justify-center w-screen ">
         <div className="w-full max-w-340 flex flex-col-reverse items-center justify-between gap-4 xl:flex-row">
           <p className="text-xs sm:text-sm text-white/90">
             Copyright © {new Date().getFullYear()} | Powered by JAI MARKETING.

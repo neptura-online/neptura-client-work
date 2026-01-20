@@ -98,7 +98,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
     const body = {
       ...formData,
       email: emailValid ? formData.email : "",
-      phone: `+${phone}`,
+      phone: phone ? `+${phone}` : "-",
       utm_source,
       utm_medium,
       utm_term,
@@ -116,7 +116,10 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
         body,
         { headers: { "Content-Type": "application/json" } }
       );
-    } catch (err) {}
+    } catch (err) {
+    } finally {
+      hasSubmittedRef.current = true;
+    }
   };
 
   const closeSubmit = async () => {

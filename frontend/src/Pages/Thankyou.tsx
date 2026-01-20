@@ -60,8 +60,8 @@ const Thankyou = () => {
             </div>
           </div>
 
-          <div className="mx-auto md:mx-4 flex flex-col lg:flex-row gap-12 justify-between lg:px-16">
-            <div className="flex flex-col items-start lg:w-[90%] px-5 py-10">
+          <div className="mx-auto md:mx-4 flex flex-col xl:flex-row gap-12 justify-between lg:px-16">
+            <div className="flex flex-col items-start xl:w-[90%] px-5 py-10">
               {name && (
                 <h1 className="text-[30px] mb-3 font-serif md:text-[45px]">
                   Hi,{" "}
@@ -130,7 +130,7 @@ const Thankyou = () => {
         <FAQSection />
       </Suspense>
 
-      <footer className="bg-[#1A1421] py-4 flex justify-center w-screen">
+      <footer className="bg-[#1A1421] py-4 px-2 flex justify-center w-screen">
         <div className="w-full max-w-350 flex flex-col-reverse xl:flex-row items-center justify-between gap-4">
           <p className="text-xs sm:text-sm text-white/90">
             Copyright © {new Date().getFullYear()} | Powered by JAI MARKETING.

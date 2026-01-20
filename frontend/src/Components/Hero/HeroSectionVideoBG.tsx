@@ -99,7 +99,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
     const body = {
       ...formData,
       email: emailValid ? formData.email : "",
-      phone: `+${phone}`,
+      phone: phone ? `+${phone}` : "-",
       utm_source,
       utm_medium,
       utm_term,
@@ -117,7 +117,10 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
         body,
         { headers: { "Content-Type": "application/json" } }
       );
-    } catch (err) {}
+    } catch (err) {
+    } finally {
+      hasSubmittedRef.current = true;
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

@@ -45,23 +45,27 @@ export const steps = [
 export const problems = [
   {
     id: 1,
-    text: "Confusing or cluttered layouts.",
+    text: "Confusing or \n Cluttered  Layouts",
     url: "/icons/layouts.webp",
   },
   {
     id: 2,
-    text: "Weak messaging that doesn’t connect.",
+    text: "Weak Messaging That \n Doesn’t  Connect.",
     url: "/icons/Weak_messaging.webp",
   },
-  { id: 3, text: "Slow loading time", url: "/icons/loading.webp" },
-  { id: 4, text: "No clear Call To Action", url: "/icons/call-to-action.webp" },
+  { id: 3, text: "Slow \n Loading Time", url: "/icons/loading.webp" },
+  {
+    id: 4,
+    text: "No Clear \n Call To Action",
+    url: "/icons/call-to-action.webp",
+  },
 
-  { id: 5, text: "Information overload", url: "/icons/overload.webp" },
-  { id: 6, text: "Poor mobile experience", url: "/icons/experience.webp" },
-  { id: 7, text: "No trust-building elements", url: "/icons/trust.webp" },
+  { id: 5, text: "Information \n Overload", url: "/icons/overload.webp" },
+  { id: 6, text: "Poor Mobile \n Experience", url: "/icons/experience.webp" },
+  { id: 7, text: "No Trust-building \n Elements", url: "/icons/trust.webp" },
   {
     id: 8,
-    text: "Not able to capture analizable data",
+    text: "Not Able to Capture \n Analizable  Data",
     url: "/icons/analizable_data.webp",
   },
 ];

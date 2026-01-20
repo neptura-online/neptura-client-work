@@ -67,11 +67,11 @@ const CounterItem = ({ value, text, index }: any) => {
         md:col-span-1 md:min-w-65
       `}
     >
-      <h2 className="text-4xl md:text-5xl font-medium text-black">
+      <div className="text-4xl md:text-5xl font-medium text-black">
         {count}
         <span className="text-black">{suffix || "+"}</span>
-      </h2>
-      <p className="text-zinc-900 font-bold font-serif">{text}</p>
+      </div>
+      <h5 className="text-zinc-900 font-bold font-serif">{text}</h5>
     </div>
   );
 };
@@ -109,7 +109,7 @@ const Counter = () => {
 
           <div className="mx-auto mt-12 h-0.5 w-24 bg-white/80" />
         </motion.div>
-        <div className="mx-4 grid grid-cols-2 gap-2 xl:flex xl:gap-0 xl:justify-between ">
+        <div className="mx-4 grid grid-cols-2 gap-2 min-[1380px]:flex xl:justify-between ">
           {counterData.map((data, index) => (
             <CounterItem
               key={data.id}

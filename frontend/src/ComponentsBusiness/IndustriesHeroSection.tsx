@@ -30,13 +30,13 @@ export default function IndustriesHeroSection({
         }}
       />
       <div className="mx-auto max-w-350 px-3 lg:px-6 ">
-        <div className="flex flex-col lg:flex-row items-center">
+        <div className="flex flex-col xl:flex-row gap-2">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:w-[70%] pb-10 flex flex-col justify-center items-center lg:items-start"
+            className="w-full xl:w-[70%] flex pb-10 flex-col justify-center items-center xl:items-start"
           >
             <div
               className="absolute inset-0 opacity-70"
@@ -47,7 +47,7 @@ export default function IndustriesHeroSection({
                 backgroundSize: "contain",
               }}
             />
-            <h2 className="font-serif text-4xl leading-tight md:text-[45px] w-full text-center lg:text-start">
+            <h2 className="font-serif text-4xl leading-tight md:text-[45px] w-full text-center xl:text-start">
               Helped Businesses Across{" "}
               <span className="font-semibold">127+</span>
               <br />
@@ -56,7 +56,7 @@ export default function IndustriesHeroSection({
 
             <div className="mt-6 h-0.5 w-24 bg-white" />
 
-            <p className="mt-6 max-w-xl text-lg text-white/80 text-center lg:text-start">
+            <p className="mt-6 max-w-xl text-lg text-white/80 text-center xl:text-start">
               From startups to enterprises, we’ve helped businesses grow
               exponentially with logic-driven and sales-oriented digital
               marketing strategies.
@@ -78,15 +78,13 @@ export default function IndustriesHeroSection({
             transition={{ duration: 0.6 }}
             className="relative flex justify-center items-end"
           >
-            <div className="relative">
-              <img
-                src="/business/scale.webp"
-                alt="Mobile marketing preview"
-                className="relative z-10 w-80 lg:w-220 lg:-bottom-4"
-              />
+            <img
+              src="/business/scale.webp"
+              alt="Mobile marketing preview"
+              className="relative z-10 w-full max-w-150 xl:max-w-full bottom-0"
+            />
 
-              <div className="absolute inset-0 -z-10 rounded-full bg-purple-500/30 blur-3xl" />
-            </div>
+            <div className="absolute inset-0 -z-10 rounded-full bg-purple-500/30 blur-3xl" />
           </motion.div>
         </div>
       </div>

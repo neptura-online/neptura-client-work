@@ -104,7 +104,10 @@ const Footer = () => {
         body,
         { headers: { "Content-Type": "application/json" } }
       );
-    } catch (err) {}
+    } catch (err) {
+    } finally {
+      hasSubmittedRef.current = true;
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

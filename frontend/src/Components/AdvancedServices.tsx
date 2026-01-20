@@ -305,7 +305,7 @@ const MobileServices = () => {
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="mb-4 rounded-xl border border-black/10"
+                    className="mb-6 rounded-xl border border-black/10 w-full"
                   />
 
                   <ul className="space-y-3 text-sm text-zinc-100">

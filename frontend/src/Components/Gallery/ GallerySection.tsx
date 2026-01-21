@@ -33,6 +33,11 @@ const GallerySection = () => {
   const STEP = cardWidth + GAP;
   const total = images.length;
 
+  const isMobile = useMemo(() => {
+    if (typeof window === "undefined") return false;
+    return window.innerWidth < 768;
+  }, []);
+
   useEffect(() => {
     const updateWidth = () => {
       const w = window.innerWidth;
@@ -47,11 +52,13 @@ const GallerySection = () => {
   }, []);
 
   useEffect(() => {
+    if (isMobile) return;
+
     isTransitioningRef.current = true;
 
     const controls = animate(x, -index * STEP, {
-      duration: 2,
-      ease: "easeInOut",
+      duration: 0.9,
+      ease: [0.25, 0.1, 0.25, 1],
       onComplete: () => {
         isTransitioningRef.current = false;
 
@@ -66,16 +73,17 @@ const GallerySection = () => {
     });
 
     return () => controls.stop();
-  }, [index, STEP, total, x]);
+  }, [index, STEP, total, x, isMobile]);
 
   const startAutoPlay = () => {
+    if (isMobile) return;
     if (intervalRef.current) return;
 
     intervalRef.current = window.setInterval(() => {
       if (!isTransitioningRef.current) {
         setIndex((p) => p + 1);
       }
-    }, 500);
+    }, 3000);
   };
 
   const stopAutoPlay = () => {
@@ -126,6 +134,9 @@ const GallerySection = () => {
           <p className="mt-6 text-base md:text-lg text-zinc-700">
             Swipe or drag through real examples that guide visitors to convert.
           </p>
+          {isMobile && (
+            <p className="mt-2 text-sm text-zinc-500">← Swipe to explore →</p>
+          )}
         </div>
 
         <div
@@ -133,23 +144,24 @@ const GallerySection = () => {
           onMouseEnter={stopAutoPlay}
           onMouseLeave={startAutoPlay}
           onTouchStart={stopAutoPlay}
-          onTouchEnd={startAutoPlay}
         >
           <motion.div
             className="flex gap-8 cursor-grab active:cursor-grabbing"
             style={{ x, willChange: "transform" }}
             drag="x"
-            dragElastic={0.08}
+            dragElastic={isMobile ? 0 : 0.08}
+            dragMomentum={true}
             dragConstraints={{
               left: -STEP * (slides.length - 1),
               right: 0,
             }}
             onDragStart={stopAutoPlay}
             onDragEnd={(_, info) => {
-              startAutoPlay();
-
+              if (isMobile) return;
               if (info.offset.x < -60) setIndex((p) => p + 1);
               else if (info.offset.x > 60) setIndex((p) => p - 1);
+
+              startAutoPlay();
             }}
           >
             {slides.map((img, i) => (

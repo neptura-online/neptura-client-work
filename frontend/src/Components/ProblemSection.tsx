@@ -72,10 +72,10 @@ OpenFormProps) => {
                 <img
                   src={`${url}`}
                   alt={text}
-                  className="h-18 w-auto brightness-0 "
+                  className="h-12 lg:h-18 w-auto brightness-0 "
                 />
               </div>
-              <h6 className="text-base text-center whitespace-pre-line">
+              <h6 className="text-sm lg:text-base text-center whitespace-pre-line">
                 {text}
               </h6>
             </div>

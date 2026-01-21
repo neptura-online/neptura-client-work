@@ -90,7 +90,7 @@ const HoverScrollCard = ({
         onContextMenu={(e) => e.preventDefault()}
         className="
         min-w-70
-        h-80
+        h-90
         overflow-hidden
         rounded-2xl
         border

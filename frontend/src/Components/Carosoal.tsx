@@ -42,9 +42,9 @@ const CarouselCard = memo(
         className="absolute w-60 md:w-80 h-87 md:h-100"
       >
         <div
-          onMouseEnter={() => onHover(true)}
-          onMouseLeave={() => onHover(false)}
-          className={`w-full h-full rounded-3xl p-px transition-all duration-500 hover:scale-105 ${
+          onMouseEnter={() => !isMobile && onHover(true)}
+          onMouseLeave={() => !isMobile && onHover(false)}
+          className={`w-full h-full rounded-3xl p-px transition-all duration-500 hover:scale-105 cursor-default ${
             isActive
               ? "bg-linear-to-b from-black to-transparent shadow-[0_25px_60px_-15px_rgba(255,204,0,0.3)]"
               : "bg-white/10"
@@ -133,10 +133,24 @@ const ThreeDCarousel = ({ setOpenForm, setId }: OpenFormProps) => {
     (hovered: boolean) => setIsHovered(hovered),
     []
   );
+
   const triggerButton = () => {
     setOpenForm(true);
     setId("book landing");
   };
+
+  const handleSwipeEnd = (_: any, info: any) => {
+    if (!isMobile) return;
+
+    const threshold = 60;
+
+    if (info.offset.x < -threshold) {
+      setActiveIdx((prev) => (prev + 1) % services.length);
+    } else if (info.offset.x > threshold) {
+      setActiveIdx((prev) => (prev === 0 ? services.length - 1 : prev - 1));
+    }
+  };
+
   return (
     <section className="py-10 lg:py-20 bg-zinc-100 text-black overflow-hidden relative selection:bg-yellow-500 selection:text-black">
       <div
@@ -147,6 +161,7 @@ const ThreeDCarousel = ({ setOpenForm, setId }: OpenFormProps) => {
           backgroundPosition: "center",
         }}
       />
+
       <div className="container mx-auto px-6 relative z-10 max-w-350">
         <div className="text-center mb-2">
           <motion.h2
@@ -170,12 +185,25 @@ const ThreeDCarousel = ({ setOpenForm, setId }: OpenFormProps) => {
           />
         </div>
 
-        <div className="relative w-full h-112 md:h-138 flex items-center justify-center perspective-distant">
+        <motion.div
+          className="relative w-full h-112 md:h-138 flex items-center justify-center perspective-distant"
+          drag={isMobile ? "x" : false}
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.2}
+          dragMomentum={false}
+          style={{ touchAction: "pan-y" }}
+          onDragStart={() => setIsHovered(true)}
+          onDragEnd={(e, info) => {
+            setIsHovered(false);
+            handleSwipeEnd(e, info);
+          }}
+        >
           <AnimatePresence mode="popLayout">
             {services.map((service, i) => {
               let offset = i - activeIdx;
               if (offset > services.length / 2) offset -= services.length;
               if (offset < -services.length / 2) offset += services.length;
+
               return (
                 <CarouselCard
                   key={service.title}
@@ -190,7 +218,7 @@ const ThreeDCarousel = ({ setOpenForm, setId }: OpenFormProps) => {
               );
             })}
           </AnimatePresence>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

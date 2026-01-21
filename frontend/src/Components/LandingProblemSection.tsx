@@ -23,7 +23,7 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
           >
             <img
               src="/assets/one.webp"
-              alt=""
+              alt="problems"
               className="hidden xl:block min-w-125 max-h-130 rounded-xl"
             />
           </motion.div>

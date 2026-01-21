@@ -10,6 +10,7 @@ const ExitIntentWrapper = lazy(
   () => import("../Components/Helper/ExitIntentWrapper")
 );
 const Form = lazy(() => import("../Components/Helper/Form"));
+
 const GallerySection = lazy(
   () => import("../Components/Gallery/ GallerySection")
 );

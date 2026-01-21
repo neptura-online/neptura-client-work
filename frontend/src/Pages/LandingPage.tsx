@@ -1,6 +1,7 @@
 import { useState, lazy, Suspense } from "react";
 import NavBar from "../Components/NavBar";
 import HeroSectionVideoBG from "../Components/Hero/HeroSectionVideoBG";
+import MobileHeroVideo from "../Components/Hero/MobileHeroVideo";
 import Counter from "../Components/Counter";
 import OfferContainer from "../Components/OfferContainer";
 import ProblemSection from "../Components/ProblemSection";
@@ -50,7 +51,12 @@ const LandingPage = () => {
         <NavBar />
       </div>
       <Buttons setOpenForm={setOpenForm} setId={setId} />
-      <HeroSectionVideoBG setOpenForm={setOpenForm} setId={setId} />
+      <section className="hidden lg:flex">
+        <HeroSectionVideoBG setOpenForm={setOpenForm} setId={setId} />
+      </section>
+      <section className="lg:hidden">
+        <MobileHeroVideo setOpenForm={setOpenForm} setId={setId} />
+      </section>
       <Counter />
       <OfferContainer setOpenForm={setOpenForm} setId={setId} />
       <ProblemSection

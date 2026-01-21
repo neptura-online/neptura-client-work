@@ -237,7 +237,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
     setId("book free landing page audit");
   };
   return (
-    <section className="lg:hidden relative flex w-screen justify-center overflow-hidden  bg-[#160a1f] text-white">
+    <div className=" relative flex w-screen justify-center overflow-hidden  bg-[#160a1f] text-white">
       <div className="w-full flex flex-col items-center gap-12 pb-10 ">
         <div className="relative px-4 md:px-12 pb-10">
           <video
@@ -422,7 +422,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
           </motion.div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

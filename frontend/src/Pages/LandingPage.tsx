@@ -11,8 +11,12 @@ const ExitIntentWrapper = lazy(
 );
 
 const Form = lazy(() => import("../Components/Helper/Form"));
-const GallerySection = lazy(() => import("../Components/Gallery/ GallerySection"));
-const LandingProblemSection = lazy(() => import("../Components/LandingProblemSection"));
+const GallerySection = lazy(
+  () => import("../Components/Gallery/ GallerySection")
+);
+const LandingProblemSection = lazy(
+  () => import("../Components/LandingProblemSection")
+);
 const ConversionPhilosophy = lazy(
   () => import("../Components/ConversionPhilosophy")
 );
@@ -56,11 +60,10 @@ const LandingPage = () => {
         setSave={setSave}
       />
       <Suspense fallback={null}>
-              <GallerySection />
+        <GallerySection />
 
-      <LandingProblemSection setOpenForm={setOpenForm} setId={setId} />
+        <LandingProblemSection setOpenForm={setOpenForm} setId={setId} />
       </Suspense>
-
 
       <Suspense fallback={null}>
         <ExitIntentWrapper />

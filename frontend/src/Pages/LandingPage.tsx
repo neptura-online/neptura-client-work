@@ -46,7 +46,6 @@ const LandingPage = () => {
   const [save, setSave] = useState("");
   const [showExit, setShowExit] = useState(false);
 
-  // Delay exit intent slightly (no impact on Lighthouse)
   useEffect(() => {
     const timer = setTimeout(() => setShowExit(true), 5000);
     return () => clearTimeout(timer);
@@ -68,7 +67,6 @@ const LandingPage = () => {
         <MobileHeroVideo setOpenForm={setOpenForm} setId={setId} />
       </section>
 
-      {/* ABOVE THE FOLD */}
       <Counter />
       <OfferContainer setOpenForm={setOpenForm} setId={setId} />
       <ProblemSection
@@ -78,7 +76,6 @@ const LandingPage = () => {
         setSave={setSave}
       />
 
-      {/* BELOW THE FOLD */}
       <Suspense fallback={<SectionSkeleton height={400} />}>
         <GallerySection />
         <LandingProblemSection setOpenForm={setOpenForm} setId={setId} />

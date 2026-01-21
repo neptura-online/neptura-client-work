@@ -38,7 +38,6 @@ const GallerySection = () => {
     []
   );
 
-  /* ---------- RESPONSIVE CARD WIDTH ---------- */
   useEffect(() => {
     const updateWidth = () => {
       const w = window.innerWidth;
@@ -52,7 +51,6 @@ const GallerySection = () => {
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-  /* ---------- SLIDE ANIMATION ---------- */
   useEffect(() => {
     isTransitioningRef.current = true;
 
@@ -75,7 +73,6 @@ const GallerySection = () => {
     return () => controls.stop();
   }, [index, STEP, total, x]);
 
-  /* ---------- AUTOPLAY (DESKTOP ONLY) ---------- */
   const startAutoPlay = () => {
     if (isMobile || intervalRef.current) return;
 
@@ -97,7 +94,6 @@ const GallerySection = () => {
     return stopAutoPlay;
   }, []);
 
-  /* ---------- BUTTON HANDLERS ---------- */
   const next = () => {
     stopAutoPlay();
     setIndex((p) => p + 1);
@@ -110,7 +106,6 @@ const GallerySection = () => {
 
   return (
     <section className="relative w-full py-14 lg:py-20 bg-zinc-100">
-      {/* background */}
       <div
         className="absolute inset-0 opacity-80"
         style={{
@@ -121,7 +116,6 @@ const GallerySection = () => {
       />
 
       <div className="mx-auto w-[90%] px-4 lg:max-w-335 relative z-10">
-        {/* heading */}
         <div className="mx-auto text-center mb-12">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -149,28 +143,25 @@ const GallerySection = () => {
           </p>
         </div>
 
-        {/* carousel */}
         <div
           className=" overflow-hidden"
           onMouseEnter={stopAutoPlay}
           onMouseLeave={startAutoPlay}
         >
-          {/* arrows */}
           <button
             onClick={prev}
-            className="absolute left-0 border bottom-42 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-white shadow flex items-center justify-center hover:scale-105 transition"
+            className="absolute left-0 border bottom-45 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-white shadow flex items-center justify-center hover:scale-105 transition"
           >
             <FiChevronLeft />
           </button>
 
           <button
             onClick={next}
-            className="absolute right-0 border bottom-42 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-white shadow flex items-center justify-center hover:scale-105 transition"
+            className="absolute right-0 border bottom-45 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-white shadow flex items-center justify-center hover:scale-105 transition"
           >
             <FiChevronRight />
           </button>
 
-          {/* track */}
           <motion.div
             className="flex gap-8"
             style={{ x, willChange: "transform" }}
@@ -196,7 +187,6 @@ const GallerySection = () => {
         </div>
       </div>
 
-      {/* modal */}
       {active && (
         <GalleryModal
           image={active}

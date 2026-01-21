@@ -4,16 +4,15 @@ import HeroSectionVideoBG from "../Components/Hero/HeroSectionVideoBG";
 import Counter from "../Components/Counter";
 import OfferContainer from "../Components/OfferContainer";
 import ProblemSection from "../Components/ProblemSection";
-import LandingProblemSection from "../Components/LandingProblemSection";
 import Buttons from "../ComponentsBusiness/Helper/whatsapp";
-import GallerySection from "../Components/Gallery/ GallerySection";
 
 const ExitIntentWrapper = lazy(
   () => import("../Components/Helper/ExitIntentWrapper")
 );
 
 const Form = lazy(() => import("../Components/Helper/Form"));
-
+const GallerySection = lazy(() => import("../Components/Gallery/ GallerySection"));
+const LandingProblemSection = lazy(() => import("../Components/LandingProblemSection"));
 const ConversionPhilosophy = lazy(
   () => import("../Components/ConversionPhilosophy")
 );
@@ -56,10 +55,12 @@ const LandingPage = () => {
         settriggerUrl={setTriggerUrl}
         setSave={setSave}
       />
-
-      <GallerySection />
+      <Suspense fallback={null}>
+              <GallerySection />
 
       <LandingProblemSection setOpenForm={setOpenForm} setId={setId} />
+      </Suspense>
+
 
       <Suspense fallback={null}>
         <ExitIntentWrapper />

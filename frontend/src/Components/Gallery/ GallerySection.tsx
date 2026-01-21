@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useMotionValue, animate } from "framer-motion";
 import HoverScrollCard from "./HoverScrollCard";
 import GalleryModal from "./GalleryModal";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const images = [
   "/gallery/gallery1.webp",
@@ -29,21 +30,21 @@ const GallerySection = () => {
   const [index, setIndex] = useState(images.length);
 
   const slides = useMemo(() => [...images, ...images, ...images], []);
-
   const STEP = cardWidth + GAP;
   const total = images.length;
 
-  const isMobile = useMemo(() => {
-    if (typeof window === "undefined") return false;
-    return window.innerWidth < 768;
-  }, []);
+  const isMobile = useMemo(
+    () => typeof window !== "undefined" && window.innerWidth < 768,
+    []
+  );
 
+  /* ---------- RESPONSIVE CARD WIDTH ---------- */
   useEffect(() => {
     const updateWidth = () => {
       const w = window.innerWidth;
-      if (w < 640) setCardWidth(Math.floor(w * 0.75));
+      if (w < 640) setCardWidth(Math.floor(w * 0.8));
       else if (w < 1024) setCardWidth(280);
-      else setCardWidth(300);
+      else setCardWidth(302);
     };
 
     updateWidth();
@@ -51,14 +52,13 @@ const GallerySection = () => {
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
+  /* ---------- SLIDE ANIMATION ---------- */
   useEffect(() => {
-    if (isMobile) return;
-
     isTransitioningRef.current = true;
 
     const controls = animate(x, -index * STEP, {
-      duration: 0.9,
-      ease: [0.25, 0.1, 0.25, 1],
+      duration: 0.85,
+      ease: [0.33, 1, 0.68, 1],
       onComplete: () => {
         isTransitioningRef.current = false;
 
@@ -73,11 +73,11 @@ const GallerySection = () => {
     });
 
     return () => controls.stop();
-  }, [index, STEP, total, x, isMobile]);
+  }, [index, STEP, total, x]);
 
+  /* ---------- AUTOPLAY (DESKTOP ONLY) ---------- */
   const startAutoPlay = () => {
-    if (isMobile) return;
-    if (intervalRef.current) return;
+    if (isMobile || intervalRef.current) return;
 
     intervalRef.current = window.setInterval(() => {
       if (!isTransitioningRef.current) {
@@ -97,8 +97,20 @@ const GallerySection = () => {
     return stopAutoPlay;
   }, []);
 
+  /* ---------- BUTTON HANDLERS ---------- */
+  const next = () => {
+    stopAutoPlay();
+    setIndex((p) => p + 1);
+  };
+
+  const prev = () => {
+    stopAutoPlay();
+    setIndex((p) => p - 1);
+  };
+
   return (
     <section className="relative w-full py-14 lg:py-20 bg-zinc-100">
+      {/* background */}
       <div
         className="absolute inset-0 opacity-80"
         style={{
@@ -108,7 +120,8 @@ const GallerySection = () => {
         }}
       />
 
-      <div className="mx-auto px-4 lg:max-w-340 relative z-10">
+      <div className="mx-auto w-[90%] px-4 lg:max-w-335 relative z-10">
+        {/* heading */}
         <div className="mx-auto text-center mb-12">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -132,40 +145,42 @@ const GallerySection = () => {
           />
 
           <p className="mt-6 text-base md:text-lg text-zinc-700">
-            Swipe or drag through real examples that guide visitors to convert.
+            Browse real examples that guide visitors to convert.
           </p>
-          {isMobile && (
-            <p className="mt-2 text-sm text-zinc-500">← Swipe to explore →</p>
-          )}
         </div>
 
+        {/* carousel */}
         <div
-          className="overflow-hidden"
+          className=" overflow-hidden"
           onMouseEnter={stopAutoPlay}
           onMouseLeave={startAutoPlay}
-          onTouchStart={stopAutoPlay}
         >
-          <motion.div
-            className="flex gap-8 cursor-grab active:cursor-grabbing"
-            style={{ x, willChange: "transform" }}
-            drag="x"
-            dragElastic={isMobile ? 0 : 0.08}
-            dragMomentum={true}
-            dragConstraints={{
-              left: -STEP * (slides.length - 1),
-              right: 0,
-            }}
-            onDragStart={stopAutoPlay}
-            onDragEnd={(_, info) => {
-              if (isMobile) return;
-              if (info.offset.x < -60) setIndex((p) => p + 1);
-              else if (info.offset.x > 60) setIndex((p) => p - 1);
+          {/* arrows */}
+          <button
+            onClick={prev}
+            className="absolute left-0 border bottom-42 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-white shadow flex items-center justify-center hover:scale-105 transition"
+          >
+            <FiChevronLeft />
+          </button>
 
-              startAutoPlay();
-            }}
+          <button
+            onClick={next}
+            className="absolute right-0 border bottom-42 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-white shadow flex items-center justify-center hover:scale-105 transition"
+          >
+            <FiChevronRight />
+          </button>
+
+          {/* track */}
+          <motion.div
+            className="flex gap-8"
+            style={{ x, willChange: "transform" }}
           >
             {slides.map((img, i) => (
-              <div key={i} style={{ width: cardWidth }} className="shrink-0">
+              <div
+                key={i}
+                style={{ width: cardWidth }}
+                className="shrink-0 transition-transform duration-300 hover:-translate-y-1"
+              >
                 <HoverScrollCard
                   image={img}
                   onClick={() => {
@@ -181,6 +196,7 @@ const GallerySection = () => {
         </div>
       </div>
 
+      {/* modal */}
       {active && (
         <GalleryModal
           image={active}

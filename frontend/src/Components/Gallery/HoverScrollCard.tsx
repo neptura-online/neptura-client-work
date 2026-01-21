@@ -80,7 +80,10 @@ const HoverScrollCard = ({
   };
 
   return (
-    <div className="">
+    <div
+      className="rounded-xl bg-white pb-2         border
+        border-gray-400 overflow-hidden w-full min-w-70 "
+    >
       <div
         onClick={onClick}
         onMouseEnter={handleMouseEnter}
@@ -92,12 +95,13 @@ const HoverScrollCard = ({
         min-w-70
         h-90
         overflow-hidden
-        rounded-2xl
-        border
         bg-white
         cursor-zoom-in
         select-none
         touch-none       
+         border-b
+        border-gray-400
+        
       "
       >
         <div className="relative h-full overflow-hidden pointer-events-none">

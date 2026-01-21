@@ -179,7 +179,7 @@ const GallerySection = () => {
               <div
                 key={i}
                 style={{ width: cardWidth }}
-                className="shrink-0 transition-transform duration-300 hover:-translate-y-1"
+                className="shrink-0 transition-transform duration-300"
               >
                 <HoverScrollCard
                   image={img}

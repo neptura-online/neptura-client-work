@@ -80,52 +80,64 @@ const HoverScrollCard = ({
   };
 
   return (
-    <div
-      className="rounded-xl bg-white pb-2         border
-        border-gray-400 overflow-hidden w-full min-w-70 "
-    >
+    <div className="w-full min-w-70">
       <div
-        onClick={onClick}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-        onContextMenu={(e) => e.preventDefault()}
         className="
-        min-w-70
-        h-90
+        relative
+        rounded-xl
         overflow-hidden
-        bg-white
-        cursor-zoom-in
-        select-none
-        touch-none       
-         border-b
-        border-gray-400
-        
       "
       >
-        <div className="relative h-full overflow-hidden pointer-events-none">
-          <img
-            ref={imgRef}
-            src={image}
-            alt=""
-            draggable={false}
+        <div className="p-1">
+          <div
+            onClick={onClick}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onContextMenu={(e) => e.preventDefault()}
             className="
-            w-full
-            object-cover
-            transition-transform
-            duration-4500
-            ease-linear
-            pointer-events-none   
+            relative
+            z-10
+            h-90
+            overflow-hidden
+            rounded-md
+            cursor-zoom-in
+            select-none
+            touch-none
+            bg-white
           "
-          />
+          >
+            <img
+              ref={imgRef}
+              src={image}
+              alt=""
+              draggable={false}
+              className="
+              w-full
+              object-cover
+              transition-transform
+              duration-4500
+              ease-linear
+              pointer-events-none
+            "
+            />
+          </div>
         </div>
+
+        <div
+          className="pointer-events-none absolute inset-0 z-20 grayscale "
+          style={{
+            backgroundImage: "url('/mockup/galaxy.png')",
+            backgroundSize: "100% 100%",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
       </div>
-      <div>
-        <p className="mt-3 text-center text-lg font-medium text-zinc-800 mx-auto">
-          {title}
-        </p>
-      </div>
+
+      <p className="mt-3 text-center text-sm lg:text-xl font-medium text-zinc-700">
+        {title}
+      </p>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from "react";
+import { useState, lazy, Suspense, useEffect } from "react";
 import NavBar from "../Components/NavBar";
 import HeroSectionVideoBG from "../Components/Hero/HeroSectionVideoBG";
 import MobileHeroVideo from "../Components/Hero/MobileHeroVideo";
@@ -44,19 +44,31 @@ const LandingPage = () => {
   const [id, setId] = useState("");
   const [triggerUrl, setTriggerUrl] = useState("");
   const [save, setSave] = useState("");
+  const [showExit, setShowExit] = useState(false);
+
+  // Delay exit intent slightly (no impact on Lighthouse)
+  useEffect(() => {
+    const timer = setTimeout(() => setShowExit(true), 5000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
       <div className="hidden sm:block">
         <NavBar />
       </div>
+
       <Buttons setOpenForm={setOpenForm} setId={setId} />
+
       <section className="hidden lg:flex">
         <HeroSectionVideoBG setOpenForm={setOpenForm} setId={setId} />
       </section>
+
       <section className="lg:hidden">
         <MobileHeroVideo setOpenForm={setOpenForm} setId={setId} />
       </section>
+
+      {/* ABOVE THE FOLD */}
       <Counter />
       <OfferContainer setOpenForm={setOpenForm} setId={setId} />
       <ProblemSection
@@ -65,15 +77,18 @@ const LandingPage = () => {
         settriggerUrl={setTriggerUrl}
         setSave={setSave}
       />
-      <Suspense fallback={null}>
-        <GallerySection />
 
+      {/* BELOW THE FOLD */}
+      <Suspense fallback={<SectionSkeleton height={400} />}>
+        <GallerySection />
         <LandingProblemSection setOpenForm={setOpenForm} setId={setId} />
       </Suspense>
 
-      <Suspense fallback={null}>
-        <ExitIntentWrapper />
-      </Suspense>
+      {showExit && (
+        <Suspense fallback={null}>
+          <ExitIntentWrapper />
+        </Suspense>
+      )}
 
       {openForm && (
         <Suspense fallback={null}>
@@ -87,7 +102,7 @@ const LandingPage = () => {
         </Suspense>
       )}
 
-      <Suspense fallback={null}>
+      <Suspense fallback={<SectionSkeleton height={300} />}>
         <YouKnow />
       </Suspense>
 

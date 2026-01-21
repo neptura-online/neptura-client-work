@@ -110,7 +110,7 @@ const HoverScrollCard = ({
             w-full
             object-cover
             transition-transform
-            duration-4000
+            duration-4500
             ease-linear
             pointer-events-none   
           "

@@ -33,13 +33,6 @@ const GallerySection = () => {
   const STEP = cardWidth + GAP;
   const total = images.length;
 
-  /* ---------- MOBILE DETECTION (DESKTOP UNCHANGED) ---------- */
-  const isMobile = useMemo(() => {
-    if (typeof window === "undefined") return false;
-    return window.innerWidth < 768;
-  }, []);
-
-  /* ---------- RESPONSIVE WIDTH ---------- */
   useEffect(() => {
     const updateWidth = () => {
       const w = window.innerWidth;
@@ -53,12 +46,11 @@ const GallerySection = () => {
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-  /* ---------- MAIN SLIDE ANIMATION ---------- */
   useEffect(() => {
     isTransitioningRef.current = true;
 
     const controls = animate(x, -index * STEP, {
-      duration: 0.6,
+      duration: 2,
       ease: "easeInOut",
       onComplete: () => {
         isTransitioningRef.current = false;
@@ -76,7 +68,6 @@ const GallerySection = () => {
     return () => controls.stop();
   }, [index, STEP, total, x]);
 
-  /* ---------- AUTOPLAY ---------- */
   const startAutoPlay = () => {
     if (intervalRef.current) return;
 
@@ -84,7 +75,7 @@ const GallerySection = () => {
       if (!isTransitioningRef.current) {
         setIndex((p) => p + 1);
       }
-    }, 1500);
+    }, 500);
   };
 
   const stopAutoPlay = () => {
@@ -142,28 +133,23 @@ const GallerySection = () => {
           onMouseEnter={stopAutoPlay}
           onMouseLeave={startAutoPlay}
           onTouchStart={stopAutoPlay}
+          onTouchEnd={startAutoPlay}
         >
           <motion.div
             className="flex gap-8 cursor-grab active:cursor-grabbing"
             style={{ x, willChange: "transform" }}
             drag="x"
-            dragElastic={isMobile ? 0 : 0.08} // ✅ mobile fix
-            dragMomentum={!isMobile} // ✅ mobile fix
+            dragElastic={0.08}
             dragConstraints={{
               left: -STEP * (slides.length - 1),
               right: 0,
             }}
             onDragStart={stopAutoPlay}
             onDragEnd={(_, info) => {
+              startAutoPlay();
+
               if (info.offset.x < -60) setIndex((p) => p + 1);
               else if (info.offset.x > 60) setIndex((p) => p - 1);
-
-              // ⏳ delay autoplay ONLY on mobile
-              if (isMobile) {
-                setTimeout(startAutoPlay, 400);
-              } else {
-                startAutoPlay();
-              }
             }}
           >
             {slides.map((img, i) => (

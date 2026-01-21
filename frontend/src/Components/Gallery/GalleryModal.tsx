@@ -21,20 +21,22 @@ const GalleryModal = ({ image, onClose }: GalleryModalProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       onClick={onClose}
-      className="fixed inset-0 z-1000 bg-black/70 flex items-center justify-center w-screen h-screen"
+      className="fixed inset-0 z-1000 bg-black/70 flex items-center justify-center w-screen min-h-screen"
     >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="absolute w-[90vw] top-10 sm:top-25 max-w-3xl h-[60vh] sm:h-[75vh] overflow-y-scroll overflow-hidden  bg-black"
-      >
-        <img src={image} alt="" className="w-full object-contain" />
+      <div className="relative">
+        <button
+          onClick={onClose}
+          className="absolute -top-4 -right-4 flex h-9 w-9 items-center justify-center rounded-full bg-yellow-400 text-black shadow-lg hover:scale-105 transition hover:cursor-pointer z-60"
+        >
+          ✕
+        </button>
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="relative w-[90vw] max-w-3xl h-[70vh] sm:h-[75vh] overflow-y-scroll overflow-hidden  bg-black"
+        >
+          <img src={image} alt="" className="w-full object-contain" />
+        </div>
       </div>
-      <button
-        onClick={onClose}
-        className="absolute bg-gray-300/30 px-4 py-2.5 bottom-30 sm:bottom-8 cursor-pointer text-white text-xl rounded-full"
-      >
-        ✕
-      </button>
     </motion.div>
   );
 };

@@ -128,7 +128,7 @@ const HoverScrollCard = ({
         <div
           className="pointer-events-none absolute inset-0 z-20 grayscale "
           style={{
-            backgroundImage: "url('/mockup/galaxy.png')",
+            backgroundImage: "url('/mockup/galaxy.webp')",
             backgroundSize: "100% 100%",
             backgroundRepeat: "no-repeat",
           }}

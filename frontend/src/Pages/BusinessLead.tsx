@@ -32,7 +32,7 @@ const SectionSkeleton = ({ height = 400 }: { height?: number }) => (
 const BusinessLead = () => {
   const [openForm, setOpenForm] = useState(false);
   const [id, setId] = useState("");
-  const [triggerUrl, setTriggerUrl] = useState("");
+  const [triggerUrl, setTriggerUrl] = useState("/thankyou");
   const [save, setSave] = useState("");
 
   return (

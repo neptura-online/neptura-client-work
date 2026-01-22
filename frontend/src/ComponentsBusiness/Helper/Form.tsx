@@ -30,16 +30,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
   const [phoneError, setPhoneError] = useState("");
 
   const site = window.location.href;
-  const url = new URL(site);
-  const params = new URLSearchParams(url.search);
   const navigate = useNavigate();
-  const utm_source = params.get("utm_source") || "direct";
-  const utm_medium = params.get("utm_medium");
-  const utm_term = params.get("utm_term");
-  const utm_campaign = params.get("utm_campaign");
-  const utm_content = params.get("utm_content");
-  const utm_adgroup = params.get("adgroupid");
-  const gclid = params.get("gclid");
 
   const showError = (message: string) => {
     setError(message);
@@ -97,13 +88,6 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
       ...formData,
       email: emailValid ? formData.email : "",
       phone: phone ? `+${phone}` : "-",
-      utm_source,
-      utm_medium,
-      utm_term,
-      utm_campaign,
-      utm_content,
-      adgroupid: utm_adgroup,
-      gclid,
       lpurl: site,
       formID: "hero",
     };
@@ -165,21 +149,13 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
 
     setFormError({ name: "", email: "", industry: "", message: "" });
     setPhoneError("");
-    const LPURL = window.location.href;
     const body = {
       name: e.target.name.value,
       email: e.target.email.value,
       phone: `+${phone}`,
       industry: e.target.industry.value,
       message: e.target.message.value,
-      utm_source,
-      utm_medium,
-      utm_term,
-      utm_campaign,
-      utm_content,
-      adgroupid: utm_adgroup,
-      gclid,
-      lpurl: LPURL,
+      lpurl: site,
       formID: id,
     };
 

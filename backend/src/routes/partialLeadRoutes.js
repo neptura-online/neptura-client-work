@@ -1,28 +1,16 @@
 import { Router } from "express";
 import { auth } from "../middleware/auth.js";
 import { PartialLead } from "../modules/Partial.js";
-import { addPartialToGoogleSheet } from "../utils/googleSheet.js";
+import { parseTrackingUrl } from "../utils/parseTrackingUrl.js";
+//import { addPartialToGoogleSheet } from "../utils/googleSheet.js";
 
 export const router = Router();
 
 router.post("/", async (req, res) => {
   try {
-    let {
-      name,
-      email,
-      phone,
-      industry,
-      message,
-      utm_source,
-      utm_medium,
-      utm_term,
-      utm_campaign,
-      utm_content,
-      adgroupid,
-      gclid,
-      lpurl,
-      formID,
-    } = req.body;
+    const { name, email, phone, industry, message, lpurl, formID } = req.body;
+
+    const trackingData = parseTrackingUrl(lpurl);
 
     const lead = await PartialLead.create({
       name,
@@ -30,18 +18,12 @@ router.post("/", async (req, res) => {
       phone,
       industry,
       message,
-      utm_source,
-      utm_medium,
-      utm_term,
-      utm_campaign,
-      utm_content,
-      adgroupid,
-      gclid,
       lpurl,
       formID,
+      ...trackingData,
     });
 
-    addPartialToGoogleSheet(lead);
+    //addPartialToGoogleSheet(lead);
 
     return res.status(200).json("user created");
   } catch (error) {
@@ -63,7 +45,7 @@ router.get("/", auth, async (req, res) => {
 router.delete("/:id", auth, async (req, res) => {
   try {
     const id = req.params.id;
-    const lead = await PartialLead.findByIdAndDelete({ _id: id });
+    await PartialLead.findByIdAndDelete({ _id: id });
     res.status(200).json("lead deleted successful");
   } catch (error) {
     res.status(500).json(error);

@@ -1,109 +1,31 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import type { FormProps } from "../../types/type";
-import axios from "axios";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { saveAs } from "file-saver";
-import { STRICT_LENGTHS } from "../../utils/phoneLengths";
-import { useNavigate } from "react-router-dom";
+import { useLeadForm } from "../../hooks/useLeadForm";
 
 const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    industry: "",
-    message: "",
-  });
-  const [formError, setFormError] = useState({
-    name: "",
-    email: "",
-    industry: "",
-    message: "",
-  });
-
   const firstInputRef = useRef<HTMLInputElement | null>(null);
-  const errorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const hasSubmittedRef = useRef(false);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [phone, setPhone] = useState("");
-  const [phoneError, setPhoneError] = useState("");
-  const navigate = useNavigate();
-  const site = window.location.href;
 
-  const showError = (message: string) => {
-    setError(message);
-
-    if (errorTimeoutRef.current) clearTimeout(errorTimeoutRef.current);
-
-    errorTimeoutRef.current = setTimeout(() => {
-      setError("");
-    }, 3000);
-  };
-
-  function validateEmail(email: string) {
-    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return pattern.test(email);
-  }
-
-  const handlePhoneChange = (value: string, country: any) => {
-    setPhone(value);
-    if (!value || !country) {
-      setPhoneError("Mobile number is required");
-      return;
-    }
-
-    const countryIso = country.countryCode;
-    const dialCode = country.dialCode;
-
-    const strictLength = STRICT_LENGTHS[countryIso];
-
-    const nationalNumber = value.slice(dialCode.length);
-
-    if (!/^\d+$/.test(nationalNumber)) {
-      setPhoneError("Mobile number must contain only digits");
-      return;
-    }
-    if (nationalNumber.length < 5) {
-      setPhoneError(`Mobile number must be valid`);
-      return;
-    }
-
-    if (strictLength && nationalNumber.length !== strictLength) {
-      setPhoneError(`Mobile number must be ${strictLength} digits`);
-      return;
-    }
-
-    setPhoneError("");
-  };
-
-  const partialSubmit = async () => {
-    if (hasSubmittedRef.current) return;
-    if (formData.name.length < 3) return;
-    if (!phone && !formData.email) return;
-    const emailValid = validateEmail(formData.email);
-    if (phoneError && !emailValid) return;
-
-    const body = {
-      ...formData,
-      email: emailValid ? formData.email : "",
-      phone: phone ? `+${phone}` : "-",
-      lpurl: site,
-      formID: "hero",
-    };
-
-    try {
-      await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/partiallead`,
-        body,
-        { headers: { "Content-Type": "application/json" } }
-      );
-    } catch (err) {
-    } finally {
-      hasSubmittedRef.current = true;
-    }
-  };
+  const {
+    formData,
+    setFormData,
+    formError,
+    phone,
+    phoneError,
+    handlePhoneChange,
+    handleChange,
+    loading,
+    error,
+    handleSubmit,
+    partialSubmit,
+  } = useLeadForm({
+    formID: id,
+    mode: "business",
+    redirect: triggered,
+    save: save,
+  });
 
   const closeSubmit = async () => {
     if (formData.name) {
@@ -111,109 +33,6 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
     }
     onClose();
   };
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-
-    const errors = {
-      name: "",
-      email: "",
-      industry: "",
-      message: "",
-    };
-
-    if (!formData.name.trim()) {
-      errors.name = "Please enter name*";
-    }
-
-    if (!formData.email.trim()) {
-      errors.email = "Please enter email*";
-    } else if (!validateEmail(formData.email)) {
-      errors.email = "Enter a valid email address*";
-    }
-
-    if (!formData.industry.trim()) {
-      errors.industry = "Please enter industry*";
-    }
-    if (!phone) {
-      setPhoneError("Please enter a mobile number");
-    }
-
-    if (phoneError) {
-      return;
-    }
-
-    if (errors.name || errors.email || errors.industry || phoneError) {
-      setFormError(errors);
-      return;
-    }
-
-    setFormError({ name: "", email: "", industry: "", message: "" });
-    setPhoneError("");
-
-    const body = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      phone: `+${phone}`,
-      industry: e.target.industry.value,
-      message: e.target.message.value,
-      lpurl: site,
-      formID: id,
-    };
-
-    try {
-      setLoading(true);
-
-      const res = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/lead`,
-        body
-      );
-
-      if (res.status === 200 || res.status === 201) {
-        save && saveAs(save);
-      }
-
-      if (res.status === 200 || res.status === 201) {
-        hasSubmittedRef.current = true;
-        localStorage.setItem("name", formData.name);
-        if (triggered) {
-          window.location.href = triggered;
-        } else navigate("/thankyou");
-      }
-    } catch (err: any) {
-      showError(err?.response?.data || "Something went wrong");
-    } finally {
-      setLoading(false);
-      setFormData({ name: "", email: "", industry: "", message: "" });
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    setFormError((prev) => ({ ...prev, [name]: "" }));
-  };
-
-  useEffect(() => {
-    const handleBeforeUnload = () => {
-      partialSubmit();
-    };
-
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "hidden") {
-        partialSubmit();
-      }
-    };
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, [formData.name, phone, formData.email]);
 
   useEffect(() => {
     if (isOpen) {
@@ -230,11 +49,13 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
     };
   }, [isOpen]);
 
-  useEffect(() => {
-    return () => {
-      if (errorTimeoutRef.current) clearTimeout(errorTimeoutRef.current);
-    };
-  }, []);
+  const handleFormSubmit = async (e: any) => {
+    e.preventDefault();
+    const success = await handleSubmit();
+    if (success) {
+      onClose();
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -285,7 +106,7 @@ const Form = ({ isOpen, onClose, id, triggered, save }: FormProps) => {
             </h3>
 
             <form
-              onSubmit={handleSubmit}
+              onSubmit={handleFormSubmit}
               className="mt-6 flex flex-col gap-2 sm:gap-4"
             >
               <input

@@ -1,216 +1,32 @@
 import { FaArrowUpLong } from "react-icons/fa6";
-import { useEffect, useRef, useState } from "react";
 import type { OpenFormProps } from "../../types/type";
-import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { FiPhone } from "react-icons/fi";
 import { FaEnvelope } from "react-icons/fa";
-import { STRICT_LENGTHS } from "../../utils/phoneLengths";
-import { useNavigate } from "react-router-dom";
+import { useLeadForm } from "../../hooks/useLeadForm";
 
 const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    industry: "",
-    message: "",
+  const {
+    formData,
+    setFormData,
+    formError,
+    phone,
+    phoneError,
+    handlePhoneChange,
+    handleChange,
+    loading,
+    error,
+    handleSubmit,
+  } = useLeadForm({
+    formID: "mobile hero",
+    mode: "simple",
   });
-  const [formError, setFormError] = useState({
-    name: "",
-    email: "",
-    industry: "",
-    message: "",
-  });
-  const [phone, setPhone] = useState("");
-  const [phoneError, setPhoneError] = useState("");
-  const hasSubmittedRef = useRef(false);
-  const [loading, setLoading] = useState(false);
-  const errorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [error, setError] = useState("");
-  const site = window.location.href;
-  const navigate = useNavigate();
-
-  const showError = (message: string) => {
-    setError(message);
-
-    if (errorTimeoutRef.current) {
-      clearTimeout(errorTimeoutRef.current);
-    }
-
-    errorTimeoutRef.current = setTimeout(() => {
-      setError("");
-    }, 3000);
-  };
-
-  function validateEmail(email: string) {
-    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return pattern.test(email);
-  }
-
-  const handlePhoneChange = (value: string, country: any) => {
-    setPhone(value);
-    if (!value || !country) {
-      setPhoneError("Mobile number is required");
-      return;
-    }
-
-    const countryIso = country.countryCode;
-    const dialCode = country.dialCode;
-
-    const strictLength = STRICT_LENGTHS[countryIso];
-
-    const nationalNumber = value.slice(dialCode.length);
-
-    if (!/^\d+$/.test(nationalNumber)) {
-      setPhoneError("Mobile number must contain only digits");
-      return;
-    }
-    if (nationalNumber.length < 5) {
-      setPhoneError(`Mobile number must be valid`);
-      return;
-    }
-
-    if (strictLength && nationalNumber.length !== strictLength) {
-      setPhoneError(`Mobile number must be ${strictLength} digits`);
-      return;
-    }
-
-    setPhoneError("");
-  };
-
-  const partialSubmit = async () => {
-    if (hasSubmittedRef.current) return;
-    if (formData.name.length < 3) return;
-    if (!phone && !formData.email) return;
-    const emailValid = validateEmail(formData.email);
-    if (phoneError && !emailValid) return;
-
-    const body = {
-      ...formData,
-      email: emailValid ? formData.email : "",
-      phone: phone ? `+${phone}` : "-",
-      lpurl: site,
-      formID: "hero",
-    };
-
-    try {
-      await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/partiallead`,
-        body,
-        { headers: { "Content-Type": "application/json" } }
-      );
-    } catch (err) {
-    } finally {
-      hasSubmittedRef.current = true;
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const errors = {
-      name: "",
-      email: "",
-      industry: "",
-      message: "",
-    };
-
-    if (!formData.name.trim()) {
-      errors.name = "Please enter name*";
-    }
-
-    if (!formData.email.trim()) {
-      errors.email = "Please enter email*";
-    } else if (!validateEmail(formData.email)) {
-      errors.email = "Enter a valid email address*";
-    }
-
-    if (!phone) {
-      setPhoneError("Please enter a mobile number");
-    }
-
-    if (phoneError) {
-      return;
-    }
-
-    if (errors.name || errors.email || errors.industry || phoneError) {
-      setFormError(errors);
-      return;
-    }
-    setPhoneError("");
-
-    setFormError({ name: "", email: "", industry: "", message: "" });
-
-    const body = {
-      name: formData.name,
-      email: formData.email,
-      phone: `+${phone}`,
-      industry: "-",
-      message: formData.message,
-      lpurl: site,
-      formID: "hero",
-    };
-
-    try {
-      setLoading(true);
-      const res = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/lead`,
-        body
-      );
-
-      if (res.status === 200 || res.status === 201) {
-        hasSubmittedRef.current = true;
-        localStorage.setItem("name", formData.name);
-        navigate("/thankyou");
-      }
-    } catch (err: any) {
-      showError(err?.response?.data || "Something went wrong");
-    } finally {
-      setLoading(false);
-      setFormData({ name: "", email: "", industry: "", message: "" });
-    }
-  };
-
-  useEffect(() => {
-    const handleBeforeUnload = () => {
-      partialSubmit();
-    };
-
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "hidden") {
-        partialSubmit();
-      }
-    };
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, [formData.name, phone, formData.email]);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    setFormError((prev) => ({ ...prev, [name]: "" }));
-  };
-
-  useEffect(() => {
-    return () => {
-      if (errorTimeoutRef.current) {
-        clearTimeout(errorTimeoutRef.current);
-      }
-    };
-  }, []);
 
   const triggerButton = () => {
     setOpenForm(true);
-    setId("book free landing page audit");
+    setId("Get Free Landing Page");
   };
   return (
     <div className=" relative flex w-screen justify-center overflow-hidden  bg-[#160a1f] text-white">
@@ -335,7 +151,13 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
               Landing Pages With Us!
             </h3>
 
-            <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}
+              className="mt-6 flex flex-col gap-4"
+            >
               <input
                 name="name"
                 type="text"

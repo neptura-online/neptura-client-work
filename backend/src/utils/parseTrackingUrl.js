@@ -11,7 +11,6 @@ export const parseTrackingUrl = (url) => {
       utm_content: params.get("utm_content"),
       gclid: params.get("gclid"),
       adgroupid: params.get("adgroupid"),
-      fbclid: params.get("fbclid"),
     };
   } catch (err) {
     return {};

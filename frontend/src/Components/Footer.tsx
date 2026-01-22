@@ -29,15 +29,6 @@ const Footer = () => {
   const errorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [error, setError] = useState("");
   const site = window.location.href;
-  const url = new URL(site);
-  const params = new URLSearchParams(url.search);
-  const utm_source = params.get("utm_source") || "direct";
-  const utm_medium = params.get("utm_medium");
-  const utm_term = params.get("utm_term");
-  const utm_campaign = params.get("utm_campaign");
-  const utm_content = params.get("utm_content");
-  const utm_adgroup = params.get("adgroupid");
-  const gclid = params.get("gclid");
   const navigate = useNavigate();
 
   function validateEmail(email: string) {
@@ -87,13 +78,6 @@ const Footer = () => {
       ...formData,
       email: emailValid ? formData.email : "",
       phone: `+${phone}`,
-      utm_source,
-      utm_medium,
-      utm_term,
-      utm_campaign,
-      utm_content,
-      adgroupid: utm_adgroup,
-      gclid,
       lpurl: site,
       formID: "hero",
     };
@@ -148,21 +132,13 @@ const Footer = () => {
     setPhoneError("");
 
     setFormError({ name: "", email: "", industry: "", message: "" });
-    const LPURL = window.location.href;
     const body = {
       name: formData.name,
       email: formData.email,
       phone: `+${phone}`,
       industry: formData.industry,
       message: formData.message,
-      utm_source,
-      utm_medium,
-      utm_term,
-      utm_campaign,
-      utm_content,
-      adgroupid: utm_adgroup,
-      gclid,
-      lpurl: LPURL,
+      lpurl: site,
       formID: "hero",
     };
 

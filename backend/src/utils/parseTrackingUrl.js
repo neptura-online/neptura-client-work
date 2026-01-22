@@ -4,7 +4,7 @@ export const parseTrackingUrl = (url) => {
     const params = parsedUrl.searchParams;
 
     return {
-      utm_source: params.get("utm_source"),
+      utm_source: params.get("utm_source") || "direct",
       utm_medium: params.get("utm_medium"),
       utm_campaign: params.get("utm_campaign"),
       utm_term: params.get("utm_term"),

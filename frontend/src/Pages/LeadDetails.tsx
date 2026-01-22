@@ -77,7 +77,7 @@ export default LeadDetails;
 const Highlight = ({ label, value }: any) => (
   <div className="rounded-2xl bg-zinc-800/60 border border-white/5 p-4">
     <p className="text-sm uppercase tracking-wide text-zinc-400">{label}</p>
-    <p className="mt-1 text-xl font-semibold break-all">{value || "-"}</p>
+    <p className="mt-1 text-lg font-semibold break-all">{value || "-"}</p>
   </div>
 );
 

@@ -86,15 +86,15 @@ router.post("/", async (req, res) => {
       ...trackingData,
     });
 
-    try {
-      await Promise.all([
-        addToGoogleSheet(lead),
-        sendLeadMail({ name, email }),
-        sendAdminLeadMail(lead),
-      ]);
-    } catch (err) {
-      console.error("Reporting failed:", err);
-    }
+    // try {
+    //   await Promise.all([
+    //     addToGoogleSheet(lead),
+    //     sendLeadMail({ name, email }),
+    //     sendAdminLeadMail(lead),
+    //   ]);
+    // } catch (err) {
+    //   console.error("Reporting failed:", err);
+    // }
 
     return res.status(200).json("user created");
   } catch (error) {

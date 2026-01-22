@@ -165,13 +165,6 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
       phone: `+${phone}`,
       industry: "-",
       message: formData.message,
-      utm_source,
-      utm_medium,
-      utm_term,
-      utm_campaign,
-      utm_content,
-      adgroupid: utm_adgroup,
-      gclid,
       lpurl: LPURL,
       formID: "hero",
     };

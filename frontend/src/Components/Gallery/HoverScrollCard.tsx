@@ -10,7 +10,7 @@ interface ScrollCard {
 
 const HoverScrollCard = ({
   image,
-  title = "Landing page",
+  // title = "Landing page",
   onClick,
   onPreviewStart,
   onPreviewEnd,
@@ -135,9 +135,9 @@ const HoverScrollCard = ({
         />
       </div>
 
-      <p className="mt-3 text-center text-sm lg:text-xl font-medium text-zinc-700">
+      {/* <p className="mt-3 text-center text-sm lg:text-xl font-medium text-zinc-700">
         {title}
-      </p>
+      </p> */}
     </div>
   );
 };

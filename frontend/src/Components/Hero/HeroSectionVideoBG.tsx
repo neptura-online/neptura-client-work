@@ -31,14 +31,13 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
   return (
     <div className=" relative w-full justify-center overflow-hidden pt-30 pb-10 bg-zinc-950 text-white">
       <div className="absolute inset-0 bg-linear-to-br from-zinc-800 via-zinc-900 to-yellow-600/90" />
-      <div
-        className="absolute inset-0 opacity-80"
-        style={{
-          backgroundImage: "url('/business/banner.webp')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+      <img
+        src="/business/banner.webp"
+        alt="Business marketing banner"
+        fetchPriority="high"
+        className="absolute inset-0 w-full h-full object-cover opacity-80"
       />
+
       <video
         src={video}
         className="absolute inset-0 h-full w-full object-fill"

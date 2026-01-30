@@ -68,11 +68,11 @@ OpenFormProps) => {
               key={id}
               className="group flex flex-col gap-4 rounded-2xl border border-zinc-100 bg-white p-4 lg:p-8 font-bold text-zinc-900 transition hover:border-yellow-500 items-center "
             >
-              <div className=" flex items-center justify-center rounded-xl">
+              <div className="relative after:absolute after:inset-0 after:bg-yellow-400 after:mix-blend-color flex items-center justify-center rounded-xl">
                 <img
                   src={`${url}`}
                   alt={text}
-                  className="h-12 lg:h-18 w-auto brightness-0 "
+                  className="h-12 lg:h-18 w-auto grayscale "
                 />
               </div>
               <h6 className="text-sm lg:text-base text-center whitespace-pre-line">

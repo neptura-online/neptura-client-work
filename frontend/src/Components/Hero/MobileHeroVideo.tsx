@@ -73,32 +73,19 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
             </div>
           </div>
           <div className="relative flex w-full flex-col gap-6 z-10 sm:pt-30 ">
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ ease: "easeIn", duration: 0.5 }}
-              className="font-serif  text-3xl font-extrabold leading-tight md:text-6xl"
-            >
+            <h1 className="font-serif  text-3xl font-extrabold leading-tight md:text-6xl">
               <span className="bg-linear-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent leading-[1.5em]">
                 Spending Money On Ads And Still Losing Leads?
               </span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ ease: "easeInOut", duration: 0.7 }}
-              className="max-w-xl text-lg text-zinc-300 md:text-2xl"
-            >
+            <p className="max-w-xl text-lg text-zinc-300 md:text-2xl">
               Your Landing Page Might Not Be Built For Conversion! Don’t Worry!
               We will help you identify the mistakes.
-            </motion.p>
+            </p>
 
-            <motion.button
+            <button
               onClick={triggerButton}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ ease: "easeInOut", duration: 0.8 }}
               className="group mt-4 flex w-fit  items-center gap-4 rounded-2xl bg-yellow-500 px-4 py-3 transition-all hover:scale-105 hover:bg-yellow-400  hover:cursor-pointer"
             >
               {" "}
@@ -109,7 +96,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
               <span className="lg:hidden flex h-7 w-7 items-center justify-center rounded-full bg-black">
                 <FaArrowUpLong className="rotate-45 text-sm text-yellow-400 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
               </span>
-            </motion.button>
+            </button>
           </div>
         </div>
         <div className="relative w-full flex md:w-1/2 justify-center px-2 md:p-0">
@@ -139,12 +126,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
               </motion.div>
             )}
           </AnimatePresence>
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ ease: "easeInOut", duration: 0.8 }}
-            className="w-full max-w-md rounded-3xl bg-white p-7 text-black shadow-2xl"
-          >
+          <div className="w-full max-w-md rounded-3xl bg-white p-7 text-black shadow-2xl">
             <h3 className="text-2xl font-extrabold font-serif leading-[1.5em] text-center">
               Create <span className="text-yellow-500">Lead Capturing</span>
               <br />
@@ -217,7 +199,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
                 Book A Free Consultation
               </button>
             </form>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

@@ -6,7 +6,6 @@ import Counter from "../Components/Counter";
 import OfferContainer from "../Components/OfferContainer";
 import ProblemSection from "../Components/ProblemSection";
 import Buttons from "../ComponentsBusiness/Helper/whatsapp";
-import TechStackStrip from "../Components/TechStackStrip";
 
 const ExitIntentWrapper = lazy(
   () => import("../Components/Helper/ExitIntentWrapper")
@@ -26,6 +25,7 @@ const YouKnow = lazy(() => import("../Components/YouKnow"));
 const WhyWorkWithUs = lazy(() => import("../Components/WhyWorkWithUs"));
 const ProcessCarousel = lazy(() => import("../Components/ProcessCarousel"));
 const AdvancedServices = lazy(() => import("../Components/AdvancedServices"));
+const TechStackStrip = lazy(() => import("../Components/TechStackStrip"));
 const CaseStudiesSection = lazy(() => import("../Components/CaseStudySection"));
 const ThreeDCarousel = lazy(() => import("../Components/Carosoal"));
 const AuthoritySection = lazy(() => import("../Components/AuthoritySection"));

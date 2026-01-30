@@ -150,14 +150,14 @@ const GallerySection = () => {
         >
           <button
             onClick={prev}
-            className="absolute left-0 border bottom-44 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-white shadow flex items-center justify-center hover:scale-105 transition"
+            className="absolute left-0 border bottom-37 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-white shadow flex items-center justify-center hover:scale-105 transition"
           >
             <FiChevronLeft />
           </button>
 
           <button
             onClick={next}
-            className="absolute right-0 border bottom-44 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-white shadow flex items-center justify-center hover:scale-105 transition"
+            className="absolute right-0 border bottom-37 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-white shadow flex items-center justify-center hover:scale-105 transition"
           >
             <FiChevronRight />
           </button>

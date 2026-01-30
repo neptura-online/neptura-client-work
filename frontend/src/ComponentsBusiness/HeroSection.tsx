@@ -86,7 +86,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
 
             <div className="mt-8 h-0.5 w-16 bg-white" />
 
-            <h2 className="mt-8 text-2xl font-serif font-semibold md:text-[35px]">
+            <h2 className="mt-8 text-2xl font-serif font-semibold md:text-[30px]">
               Grow Your{" "}
               <span className="text-(--yellow-emarketing)">
                 B2B Business | B2C Business

@@ -91,7 +91,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
               {" "}
               <span className="hidden lg:flex h-7 w-7 items-center justify-center rounded-full bg-black"></span>
               <span className="text-left text-sm font-semibold text-black md:text-xl">
-                Get Free Landing Page
+                Get Free Landing Page Audit
               </span>
               <span className="lg:hidden flex h-7 w-7 items-center justify-center rounded-full bg-black">
                 <FaArrowUpLong className="rotate-45 text-sm text-yellow-400 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />

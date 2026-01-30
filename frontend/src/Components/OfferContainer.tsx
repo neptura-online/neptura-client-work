@@ -41,7 +41,7 @@ const OfferContainer = ({ setOpenForm, setId }: OpenFormProps) => {
       <div className="container mx-auto w-full md:max-w-340 px-4 py-20">
         <div className="flex relative flex-col items-center gap-12 rounded-3xl  md:flex-row  ">
           <motion.div {...fadeUp} className="w-full md:w-1/2 ">
-            <span className="inline-block rounded-full bg-yellow-500/10 px-4 py-2 text-sm font-semibold text-(--yellow-emarketing)">
+            <span className="inline-block rounded-full bg-yellow-500/10 px-4 py-2 text-md font-semibold text-(--yellow-emarketing)">
               Limited Time Offer
             </span>
 

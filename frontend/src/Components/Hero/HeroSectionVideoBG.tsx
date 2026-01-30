@@ -83,7 +83,7 @@ const HeroSectionVideoBG = ({ setOpenForm, setId }: OpenFormProps) => {
               <FaArrowUpLong className="rotate-45 text-md text-(--yellow-emarketing) transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
             </span>
             <span className="text-left font-medium text-black text-md">
-              Get Free Landing Page
+              Get Free Landing Page Audit
             </span>
           </motion.button>
         </div>

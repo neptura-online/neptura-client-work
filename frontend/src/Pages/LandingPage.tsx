@@ -6,6 +6,7 @@ import Counter from "../Components/Counter";
 import OfferContainer from "../Components/OfferContainer";
 import ProblemSection from "../Components/ProblemSection";
 import Buttons from "../ComponentsBusiness/Helper/whatsapp";
+import TechStackStrip from "../Components/TechStackStrip";
 
 const ExitIntentWrapper = lazy(
   () => import("../Components/Helper/ExitIntentWrapper")
@@ -117,6 +118,7 @@ const LandingPage = () => {
 
       <Suspense fallback={<SectionSkeleton height={450} />}>
         <AdvancedServices />
+        <TechStackStrip />
       </Suspense>
 
       <Suspense fallback={<SectionSkeleton height={450} />}>

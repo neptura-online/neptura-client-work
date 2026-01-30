@@ -72,7 +72,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
           </div>
         </div>
 
-        <div className="relative z-10 mx-auto md:mx-4 flex gap-12 py-6 flex-col lg:flex-row justify-between lg:px-16 lg:py-10">
+        <div className="relative z-10 mx-auto md:mx-4 flex gap-12 py-6 flex-col lg:flex-row justify-between lg:px-10 lg:py-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -80,7 +80,8 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
             className="flex flex-col justify-start lg:w-[80%] px-6"
           >
             <h1 className="text-[35px] font-serif font-medium leading-tight md:text-[45px] ">
-              Get More Leads. Close More Sales.
+              Get More Leads. <br className="2xl:hidden" />
+              Close More Sales.
             </h1>
 
             <div className="mt-8 h-0.5 w-16 bg-white" />
@@ -94,7 +95,7 @@ const HeroSection = ({ setOpenForm, setId }: OpenFormProps) => {
 
             <p className="my-8 text-xl  md:text-2xl text-zinc-300">
               We have helped clients generate{" "}
-              <span className="font-semibold text-white">₹25+ Crores</span> in
+              <span className="font-semibold text-white">₹923+ Crores</span> in
               revenue!
             </p>
 

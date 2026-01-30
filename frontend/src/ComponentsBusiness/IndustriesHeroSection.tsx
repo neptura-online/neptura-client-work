@@ -48,10 +48,9 @@ export default function IndustriesHeroSection({
               }}
             />
             <h2 className="font-serif text-4xl leading-tight md:text-[45px] w-full text-center xl:text-start">
-              Helped Businesses Across{" "}
-              <span className="font-semibold">127+</span>
-              <br />
-              Industries Scale Faster
+              Helped <span className="font-semibold">167+</span> Businesses
+              Across <span className="font-semibold">37+</span> Industries Scale
+              Faster
             </h2>
 
             <div className="mt-6 h-0.5 w-24 bg-white" />

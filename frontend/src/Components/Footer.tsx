@@ -39,7 +39,7 @@ const Footer = () => {
               Let's work together.
               <br />
               <span className="bg-linear-to-r from-yellow-300 to-(--yellow-emarketing) bg-clip-text text-transparent">
-                fixed a meeting
+                Fix A Meeting Today!
               </span>
             </h2>
 

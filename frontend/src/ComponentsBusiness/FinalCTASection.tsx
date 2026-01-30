@@ -39,7 +39,7 @@ export default function FinalCTASection() {
               Start with our <span className="font-semibold">FREE Audit</span>
             </p>
 
-            <span className="mt-6 inline-flex items-center gap-2 rounded-xl bg-yellow-50 px-4 py-2 text-sm text-yellow-700 w-fit">
+            <span className="mt-6 inline-flex items-center gap-2 rounded-xl bg-yellow-50 px-4 py-2 text-md text-yellow-700 w-fit">
               <span className="h-2 w-2 rounded-full bg-yellow-500" />
               We guarantee a
             </span>

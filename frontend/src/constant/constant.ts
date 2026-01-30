@@ -214,7 +214,7 @@ export const faqs = [
 ];
 
 export const counterData = [
-  { id: 1, number: "257", text: "Landing Pages Built" },
+  { id: 1, number: "257", text: "High CTR Landing Pages Built" },
   { id: 2, number: "37", text: "Industries Served" },
   { id: 3, number: "15", text: "Countries Served" },
   { id: 4, number: "83%", text: "Client Retention" },

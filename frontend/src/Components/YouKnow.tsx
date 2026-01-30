@@ -13,9 +13,6 @@ const YouKnow = () => {
       />
       <div className="relative mx-auto max-w-300 px-6 text-center py-10 flex flex-col lg:flex-row justify-between items-center">
         <div className="flex flex-col">
-          <span className="text-(--yellow-emarketing) text-center lg:text-left">
-            Imagine the impact
-          </span>
           <motion.h2
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}

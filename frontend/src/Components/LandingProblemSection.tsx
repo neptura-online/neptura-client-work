@@ -35,7 +35,7 @@ const LandingProblemSection = ({ setOpenForm, setId }: OpenFormProps) => {
             viewport={{ once: true }}
             className="space-y-8 mt-8 lg:mt-0"
           >
-            <div className="space-y-4 text-center">
+            <div className="space-y-4 text-center lg:text-start">
               <h2 className="text-3xl sm:text-4xl font-serif font-medium text-white leading-[1.5em] capitalize">
                 A poorly designed Landing Page can{" "}
                 <span className="text-(--yellow-emarketing)">

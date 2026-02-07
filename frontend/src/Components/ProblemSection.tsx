@@ -1,12 +1,6 @@
-import { motion } from "framer-motion";
 import type { OpenFormProps } from "../types/type";
 import { problems } from "../constant/constant";
 import { FiArrowRight } from "react-icons/fi";
-
-const gridMotion = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1 },
-};
 
 const ProblemSection = ({
   setOpenForm,
@@ -20,7 +14,7 @@ OpenFormProps) => {
     //setSave?.("/pdf/sample.pdf");
   };
   return (
-    <section className="relative w-full bg-zinc-100 py-10 lg:py-20 text-white">
+    <section className="relative w-full bg-zinc-100 py-6 lg:py-14">
       <div
         className="absolute inset-0 opacity-80"
         style={{
@@ -29,78 +23,68 @@ OpenFormProps) => {
           backgroundPosition: "center",
         }}
       />
-      <div className="mx-auto px-4 lg:max-w-340 relative z-10 flex flex-col items-center">
-        <div className="mx-auto  text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="font-serif text-3xl md:text-[40px] font-medium text-black leading-[1.5em] capitalize"
-          >
-            Your Landing Page is doing everything <br /> except guiding{" "}
-            <span className="text-(--yellow-emarketing)">
-              visitors to convert!
-            </span>
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="mx-auto mt-4 h-1 w-20 lg:w-30 rounded-full bg-(--yellow-emarketing)"
-          />
-          <p className="mt-6 text-2xl text-(--yellow-emarketing)">
-            Why is it so?
-          </p>
-        </div>
 
-        <motion.div
-          variants={gridMotion}
-          initial="hidden"
-          whileInView="visible"
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="mt-16 grid grid-cols-2 gap-6 lg:grid-cols-4 w-full"
-        >
-          {problems.map(({ id, text, url }) => (
-            <div
-              key={id}
-              className="group flex flex-col gap-4 rounded-2xl border border-zinc-100 bg-white p-4 lg:p-8 font-bold text-zinc-900 transition hover:border-yellow-500 items-center "
-            >
-              <div className=" flex items-center justify-center rounded-xl">
-                <img
-                  src={`${url}`}
-                  alt={text}
-                  className="h-12 lg:h-18 w-auto grayscale "
-                />
+      <div className="mx-auto px-4 lg:max-w-340 relative z-10 pt-10">
+        <div className="w-full flex flex-col lg:flex-row gap-16 items-center">
+          <div className="flex flex-col  items-center lg:items-start text-center lg:text-left">
+            <h2 className="font-serif text-3xl sm:text-[40px] font-medium text-black leading-[1.5em] ">
+              Your Landing Page Is Doing Everything Except Guiding{" "}
+              <span className="text-(--yellow-emarketing) ">
+                Visitors To Convert!
+              </span>
+            </h2>
+
+            <div className="mt-5 h-1 w-20 rounded-full bg-(--yellow-emarketing)" />
+
+            <p className="mt-6 text-lg text-(--yellow-emarketing)">
+              Why is it so?
+            </p>
+
+            <div className="mt-10 w-full flex justify-center lg:justify-start">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6 max-w-3xl">
+                {problems.map(({ id, text }) => (
+                  <div key={id} className="flex items-start gap-3">
+                    <div className="mt-2 w-2.5 h-2.5 rounded-full bg-(--yellow-emarketing) shrink-0" />
+                    <p className="text-sm lg:text-base text-zinc-800 leading-snug">
+                      {text}
+                    </p>
+                  </div>
+                ))}
               </div>
-              <h6 className="text-sm lg:text-base text-center whitespace-pre-line">
-                {text}
-              </h6>
             </div>
-          ))}
-        </motion.div>
 
-        <div className="mx-auto mt-10 max-w-3xl text-center">
-          <p className="text-base text-zinc-900 ">
-            As a result, the visitor leaves within seconds without submitting
-            enquiry!
-          </p>
+            <div className="mt-8 flex flex-col items-center lg:items-start">
+              <p className="text-base text-zinc-900">
+                As a result, the visitor leaves within seconds without
+                submitting enquiry!
+              </p>
+              <p className="mt-3 text-base text-zinc-900">
+                But we can help you avoid these mistakes.
+              </p>
 
-          <p className="mt-3 text-base text-zinc-900 ">
-            But we can help you avoid these mistakes.
-          </p>
-        </div>
+              <button
+                onClick={triggerButton}
+                className="mt-6 rounded-2xl px-8 py-3.5 text-sm font-semibold shadow-lg hover:scale-105 transition bg-(--yellow-emarketing) text-black flex items-center gap-2"
+              >
+                Talk To Our Marketing Experts
+                <FiArrowRight />
+              </button>
+            </div>
+          </div>
 
-        <div className="mt-8 flex justify-center">
-          <button
-            onClick={triggerButton}
-            className="rounded-2xl px-6 py-3 text-sm font-semibold text-black transition hover:scale-105 bg-(--yellow-emarketing) lg:text-md flex items-center gap-2 cursor-pointer"
-          >
-            Talk To Our Marketing Experts
-            <FiArrowRight />
-          </button>
+          <div className="hidden lg:flex justify-center">
+            <div className="relative w-full">
+              <div className="absolute -inset-4 rounded-3xl bg-(--yellow-emarketing)/5 blur-xl" />
+              <div className="relative rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+                <img
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+                  alt="Team working"
+                  className="w-full h-140 object-cover"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent pointer-events-none" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

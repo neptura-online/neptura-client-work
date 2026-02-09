@@ -18,7 +18,7 @@ const LeadDetails = ({ leads }: LeadDetailsProps) => {
     }
     const found = leads.find((item: any) => item._id === id);
     // @ts-expect-error
-    const { __v, updatedAt, createdAt, ...rest } = found;
+    const { updatedAt, createdAt, ...rest } = found;
     const filteredData = {
       ...rest,
       createdAt: formatDate(new Date(createdAt)),

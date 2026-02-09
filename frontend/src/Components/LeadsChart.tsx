@@ -10,7 +10,8 @@ import {
 import { useMemo, useState } from "react";
 
 type Lead = {
-  createdAt: string;
+  createdAt?: any;
+  created_at?: any;
 };
 
 const ranges = [
@@ -18,6 +19,22 @@ const ranges = [
   { label: "14 Days", value: 14 },
   { label: "30 Days", value: 30 },
 ];
+
+const parseDate = (value: any): Date | null => {
+  if (!value) return null;
+
+  if (value instanceof Date) return value; // Mongo direct Date
+
+  if (!isNaN(value)) return new Date(Number(value)); // timestamp
+
+  if (typeof value === "string") {
+    const fixed = value.includes(" ") ? value.replace(" ", "T") : value;
+    const d = new Date(fixed);
+    return isNaN(d.getTime()) ? null : d;
+  }
+
+  return null;
+};
 
 const normalize = (d: Date) =>
   new Date(d.getFullYear(), d.getMonth(), d.getDate());
@@ -35,10 +52,8 @@ const LeadsChart = ({ leads }: { leads: Lead[] }) => {
     const map: Record<string, number> = {};
 
     leads.forEach((lead) => {
-      if (!lead.createdAt) return;
-
-      const raw = new Date(lead.createdAt.replace(" ", "T"));
-      if (isNaN(raw.getTime())) return;
+      const raw = parseDate(lead.createdAt || lead.created_at);
+      if (!raw) return;
 
       const date = normalize(raw);
 
@@ -60,10 +75,7 @@ const LeadsChart = ({ leads }: { leads: Lead[] }) => {
         month: "short",
       });
 
-      return {
-        date: key,
-        leads: map[key] || 0,
-      };
+      return { date: key, leads: map[key] || 0 };
     });
   }, [leads, days]);
 

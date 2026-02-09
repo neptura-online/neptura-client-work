@@ -19,18 +19,29 @@ const ranges = [
   { label: "30 Days", value: 30 },
 ];
 
+const normalize = (d: Date) =>
+  new Date(d.getFullYear(), d.getMonth(), d.getDate());
+
 const LeadsChart = ({ leads }: { leads: Lead[] }) => {
   const [days, setDays] = useState(7);
 
   const chartData = useMemo(() => {
-    const today = new Date();
-    const startDate = new Date();
-    startDate.setDate(today.getDate() - days + 1);
+    const today = normalize(new Date());
+
+    const start = new Date();
+    start.setDate(today.getDate() - days + 1);
+    const startDate = normalize(start);
 
     const map: Record<string, number> = {};
 
     leads.forEach((lead) => {
-      const date = new Date(lead.createdAt);
+      if (!lead.createdAt) return;
+
+      const raw = new Date(lead.createdAt.replace(" ", "T"));
+      if (isNaN(raw.getTime())) return;
+
+      const date = normalize(raw);
+
       if (date >= startDate && date <= today) {
         const key = date.toLocaleDateString("en-IN", {
           day: "2-digit",

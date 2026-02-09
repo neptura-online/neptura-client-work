@@ -10,7 +10,8 @@ import {
 import { useMemo, useState } from "react";
 
 type Lead = {
-  createdAt: string;
+  createdAt?: string;
+  created_at?: string;
 };
 
 const ranges = [
@@ -19,18 +20,30 @@ const ranges = [
   { label: "30 Days", value: 30 },
 ];
 
+const normalize = (d: Date) =>
+  new Date(d.getFullYear(), d.getMonth(), d.getDate());
+
 const PartialLeadsChart = ({ leads }: { leads: Lead[] }) => {
   const [days, setDays] = useState(7);
 
   const chartData = useMemo(() => {
-    const today = new Date();
-    const startDate = new Date();
-    startDate.setDate(today.getDate() - days + 1);
+    const today = normalize(new Date());
+
+    const start = new Date();
+    start.setDate(today.getDate() - days + 1);
+    const startDate = normalize(start);
 
     const map: Record<string, number> = {};
 
     leads.forEach((lead) => {
-      const date = new Date(lead.createdAt);
+      const rawDate = lead.createdAt || lead.created_at;
+      if (!rawDate) return;
+
+      const raw = new Date(rawDate.replace(" ", "T"));
+      if (isNaN(raw.getTime())) return;
+
+      const date = normalize(raw);
+
       if (date >= startDate && date <= today) {
         const key = date.toLocaleDateString("en-IN", {
           day: "2-digit",
@@ -95,7 +108,7 @@ const PartialLeadsChart = ({ leads }: { leads: Lead[] }) => {
             <Bar
               dataKey="leads"
               fill="#facc15"
-              radius={[6, 6, 0, 0]} // rounded top blocks
+              radius={[6, 6, 0, 0]}
               barSize={18}
             />
           </BarChart>

@@ -11,8 +11,8 @@ const YouKnow = () => {
           backgroundPosition: "center",
         }}
       />
-      <div className="relative mx-auto max-w-300 px-6 text-center py-10 flex flex-col lg:flex-row justify-between items-center">
-        <div className="flex flex-col">
+      <div className="relative mx-auto max-w-300 px-6 text-center py-10 flex flex-col lg:flex-col justify-between items-center">
+        <div className="flex flex-col items-center">
           <motion.h2
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -31,13 +31,13 @@ const YouKnow = () => {
           />
         </div>
 
-        <div className="max-w-xl">
+        <div className=" max-w-3xl">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15, duration: 0.6 }}
-            className="mx-auto mt-6 max-w-3xl text-base md:text-xl text-zinc-800 leading-relaxed text-center lg:text-left"
+            className="mx-auto mt-6 text-base md:text-xl text-zinc-800 leading-relaxed text-center"
           >
             Even a{" "}
             <span className="text-zinc-900 bold">
@@ -50,14 +50,6 @@ const YouKnow = () => {
             <span className="text-(--yellow-emarketing)">30%</span>… or even{" "}
             <span className="text-(--yellow-emarketing)">40</span>.
           </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="mx-auto mt-4 max-w-2xl text-base  text-zinc-800 text-left"
-          ></motion.p>
         </div>
       </div>
     </section>

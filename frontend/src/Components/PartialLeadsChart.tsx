@@ -24,13 +24,18 @@ const PartialLeadsChart = ({ leads }: { leads: Lead[] }) => {
 
   const chartData = useMemo(() => {
     const today = new Date();
+    today.setHours(23, 59, 59, 999);
+
     const startDate = new Date();
     startDate.setDate(today.getDate() - days + 1);
+    startDate.setHours(0, 0, 0, 0);
 
     const map: Record<string, number> = {};
 
     leads.forEach((lead) => {
-      const date = new Date(lead.createdAt);
+      const raw = new Date(lead.createdAt);
+      const date = new Date(raw.getFullYear(), raw.getMonth(), raw.getDate());
+
       if (date >= startDate && date <= today) {
         const key = date.toLocaleDateString("en-IN", {
           day: "2-digit",
@@ -39,6 +44,7 @@ const PartialLeadsChart = ({ leads }: { leads: Lead[] }) => {
         map[key] = (map[key] || 0) + 1;
       }
     });
+    console.log(leads);
 
     return Array.from({ length: days }).map((_, i) => {
       const d = new Date(startDate);
@@ -95,7 +101,7 @@ const PartialLeadsChart = ({ leads }: { leads: Lead[] }) => {
             <Bar
               dataKey="leads"
               fill="#facc15"
-              radius={[6, 6, 0, 0]} // rounded top blocks
+              radius={[6, 6, 0, 0]}
               barSize={18}
             />
           </BarChart>

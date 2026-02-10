@@ -10,8 +10,7 @@ import {
 import { useMemo, useState } from "react";
 
 type Lead = {
-  createdAt?: any;
-  created_at?: any;
+  createdAt: string;
 };
 
 const ranges = [
@@ -20,43 +19,18 @@ const ranges = [
   { label: "30 Days", value: 30 },
 ];
 
-const parseDate = (value: any): Date | null => {
-  if (!value) return null;
-
-  if (value instanceof Date) return value; // Mongo direct Date
-
-  if (!isNaN(value)) return new Date(Number(value)); // timestamp
-
-  if (typeof value === "string") {
-    const fixed = value.includes(" ") ? value.replace(" ", "T") : value;
-    const d = new Date(fixed);
-    return isNaN(d.getTime()) ? null : d;
-  }
-
-  return null;
-};
-
-const normalize = (d: Date) =>
-  new Date(d.getFullYear(), d.getMonth(), d.getDate());
-
 const LeadsChart = ({ leads }: { leads: Lead[] }) => {
   const [days, setDays] = useState(7);
 
   const chartData = useMemo(() => {
-    const today = normalize(new Date());
-
-    const start = new Date();
-    start.setDate(today.getDate() - days + 1);
-    const startDate = normalize(start);
+    const today = new Date();
+    const startDate = new Date();
+    startDate.setDate(today.getDate() - days + 1);
 
     const map: Record<string, number> = {};
 
     leads.forEach((lead) => {
-      const raw = parseDate(lead.createdAt || lead.created_at);
-      if (!raw) return;
-
-      const date = normalize(raw);
-
+      const date = new Date(lead.createdAt);
       if (date >= startDate && date <= today) {
         const key = date.toLocaleDateString("en-IN", {
           day: "2-digit",
@@ -75,7 +49,10 @@ const LeadsChart = ({ leads }: { leads: Lead[] }) => {
         month: "short",
       });
 
-      return { date: key, leads: map[key] || 0 };
+      return {
+        date: key,
+        leads: map[key] || 0,
+      };
     });
   }, [leads, days]);
 

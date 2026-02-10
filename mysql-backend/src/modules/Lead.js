@@ -32,17 +32,9 @@ export const Lead = {
   },
 
   find: async () => {
-    const [rows] = await db.query(`
-  SELECT 
-    _id, name, email, phone, industry, leadType, message,
-    utm_source, utm_medium, utm_term, utm_campaign,
-    utm_content, adgroupid, gclid, lpurl, formID,
-    DATE_FORMAT(createdAt, '%Y-%m-%dT%H:%i:%sZ') AS createdAt,
-    DATE_FORMAT(updatedAt, '%Y-%m-%dT%H:%i:%sZ') AS updatedAt
-  FROM leads
-  ORDER BY createdAt DESC
-`);
-
+    const [rows] = await db.query(
+      "SELECT * FROM leads ORDER BY createdAt DESC"
+    );
     return rows.map((r) => ({ ...r, _id: String(r._id) }));
   },
 

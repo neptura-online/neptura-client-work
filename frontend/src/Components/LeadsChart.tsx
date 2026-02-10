@@ -24,13 +24,17 @@ const LeadsChart = ({ leads }: { leads: Lead[] }) => {
 
   const chartData = useMemo(() => {
     const today = new Date();
+    today.setHours(23, 59, 59, 999);
+
     const startDate = new Date();
     startDate.setDate(today.getDate() - days + 1);
+    startDate.setHours(0, 0, 0, 0);
 
     const map: Record<string, number> = {};
 
     leads.forEach((lead) => {
       const date = new Date(lead.createdAt);
+
       if (date >= startDate && date <= today) {
         const key = date.toLocaleDateString("en-IN", {
           day: "2-digit",
@@ -49,10 +53,7 @@ const LeadsChart = ({ leads }: { leads: Lead[] }) => {
         month: "short",
       });
 
-      return {
-        date: key,
-        leads: map[key] || 0,
-      };
+      return { date: key, leads: map[key] || 0 };
     });
   }, [leads, days]);
 

@@ -1,5 +1,4 @@
 import { google } from "googleapis";
-import { SheetMapping } from "../modules/SheetMapping.js";
 import { formatDate } from "./formateDate.js";
 
 export const addLeadToSheet = async (lead) => {

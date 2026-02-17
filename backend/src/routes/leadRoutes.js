@@ -2,6 +2,7 @@ import { Router } from "express";
 import { auth } from "../middleware/auth.js";
 import { Lead } from "../modules/Lead.js";
 import { parseTrackingUrl } from "../utils/parseTrackingUrl.js";
+import { addLeadToSheet } from "../utils/googleSheet.js";
 //import { addToGoogleSheet } from "../utils/googleSheet.js";
 //import { sendAdminLeadMail, sendLeadMail } from "../utils/sendMail.js";
 
@@ -28,15 +29,15 @@ router.post("/", async (req, res) => {
       ...trackingData,
     });
 
-    // try {
-    //   await Promise.all([
-    //     addToGoogleSheet(lead),
-    //     sendLeadMail({ name, email }),
-    //     sendAdminLeadMail(lead),
-    //   ]);
-    // } catch (err) {
-    //   console.error("Reporting failed:", err);
-    // }
+    try {
+      await Promise.all([
+        addLeadToSheet(lead),
+        //sendLeadMail({ name, email }),
+        // sendAdminLeadMail(lead),
+      ]);
+    } catch (err) {
+      console.error("Reporting failed:", err);
+    }
 
     return res.status(200).json("user created");
   } catch (error) {

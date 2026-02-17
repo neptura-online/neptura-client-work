@@ -13,6 +13,7 @@ export const addLeadToSheet = async (lead) => {
       process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
       ["https://www.googleapis.com/auth/spreadsheets"]
     );
+    console.log(process.env.GOOGLE_CLIENT_EMAIL);
 
     const sheets = google.sheets({ version: "v4", auth });
 

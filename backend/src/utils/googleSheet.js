@@ -15,7 +15,7 @@ export const addToGoogleSheet = async (lead) => {
   const time = formatDate(lead.createdAt);
 
   await sheets.spreadsheets.values.append({
-    spreadsheetId: "1i6slEs05hVlyO9uXgmlIhrgxqB5M7yyL69SJXbobGP4",
+    spreadsheetId: "1GVGHj2sYMP0-ZzZxXW3HNDmB4rJh7WUaX5RZhG3BzrY",
     range: "Sheet1!A1",
     valueInputOption: "RAW",
     requestBody: {

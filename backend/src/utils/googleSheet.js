@@ -10,12 +10,14 @@ export const addLeadToSheet = async (lead) => {
   console.log(mapping);
   if (!mapping || !mapping.isActive) return;
 
-  const auth = new google.auth.GoogleAuth({
-    credentials: {
-      project_id: process.env.GOOGLE_PROJECT_ID,
-      client_email: process.env.GOOGLE_CLIENT_EMAIL,
-      private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
-    },
+  const privateKey = crypto.createPrivateKey({
+    key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+    format: "pem",
+  });
+
+  const auth = new google.auth.JWT({
+    email: process.env.GOOGLE_CLIENT_EMAIL,
+    key: privateKey.export({ format: "pem", type: "pkcs8" }),
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
 

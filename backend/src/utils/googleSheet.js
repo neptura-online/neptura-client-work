@@ -5,6 +5,7 @@ export const addLeadToSheet = async (lead) => {
     formID: lead.formID,
   });
 
+  console.log(mapping);
   if (!mapping || !mapping.isActive) return;
 
   const auth = new google.auth.GoogleAuth({

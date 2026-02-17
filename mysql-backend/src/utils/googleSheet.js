@@ -1,4 +1,4 @@
-import { SheetMapping } from "../modules/SheetMapping";
+import { SheetMapping } from "../modules/SheetMapping.js";
 
 export const addLeadToSheet = async (lead) => {
   const mapping = await SheetMapping.findOne({

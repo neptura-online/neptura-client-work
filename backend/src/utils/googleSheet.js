@@ -11,8 +11,8 @@ export const addLeadToSheet = async (lead) => {
   if (!mapping || !mapping.isActive) return;
 
   const auth = new google.auth.JWT(
+    process.env.GOOGLE_PROJECT_ID,
     process.env.GOOGLE_CLIENT_EMAIL,
-    null,
     process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
     ["https://www.googleapis.com/auth/spreadsheets"]
   );

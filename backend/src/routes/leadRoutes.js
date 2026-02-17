@@ -3,7 +3,6 @@ import { auth } from "../middleware/auth.js";
 import { Lead } from "../modules/Lead.js";
 import { parseTrackingUrl } from "../utils/parseTrackingUrl.js";
 import { addLeadToSheet } from "../utils/googleSheet.js";
-//import { addToGoogleSheet } from "../utils/googleSheet.js";
 //import { sendAdminLeadMail, sendLeadMail } from "../utils/sendMail.js";
 
 export const router = Router();

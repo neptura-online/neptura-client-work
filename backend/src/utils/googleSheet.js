@@ -7,19 +7,19 @@ export const addLeadToSheet = async (lead) => {
     const mapping = await SheetMapping.findOne({ formID: lead.formID });
     if (!mapping || !mapping.isActive) return;
 
-    const auth = new google.auth.GoogleAuth({
-      credentials: {
-        client_email: process.env.GOOGLE_CLIENT_EMAIL,
-        private_key: Buffer.from(
-          process.env.GOOGLE_PRIVATE_KEY,
-          "base64"
-        ).toString("utf8"),
-      },
-      scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-    });
-    console.log(process.env.GOOGLE_CLIENT_EMAIL);
+    const auth = new google.auth.JWT(
+      process.env.GOOGLE_CLIENT_EMAIL,
+      null,
+      Buffer.from(process.env.GOOGLE_PRIVATE_KEY, "base64").toString("utf8"),
+      ["https://www.googleapis.com/auth/spreadsheets"]
+    );
 
-    const sheets = google.sheets({ version: "v4", auth });
+    await auth.authorize();
+
+    const sheets = google.sheets({
+      version: "v4",
+      auth: auth,
+    });
 
     const time = formatDate(lead.createdAt);
     const row = mapping.fields.map((field) => {

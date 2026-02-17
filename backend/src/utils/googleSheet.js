@@ -1,3 +1,4 @@
+import { google } from "googleapis";
 import { SheetMapping } from "../modules/SheetMapping.js";
 
 export const addLeadToSheet = async (lead) => {

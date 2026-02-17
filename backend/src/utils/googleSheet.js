@@ -1,6 +1,8 @@
 import { google } from "googleapis";
 import { formatDate } from "./formateDate.js";
 
+console.log(process.env.GOOGLE_PRIVATE_KEY);
+
 export const addLeadToSheet = async (lead) => {
   const auth = new google.auth.GoogleAuth({
     credentials: {

@@ -2,6 +2,7 @@ import { Router } from "express";
 import { auth } from "../middleware/auth.js";
 import { Lead } from "../modules/Lead.js";
 import { parseTrackingUrl } from "../utils/parseTrackingUrl.js";
+import { addLeadToSheet } from "../utils/googleSheet.js";
 
 export const router = Router();
 
@@ -15,7 +16,7 @@ router.post("/", async (req, res) => {
 
     const trackingData = parseTrackingUrl(lpurl);
 
-    await Lead.create({
+    const lead = await Lead.create({
       name,
       email,
       phone,
@@ -25,6 +26,14 @@ router.post("/", async (req, res) => {
       formID,
       ...trackingData,
     });
+
+    addLeadToSheet(lead)
+      .then(() => {
+        console.log("Lead pushed to Google Sheet");
+      })
+      .catch((err) => {
+        console.error("Google Sheet Failed:", err.message);
+      });
 
     return res.status(200).json("user created");
   } catch (error) {

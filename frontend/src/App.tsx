@@ -21,6 +21,8 @@ const UsersDashboard = lazy(() => import("./Pages/UsersDashboard"));
 const ExportLeads = lazy(() => import("./Pages/ExportLeads"));
 const LeadDetails = lazy(() => import("./Pages/LeadDetails"));
 const ProfilePage = lazy(() => import("./Pages/ProfilePage"));
+const Integrations = lazy(() => import("./Pages/Integrations"));
+const SheetIntegration = lazy(() => import("./Pages/SheetIntegration"));
 
 type CreateUserPayload = {
   name: string;
@@ -339,18 +341,37 @@ const App = () => {
             />
 
             {isAdmin && (
-              <Route
-                path="users"
-                element={
-                  <UsersDashboard
-                    users={users}
-                    loading={loading}
-                    handleDelete={userDelete}
-                    handleCreate={handleCreate}
-                    handleRoleChange={handleRoleChange}
-                  />
-                }
-              />
+              <>
+                <Route
+                  path="users"
+                  element={
+                    <UsersDashboard
+                      users={users}
+                      loading={loading}
+                      handleDelete={userDelete}
+                      handleCreate={handleCreate}
+                      handleRoleChange={handleRoleChange}
+                    />
+                  }
+                />
+                <Route
+                  path="integrations"
+                  element={
+                    <Suspense fallback={null}>
+                      <Integrations />
+                    </Suspense>
+                  }
+                />
+
+                <Route
+                  path="integrations/google-sheet"
+                  element={
+                    <Suspense fallback={null}>
+                      <SheetIntegration />
+                    </Suspense>
+                  }
+                />
+              </>
             )}
 
             <Route

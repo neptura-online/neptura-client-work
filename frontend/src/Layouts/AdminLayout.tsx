@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { MdDashboard } from "react-icons/md";
+import { MdDashboard, MdOutlineExtension } from "react-icons/md";
 import { TiExport } from "react-icons/ti";
 import { FaUsers } from "react-icons/fa";
 import { AiFillFileAdd } from "react-icons/ai";
@@ -50,9 +50,14 @@ const AdminLayout = ({ isAdmin }: AdminRouteProps) => {
                 <TiExport className="text-xl" /> Export Leads
               </NavLink>
               {isAdmin && (
-                <NavLink to="/admin/users" className={linkClass}>
-                  <FaUsers className="text-xl" /> Users
-                </NavLink>
+                <>
+                  <NavLink to="/admin/users" className={linkClass}>
+                    <FaUsers className="text-xl" /> Users
+                  </NavLink>
+                  <NavLink to="/admin/integrations" className={linkClass}>
+                    <MdOutlineExtension className="text-xl" /> Integrations
+                  </NavLink>
+                </>
               )}
             </nav>
 

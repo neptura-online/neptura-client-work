@@ -49,8 +49,10 @@ const allFields = [
   "utm_campaign",
   "utm_term",
   "utm_content",
+  "adgroupid",
   "gclid",
   "lpurl",
+  "formID",
 ];
 
 const getAuthHeader = () => ({

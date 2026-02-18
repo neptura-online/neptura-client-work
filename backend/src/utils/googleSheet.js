@@ -1,7 +1,15 @@
 import { google } from "googleapis";
 import { formatDate } from "./formateDate.js";
+import { SheetMapping } from "../modules/SheetMapping.js";
 
 export const addLeadToSheet = async (lead) => {
+  const mapping = await SheetMapping.findOne({
+    formID: lead.formID,
+  });
+
+  console.log(mapping);
+  if (!mapping || !mapping.isActive) return;
+
   const auth = new google.auth.GoogleAuth({
     credentials: {
       project_id: process.env.GOOGLE_PROJECT_ID,
@@ -12,32 +20,20 @@ export const addLeadToSheet = async (lead) => {
   });
 
   const sheets = google.sheets({ version: "v4", auth });
+
   const time = formatDate(lead.createdAt);
 
+  const row = mapping.fields.map((field) => {
+    if (field.leadField === "time") return time;
+    return lead[field.leadField] || "";
+  });
+
   await sheets.spreadsheets.values.append({
-    spreadsheetId: "1a9JNuD1IRVfeKcS1ZmqXVYTWd8LGD5mNukZOeHgPBbE",
-    range: "Sheet1!A1",
+    spreadsheetId: mapping.spreadsheetId,
+    range: `${mapping.sheetName}!A1`,
     valueInputOption: "RAW",
     requestBody: {
-      values: [
-        [
-          time,
-          lead.name,
-          lead.email,
-          lead.phone,
-          lead.industry,
-          lead.message,
-          lead.utm_source,
-          lead.utm_medium,
-          lead.utm_term,
-          lead.utm_campaign,
-          lead.utm_content,
-          lead.adgroupid,
-          lead.gclid,
-          lead.lpurl,
-          lead.formID,
-        ],
-      ],
+      values: [row],
     },
   });
 };

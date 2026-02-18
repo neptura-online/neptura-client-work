@@ -10,7 +10,6 @@ export const addLeadToSheet = async (lead) => {
   } catch (err) {
     leadPage = null;
   }
-  console.log(leadPage);
 
   const mapping = await SheetMapping.findOne({
     isActive: true,
@@ -24,8 +23,6 @@ export const addLeadToSheet = async (lead) => {
     formID: -1,
     page: -1,
   });
-
-  console.log(mapping);
 
   if (!mapping) return;
 

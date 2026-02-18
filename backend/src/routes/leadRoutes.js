@@ -28,17 +28,15 @@ router.post("/", async (req, res) => {
       ...trackingData,
     });
 
-    // try {
-    //   await Promise.all([
-    //     addLeadToSheet(lead),
-    //     //sendLeadMail({ name, email }),
-    //     // sendAdminLeadMail(lead),
-    //   ]);
-    // } catch (err) {
-    //   console.error("Reporting failed:", err);
-    // }
-
-    await addLeadToSheet(lead);
+    try {
+      await Promise.all([
+        addLeadToSheet(lead),
+        //sendLeadMail({ name, email }),
+        // sendAdminLeadMail(lead),
+      ]);
+    } catch (err) {
+      console.error("Reporting failed:", err);
+    }
 
     return res.status(200).json("user created");
   } catch (error) {

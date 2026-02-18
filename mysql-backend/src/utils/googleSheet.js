@@ -55,6 +55,7 @@ export const addLeadToSheet = async (lead) => {
 
   const sheets = google.sheets({ version: "v4", auth });
 
+  console.log(lead);
   const time = formatDate(lead.createdAt);
 
   const row = fields.map((field) => {

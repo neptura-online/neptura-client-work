@@ -1,11 +1,48 @@
-import { SheetMapping } from "../modules/SheetMapping.js";
+import { google } from "googleapis";
+import { formatDate } from "./formateDate.js";
+import { db } from "../db/db.js";
 
 export const addLeadToSheet = async (lead) => {
-  const mapping = await SheetMapping.findOne({
-    formID: lead.formID,
-  });
+  let leadPage = null;
 
-  if (!mapping || !mapping.isActive) return;
+  try {
+    leadPage = new URL(lead.lpurl).pathname;
+  } catch {
+    leadPage = null;
+  }
+
+  const [rows] = await db.query(
+    `
+    SELECT *
+    FROM sheet_mappings
+    WHERE isActive=1
+    AND (
+      (formID=? AND page=?)
+      OR (formID=? AND page IS NULL)
+      OR (formID IS NULL AND page=?)
+      OR (formID IS NULL AND page IS NULL)
+    )
+    ORDER BY
+      (formID IS NOT NULL) DESC,
+      (page IS NOT NULL) DESC
+    LIMIT 1
+  `,
+    [lead.formID, leadPage, lead.formID, leadPage]
+  );
+
+  if (!rows.length) return;
+
+  const mapping = rows[0];
+
+  const [fields] = await db.query(
+    `
+    SELECT leadField, fieldOrder as \`order\`
+    FROM sheet_mapping_fields
+    WHERE mappingId=?
+    ORDER BY fieldOrder ASC
+  `,
+    [mapping._id]
+  );
 
   const auth = new google.auth.GoogleAuth({
     credentials: {
@@ -20,7 +57,7 @@ export const addLeadToSheet = async (lead) => {
 
   const time = formatDate(lead.createdAt);
 
-  const row = mapping.fields.map((field) => {
+  const row = fields.map((field) => {
     if (field.leadField === "time") return time;
     return lead[field.leadField] || "";
   });

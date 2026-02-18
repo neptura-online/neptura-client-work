@@ -15,7 +15,7 @@ export const addLeadToSheet = async (lead) => {
   const time = formatDate(lead.createdAt);
 
   await sheets.spreadsheets.values.append({
-    spreadsheetId: "1GVGHj2sYMP0-ZzZxXW3HNDmB4rJh7WUaX5RZhG3BzrY",
+    spreadsheetId: "1a9JNuD1IRVfeKcS1ZmqXVYTWd8LGD5mNukZOeHgPBbE",
     range: "Sheet1!A1",
     valueInputOption: "RAW",
     requestBody: {

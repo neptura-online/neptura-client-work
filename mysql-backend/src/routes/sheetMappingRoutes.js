@@ -9,22 +9,26 @@ router.post("/sheet-mapping", auth, async (req, res) => {
     const mapping = await SheetMapping.create(req.body);
     res.json(mapping);
   } catch (err) {
-    res.status(500).json("Error creating mapping");
+    res.status(500).json("Create failed");
   }
 });
 
-router.patch("/sheet-toggle/:formID", auth, async (req, res) => {
-  try {
-    const { isActive } = req.body;
+router.get("/sheet-mappings", auth, async (req, res) => {
+  const mappings = await SheetMapping.find();
+  res.json(mappings);
+});
 
-    const mapping = await SheetMapping.findOneAndUpdate(
-      { formID: req.params.formID },
-      { isActive },
-      { new: true }
-    );
+router.put("/sheet-mapping/:id", auth, async (req, res) => {
+  await SheetMapping.update(req.params.id, req.body);
+  res.json({ success: true });
+});
 
-    res.json(mapping);
-  } catch (err) {
-    res.status(500).json("Toggle failed");
-  }
+router.patch("/sheet-toggle/:id", auth, async (req, res) => {
+  await SheetMapping.toggle(req.params.id, req.body.isActive);
+  res.json({ success: true });
+});
+
+router.delete("/sheet-mapping/:id", auth, async (req, res) => {
+  await SheetMapping.delete(req.params.id);
+  res.json({ success: true });
 });

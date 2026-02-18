@@ -56,7 +56,13 @@ export const addLeadToSheet = async (lead) => {
   const sheets = google.sheets({ version: "v4", auth });
 
   console.log(lead);
-  const time = formatDate(lead.createdAt);
+  let time;
+
+  if (lead.createdAt) {
+    time = formatDate(lead.createdAt);
+  } else {
+    time = formatDate(new Date());
+  }
 
   const row = fields.map((field) => {
     if (field.leadField === "time") return time;

@@ -28,11 +28,7 @@ router.post("/", async (req, res) => {
     });
 
     try {
-      await Promise.all([
-        addLeadToSheet(lead),
-        //sendLeadMail({ name, email }),
-        // sendAdminLeadMail(lead),
-      ]);
+      await Promise.all([addLeadToSheet(lead)]);
     } catch (err) {
       console.error("Reporting failed:", err);
     }

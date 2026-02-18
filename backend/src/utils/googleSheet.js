@@ -3,12 +3,31 @@ import { formatDate } from "./formateDate.js";
 import { SheetMapping } from "../modules/SheetMapping.js";
 
 export const addLeadToSheet = async (lead) => {
+  let leadPage = null;
+
+  try {
+    leadPage = new URL(lead.lpurl).pathname;
+  } catch (err) {
+    leadPage = null;
+  }
+  console.log(leadPage);
+
   const mapping = await SheetMapping.findOne({
-    formID: lead.formID,
+    isActive: true,
+    $or: [
+      { formID: lead.formID, page: leadPage },
+      { formID: lead.formID, page: null },
+      { formID: null, page: leadPage },
+      { formID: null, page: null },
+    ],
+  }).sort({
+    formID: -1,
+    page: -1,
   });
 
   console.log(mapping);
-  if (!mapping || !mapping.isActive) return;
+
+  if (!mapping) return;
 
   const auth = new google.auth.GoogleAuth({
     credentials: {
@@ -23,7 +42,9 @@ export const addLeadToSheet = async (lead) => {
 
   const time = formatDate(lead.createdAt);
 
-  const row = mapping.fields.map((field) => {
+  const orderedFields = mapping.fields.sort((a, b) => a.order - b.order);
+
+  const row = orderedFields.map((field) => {
     if (field.leadField === "time") return time;
     return lead[field.leadField] || "";
   });

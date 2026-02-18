@@ -28,7 +28,6 @@ router.post("/", async (req, res) => {
       ...trackingData,
     });
 
-    console.log("here");
     // try {
     //   await Promise.all([
     //     addLeadToSheet(lead),
@@ -40,7 +39,6 @@ router.post("/", async (req, res) => {
     // }
 
     await addLeadToSheet(lead);
-    console.log(lead);
 
     return res.status(200).json("user created");
   } catch (error) {

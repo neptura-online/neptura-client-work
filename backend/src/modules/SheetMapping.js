@@ -1,7 +1,15 @@
 import mongoose from "mongoose";
 
 const SheetMappingSchema = new mongoose.Schema({
-  formID: String,
+  formID: {
+    type: String,
+    default: null,
+  },
+
+  page: {
+    type: String,
+    default: null,
+  },
 
   spreadsheetId: String,
   sheetName: String,
@@ -14,6 +22,7 @@ const SheetMappingSchema = new mongoose.Schema({
   fields: [
     {
       leadField: String,
+      order: Number,
     },
   ],
 });

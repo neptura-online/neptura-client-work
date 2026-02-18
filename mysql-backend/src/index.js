@@ -7,6 +7,7 @@ import { router as partialLeadRouter } from "./routes/partialLeadRoutes.js";
 import { router as userRouter } from "./routes/userRoutes.js";
 import { router as leadRouter } from "./routes/leadRoutes.js";
 import { router as sheetMappingRoutes } from "./routes/sheetMappingRoutes.js";
+import { migrateSheetMapping } from "./db/migrateSheetMapping.js";
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 
 const start = async () => {
   await connectDB();
+  await migrateSheetMapping();
   app.listen(port, () => {
     console.log(`server is running on port : ${port}`);
   });

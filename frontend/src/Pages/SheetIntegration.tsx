@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Loader from "../Components/Helper/Loader";
 
 interface Field {
   leadField: string;
@@ -66,7 +67,7 @@ const SheetIntegration = () => {
   const [sheetName, setSheetName] = useState("");
   const [isActive, setIsActive] = useState(false);
   const [page, setPage] = useState("");
-
+  const [loading, setLoading] = useState(false);
   const [fields, setFields] = useState<Field[]>([]);
   const [mappings, setMappings] = useState<Mapping[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -77,11 +78,13 @@ const SheetIntegration = () => {
   }, []);
 
   const fetchMappings = async () => {
+    setLoading(true);
     const res = await axios.get<Mapping[]>(
       `${import.meta.env.VITE_BACKEND_URL}/admin/sheet-mappings`,
       { headers: getAuthHeader() }
     );
     setMappings(res.data);
+    setLoading(false);
   };
 
   const toggleField = (field: string) => {
@@ -176,6 +179,8 @@ const SheetIntegration = () => {
     const f = fields.find((f) => f.leadField === field);
     return f ? f.order + 1 : null;
   };
+
+  if (loading) return <Loader />;
 
   return (
     <div className="space-y-6">

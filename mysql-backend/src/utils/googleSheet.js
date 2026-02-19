@@ -66,7 +66,18 @@ export const addLeadToSheet = async (lead) => {
 
   const row = fields.map((field) => {
     if (field.leadField === "time") return time;
-    return lead[field.leadField] || "";
+
+    // first check root lead field
+    if (lead[field.leadField]) {
+      return lead[field.leadField];
+    }
+
+    // then check dynamic tracking
+    if (lead.tracking && lead.tracking[field.leadField]) {
+      return lead.tracking[field.leadField];
+    }
+
+    return "";
   });
 
   await sheets.spreadsheets.values.append({

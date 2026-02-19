@@ -19,7 +19,6 @@ const defaultSamples = [
   "utm_term",
   "utm_content",
   "gclid",
-  "fbclid",
   "adgroupid",
 ];
 

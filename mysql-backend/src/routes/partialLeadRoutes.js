@@ -9,7 +9,7 @@ router.post("/", async (req, res) => {
   try {
     const { name, email, phone, industry, message, lpurl, formID } = req.body;
 
-    const trackingData = parseTrackingUrl(lpurl);
+    const tracking = await parseTrackingUrl(lpurl);
 
     await PartialLead.create({
       name,
@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
       message,
       lpurl,
       formID,
-      ...trackingData,
+      tracking,
     });
 
     return res.status(200).json("user created");

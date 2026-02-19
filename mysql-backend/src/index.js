@@ -1,25 +1,29 @@
 import "dotenv/config";
-
 import express from "express";
 import cors from "cors";
+
 import { connectDB } from "./db/db.js";
+import { migrateAll } from "./db/migrateAll.js";
+
 import { router as partialLeadRouter } from "./routes/partialLeadRoutes.js";
 import { router as userRouter } from "./routes/userRoutes.js";
 import { router as leadRouter } from "./routes/leadRoutes.js";
 import { router as sheetMappingRoutes } from "./routes/sheetMappingRoutes.js";
-import { migrateSheetMapping } from "./db/migrateSheetMapping.js";
+import { router as trackingRoutes } from "./routes/trackingRoutes.js";
+import { resetTables } from "./db/resetTables.js";
 
 const app = express();
-
 const port = process.env.PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
 app.use("/api/v1/partiallead", partialLeadRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/lead", leadRouter);
 app.use("/api/v1/admin", sheetMappingRoutes);
+app.use("/api/v1/utm/tracking", trackingRoutes);
 
 app.get("/", (req, res) => {
   res.send("server on");
@@ -27,7 +31,10 @@ app.get("/", (req, res) => {
 
 const start = async () => {
   await connectDB();
-  await migrateSheetMapping();
+
+  await resetTables();
+  await migrateAll();
+
   app.listen(port, () => {
     console.log(`server is running on port : ${port}`);
   });

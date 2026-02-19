@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
       return res.status(400).json("please enter something");
     }
 
-    const trackingData = parseTrackingUrl(lpurl);
+    const tracking = await parseTrackingUrl(lpurl);
 
     const lead = await Lead.create({
       name,
@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
       message,
       lpurl,
       formID,
-      ...trackingData,
+      tracking,
     });
 
     try {

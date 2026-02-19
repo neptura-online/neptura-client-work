@@ -1,18 +1,23 @@
-export const parseTrackingUrl = (url) => {
+import { TrackingField } from "../modules/TrackingField.js";
+
+export const parseTrackingUrl = async (url) => {
   try {
     const parsedUrl = new URL(url);
     const params = parsedUrl.searchParams;
 
-    return {
-      utm_source: params.get("utm_source") || "direct",
-      utm_medium: params.get("utm_medium"),
-      utm_campaign: params.get("utm_campaign"),
-      utm_term: params.get("utm_term"),
-      utm_content: params.get("utm_content"),
-      gclid: params.get("gclid"),
-      adgroupid: params.get("adgroupid"),
-    };
-  } catch (err) {
+    const allowed = await TrackingField.find({
+      isActive: true,
+    });
+
+    const tracking = {};
+
+    for (const f of allowed) {
+      const val = params.get(f.key);
+      if (val) tracking[f.key] = val;
+    }
+
+    return tracking;
+  } catch {
     return {};
   }
 };

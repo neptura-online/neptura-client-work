@@ -8,13 +8,13 @@ const leadSchema = new mongoose.Schema(
     industry: { type: String, required: true },
     leadType: { type: String, default: "MainLead" },
     message: { type: String },
-    utm_source: { type: String },
-    utm_medium: { type: String },
-    utm_term: { type: String },
-    utm_campaign: { type: String },
-    utm_content: { type: String },
-    adgroupid: { type: String },
-    gclid: { type: String },
+
+    tracking: {
+      type: Map,
+      of: String,
+      default: {},
+    },
+
     lpurl: { type: String },
     formID: { type: String },
   },

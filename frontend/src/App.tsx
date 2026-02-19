@@ -23,6 +23,7 @@ const LeadDetails = lazy(() => import("./Pages/LeadDetails"));
 const ProfilePage = lazy(() => import("./Pages/ProfilePage"));
 const Integrations = lazy(() => import("./Pages/Integrations"));
 const SheetIntegration = lazy(() => import("./Pages/SheetIntegration"));
+const TrackingIntegration = lazy(() => import("./Pages/TrackingIntegration"));
 
 type CreateUserPayload = {
   name: string;
@@ -368,6 +369,14 @@ const App = () => {
                   element={
                     <Suspense fallback={null}>
                       <SheetIntegration />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="integrations/tracking"
+                  element={
+                    <Suspense fallback={null}>
+                      <TrackingIntegration />
                     </Suspense>
                   }
                 />

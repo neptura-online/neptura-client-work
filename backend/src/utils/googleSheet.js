@@ -43,6 +43,13 @@ export const addLeadToSheet = async (lead) => {
 
   const row = orderedFields.map((field) => {
     if (field.leadField === "time") return time;
+
+    // 👇 FIRST CHECK DYNAMIC TRACKING
+    if (lead.tracking && lead.tracking.get(field.leadField)) {
+      return lead.tracking.get(field.leadField);
+    }
+
+    // 👇 THEN NORMAL LEAD FIELD
     return lead[field.leadField] || "";
   });
 

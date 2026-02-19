@@ -38,20 +38,13 @@ const ToggleSwitch = ({
   </div>
 );
 
-const allFields = [
+const staticFields = [
   "time",
   "name",
   "email",
   "phone",
   "industry",
   "message",
-  "utm_source",
-  "utm_medium",
-  "utm_campaign",
-  "utm_term",
-  "utm_content",
-  "adgroupid",
-  "gclid",
   "lpurl",
   "formID",
 ];
@@ -72,9 +65,11 @@ const SheetIntegration = () => {
   const [mappings, setMappings] = useState<Mapping[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [loadingDelete, setLoadingDelete] = useState<string | null>(null);
+  const [trackingFields, setTrackingFields] = useState<string[]>([]);
 
   useEffect(() => {
     fetchMappings();
+    fetchTrackingFields();
   }, []);
 
   const fetchMappings = async () => {
@@ -86,6 +81,20 @@ const SheetIntegration = () => {
     setMappings(res.data);
     setLoading(false);
   };
+  const fetchTrackingFields = async () => {
+    const res = await axios.get(
+      `${import.meta.env.VITE_BACKEND_URL}/utm/tracking`,
+      { headers: getAuthHeader() }
+    );
+
+    const active = res.data
+      .filter((f: any) => f.isActive)
+      .map((f: any) => f.key);
+
+    setTrackingFields(active);
+  };
+
+  const allFields = [...staticFields, ...trackingFields];
 
   const toggleField = (field: string) => {
     setFields((prev) => {

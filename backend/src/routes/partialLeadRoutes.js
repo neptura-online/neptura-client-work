@@ -2,7 +2,6 @@ import { Router } from "express";
 import { auth } from "../middleware/auth.js";
 import { PartialLead } from "../modules/Partial.js";
 import { parseTrackingUrl } from "../utils/parseTrackingUrl.js";
-//import { addPartialToGoogleSheet } from "../utils/googleSheet.js";
 
 export const router = Router();
 
@@ -10,9 +9,9 @@ router.post("/", async (req, res) => {
   try {
     const { name, email, phone, industry, message, lpurl, formID } = req.body;
 
-    const trackingData = parseTrackingUrl(lpurl);
+    const trackingData = await parseTrackingUrl(lpurl);
 
-    const lead = await PartialLead.create({
+    await PartialLead.create({
       name,
       email,
       phone,
@@ -20,10 +19,8 @@ router.post("/", async (req, res) => {
       message,
       lpurl,
       formID,
-      ...trackingData,
+      tracking: trackingData,
     });
-
-    //addPartialToGoogleSheet(lead);
 
     return res.status(200).json("user created");
   } catch (error) {

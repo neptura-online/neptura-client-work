@@ -23,6 +23,21 @@ const Integrations = () => {
             Configure
           </button>
         </div>
+        <div className="rounded-2xl border border-white/10 bg-zinc-900/40 p-6 flex justify-between items-center">
+          <div>
+            <h2 className="text-lg font-semibold">Tracking UTM</h2>
+            <p className="text-xs text-zinc-400 mt-1">
+              Control which UTM parameters are allowed
+            </p>
+          </div>
+
+          <button
+            onClick={() => navigate("/admin/integrations/tracking")}
+            className="rounded-lg bg-yellow-500 px-5 py-2 text-black font-semibold"
+          >
+            Configure
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Loader from "../Components/Helper/Loader";
 
 interface TrackingField {
   _id: string;
@@ -25,13 +26,16 @@ const defaultSamples = [
 export default function TrackingIntegration() {
   const [fields, setFields] = useState<TrackingField[]>([]);
   const [newKey, setNewKey] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const fetchFields = async () => {
+    setLoading(true);
     const res = await axios.get(
       `${import.meta.env.VITE_BACKEND_URL}/utm/tracking`,
       { headers: getAuthHeader() }
     );
     setFields(res.data);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -81,6 +85,8 @@ export default function TrackingIntegration() {
     }
     fetchFields();
   };
+
+  if (loading) return <Loader />;
 
   return (
     <div className="space-y-6">

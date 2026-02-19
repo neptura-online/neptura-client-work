@@ -31,8 +31,6 @@ app.get("/", (req, res) => {
 
 const start = async () => {
   await connectDB();
-
-  await resetTables();
   await migrateAll();
 
   app.listen(port, () => {

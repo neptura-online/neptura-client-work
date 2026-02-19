@@ -49,7 +49,7 @@ const MobileHeroVideo = ({ setOpenForm, setId }: OpenFormProps) => {
                     src="/assets/logowhite.webp"
                     alt="Logo"
                     className="h-15 md:h-20 w-auto"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </a>
               </div>

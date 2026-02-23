@@ -207,19 +207,26 @@ const SheetIntegration = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-3">
-          <input
-            placeholder="Form ID"
+          <select
             value={formID}
             onChange={(e) => setFormID(e.target.value)}
             className="bg-zinc-800 px-3 py-2 rounded"
-          />
+          >
+            <option value="">Pop up / All Forms</option>
+            <option value="exit">Exit Form</option>
+            <option value="hero">Header Form</option>
+            <option value="footer">Footer Form</option>
+          </select>
 
-          <input
-            placeholder="/page-name"
+          <select
             value={page}
             onChange={(e) => setPage(e.target.value)}
             className="bg-zinc-800 px-3 py-2 rounded"
-          />
+          >
+            <option value="">All Pages</option>
+            <option value="/">Home</option>
+            <option value="/business-lead">Business Lead Page</option>
+          </select>
 
           <input
             placeholder="Spreadsheet ID *"

@@ -6,10 +6,12 @@ export const addLeadToSheet = async (lead) => {
   let leadPage = null;
 
   try {
-    leadPage = new URL(lead.lpurl).pathname;
+    leadPage = new URL(lead.lpurl).pathname.replace(/\/+$/, "").toLowerCase();
   } catch {
     leadPage = null;
   }
+
+  console.log(leadPage);
 
   const [rows] = await db.query(
     `

@@ -15,7 +15,7 @@ export default function FinalCTASection() {
     error,
     handleSubmit,
   } = useLeadForm({
-    formID: "hero",
+    formID: "footer",
     mode: "business",
   });
   return (
